@@ -181,10 +181,10 @@ export default function HomeBanner() {
           </p>
 
           <div className="flex flex-wrap gap-4 mt-8">
-            <button className="bg-[#439897] hover:bg-[#357b7a] transition-colors text-[#FFFFFF] font-avenir font-[800] text-[16px] px-6 py-3 rounded">
+            <button className="bg-[#439897] hover:bg-[#357b7a] transition-colors text-[#FFFFFF] font-avenir font-[800] text-[16px] px-6 py-3 rounded-lg">
               Schedule a Consulation
             </button>
-            <button className="border border-[#1B3D3C] bg-[#FFFFFF] hover:bg-[#357b7a] hover:text-white transition-colors font-avenir font-[800] text-[16px] px-6 py-3 rounded">
+            <button className="border border-[#1B3D3C] bg-[#FFFFFF] hover:bg-[#357b7a] hover:text-white transition-colors font-avenir font-[800] text-[16px] px-6 py-3 rounded-lg">
               Schedule a Consultation
             </button>
           </div>
@@ -211,7 +211,13 @@ export default function HomeBanner() {
           className="w-9 h-9 rounded-full border border-[#439897] text-[#439897] flex items-center justify-center hover:bg-[#439897] hover:text-white transition-colors"
         >
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-            <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <path
+              d="M15 18l-6-6 6-6"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </button>
 
@@ -236,7 +242,13 @@ export default function HomeBanner() {
           className="w-9 h-9 rounded-full border border-[#439897] text-[#439897] flex items-center justify-center hover:bg-[#439897] hover:text-white transition-colors"
         >
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-            <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <path
+              d="M9 6l6 6-6 6"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </button>
       </div>
@@ -244,10 +256,10 @@ export default function HomeBanner() {
       {/* Small peek thumbnail — this is the "from" shape/position the
           next main image morphs out of when advancing forward */}
       <div
-  ref={peekRef}
-  key={nextIndex}
-  className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[160px] pointer-events-none select-none grayscale animate-[peekFadeIn_900ms_ease-out_forwards]"
->
+        ref={peekRef}
+        key={nextIndex}
+        className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[160px] pointer-events-none select-none grayscale animate-[peekFadeIn_900ms_ease-out_forwards]"
+      >
         <Image
           src={nextSlide.image}
           alt=""
@@ -256,18 +268,25 @@ export default function HomeBanner() {
         />
       </div>
 
-      <style jsx>{`
-        @keyframes fadeInText {
-          0% { opacity: 0; }
-          100% { opacity: 1; }
-        }
+      <style jsx>
+        {`
+          @keyframes fadeInText {
+            0% {
+              opacity: 0;
+            }
+            100% {
+              opacity: 1;
+            }
+          }
           @keyframes peekFadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 0.25; }
-}
-      `}
-      
-      
+            0% {
+              opacity: 0;
+            }
+            100% {
+              opacity: 0.25;
+            }
+          }
+        `}
       </style>
     </section>
   );

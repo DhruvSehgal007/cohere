@@ -12,7 +12,7 @@ export default function GetInTouchSection() {
         className="-z-10 object-cover object-center"
       />
 
-      <div className="mx-auto flex min-h-[560px] max-w-[1500px] flex-col items-center justify-center px-6 py-20 text-center">
+      <div className="container-custom flex min-h-[560px]  flex-col items-center justify-center px-6 py-20 text-center">
         <span className="inline-block rounded-[5px] bg-white px-4 py-1 font-avenir text-[14px] font-normal text-[#439897]">
           GET IN TOUCH
         </span>
@@ -29,12 +29,12 @@ export default function GetInTouchSection() {
           the firm boasts a multidisciplinary team.
         </p>
 
-        <div className="mt-24 flex flex-col gap-4 sm:flex-row">
-          <button className="w-[240px] rounded-[8px] bg-white px-6 py-3 font-nunito-sans text-[16px] font-bold text-[#0D1E1E] transition hover:bg-gray-100">
+        <div className="mt-20 flex flex-col gap-4 sm:flex-row">
+          <button className="w-[260px] rounded-[10px] bg-white px-6 py-3 font-nunito-sans-extra-bold text-[16px]   text-[#0D1E1E] transition hover:bg-gray-100">
             BOOK A CONSULTATION
           </button>
 
-          <button className="w-[240px] rounded-[8px] border border-white bg-transparent px-6 py-3 font-nunito-sans text-[16px] font-bold text-white transition hover:bg-white/10">
+          <button className="w-[260px] rounded-[10px] border border-white bg-transparent px-6 py-3 font-nunito-sans-extra-bold text-[16px]   text-white transition hover:bg-white/10">
             CONTACT US
           </button>
         </div>

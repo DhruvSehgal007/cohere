@@ -42,6 +42,9 @@ body {
   --font-markazi: var(--font-markazi);
   --font-markaziBold: var(--font-markaziBold);
   --font-nunito-sans-bold: var(--font-nunito-sans-bold);
+  --font-nunito-sans-extra-bold: var(--font-nunito-sans-extra-bold);
+  --font-inter-medium: var(--font-inter-medium);
+
 }
 
 @media (prefers-color-scheme: dark) {

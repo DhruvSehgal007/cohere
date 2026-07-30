@@ -19,8 +19,7 @@ export const nunitoSans = localFont({
   src: [
     { path: "./nunito/NunitoSans-Regular.woff2", weight: "400", style: "normal" },
     { path: "./nunito/NunitoSans-Regular.woff", weight: "400", style: "normal" },
-    { path: "./nunito/NunitoSans-Bold.woff2", weight: "700", style: "normal" },
-    { path: "./nunito/NunitoSans-Bold.woff", weight: "700", style: "normal" },
+
   ],
   variable: "--font-nunito-sans",
   display: "swap",
@@ -33,6 +32,15 @@ export const nunitoSansBold = localFont({
     { path: "./nunito/NunitoSans-Bold.woff", weight: "700", style: "normal" },
   ],
   variable: "--font-nunito-sans-bold",
+  display: "swap",
+});
+
+export const nunitoSansExtraBold = localFont({
+  src: [
+    { path: "./nunito/NunitoSans-ExtraBold.woff2", weight: "700", style: "normal" },
+    { path: "./nunito/NunitoSans-ExtraBold.woff", weight: "700", style: "normal" },
+  ],
+  variable: "--font-nunito-sans-extra-bold",
   display: "swap",
 });
 

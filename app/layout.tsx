@@ -8,6 +8,7 @@ import {
   markaziBold,
   nunitoSans,
   nunitoSansBold,
+  nunitoSansExtraBold,
 } from "@/assets/fonts";
 
 export default function RootLayout({
@@ -18,7 +19,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${avenir.variable} ${nunitoSans.variable} ${markazi.variable} ${markaziBold.variable} ${nunitoSansBold.variable} ${interMedium.variable}`}
+      className={`${avenir.variable} ${nunitoSans.variable} ${markazi.variable} ${markaziBold.variable} ${nunitoSansBold.variable} ${nunitoSansExtraBold.variable} ${interMedium.variable}`}
     >
       <body>
         <Header />
