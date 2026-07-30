@@ -1,20 +1,17 @@
-
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
 import bannerImage from "@/assets/images/homepage/side-images.png";
-import bannerImagetwo from "@/assets/images/homepage/testing.png";
+// import bannerImageone from "@/assets/images/homepage/linkdin-post.png";
 import sliderBackground from "@/assets/images/homepage/slider-background.png";
 
-// fixed text that never changes between slides
 const staticContent = {
   line1: "Understand",
   line2: "Workplace",
   subtitle: "Keep It Right",
 };
 
-// only these two fields differ per slide
 const slides = [
   {
     highlight: "Laws.",
@@ -44,63 +41,88 @@ const slides = [
 
 const N = slides.length;
 const AUTO_MS = 4500;
-const TRANSITION_MS = 900; // slower, smoother slide
+const TRANSITION_MS = 1400;
 
 export default function HomeBanner() {
   const [index, setIndex] = useState(0);
-  const [textKey, setTextKey] = useState(0); // retrigger text slide-in
+  const [textKey, setTextKey] = useState(0);
 
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const resetTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const mainImgWrapRef = useRef<HTMLDivElement>(null);
+  const peekRef = useRef<HTMLDivElement>(null);
+  const prevPeekRect = useRef<DOMRect | null>(null);
+  const isForwardStep = useRef(false);
 
-  // image track: real slides + one cloned copy of slide 0 at the end,
-  // so advancing past the last real slide slides smoothly into a
-  // visual duplicate of slide 0, then we silently snap index back to 0
-  const loopSlides = [...slides, slides[0]];
+  const active = slides[index];
+  const nextIndex = (index + 1) % N;
+  const nextSlide = slides[nextIndex];
 
-  const applyTransform = (i: number, animate: boolean) => {
-    const el = trackRef.current;
-    if (!el) return;
-    el.style.transition = animate
-      ? `transform ${TRANSITION_MS}ms ease-in-out`
-      : "none";
-    el.style.transform = `translateX(-${i * 100}%)`;
-  };
-
-  const goTo = (i: number) => {
+  // capture where the small peek thumbnail is *before* we swap content,
+  // so we can morph the incoming main image from that exact spot/size
+  const goTo = (i: number, forward: boolean) => {
     const next = ((i % N) + N) % N;
-    const isWrapForward = next === 0 && i > 0 && index === N - 1;
+    isForwardStep.current = forward;
+
+    if (forward && peekRef.current) {
+      prevPeekRect.current = peekRef.current.getBoundingClientRect();
+    } else {
+      prevPeekRect.current = null;
+    }
 
     setTextKey((k) => k + 1);
-
-    if (isWrapForward) {
-      // slide into the cloned slide 0 at position N, then silently reset
-      setIndex(N); // triggers render using loopSlides[N] visually
-      applyTransform(N, true);
-
-      if (resetTimeout.current) clearTimeout(resetTimeout.current);
-      resetTimeout.current = setTimeout(() => {
-        setIndex(0);
-        applyTransform(0, false);
-      }, TRANSITION_MS + 20);
-    } else {
-      setIndex(next);
-      applyTransform(next, true);
-    }
+    setIndex(next);
   };
 
-  const next = () => goTo((index === N ? 0 : index) + 1);
-  const prev = () => goTo((index === N ? 0 : index) - 1);
+  const next = () => goTo(index + 1, true);
+  const prev = () => goTo(index - 1, false);
 
-  useEffect(() => {
-    applyTransform(0, false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // FLIP: after the main image swaps to the new slide, if we have a
+  // captured "from" rect (the peek's old position/size), animate the
+  // main image from that small rect up to its natural big rect —
+  // i.e. it visually grows from small to big and lands in place.
+  useLayoutEffect(() => {
+    const mainEl = mainImgWrapRef.current;
+    if (!mainEl) return;
+
+    const fromRect = prevPeekRect.current;
+
+    if (!fromRect || !isForwardStep.current) {
+      // no morph available (prev/dot navigation) — simple fade
+      mainEl.style.transition = "none";
+      mainEl.style.opacity = "0";
+      mainEl.style.transform = "none";
+      void mainEl.offsetWidth;
+      mainEl.style.transition = `opacity ${TRANSITION_MS}ms ease`;
+      mainEl.style.opacity = "1";
+      return;
+    }
+
+    const toRect = mainEl.getBoundingClientRect();
+    const scaleX = fromRect.width / toRect.width;
+    const scaleY = fromRect.height / toRect.height;
+    const translateX =
+      fromRect.left + fromRect.width / 2 - (toRect.left + toRect.width / 2);
+    const translateY =
+      fromRect.top + fromRect.height / 2 - (toRect.top + toRect.height / 2);
+
+    mainEl.style.transformOrigin = "center center";
+    mainEl.style.transition = "none";
+    mainEl.style.opacity = "0.5";
+    mainEl.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scaleX}, ${scaleY})`;
+
+    // force reflow so the browser registers the "from" state before we animate
+    void mainEl.offsetWidth;
+
+    mainEl.style.transition = `transform ${TRANSITION_MS}ms cubic-bezier(0.22,1,0.36,1), opacity ${TRANSITION_MS}ms ease`;
+    mainEl.style.transform = "translate(0, 0) scale(1)";
+    mainEl.style.opacity = "1";
+
+    prevPeekRect.current = null;
+  }, [index]);
 
   useEffect(() => {
     timerRef.current = setInterval(() => {
-      goTo((index === N ? 0 : index) + 1);
+      goTo(index + 1, true);
     }, AUTO_MS);
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
@@ -117,156 +139,136 @@ export default function HomeBanner() {
   const resume = () => {
     if (timerRef.current) return;
     timerRef.current = setInterval(() => {
-      goTo((index === N ? 0 : index) + 1);
+      goTo(index + 1, true);
     }, AUTO_MS);
   };
 
-  // active dot / active text should reflect the real slide (0..N-1),
-  // even during the brief moment index === N (visually still slide 0)
-  const activeContentIndex = index === N ? 0 : index;
-  const active = slides[activeContentIndex];
-  const nextContentIndex = (activeContentIndex + 1) % N;
-const nextSlide = slides[nextContentIndex];
-
   return (
     <section
-      className="relative w-full overflow-hidden bg-no-repeat bg-cover bg-center my-20"
+      className="relative w-full overflow-hidden bg-no-repeat bg-cover bg-center pt-40 pb-10"
       style={{ backgroundImage: `url(${sliderBackground.src})` }}
       onMouseEnter={pause}
       onMouseLeave={resume}
     >
-      <div className="max-w-[1500px] mx-auto py-0 md:py-16 grid grid-cols-1 md:grid-cols-2 gap-10">
-        {/* LEFT: text (slides in on change) */}
-        {/* <div key={textKey} className="animate-[slideInText_900ms_ease-out]"> */}
-         <div>
-  <h1
-    className="font-avenir font-extrabold leading-[1.05] text-[100px]"
-    style={{
-      WebkitTextStroke: "2px #439897",
-      color: "transparent",
-    }}
-  >
-    {staticContent.line1}
-  </h1>
-  <h1 className="font-avenir font-normal leading-[1.05] text-[62px] text-[#070F0F] mt-1">
-    {staticContent.line2}{" "}
-    <span
-      key={textKey}
-      className="bg-[#439897] text-white font-avenir font-extrabold text-[62px] px-3 py-3 rounded-[10px] inline-block animate-[fadeInText_700ms_ease-in-out]"
-    >
-      {active.highlight}
-    </span>
-  </h1>
+      <div className="container-custom grid grid-cols-1 md:grid-cols-2 gap-10">
+        {/* LEFT: text */}
+        <div>
+          <h1
+            className="font-avenir font-extrabold leading-[1.05] text-[100px]"
+            style={{ WebkitTextStroke: "2px #439897", color: "transparent" }}
+          >
+            {staticContent.line1}
+          </h1>
+          <h1 className="font-avenir font-normal leading-[1.05] text-[62px] text-[#070F0F] mt-1">
+            {staticContent.line2}{" "}
+            <span
+              key={textKey}
+              className="bg-[#439897] text-white font-avenir font-extrabold text-[62px] px-3 py-3 rounded-[10px] inline-block animate-[fadeInText_700ms_ease-in-out]"
+            >
+              {active.highlight}
+            </span>
+          </h1>
 
-  <h3 className="font-avenir font-normal text-[50px] text-[#439897] mt-6">
-    {staticContent.subtitle}
-  </h3>
+          <h3 className="font-avenir font-normal text-[50px] text-[#439897] mt-6">
+            {staticContent.subtitle}
+          </h3>
 
-  <p
-    key={`desc-${textKey}`}
-    className="font-nunito-sans font-normal text-[20px] text-[#2E262E] mt-4 max-w-[520px] leading-relaxed animate-[fadeInText_700ms_ease-in-out]"
-  >
-    {active.description}
-  </p>
+          <p
+            key={`desc-${textKey}`}
+            className="font-nunito-sans font-normal text-[20px] text-[#2E262E] mt-4 max-w-[520px] leading-relaxed animate-[fadeInText_700ms_ease-in-out]"
+          >
+            {active.description}
+          </p>
 
-  <div className="flex flex-wrap gap-4 mt-8">
-    <button className="bg-[#439897] hover:bg-[#357b7a] transition-colors text-[#FFFFFF] font-avenir font-[800] text-[16px] px-6 py-3 rounded">
-      Schedule a Consulation
-    </button>
-<button className="border border-[#1B3D3C] bg-[#FFFFFF] hover:bg-[#357b7a] hover:text-white transition-colors font-avenir font-[800] text-[16px] px-6 py-3 rounded">
-  Schedule a Consultation
-</button>
-  </div>
-</div>
-
-        {/* RIGHT: image slider */}
-        <div className="relative w-full overflow-hidden">
-          <div ref={trackRef} className="flex">
-            {loopSlides.map((s, i) => (
-              <div key={i} className="min-w-full flex justify-center">
-                <Image
-                  src={s.image}
-                  alt={`slide-${i + 1}`}
-                  className="max-w-[580px] h-auto object-contain"
-                  priority={i === 0}
-                />
-                
-              </div>
-            ))}
-
+          <div className="flex flex-wrap gap-4 mt-8">
+            <button className="bg-[#439897] hover:bg-[#357b7a] transition-colors text-[#FFFFFF] font-avenir font-[800] text-[16px] px-6 py-3 rounded">
+              Schedule a Consulation
+            </button>
+            <button className="border border-[#1B3D3C] bg-[#FFFFFF] hover:bg-[#357b7a] hover:text-white transition-colors font-avenir font-[800] text-[16px] px-6 py-3 rounded">
+              Schedule a Consultation
+            </button>
           </div>
-
-          {/* Controls */}
-
-          
         </div>
 
-      </div>
-                        <div className="max-w-[1500px] mx-auto px-6 jsx-a55a3ae0e30da40c flex items-center justify-end gap-3">
-            <button
-              onClick={prev}
-              aria-label="Previous"
-              className="w-9 h-9 rounded-full border border-[#439897] text-[#439897] flex items-center justify-center hover:bg-[#439897] hover:text-white transition-colors"
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
-
-            <div className="flex items-center gap-2">
-              {slides.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => goTo(i)}
-                  aria-label={`Go to slide ${i + 1}`}
-                  className={`rounded-full transition-all duration-300 ${
-                    i === activeContentIndex
-                      ? "w-3 h-3 bg-[#439897]"
-                      : "w-2.5 h-2.5 bg-transparent border border-gray-400"
-                  }`}
-                />
-              ))}
-            </div>
-
-            <button
-              onClick={next}
-              aria-label="Next"
-              className="w-9 h-9 rounded-full border border-[#439897] text-[#439897] flex items-center justify-center hover:bg-[#439897] hover:text-white transition-colors"
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
+        {/* RIGHT: single main image, morphs in from the peek's position/size */}
+        <div className="relative w-full flex justify-center">
+          <div ref={mainImgWrapRef} className="w-full max-w-[580px]">
+            <Image
+              key={index}
+              src={active.image}
+              alt={`slide-${index + 1}`}
+              className="w-full h-auto object-contain"
+              priority={index === 0}
+            />
           </div>
-{/* Faded peek of the next slide, poking in from the right edge */}
-<div
-  key={textKey}
-  className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[160px] pointer-events-none select-none animate-[peekSlideIn_900ms_ease-out]"
+        </div>
+      </div>
+
+      <div className="container-custom flex items-center justify-end gap-3 mt-5">
+        <button
+          onClick={prev}
+          aria-label="Previous"
+          className="w-9 h-9 rounded-full border border-[#439897] text-[#439897] flex items-center justify-center hover:bg-[#439897] hover:text-white transition-colors"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </button>
+
+        <div className="flex items-center gap-2">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goTo(i, i > index)}
+              aria-label={`Go to slide ${i + 1}`}
+              className={`rounded-full transition-all duration-300 ${
+                i === index
+                  ? "w-3 h-3 bg-[#439897]"
+                  : "w-2.5 h-2.5 bg-transparent border border-gray-400"
+              }`}
+            />
+          ))}
+        </div>
+
+        <button
+          onClick={next}
+          aria-label="Next"
+          className="w-9 h-9 rounded-full border border-[#439897] text-[#439897] flex items-center justify-center hover:bg-[#439897] hover:text-white transition-colors"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </button>
+      </div>
+
+      {/* Small peek thumbnail — this is the "from" shape/position the
+          next main image morphs out of when advancing forward */}
+      <div
+  ref={peekRef}
+  key={nextIndex}
+  className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[160px] pointer-events-none select-none grayscale animate-[peekFadeIn_900ms_ease-out_forwards]"
 >
-  <Image
-    src={nextSlide.image}
-    alt=""
-    className="w-full h-auto object-contain opacity-25 grayscale"
-    aria-hidden="true"
-  />
-</div>
+        <Image
+          src={nextSlide.image}
+          alt=""
+          className="w-full h-auto object-contain"
+          aria-hidden="true"
+        />
+      </div>
+
       <style jsx>{`
-@keyframes fadeInText {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
+        @keyframes fadeInText {
+          0% { opacity: 0; }
+          100% { opacity: 1; }
+        }
+          @keyframes peekFadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 0.25; }
 }
-
-
-        @keyframes peekSlideIn {
-  from { opacity: 0; transform: translateX(50px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-      `}</style>
+      `}
+      
+      
+      </style>
     </section>
   );
 }

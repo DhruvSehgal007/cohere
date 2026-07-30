@@ -103,3 +103,10 @@ body {
 /* .marquee-track:hover {
   animation-play-state: paused;
 } */
+
+.container-custom {
+  width: 100%;
+  max-width: 1600px;
+  margin-inline: auto;
+  padding-inline: clamp(15px, 3vw, 50px);
+}

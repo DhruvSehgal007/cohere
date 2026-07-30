@@ -54,7 +54,7 @@ export default function CohereAdvantage() {
 
   return (
     <section className="w-full bg-white">
-      <div className="max-w-[1500px] mx-auto px-6 py-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+      <div className="container-custom px-6 py-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
         <div>
           <span className="inline-block w-auto md:w-[220px] bg-[#439897] text-white font-avenir font-normal text-[14px] px-3 py-1 rounded text-left">
             THE COHERE ADVANTAGE
@@ -70,7 +70,7 @@ export default function CohereAdvantage() {
         </p>
       </div>
 
-      <div className="max-w-[1500px] mx-auto px-6 pb-20">
+      <div className="container-custom px-6 pb-20">
         <div className="flex gap-4 h-[420px] w-full">
           {cards.map((card, i) => {
             const isActive = i === activeIndex;
@@ -81,7 +81,7 @@ export default function CohereAdvantage() {
                 style={{ backgroundColor: isActive ? "#439897" : card.bg }}
                 className={`
                   relative overflow-hidden rounded-2xl cursor-pointer
-                  transition-[flex-grow,flex-basis,background-color] duration-[1200ms] ease-[cubic-bezier(0.4,0,0.2,1)]
+                  transition-[flex-grow,flex-basis,background-color] duration-[700ms] ease-[cubic-bezier(0.4,0,0.2,1)]
                   ${isActive ? "flex-[6]" : "flex-[1]"}
                 `}
               >

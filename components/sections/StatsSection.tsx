@@ -43,11 +43,15 @@ const stats = [
 
 export default function StatsSection() {
   return (
-    <section
-      className="relative w-full overflow-hidden bg-no-repeat bg-top bg-[length:100%_auto]"
-      style={{ backgroundImage: `url(${counterBg.src})` }}
-    >
-      <div className="relative max-w-[1500px] mx-auto flex flex-wrap items-center justify-between gap-y-8 px-6 py-10 md:py-14">
+   <section className="relative overflow-hidden">
+  <Image
+    src={counterBg}
+    alt=""
+    fill
+    priority
+    className="object-cover object-center -z-10"
+  />
+      <div className="container-custom flex flex-wrap items-center justify-between gap-y-8 px-6 py-10 md:py-14">
         {stats.map((stat) => (
           <div key={stat.label} className="flex items-center gap-4">
             <Image

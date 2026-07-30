@@ -17,8 +17,9 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="w-full bg-white">
-         <div className="max-w-[1500px] mx-auto flex items-start justify-between md:justify-start">
+    // <header className="w-full bg-white">
+    <header className="absolute top-0 z-[9999] w-full bg-transparent">
+         <div className="container-custom flex items-start justify-between md:justify-start">
           {/* Left logo */}
         {/* <div className="shrink-0 py-3 pl-0 md:pr-[30px]">
           <Image src={cohereLogo} alt="Cohere Consultants" className="h-10 md:h-12 w-auto" priority />
