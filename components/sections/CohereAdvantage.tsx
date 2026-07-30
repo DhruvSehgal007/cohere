@@ -70,7 +70,7 @@ export default function CohereAdvantage() {
         </p>
       </div>
 
-      <div className="container-custom px-6 pb-20">
+      <div className="container-custom px-6">
         <div className="flex gap-4 h-[420px] w-full">
           {cards.map((card, i) => {
             const isActive = i === activeIndex;

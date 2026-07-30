@@ -115,7 +115,7 @@ useEffect(() => {
     //   onMouseEnter={() => setPaused(true)}
     //   onMouseLeave={() => setPaused(false)}
     >
-      <div className="max-w-[1500px] mx-auto px-6 py-16">
+      <div className="container-custom px-6 py-16">
         {/* Header */}
         <div className="mb-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>

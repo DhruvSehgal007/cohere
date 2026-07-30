@@ -36,8 +36,8 @@ const posts = [
 ];
 
 const STACK_TOP = 110;
-const STACK_STEP = 88;
-const SCROLL_GAP = 52;
+const STACK_STEP = 30;
+const SCROLL_GAP = 14;
 const PEEK_HEIGHT = 140;
 const CARD_HEIGHT = 350;
 
@@ -87,10 +87,20 @@ function useScrollStack(count: number) {
       el.style.top = `${STACK_TOP + STACK_STEP * slot}px`;
       el.style.zIndex = String(220 + idx);
 
+      const overlay = el.querySelector(".card-overlay") as HTMLDivElement;
+
       if (isPeek || isOld) {
         el.style.clipPath = `inset(0 0 calc(100% - ${PEEK_HEIGHT}px) 0 round 0px)`;
+
+        overlay.style.opacity = "1";
+
+        el.style.border = "1px solid rgba(0,0,0,.15)";
       } else {
         el.style.clipPath = "inset(0 round 28px)";
+
+        overlay.style.opacity = "0";
+
+        el.style.border = "1px solid rgba(0,0,0,0)";
       }
 
       if (isOld) {
@@ -210,19 +220,23 @@ export default function SocialFeedSection() {
 
   return (
     <section className="w-full bg-white ">
-      <div className="max-w-[1500px] mx-auto px-6 py-16">
+      <div className="container-custom py-16">
         {/* Header */}
         <div className="mb-14 flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
           <div>
             <span className="inline-block w-auto md:w-[220px] bg-[#439897] text-white font-avenir font-normal text-[14px] pl-3 pr-8 py-1 rounded text-left">
-  WHAT WE ARE EXPERT AT
-</span>
+              WHAT WE ARE EXPERT AT
+            </span>
             <h2 className="font-avenir font-extrabold text-[40px] leading-tight text-[#0D1E1E] mt-4 max-w-[590px]">
               Our Core Service Areas
             </h2>
           </div>
           <p className="font-nunito-sans font-normal text-[20px] text-[#5B5B5B] max-w-[580px] ml-auto text-right">
-            Cohere Consultants LLP is a boutique practice with a pan-India presence, offering comprehensive legal and compliance services. Specializing in areas such as laws on sexual harassment and discrimination in the workplace, as well as maternity and labor laws, the firm boasts a multidisciplinary team.
+            Cohere Consultants LLP is a boutique practice with a pan-India
+            presence, offering comprehensive legal and compliance services.
+            Specializing in areas such as laws on sexual harassment and
+            discrimination in the workplace, as well as maternity and labor
+            laws, the firm boasts a multidisciplinary team.
           </p>
         </div>
 
@@ -234,18 +248,19 @@ export default function SocialFeedSection() {
               ref={(el) => {
                 cardRefs.current[i] = el;
               }}
-              className="w-full overflow-hidden rounded-[28px] shadow-xl"
+              className="relative w-full overflow-hidden rounded-[80px] shadow-xl"
               style={{
                 height: `${CARD_HEIGHT}px`,
                 marginBottom: `${SCROLL_GAP}px`,
                 background:
                   "linear-gradient(120deg, #439897 0%, #1c3a3a 55%, #0D1E1E 100%)",
                 transition:
-                  "top 380ms cubic-bezier(0.22,1,0.36,1), clip-path 320ms ease, opacity 260ms ease, transform 360ms cubic-bezier(0.22,1,0.36,1)",
+                  "top 380ms cubic-bezier(0.22,1,0.36,1), clip-path 320ms ease, opacity 350ms ease, transform 360ms cubic-bezier(0.22,1,0.36,1), border-color 420ms ease",
                 willChange: "top, clip-path, opacity, transform",
               }}
             >
-              <div className="flex h-full items-center justify-between gap-8 px-10 md:px-16">
+              <div className="card-overlay absolute inset-0 rounded-[28px] pointer-events-none"></div>
+              <div className="flex h-full items-center justify-around gap-8 px-10 md:px-16">
                 {/* Image */}
                 <div className="shrink-0  overflow-hidden ">
                   <Image
@@ -256,33 +271,33 @@ export default function SocialFeedSection() {
                 </div>
 
                 {/* Title + text */}
-<div className="textwithbtn flex justify-between items-end gap-[60px]">               <div className="flex flex-col gap-[65px] flex-1 max-w-[640px]">
-  <h3 className="font-avenir font-extrabold text-white text-[40px] md:text-[32px] leading-tight">
-    {post.title}
-  </h3>
+                <div className="textwithbtn flex justify-between items-end gap-[60px]">
+                  {" "}
+                  <div className="flex flex-col gap-[40px] flex-1 max-w-[640px]">
+                    <h3 className="font-avenir font-extrabold text-white text-[40px] leading-tight">
+                      {post.title}
+                    </h3>
 
-  <p className="font-nunito-sans font-normal text-white/80 text-[16px] md:text-[16px] leading-relaxed line-clamp-3">
-    {post.text}
-  </p>
-</div>
-
-                {/* Arrow */}
-<div className="group shrink-0 hidden md:flex w-12 h-12 rounded-full items-center justify-center hover:bg-white transition-colors cursor-pointer">
-  <span
-    className="block w-[60px] h-[60px] bg-white group-hover:bg-[#439897] transition-colors"
-    style={{
-      WebkitMaskImage: `url(${roundIcon.src})`,
-      maskImage: `url(${roundIcon.src})`,
-      WebkitMaskSize: "contain",
-      maskSize: "contain",
-      WebkitMaskRepeat: "no-repeat",
-      maskRepeat: "no-repeat",
-      WebkitMaskPosition: "center",
-      maskPosition: "center",
-    }}
-  />
-</div>
-                
+                    <p className="font-nunito-sans font-normal text-white text-[16px] md:text-[16px] leading-relaxed tracking-[0.04em] leading-6">
+                      {post.text}
+                    </p>
+                  </div>
+                  {/* Arrow */}
+                  <div className="group shrink-0 hidden md:flex w-14 h-14 rounded-full items-center justify-center hover:bg-white transition-colors cursor-pointer">
+                    <span
+                      className="block w-[68px] h-[68px] bg-white group-hover:bg-[#439897] transition-colors"
+                      style={{
+                        WebkitMaskImage: `url(${roundIcon.src})`,
+                        maskImage: `url(${roundIcon.src})`,
+                        WebkitMaskSize: "contain",
+                        maskSize: "contain",
+                        WebkitMaskRepeat: "no-repeat",
+                        maskRepeat: "no-repeat",
+                        WebkitMaskPosition: "center",
+                        maskPosition: "center",
+                      }}
+                    />
+                  </div>
                 </div>
               </div>
             </div>

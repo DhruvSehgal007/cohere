@@ -110,3 +110,10 @@ body {
   margin-inline: auto;
   padding-inline: clamp(15px, 3vw, 50px);
 }
+
+
+.card-overlay{
+    opacity:0;
+    background:#fff;
+    transition:opacity .45s ease;
+}

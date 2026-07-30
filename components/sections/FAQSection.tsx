@@ -36,7 +36,7 @@ const faqData = [
 export default function FAQSection() {
   return (
     <section className="pb-20">
-        <div className="max-w-[1500px] mx-auto px-6 pb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <div className="container-custom pb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
         <div>
           <span className="inline-block w-auto md:w-[260px] bg-[#439897] text-white font-avenir font-normal text-[14px] px-3 py-1 rounded text-left">
             FREQUENTLY ASKED QUESTIONS

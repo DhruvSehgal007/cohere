@@ -29,7 +29,7 @@ const posts = [
 export default function SocialFeedSection() {
   return (
     <section className="py-24">
-      <div className="max-w-[1500px] mx-auto px-6">
+      <div className="container-custom">
          <h2 className="font-avenir font-extrabold text-[40px] leading-tight text-[#0D1E1E] mt-4 max-w-[590px] pb-8">
               Her from our Experties
             </h2>

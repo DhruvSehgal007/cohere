@@ -49,7 +49,7 @@ function LogoCard({ src, alt }: { src: typeof hsbcLogo; alt: string }) {
 export default function OurClientsSection() {
   return (
     <section className="w-full bg-white">
-      <div className="max-w-[1500px] mx-auto px-6 py-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+      <div className="container-custom px-6 py-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
         <div>
           <span className="inline-block w-auto md:w-[130px] bg-[#439897] text-white font-avenir font-normal text-[14px] px-3 py-1 rounded text-left">
   OUR CLIENTS

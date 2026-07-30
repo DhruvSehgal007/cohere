@@ -183,7 +183,7 @@ export default function SocialFeedSection() {
 
   return (
     <section className="w-full bg-white">
-      <div className="max-w-[1500px] mx-auto px-6">
+      <div className="container-custom px-6">
         {/* Header */}
         <div className="mb-14 flex flex-col md:flex-row md:items-felx-start md:justify-between gap-6">
           <div>
