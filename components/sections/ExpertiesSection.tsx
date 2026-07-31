@@ -112,7 +112,7 @@ export default function SocialFeedSection() {
           <div className="flex h-full flex-col rounded-[24px] bg-[#003838] p-6">
             {/* Label */}
 
-            <span className="font-avenir text-[24px] font-bold text-[#116968]">
+            <span className="font-avenir text-[24px] font-bold text-[#FFFFFF]">
               Newsletter
             </span>
 

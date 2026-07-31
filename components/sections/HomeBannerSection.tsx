@@ -154,12 +154,12 @@ export default function HomeBanner() {
         {/* LEFT: text */}
         <div>
           <h1
-            className="font-avenir font-extrabold leading-[1.05] text-[100px]"
+            className="font-avenir font-extrabold leading-[1.05] text-[112px]"
             style={{ WebkitTextStroke: "2px #439897", color: "transparent" }}
           >
             {staticContent.line1}
           </h1>
-          <h1 className="font-avenir font-normal leading-[1.05] text-[62px] text-[#070F0F] mt-1">
+          <h1 className="font-avenir font-normal leading-[1.05] text-[72px] text-[#070F0F] mt-1">
             {staticContent.line2}{" "}
             <span
               key={textKey}
@@ -169,13 +169,13 @@ export default function HomeBanner() {
             </span>
           </h1>
 
-          <h3 className="font-avenir font-normal text-[50px] text-[#439897] mt-6">
+          <h3 className="font-avenir font-[800] text-[50px] text-[#367A79] mt-6">
             {staticContent.subtitle}
           </h3>
 
           <p
             key={`desc-${textKey}`}
-            className="font-nunito-sans font-normal text-[20px] text-[#2E262E] mt-4 max-w-[520px] leading-relaxed animate-[fadeInText_700ms_ease-in-out]"
+            className="font-nunito-sans font-normal text-[20px] text-[#2E262E] mt-4 max-w-[620px] leading-relaxed animate-[fadeInText_700ms_ease-in-out]"
           >
             {active.description}
           </p>

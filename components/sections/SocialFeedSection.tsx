@@ -221,7 +221,7 @@ export default function SocialFeedSection() {
   <FaInstagram size={18} />
 </button>
             </div>
-            <p className="font-nunito-sans font-normal text-[20px] text-[#5B5B5B] max-w-[524px] text-right">
+            <p className="font-nunito-sans font-normal text-[20px] text-[#2E262E] max-w-[524px] text-right">
               Stay updated with the latest insights, tips, and company
               updates. Connect with us on our social channels.
             </p>

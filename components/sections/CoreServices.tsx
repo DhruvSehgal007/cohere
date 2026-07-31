@@ -231,7 +231,7 @@ export default function SocialFeedSection() {
               Our Core Service Areas
             </h2>
           </div>
-          <p className="font-nunito-sans font-normal text-[20px] text-[#5B5B5B] max-w-[580px] ml-auto text-right">
+          <p className="font-nunito-sans font-normal text-[20px] text-[#2E262E] max-w-[580px] ml-auto text-right">
             Cohere Consultants LLP is a boutique practice with a pan-India
             presence, offering comprehensive legal and compliance services.
             Specializing in areas such as laws on sexual harassment and

@@ -63,7 +63,7 @@ export default function CohereAdvantage() {
             Everything You Need to Build a Better Workplace
           </h2>
         </div>
-        <p className="font-nunito-sans font-normal text-[20px] text-[#5B5B5B] max-w-[524px] ml-auto text-right">
+        <p className="font-nunito-sans font-normal text-[20px] text-[#2E262E] max-w-[524px] ml-auto text-right">
           From legal guidance and workplace investigations to compliance and
           trusted advisory services, we provide the expertise organizations rely
           on at every stage.

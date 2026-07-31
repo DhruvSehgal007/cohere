@@ -126,7 +126,7 @@ useEffect(() => {
               What Clients Say About Us?
             </h2>
           </div>
-          <p className="font-nunito-sans font-normal text-[20px] text-[#5B5B5B] max-w-[500px] ml-auto text-right">
+          <p className="font-nunito-sans font-normal text-[20px] text-[#2E262E] max-w-[500px] ml-auto text-right">
             Discover what our clients say about the impact of our expertise,
             support, and practical solutions.
           </p>

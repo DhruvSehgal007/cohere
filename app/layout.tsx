@@ -17,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
+    <html 
       lang="en"
       className={`${avenir.variable} ${nunitoSans.variable} ${markazi.variable} ${markaziBold.variable} ${nunitoSansBold.variable} ${nunitoSansExtraBold.variable} ${interMedium.variable}`}
     >

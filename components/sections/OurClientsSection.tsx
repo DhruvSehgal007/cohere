@@ -58,7 +58,7 @@ export default function OurClientsSection() {
             Trusted by Leading Organizations
           </h2>
         </div>
-        <p className="font-nunito-sans font-normal text-[20px] text-[#5B5B5B] max-w-[360px] ml-auto">
+        <p className="font-nunito-sans font-normal text-[20px] text-[#2E262E] max-w-[360px] ml-auto">
           Display client logos in an auto-scrolling marquee or responsive grid.
         </p>
       </div>
