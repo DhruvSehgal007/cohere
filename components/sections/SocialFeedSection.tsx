@@ -113,7 +113,7 @@ const instagramPosts = [
   },
 ];
 
-const CARD_WIDTH = 468;
+const CARD_WIDTH = 485;
 const GAP = 24;
 const STEP = CARD_WIDTH + GAP;
 const REPEATS = 9;
@@ -232,6 +232,10 @@ export default function SocialFeedSection() {
 
         {/* Slider */}
         <div className="relative overflow-hidden">
+           <div
+    className="relative overflow-hidden"
+    style={{ width: `${CARD_WIDTH * 3 + GAP * 2}px` }}
+  >
           <div ref={trackRef} className="flex gap-6 w-max">
             {loop.map((post, i) => {
               const isActive = i % N === activeIndex;
@@ -239,12 +243,12 @@ export default function SocialFeedSection() {
                 <div
                   key={`${platform}-${i}`}
                   style={{ width: `${CARD_WIDTH}px` }}
-                  className="cards shrink-0 bg-white rounded-[12px] border border-[#ECECEC] overflow-hidden shadow-sm"
+                  className="cards shrink-0 bg-white rounded-[12px]  overflow-hidden shadow-sm"
                 >
                   <div className="p-8">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-4">
-                        <div className="w-14 h-14 rounded-full overflow-hidden border border-[#E5E5E5] shrink-0">
+                        <div className="w-14 h-14 rounded-full overflow-hidden  shrink-0">
                           <Image
                             src={CohereLogo}
                             alt="Cohere Compliance"
@@ -307,6 +311,7 @@ export default function SocialFeedSection() {
                 </div>
               );
             })}
+          </div>
           </div>
         </div>
 

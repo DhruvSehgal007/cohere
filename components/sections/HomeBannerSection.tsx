@@ -63,11 +63,15 @@ export default function HomeBanner() {
     const next = ((i % N) + N) % N;
     isForwardStep.current = forward;
 
-    if (forward && peekRef.current) {
-      prevPeekRect.current = peekRef.current.getBoundingClientRect();
-    } else {
-      prevPeekRect.current = null;
-    }
+if (
+  forward &&
+  peekRef.current &&
+  window.innerWidth >= 1024
+) {
+  prevPeekRect.current = peekRef.current.getBoundingClientRect();
+} else {
+  prevPeekRect.current = null;
+}
 
     setTextKey((k) => k + 1);
     setIndex(next);
@@ -80,13 +84,19 @@ export default function HomeBanner() {
   // captured "from" rect (the peek's old position/size), animate the
   // main image from that small rect up to its natural big rect —
   // i.e. it visually grows from small to big and lands in place.
+
+  
   useLayoutEffect(() => {
     const mainEl = mainImgWrapRef.current;
     if (!mainEl) return;
 
     const fromRect = prevPeekRect.current;
 
-    if (!fromRect || !isForwardStep.current) {
+    if (
+  !fromRect ||
+  !isForwardStep.current ||
+  window.innerWidth < 1024
+) {
       // no morph available (prev/dot navigation) — simple fade
       mainEl.style.transition = "none";
       mainEl.style.opacity = "0";
@@ -120,15 +130,15 @@ export default function HomeBanner() {
     prevPeekRect.current = null;
   }, [index]);
 
-  useEffect(() => {
-    timerRef.current = setInterval(() => {
-      goTo(index + 1, true);
-    }, AUTO_MS);
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [index]);
+  // useEffect(() => {
+  //   timerRef.current = setInterval(() => {
+  //     goTo(index + 1, true);
+  //   }, AUTO_MS);
+  //   return () => {
+  //     if (timerRef.current) clearInterval(timerRef.current);
+  //   };
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [index]);
 
   const pause = () => {
     if (timerRef.current) {
@@ -145,46 +155,46 @@ export default function HomeBanner() {
 
   return (
     <section
-      className="relative w-full overflow-hidden bg-no-repeat bg-cover bg-center pt-40 pb-10"
+      className="relative w-full overflow-hidden bg-no-repeat bg-cover bg-center pt-24 sm:pt-28 md:pt-32 lg:pt-40 pb-12 md:pb-16"
       style={{ backgroundImage: `url(${sliderBackground.src})` }}
       onMouseEnter={pause}
       onMouseLeave={resume}
     >
-      <div className="container-custom grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div className="container-custom grid grid-cols-1 lg:grid-cols-2 items-center gap-10 lg:gap-16">
         {/* LEFT: text */}
         <div>
           <h1
-            className="font-avenir font-extrabold leading-[1.05] text-[112px]"
+            className="font-avenir font-extrabold leading-[1.05] text-[52px] sm:text-[72px] md:text-[90px] lg:text-[112px]"
             style={{ WebkitTextStroke: "2px #439897", color: "transparent" }}
           >
             {staticContent.line1}
           </h1>
-          <h1 className="font-avenir font-normal leading-[1.05] text-[72px] text-[#070F0F] mt-1">
+          <h1 className="font-avenir font-normal leading-[1.05] text-[34px] sm:text-[48px] md:text-[60px] lg:text-[72px]">
             {staticContent.line2}{" "}
             <span
               key={textKey}
-              className="bg-[#439897] text-white font-avenir font-extrabold text-[62px] px-3 py-3 rounded-[10px] inline-block animate-[fadeInText_700ms_ease-in-out]"
+              className="bg-[#439897] text-white font-avenir font-extrabold text-[28px] sm:text-[40px] md:text-[50px] lg:text-[62px] px-3 py-3 rounded-[10px] inline-block animate-[fadeInText_700ms_ease-in-out]"
             >
               {active.highlight}
             </span>
           </h1>
 
-          <h3 className="font-avenir font-[800] text-[50px] text-[#367A79] mt-6">
+          <h3 className="font-avenir font-[800] text-[26px] sm:text-[34px] md:text-[42px] lg:text-[50px] text-[#367A79] mt-6">
             {staticContent.subtitle}
           </h3>
 
           <p
             key={`desc-${textKey}`}
-            className="font-nunito-sans font-normal text-[20px] text-[#2E262E] mt-4 max-w-[620px] leading-relaxed animate-[fadeInText_700ms_ease-in-out]"
+            className="font-nunito-sans font-normal text-[16px] sm:text-[18px] lg:text-[20px] text-[#2E262E] mt-4 max-w-[620px] leading-relaxed animate-[fadeInText_700ms_ease-in-out]"
           >
             {active.description}
           </p>
 
-          <div className="flex flex-wrap gap-4 mt-8">
-            <button className="bg-[#439897] hover:bg-[#357b7a] transition-colors text-[#FFFFFF] font-avenir font-[800] text-[16px] px-6 py-3 rounded-lg">
+          <div className="mt-8 flex flex-col sm:flex-row gap-4">
+            <button className="bg-[#439897] hover:bg-[#357b7a] transition-colors text-[#FFFFFF] font-avenir font-[800] text-[16px] w-full sm:w-auto px-6 py-3 rounded-lg">
               Schedule a Consulation
             </button>
-            <button className="border border-[#1B3D3C] bg-[#FFFFFF] hover:bg-[#357b7a] hover:text-white transition-colors font-avenir font-[800] text-[16px] px-6 py-3 rounded-lg">
+            <button className="border border-[#1B3D3C] bg-[#FFFFFF] hover:bg-[#357b7a] hover:text-white transition-colors font-avenir font-[800] text-[16px] w-full sm:w-auto px-6 py-3 rounded-lg">
               Schedule a Consultation
             </button>
           </div>
@@ -192,7 +202,7 @@ export default function HomeBanner() {
 
         {/* RIGHT: single main image, morphs in from the peek's position/size */}
         <div className="relative w-full flex justify-center">
-          <div ref={mainImgWrapRef} className="w-full max-w-[580px]">
+          <div ref={mainImgWrapRef} className="w-full max-w-[300px] sm:max-w-[420px] md:max-w-[500px] lg:max-w-[580px] mx-auto">
             <Image
               key={index}
               src={active.image}
@@ -204,7 +214,7 @@ export default function HomeBanner() {
         </div>
       </div>
 
-      <div className="container-custom flex items-center justify-end gap-3 mt-5">
+      <div className="container-custom mt-8 flex justify-center lg:justify-end items-center gap-3">
         <button
           onClick={prev}
           aria-label="Previous"
@@ -255,18 +265,18 @@ export default function HomeBanner() {
 
       {/* Small peek thumbnail — this is the "from" shape/position the
           next main image morphs out of when advancing forward */}
-      <div
-        ref={peekRef}
-        key={nextIndex}
-        className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[160px] pointer-events-none select-none grayscale animate-[peekFadeIn_900ms_ease-out_forwards]"
-      >
-        <Image
-          src={nextSlide.image}
-          alt=""
-          className="w-full h-auto object-contain"
-          aria-hidden="true"
-        />
-      </div>
+     <div
+  ref={peekRef}
+  key={nextIndex}
+  className="hidden lg:block absolute right-[-70px] top-1/2 -translate-y-1/2 w-[290px] pointer-events-none select-none opacity-20 scale-110 animate-[peekFadeIn_900ms_ease-out_forwards]"
+>
+  <Image
+    src={nextSlide.image}
+    alt=""
+    className="w-full h-auto object-contain blur-[2px]"
+    aria-hidden="true"
+  />
+</div>
 
       <style jsx>
         {`

@@ -12,7 +12,7 @@ const posts = [
     id: 1,
     title: "Cohere Compliance",
     username: "@coherecompliance",
-    text: "Building safer, more inclusive workplaces starts with awareness and action. Here’s to creating a culture of respect, accountability and trust where every employee feels safe and empowered to thrive.",
+    text: "Building safer, more inclusive workplaces starts with awareness and action. Here's to a culture of respect and accountability.",
     likes: 550,
     image: LinkedinImage,
   },
@@ -20,7 +20,7 @@ const posts = [
     id: 2,
     title: "Cohere Compliance",
     username: "@coherecompliance",
-    text: "Building safer, more inclusive workplaces starts with awareness and action. Here’s to creating a culture of respect, accountability and trust where every employee feels safe and empowered to thrive.",
+    text: "Building safer, more inclusive workplaces starts with awareness and action. Here's to a culture of respect and accountability.",
     likes: 550,
     image: LinkedinImage,
   },
@@ -118,7 +118,7 @@ export default function SocialFeedSection() {
 
             {/* Heading */}
 
-            <h2 className=" font-avenir text-[40px] font-bold leading-[50px] text-white">
+            <h2 className=" font-avenir text-[40px] font-bold leading-[40px] text-white">
               Stay Ahead with
               <br />
               Workplace
@@ -146,13 +146,13 @@ export default function SocialFeedSection() {
 
             {/* Button */}
 
-            <button className="mt-5 h-[60px] rounded-xl bg-white font-avenir text-[16px] font-bold text-[#024948] transition hover:bg-[#F4F4F4]">
+            <button className="mt-5 h-[60px] rounded-xl bg-white font-nunito-sans-extra-bold text-[16px]  text-[#000000] transition hover:bg-[#F4F4F4]">
               SUBMIT
             </button>
 
             {/* Bottom Text */}
 
-            <p className="mt-8 pt-8 font-nunito-sans text-[13px] font-normal leading-[22px] text-white/55">
+            <p className="mt-2 pt-8 font-nunito-sans text-[13px] font-normal leading-[22px] text-white/55">
               By subscribing, you agree to receive periodic emails from Cohere
               Compliance. You can unsubscribe at any time. View our Privacy
               Policy.
