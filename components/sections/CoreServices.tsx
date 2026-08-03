@@ -23,16 +23,6 @@ const posts = [
     title: "Employment and Labour",
     text: "Our specialists guide employee discipline, compliance, and investigations through workplace transformation. Our team supports the full framework, contributes to policy building, and drives a strong regulatory approach.",
   },
-  // {
-  //   image: one,
-  //   title: "Training & Workshops",
-  //   text: "Interactive, practical training sessions for IC members, leadership, and employees — building lasting awareness and confident, compliant response to workplace concerns.",
-  // },
-  // {
-  //   image: two,
-  //   title: "Cohere In News",
-  //   text: "Stay current with our latest features, panel discussions, and thought leadership on workplace law, compliance, and building respectful, safe organizations.",
-  // },
 ];
 
 const STACK_TOP = 110;
@@ -71,8 +61,8 @@ function useScrollStack(count: number) {
     cardRefs.current.forEach((el, idx) => {
       if (!el) return;
       const relative = idx - start;
-      const slot = relative < 0 ? 0 : Math.min(relative, 2);
       const isOld = relative < 0;
+      const slot = isOld ? 2 : Math.min(relative, 2);
       let isPeek = false;
 
       if (!isOld && relative === 0 && idx + 1 < cardTops.current.length) {
@@ -91,21 +81,17 @@ function useScrollStack(count: number) {
 
       if (isPeek || isOld) {
         el.style.clipPath = `inset(0 0 calc(100% - ${PEEK_HEIGHT}px) 0 round 0px)`;
-
-        overlay.style.opacity = "1";
-
+        if (overlay) overlay.style.opacity = "1";
         el.style.border = "1px solid rgba(0,0,0,.15)";
       } else {
         el.style.clipPath = "inset(0 round 28px)";
-
-        overlay.style.opacity = "0";
-
+        if (overlay) overlay.style.opacity = "0";
         el.style.border = "1px solid rgba(0,0,0,0)";
       }
 
       if (isOld) {
-        el.style.opacity = "0";
-        el.style.transform = "translateY(-12px) scale(0.985)";
+        el.style.opacity = "1";
+        el.style.transform = "none";
         el.style.pointerEvents = "none";
       } else {
         el.style.opacity = "1";
@@ -227,11 +213,11 @@ export default function SocialFeedSection() {
             <span className="inline-block w-auto md:w-[220px] bg-[#439897] text-white font-avenir font-normal text-[14px] pl-3 pr-8 py-1 rounded text-left">
               WHAT WE ARE EXPERT AT
             </span>
-            <h2 className="font-avenir font-extrabold text-[40px] leading-tight text-[#0D1E1E] mt-4 max-w-[590px]">
+            <h2 className="font-avenir font-extrabold text-[40px] leading-tight text-[#0D1E1E] mt-4 max-w-[590px] md:max-[1200px]:text-[32px]">
               Our Core Service Areas
             </h2>
           </div>
-          <p className="font-nunito-sans font-normal text-[20px] text-[#2E262E] max-w-[580px] ml-auto text-right">
+          <p className="font-nunito-sans font-normal text-[20px] text-[#2E262E] max-w-[580px] ml-auto text-right max-[767px]:ml-0 max-[767px]:text-left max-[767px]:text-[16px] md:max-[1200px]:text-[16px]">
             Cohere Consultants LLP is a boutique practice with a pan-India
             presence, offering comprehensive legal and compliance services.
             Specializing in areas such as laws on sexual harassment and
@@ -248,7 +234,7 @@ export default function SocialFeedSection() {
               ref={(el) => {
                 cardRefs.current[i] = el;
               }}
-              className="relative w-full overflow-hidden rounded-[80px] shadow-xl"
+              className="relative w-full overflow-hidden rounded-[80px] shadow-xl max-[767px]:!h-auto max-[767px]:rounded-[32px] md:max-[1200px]:rounded-[40px] md:max-[1200px]:!h-[260px]"
               style={{
                 height: `${CARD_HEIGHT}px`,
                 marginBottom: `${SCROLL_GAP}px`,
@@ -260,9 +246,9 @@ export default function SocialFeedSection() {
               }}
             >
               <div className="card-overlay absolute inset-0 rounded-[28px] pointer-events-none"></div>
-              <div className="flex h-full items-center justify-around gap-8 px-10 md:px-16">
+              <div className="flex h-full items-center justify-around gap-8 px-10 md:px-16 max-[767px]:flex-col max-[767px]:items-start max-[767px]:gap-6 max-[767px]:px-6 max-[767px]:py-8 md:max-[1200px]:px-8 md:max-[1200px]:justify-around md:max-[1200px]:gap-10">
                 {/* Image */}
-                <div className="shrink-0  overflow-hidden ">
+                <div className="shrink-0 overflow-hidden max-[767px]:w-full max-[767px]:max-w-[260px] max-[767px]:self-center md:max-[1200px]:max-w-[290px]">
                   <Image
                     src={post.image}
                     alt={post.title}
@@ -271,21 +257,21 @@ export default function SocialFeedSection() {
                 </div>
 
                 {/* Title + text */}
-                <div className="textwithbtn flex justify-between items-end gap-[60px]">
+                <div className="textwithbtn flex justify-between items-end gap-[60px] max-[767px]:w-full md:max-[1200px]:gap-[24px]">
                   {" "}
-                  <div className="flex flex-col gap-[40px] flex-1 max-w-[640px]">
-                    <h3 className="font-avenir font-extrabold text-white text-[40px] leading-tight">
+                  <div className="flex flex-col gap-[40px] flex-1 max-w-[640px] max-[767px]:gap-5 md:max-[1200px]:gap-4 md:max-[1200px]:max-w-[360px]">
+                    <h3 className="font-avenir font-extrabold text-white text-[40px] leading-tight max-[767px]:text-[28px] md:max-[1200px]:text-[24px]">
                       {post.title}
                     </h3>
 
-                    <p className="font-nunito-sans font-normal text-white text-[16px] md:text-[16px] leading-relaxed tracking-[0.04em] leading-6">
+                    <p className="font-nunito-sans font-normal text-white text-[16px] md:text-[16px] leading-relaxed tracking-[0.04em] leading-6 max-[767px]:text-[15px] md:max-[1200px]:text-[13px] md:max-[1200px]:leading-5">
                       {post.text}
                     </p>
                   </div>
                   {/* Arrow */}
-                  <div className="group shrink-0 hidden md:flex w-14 h-14 rounded-full items-center justify-center hover:bg-white transition-colors cursor-pointer">
+                  <div className="group shrink-0 hidden md:flex w-14 h-14 rounded-full items-center justify-center hover:bg-white transition-colors cursor-pointer md:max-[1200px]:w-9 md:max-[1200px]:h-9">
                     <span
-                      className="block w-[68px] h-[68px] bg-white group-hover:bg-[#439897] transition-colors"
+                      className="block w-[68px] h-[68px] bg-white group-hover:bg-[#439897] transition-colors md:max-[1200px]:!w-[40px] md:max-[1200px]:!h-[40px]"
                       style={{
                         WebkitMaskImage: `url(${roundIcon.src})`,
                         maskImage: `url(${roundIcon.src})`,
@@ -302,13 +288,6 @@ export default function SocialFeedSection() {
               </div>
             </div>
           ))}
-
-          {/* scroll-room spacer, matches original ::after trick */}
-          {/* <div
-            aria-hidden="true"
-            style={{ height: `${CARD_HEIGHT + SCROLL_GAP}px` }}
-            className="hidden md:block"
-          /> */}
         </div>
       </div>
     </section>

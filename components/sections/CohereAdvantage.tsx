@@ -70,7 +70,79 @@ export default function CohereAdvantage() {
         </p>
       </div>
 
-      <div className="container-custom px-6">
+
+    <div className="container-custom px-6 min-[600px]:hidden">
+  <div className="flex flex-col gap-4">
+    {cards.map((card, i) => {
+      const isActive = activeIndex === i;
+
+      return (
+        <div
+          key={card.title}
+          className="overflow-hidden rounded-2xl transition-colors duration-500"
+          style={{
+            backgroundColor: isActive ? "#439897" : card.bg,
+          }}
+        >
+          <button
+            onClick={() =>
+              setActiveIndex(activeIndex === i ? -1 : i)
+            }
+            className="flex w-full items-center justify-between px-6 py-5"
+          >
+            <h3
+              className={`font-avenir font-extrabold text-[24px] transition-colors duration-300 ${
+                isActive ? "text-white" : "text-[#2E262E]"
+              }`}
+            >
+              {card.title}
+            </h3>
+
+            <span
+              className={`text-3xl transition-all duration-300 ${
+                isActive ? "text-white rotate-180" : "text-[#2E262E]"
+              }`}
+            >
+              {isActive ? "−" : "+"}
+            </span>
+          </button>
+
+          <div
+            className={`
+              grid transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]
+              ${
+                isActive
+                  ? "grid-rows-[1fr] opacity-100"
+                  : "grid-rows-[0fr] opacity-0"
+              }
+            `}
+          >
+            <div className="overflow-hidden">
+              <div className="px-6 pb-6">
+                <div className="flex flex-col min-[450px]:flex-row items-center gap-6">
+                  <div className="relative h-[180px] w-[180px] shrink-0">
+                    <Image
+                      src={legalExpertise}
+                      alt={card.title}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+
+                  <p className="font-avenir text-[16px] leading-7 text-white text-center min-[450px]:text-left">
+                    {card.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    })}
+  </div>
+</div>
+
+      <div className="container-custom px-6 hidden min-[600px]:block">
         <div className="flex gap-4 h-[420px] w-full">
           {cards.map((card, i) => {
             const isActive = i === activeIndex;

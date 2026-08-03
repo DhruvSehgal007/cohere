@@ -49,18 +49,18 @@ const contactItems = [
 export default function Footer() {
   return (
     <footer className="w-full bg-white">
-      <div className="max-w-[1500px] mx-auto px-6 py-16 flex flex-col md:flex-row md:justify-between gap-12">
-  <div className="md:max-w-[280px] shrink-0">
+      <div className="container-custom grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-[320px_1fr_1fr_1.2fr] gap-10 lg:gap-12 py-12 md:py-16">
+  <div className="max-w-full xl:max-w-[320px]">
     <Image
   src={footerLogo}
   alt="Cohere Consultants"
   width={220}
   height={116}
-  className="h-auto w-[200px]"
+  className="h-auto w-[170px] sm:w-[190px] lg:w-[200px]"
   priority
 />
           <p
-            className="font-nunito-sans font-normal text-[#3B3B3B] text-[14px] leading-relaxed mt-4"
+            className="mt-4 font-nunito-sans text-[14px] leading-7 text-[#3B3B3B]"
             style={{ letterSpacing: "0.04em" }}
           >
             Cohere Consultants is a pan India consultancy platform with
@@ -75,7 +75,7 @@ export default function Footer() {
         {/* Quick Links */}
         <div>
           <h4
-            className="font-markaziBold text-[#1A243F] text-[24px] mb-5"
+            className="font-markaziBold text-[#1A243F] text-[22px] md:text-[24px] mb-5"
             style={{ letterSpacing: "0.04em" }}
           >
             Quick Links
@@ -85,7 +85,7 @@ export default function Footer() {
               <li key={`${link.href}-${i}`}>
                 <Link
                   href={link.href}
-                  className="font-inter-medium text-[#3B3B3B] text-[14px] hover:text-[#439897] transition"
+                  className="font-inter-medium text-[#3B3B3B] text-[14px] leading-6 hover:text-[#439897] transition"
                   style={{ letterSpacing: "0.04em" }}
                 >
                   {link.label}
@@ -98,7 +98,7 @@ export default function Footer() {
         {/* Services */}
         <div>
           <h4
-            className="font-markaziBold text-[#1A243F] text-[24px] mb-5"
+            className="font-markaziBold text-[#1A243F] text-[22px] md:text-[24px] mb-5"
             style={{ letterSpacing: "0.04em" }}
           >
             SERVICES
@@ -108,7 +108,7 @@ export default function Footer() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="font-inter-medium text-[#3B3B3B] text-[14px] hover:text-[#439897] transition"
+                  className="font-inter-medium text-[#3B3B3B] text-[14px] leading-6 hover:text-[#439897] transition"
                   style={{ letterSpacing: "0.04em" }}
                 >
                   {link.label}
@@ -137,24 +137,24 @@ export default function Footer() {
         {/* Get In Touch */}
         <div>
           <h4
-            className="font-markaziBold text-[#1A243F] text-[24px] mb-5"
+            className="font-markaziBold text-[#1A243F] text-[22px] md:text-[24px] mb-5"
             style={{ letterSpacing: "0.04em" }}
           >
             Get In Touch
           </h4>
 
-          <div className="flex gap-3 mb-6">
+          <div className="mb-6 flex gap-3">
             <a
               href="#"
               aria-label="Instagram"
-              className="w-9 h-9 rounded-full border border-[#3B3B3B]/30 flex items-center justify-center text-[#3B3B3B] hover:border-[#439897] hover:text-[#439897] transition"
+              className="w-10 h-10 rounded-full border border-[#3B3B3B]/30 flex items-center justify-center text-[#3B3B3B] hover:border-[#439897] hover:text-[#439897] transition"
             >
               <FaInstagram size={16} />
             </a>
             <a
               href="#"
               aria-label="Facebook"
-              className="w-9 h-9 rounded-full border border-[#3B3B3B]/30 flex items-center justify-center text-[#3B3B3B] hover:border-[#439897] hover:text-[#439897] transition"
+              className="w-10 h-10 rounded-full border border-[#3B3B3B]/30 flex items-center justify-center text-[#3B3B3B] hover:border-[#439897] hover:text-[#439897] transition"
             >
               <FaFacebookF size={16} />
             </a>
@@ -164,13 +164,13 @@ export default function Footer() {
             {contactItems.map((item, i) => (
               <div
                 key={i}
-                className={`flex items-start gap-3 py-3 ${
+                className={`flex items-start gap-4 py-3 ${
                   i !== contactItems.length - 1 ? "border-b border-gray-200" : ""
                 }`}
               >
-                <item.icon className="text-[#3B3B3B] mt-1 shrink-0" size={14} />
+                <item.icon className="text-[#3B3B3B] mt-1 shrink-0" size={16} />
                 <div
-                  className="font-inter-medium text-[#3B3B3B] text-[14px] leading-relaxed"
+                  className="font-inter-medium text-[#3B3B3B] text-[14px] leading-6 leading-relaxed"
                   style={{ letterSpacing: "0.04em" }}
                 >
                   {item.lines.map((line, li) => (
@@ -184,9 +184,9 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-gray-200">
-        <div className="max-w-[1500px] mx-auto px-6 py-6">
+        <div className="container-custom py-5 px-6">
           <p
-            className="font-nunito-sans font-normal text-[#666666] text-[14px]"
+            className="text-center md:text-left font-nunito-sans text-[13px] md:text-[14px] text-[#666666]"
             style={{ letterSpacing: "0.04em" }}
           >
             Copyright © {new Date().getFullYear()} | Developed and Marketed by UpThinq
