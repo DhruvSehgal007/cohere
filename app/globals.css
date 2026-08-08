@@ -120,3 +120,58 @@ body {
     background:#fff;
     transition:opacity .45s ease;
 }
+
+
+
+/* Design tokens: process section */
+:root {
+  --brand: oklch(0.58 0.055 187);
+  --brand-deep: oklch(0.33 0.045 187);
+  --brand-ink: oklch(0.31 0.04 186);
+  --gradient-step: linear-gradient(100deg, oklch(0.47 0.06 182) 0%, oklch(0.33 0.035 200) 60%, oklch(0.24 0.02 220) 100%);
+  --shadow-card: 0 18px 40px -18px oklch(0.3 0.03 200 / 0.35);
+  --shadow-step: 0 24px 50px -20px oklch(0.3 0.03 200 / 0.45);
+  --texture-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+}
+
+@utility step-panel {
+  background-image: var(--gradient-step);
+  box-shadow: var(--shadow-step);
+  position: relative;
+  isolation: isolate;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--texture-noise);
+    mix-blend-mode: overlay;
+    opacity: 0.45;
+    border-radius: inherit;
+    pointer-events: none;
+  }
+}
+
+@utility step-card {
+  background-color: var(--color-card);
+  box-shadow: var(--shadow-card);
+  position: relative;
+  isolation: isolate;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--texture-noise);
+    mix-blend-mode: multiply;
+    opacity: 0.07;
+    border-radius: inherit;
+    pointer-events: none;
+  }
+}
+
+@utility step-number {
+  background-image: var(--texture-noise);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: oklch(0.93 0.005 200);
+  text-shadow: 0 2px 10px oklch(0.2 0.02 200 / 0.35);
+}

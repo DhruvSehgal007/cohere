@@ -54,21 +54,23 @@ export default function CohereAdvantage() {
 
   return (
     <section className="w-full bg-white">
-      <div className="container-custom px-6 py-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-        <div>
-          <span className="inline-block w-auto md:w-[220px] bg-[#439897] text-white font-avenir font-normal text-[14px] px-3 py-1 rounded text-left">
-            THE COHERE ADVANTAGE
-          </span>
-          <h2 className="font-avenir font-extrabold text-[40px] leading-tight text-[#0D1E1E] mt-4 max-w-[588px]">
-            Everything You Need to Build a Better Workplace
-          </h2>
-        </div>
-        <p className="font-nunito-sans font-normal text-[20px] text-[#2E262E] max-w-[524px] ml-auto text-right">
-          From legal guidance and workplace investigations to compliance and
-          trusted advisory services, we provide the expertise organizations rely
-          on at every stage.
-        </p>
-      </div>
+     <div className="container-custom flex flex-col gap-6 px-6 py-16 md:flex-row md:items-end md:justify-between">
+  <div>
+    <span className="inline-block w-auto rounded bg-[#439897] px-3 py-1 text-left font-avenir text-[14px] font-normal text-white md:w-[220px]">
+      THE COHERE ADVANTAGE
+    </span>
+
+    <h2 className="mt-4 max-w-[588px] font-avenir text-[30px] font-extrabold leading-tight text-[#0D1E1E] md:text-[40px]">
+      Everything You Need to Build a Better Workplace
+    </h2>
+  </div>
+
+  <p className="md:ml-auto max-w-[524px] text-left font-nunito-sans text-[18px] font-normal text-[#2E262E] md:text-right md:text-[20px]">
+    From legal guidance and workplace investigations to compliance and trusted
+    advisory services, we provide the expertise organizations rely on at every
+    stage.
+  </p>
+</div>
 
 
     <div className="container-custom px-6 min-[600px]:hidden">

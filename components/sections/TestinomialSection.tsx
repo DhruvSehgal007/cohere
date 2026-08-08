@@ -38,27 +38,28 @@ const testimonials = [
 ];
 
 const N = testimonials.length;
-const CARD_WIDTH = 468;
 const GAP = 24;
-const STEP = CARD_WIDTH + GAP;
 const REPEATS = 9; // big buffer so we can keep sliding forward for a long time
 const loop = Array.from({ length: REPEATS }, () => testimonials).flat();
 const START = Math.floor(REPEATS / 2) * N; // start in the middle repeat
 
 export default function TestimonialsSection() {
-  // `position` only ever counts forward/backward — never wraps.
-  // The visible card is always loop[position], and its neighbors are
-  // loop[position - 1] / loop[position + 1].
   const [position, setPosition] = useState(START);
-//   const [paused, setPaused] = useState(false);
   const trackRef = useRef<HTMLDivElement>(null);
   const resetTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const stepRef = useRef(0); // measured card width + gap, updates per breakpoint
+
+  const measureStep = () => {
+    const track = trackRef.current;
+    if (!track || !track.children[0]) return;
+    const cardEl = track.children[0] as HTMLElement;
+    stepRef.current = cardEl.getBoundingClientRect().width + GAP;
+  };
 
   const applyTransform = (pos: number, animate: boolean) => {
     const el = trackRef.current;
     if (!el) return;
-    // pos-1 is the left visible slot, so translate so that slot sits at x=0
-    const offset = (pos - 1) * STEP;
+    const offset = (pos - 1) * stepRef.current;
     el.style.transition = animate ? "transform 700ms ease" : "none";
     el.style.transform = `translate3d(${-offset}px,0,0)`;
   };
@@ -69,8 +70,6 @@ export default function TestimonialsSection() {
 
     if (resetTimeout.current) clearTimeout(resetTimeout.current);
     resetTimeout.current = setTimeout(() => {
-      // once we've drifted a full set away from START, silently snap back
-      // by a whole multiple of N (same content, same visual position)
       setPosition((p) => {
         if (Math.abs(p - START) < N) return p;
         const safe = START + (((p - START) % N) + N) % N;
@@ -86,42 +85,37 @@ export default function TestimonialsSection() {
   }, [position]);
 
   useEffect(() => {
+    measureStep();
     applyTransform(START, false);
+
+    const onResize = () => {
+      measureStep();
+      applyTransform(positionRef.current, false);
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-//   auto-advance forever, one card at a time, every 4s
-//   useEffect(() => {
-//     if (paused) return;
-//     const id = setInterval(() => {
-//       goTo(positionRef.current + 1);
-//     }, 3000);
-//     return () => clearInterval(id);
-//   }, [paused]);
-useEffect(() => {
-  const id = setInterval(() => {
-    goTo(positionRef.current + 1);
-  }, 2000);
-  return () => clearInterval(id);
-}, []);
+  useEffect(() => {
+    const id = setInterval(() => {
+      goTo(positionRef.current + 1);
+    }, 4000);
+    return () => clearInterval(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  const next = () => goTo(position + 1);
-  const prev = () => goTo(position - 1);
   const activeIndex = (((position - START) % N) + N) % N;
 
   return (
-    <section
-      className="w-full bg-white "
-    //   onMouseEnter={() => setPaused(true)}
-    //   onMouseLeave={() => setPaused(false)}
-    >
+    <section className="w-full bg-white">
       <div className="container-custom px-6 py-16">
         {/* Header */}
         <div className="mb-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
-           <span className="inline-block w-auto md:w-[150px] bg-[#439897] text-white font-avenir font-normal text-[14px] px-3 py-1 rounded text-left">
-  TESTINOMIALS
-</span>
+            <span className="inline-block w-auto md:w-[150px] bg-[#439897] text-white font-avenir font-normal text-[14px] px-3 py-1 rounded text-left">
+              TESTIMONIALS
+            </span>
             <h2 className="font-avenir font-extrabold text-[40px] leading-tight text-[#0D1E1E] mt-4 max-w-[590px]">
               What Clients Say About Us?
             </h2>
@@ -132,26 +126,15 @@ useEffect(() => {
           </p>
         </div>
 
-        
-
         {/* Slider */}
-        {/* <div
-          className="relative overflow-hidden pt-8 mx-auto"
-          style={{ width: `${CARD_WIDTH * 3 + GAP * 2}px` }}
-        > */}
-             <div
-          className="relative overflow-hidden pt-8 "
-          
-        >
-          <div ref={trackRef} className="flex gap-6 w-max">
+        <div className="relative overflow-hidden pt-8 w-full">
+          <div ref={trackRef} className="flex gap-6">
             {loop.map((t, i) => {
-            //   const isActive = i === position;
-            const isActive = i % N === activeIndex;
+              const isActive = i % N === activeIndex;
               return (
                 <div
                   key={i}
-                  style={{ width: `${CARD_WIDTH}px` }}
-                  className={`relative shrink-0 rounded-2xl p-8 pt-10 transition-colors duration-500 ${
+                  className={`relative shrink-0 rounded-2xl p-8 pt-10 transition-colors duration-500 w-full min-[600px]:w-[calc(50%-12px)] min-[1024px]:w-[calc((100%-48px)/3)] ${
                     isActive
                       ? "bg-[#439897] text-white shadow-2xl"
                       : "bg-white text-[#0D1E1E] shadow-md"
@@ -205,47 +188,20 @@ useEffect(() => {
             })}
           </div>
 
-          {/* Controls */}
-          <div className="mt-4 flex items-center justify-end">
-            {/* <div className="flex gap-3">
+          {/* Dots */}
+          <div className="mt-12 flex items-center justify-end gap-1">
+            {testimonials.map((_, i) => (
               <button
-                onClick={prev}
-                aria-label="Previous"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-[#0D1E1E] text-[#0D1E1E] transition hover:bg-[#0D1E1E] hover:text-white"
+                key={i}
+                onClick={() => goTo(START + i)}
+                aria-label={`Go to slide ${i + 1}`}
+                className="h-5 w-5 rounded-full border border-[#0D1E1E] flex items-center justify-center"
               >
-                ‹
+                {i === activeIndex && (
+                  <span className="h-3 w-3 rounded-full bg-[#439897]" />
+                )}
               </button>
-              <button
-                onClick={next}
-                aria-label="Next"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-[#0D1E1E] text-[#0D1E1E] transition hover:bg-[#0D1E1E] hover:text-white"
-              >
-                ›
-              </button>
-            </div> */}
-            <div className="mt-12 flex items-center justify-end gap-1">
-  {testimonials.map((_, i) => (
-    <button
-  key={i}
-  onClick={() => goTo(START + i)}
-  aria-label={`Go to slide ${i + 1}`}
-  className="h-5 w-5 rounded-full border-1 border-[#0D1E1E] flex items-center justify-center
-  
-  
-  
-  
-  
-  
-  
-  
-  "
->
-  {i === activeIndex && (
-    <span className="h-3 w-3 rounded-full bg-[#439897]" />
-  )}
-</button>
-  ))}
-</div>
+            ))}
           </div>
         </div>
       </div>
