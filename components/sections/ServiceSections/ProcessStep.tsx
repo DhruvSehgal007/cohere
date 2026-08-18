@@ -1,365 +1,240 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
+import volumeBg from "@/assets/images/homepage/volume_background.png";
 
-import polygonAsset from "@/assets/images/WorkplaceDiscrimination/polygon.svg";
-import middleLogoAsset from "@/assets/images/WorkplaceDiscrimination/middle-logo.png";
-import cardIconAsset from "@/assets/images/WorkplaceDiscrimination/card-side-icons.svg";
+import { Lightbulb, Users, Sprout, Headphones } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
-const CARDS = [
+type Step = {
+  number: string;
+  title: string;
+  description: string;
+  Icon: LucideIcon;
+};
+
+const steps: Step[] = [
   {
-    title: "Respectful\nWorkplace Culture",
+    number: "1",
+    title: "Understand",
     description:
-      "Support initiatives that encourage dignity, respect, and professional workplace behaviour.",
-    polygonRotation: "rotate-0",
-    badgeStyle:
-      "top-0 left-1/2 -translate-x-1/2 -translate-y-1/2",
+      "Understanding your organisation's workplace requirements and compliance priorities.",
+    Icon: Lightbulb,
   },
   {
-    title: "Awareness\nProgrammes",
+    number: "2",
+    title: "Strengthen",
     description:
-      "Interactive workshops that help employees understand workplace behaviour, responsibilities, and respectful interactions.",
-    polygonRotation: "rotate-0",
-    badgeStyle:
-      "top-0 left-1/2 -translate-x-1/2 -translate-y-1/2",
+      "Supporting policies, Internal Committees, and workplace processes.",
+    Icon: Users,
   },
   {
-    title: "Workplace\nInvestigations",
+    number: "3",
+    title: "Build Capability",
     description:
-      "Supporting organisations with structured, confidential, and fair investigation processes.",
-    polygonRotation: "rotate-90",
-    badgeStyle:
-      "top-1/2 -right-3 -translate-y-1/2",
+      "Delivering workshops, awareness programmes, and practical learning.",
+    Icon: Sprout,
   },
   {
-    title: "Resources &\nGuidance",
+    number: "4",
+    title: "Support",
     description:
-      "Providing practical resources, workplace templates, awareness materials, and compliance guidance.",
-    polygonRotation: "rotate-180",
-    badgeStyle:
-      "bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2",
-  },
-  {
-    title: "Trauma-Informed\nPractice",
-    description:
-      "Helping organisations understand trauma responses and promote compassionate, informed workplace processes.",
-    polygonRotation: "rotate-180",
-    badgeStyle:
-      "bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2",
-  },
-  {
-    title: "Internal Committee\nSupport",
-    description:
-      "Strengthening Internal Committees through orientation, practical learning, and ongoing guidance.",
-    polygonRotation: "-rotate-90",
-    badgeStyle:
-      "top-1/2 -left-3 -translate-y-1/2",
+      "Providing ongoing advisory, resources, and workplace guidance.",
+    Icon: Headphones,
   },
 ];
 
-export default function OurSupportSection() {
+type ProcessStepProps = {
+  number: string;
+  title: string;
+  description: string;
+  Icon: LucideIcon;
+  right: boolean;
+};
+
+export default function ProcessStep({
+  number,
+  title,
+  description,
+  Icon,
+  right,
+}: ProcessStepProps) {
   return (
-    <section className="w-full overflow-hidden bg-white px-4 py-16">
-      <div className="mx-auto flex w-full max-w-[1500px] justify-center">
-        <div className="relative w-full max-w-[1250px] py-8">
+    <section className="py-16">
+      <div className="container-custom px-6">
 
-          <div
-            className="
-              grid
-              w-full
-              grid-cols-1
-              items-center
-              justify-items-center
-              gap-x-6
-              gap-y-10
-              md:grid-cols-2
-              lg:grid-cols-3
-              lg:gap-y-12
-            "
-          >
+        {/* ================= HEADING ================= */}
 
-            {/* =================================================
-                TOP LEFT
-            ================================================= */}
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div>
+            <span className="inline-block rounded bg-[#439897] px-4 py-1 font-avenir text-[14px] text-white">
+              PROCESS SECTION
+            </span>
 
-            <div className="col-start-1 row-start-1 lg:translate-x-10">
-              <HexCard item={CARDS[0]} />
-            </div>
+            <h2 className="mt-4 max-w-[620px] font-avenir text-[30px] font-extrabold leading-tight text-black md:text-[40px]">
+              How We Support Organisations
+            </h2>
+          </div>
 
+          <p className="max-w-[520px] font-nunito-sans text-[16px] leading-7 text-[#5B5B5B] md:text-right">
+            Understanding your organisation's workplace requirements and
+            compliance priorities.
+          </p>
+        </div>
 
-            {/* =================================================
-                TOP RIGHT
-            ================================================= */}
+        {/* ================= PROCESS STEPS ================= */}
 
-            <div
-              className="
-                col-start-1
-                row-start-1
-                md:col-start-2
-                lg:col-start-3
-                lg:-translate-x-10
-              "
-            >
-              <HexCard item={CARDS[1]} />
-            </div>
+        <div className="mx-auto mt-20 flex max-w-[900px] flex-col gap-12">
 
+          {steps.map((step, index) => {
+            const right = index % 2 === 0;
 
-            {/* =================================================
-                MIDDLE LEFT
-            ================================================= */}
-
-            <div className="col-start-1 row-start-2">
-              <HexCard item={CARDS[5]} />
-            </div>
-
-
-            {/* =================================================
-                CENTER LOGO
-            ================================================= */}
-
-            <div
-              className="
-                z-20
-                col-start-1
-                row-start-2
-                flex
-                items-center
-                justify-center
-                md:col-start-2
-                lg:col-start-2
-              "
-            >
-              <div
-                className="
-                  relative
-                  flex
-                  h-[270px]
-                  w-[240px]
-                  items-center
-                  justify-center
-                "
+            return (
+              <motion.div
+                key={step.number}
+                initial={{
+                  opacity: 0,
+                  x: right ? 180 : -180,
+                  scale: 0.92,
+                  filter: "blur(8px)",
+                }}
+                whileInView={{
+                  opacity: 1,
+                  x: 0,
+                  scale: 1,
+                  filter: "blur(0px)",
+                }}
+                viewport={{
+                  once: true,
+                  amount: 0.35,
+                }}
+                transition={{
+                  duration: 1,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className={`relative h-[170px] md:h-[180px] ${
+                  right
+                    ? "md:ml-[14%]"
+                    : "md:mr-[14%]"
+                }`}
               >
 
-                {/* CENTER HEXAGON */}
+                {/* ================= TEXTURED GREEN CAPSULE ================= */}
 
-                <Image
-                  src={polygonAsset}
-                  alt="Center Background"
-                  fill
-                  priority
+                <div
                   className="
-                    object-contain
-                    drop-shadow-[0_12px_24px_rgba(0,137,138,0.25)]
+                    absolute
+                    inset-0
+                    overflow-hidden
+                    rounded-[100px]
+                    shadow-[0_35px_80px_rgba(0,0,0,.18)]
                   "
-                />
-
-                {/* CENTER LOGO */}
-
-                <div className="relative z-10 h-24 w-44">
+                >
                   <Image
-                    src={middleLogoAsset}
-                    alt="COHERE Consultants"
+                    src={volumeBg}
+                    alt=""
                     fill
-                    priority
-                    className="object-contain"
+                    className="object-cover"
                   />
+
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background:
+                        "linear-gradient(90deg,rgba(255,255,255,.12),transparent 40%,rgba(0,0,0,.18))",
+                      mixBlendMode: "soft-light",
+                    }}
+                  />
+
+                  <span
+                    className="
+                      relative
+                      z-10
+                      font-avenir
+                      text-[100px]
+                      font-extrabold
+                      leading-none
+                      text-white
+                      md:text-[120px]
+                    "
+                    style={{
+                      textShadow: "0 6px 18px rgba(0,0,0,.25)",
+                    }}
+                  >
+                    {step.number}
+                  </span>
                 </div>
 
-              </div>
-            </div>
+                {/* ================= WHITE CONTENT CARD ================= */}
 
+                <div
+                  className={`
+                    absolute
+                    top-4
+                    bottom-4
+                    flex
+                    items-center
+                    gap-7
+                    rounded-[42px]
+                    bg-white
+                    px-10
+                    shadow-[0_40px_90px_rgba(0,0,0,.18)]
+                    transition-all
+                    duration-500
+                    hover:-translate-y-2
+                    hover:shadow-[0_55px_110px_rgba(0,0,0,.24)]
 
-            {/* =================================================
-                MIDDLE RIGHT
-            ================================================= */}
+                    ${
+                      right
+                        ? "left-4 right-[24%]"
+                        : "left-[24%] right-4 flex-row-reverse"
+                    }
+                  `}
+                >
 
-            <div
-              className="
-                col-start-1
-                row-start-2
-                md:col-start-2
-                lg:col-start-3
-              "
-            >
-              <HexCard item={CARDS[2]} />
-            </div>
+                  {/* ICON */}
 
+                  <div
+                    className="
+                      flex
+                      h-[82px]
+                      w-[82px]
+                      shrink-0
+                      items-center
+                      justify-center
+                      rounded-full
+                      bg-[#F4F7F6]
+                      shadow-inner
+                    "
+                  >
+                    <step.Icon
+                      className="h-8 w-8 text-[#1B3D3C]"
+                      strokeWidth={1.8}
+                    />
+                  </div>
 
-            {/* =================================================
-                BOTTOM LEFT
-            ================================================= */}
+                  {/* TEXT */}
 
-            <div className="col-start-1 row-start-3 lg:translate-x-10">
-              <HexCard item={CARDS[4]} />
-            </div>
+                  <div className={right ? "" : "text-right"}>
 
+                    <h3 className="font-avenir text-[34px] font-extrabold leading-tight text-black">
+                      {step.title}
+                    </h3>
 
-            {/* =================================================
-                BOTTOM RIGHT
-            ================================================= */}
+                    <p className="mt-2 max-w-[330px] font-nunito-sans text-[16px] leading-7 text-[#5B5B5B]">
+                      {step.description}
+                    </p>
 
-            <div
-              className="
-                col-start-1
-                row-start-3
-                md:col-start-2
-                lg:col-start-3
-                lg:-translate-x-10
-              "
-            >
-              <HexCard item={CARDS[3]} />
-            </div>
+                  </div>
 
-          </div>
+                </div>
+              </motion.div>
+            );
+          })}
 
         </div>
       </div>
     </section>
-  );
-}
-
-
-/* =========================================================
-   HEX CARD
-========================================================= */
-
-function HexCard({
-  item,
-}: {
-  item: {
-    title: string;
-    description: string;
-    polygonRotation: string;
-    badgeStyle: string;
-  };
-}) {
-  return (
-    <div
-      className="
-        relative
-        flex
-        h-[360px]
-        w-[330px]
-        items-center
-        justify-center
-        transition-transform
-        duration-300
-        hover:scale-[1.02]
-        sm:h-[380px]
-        sm:w-[350px]
-      "
-    >
-
-      {/* =================================================
-          HEXAGON BACKGROUND
-      ================================================= */}
-
-      <div
-        className={`
-          absolute
-          inset-0
-          h-full
-          w-full
-          transition-transform
-          duration-300
-          ${item.polygonRotation}
-        `}
-      >
-        <Image
-          src={polygonAsset}
-          alt="Hexagon Card Shape"
-          fill
-          priority
-          className="
-            object-contain
-            drop-shadow-[0_10px_20px_rgba(0,0,0,0.07)]
-          "
-        />
-      </div>
-
-
-      {/* =================================================
-          CARD CONTENT
-      ================================================= */}
-
-      <div
-        className="
-          pointer-events-none
-          absolute
-          inset-0
-          z-10
-          flex
-          flex-col
-          items-center
-          justify-center
-          px-8
-          pb-2
-          pt-4
-          text-center
-        "
-      >
-
-        <h3
-          className="
-            mb-2
-            whitespace-pre-line
-            font-avenir
-            text-[18px]
-            font-extrabold
-            leading-tight
-            text-[#171717]
-          "
-        >
-          {item.title}
-        </h3>
-
-        <p
-          className="
-            max-w-[210px]
-            font-nunito-sans
-            text-[12px]
-            font-normal
-            leading-relaxed
-            text-[#5B5B5B]
-          "
-        >
-          {item.description}
-        </p>
-
-      </div>
-
-
-      {/* =================================================
-          SIDE BADGE
-      ================================================= */}
-
-      <div
-        className={`
-          absolute
-          z-30
-          flex
-          h-14
-          w-14
-          items-center
-          justify-center
-          rounded-full
-          border-4
-          border-white
-          bg-[#00898a]
-          shadow-md
-          ${item.badgeStyle}
-        `}
-      >
-        <div className="relative h-7 w-7">
-          <Image
-            src={cardIconAsset}
-            alt="Card Side Icon"
-            fill
-            className="object-contain"
-          />
-        </div>
-      </div>
-
-    </div>
   );
 }
