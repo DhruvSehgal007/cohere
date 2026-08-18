@@ -8,6 +8,7 @@ import workplaceIcon from "@/assets/images/Servicepage/workplace-icon.svg";
 import learningIcon from "@/assets/images/Servicepage/learning-icon.svg";
 import annualIcon from "@/assets/images/Servicepage/annual-reporting-icon.svg";
 import resourcesIcon from "@/assets/images/Servicepage/resources-icon.svg";
+
 import poshWhiteIcon from "@/assets/images/Servicepage/POSH-compliance-white-icon.svg";
 import icWhiteIcon from "@/assets/images/Servicepage/ICS-support-white-icon.svg";
 import workplaceWhiteIcon from "@/assets/images/Servicepage/workplace-white-icon.svg";
@@ -18,7 +19,7 @@ import resourcesWhiteIcon from "@/assets/images/Servicepage/resources-white-icon
 const cards = [
   {
     icon: poshIcon,
-  hoverIcon: poshWhiteIcon,
+    hoverIcon: poshWhiteIcon,
     title: "PoSH Compliance & Advisory",
     description:
       "Ensure your workplace policies, compliance practices, and statutory obligations align with the requirements of the PoSH Act through practical guidance and ongoing advisory support.",
@@ -28,7 +29,6 @@ const cards = [
       "Compliance Audits",
       "Employer Advisory",
     ],
-    
   },
   {
     icon: icIcon,
@@ -99,84 +99,73 @@ const cards = [
 
 export default function IntroSection() {
   return (
-    <section className="py-16">
-      <div className="container-custom px-6">
+    <section className="py-10 sm:py-12 md:py-16">
+      <div className="container-custom px-4 sm:px-6">
+        {/* TOP CONTENT */}
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <div>
-            <span className="inline-block rounded bg-[#439897] px-4 py-1 font-avenir text-[14px] text-white">
+          <div className="w-full md:w-1/2">
+            <span className="inline-block rounded bg-[#439897] px-3 py-1 font-avenir text-[11px] text-white sm:px-4 sm:text-[14px]">
               THE COHERE ADVANTAGE
             </span>
 
-            <h2 className="mt-4 max-w-[620px] font-avenir text-[30px] font-extrabold leading-tight text-black md:text-[40px]">
+            <h2 className="mt-3 max-w-[620px] font-avenir text-[26px] font-extrabold leading-[1.15] text-black sm:text-[30px] md:mt-4 md:text-[36px] lg:text-[40px]">
               Everything You Need to Build a Better Workplace
             </h2>
           </div>
 
-          <p className="max-w-[520px] font-nunito-sans text-[16px] leading-7 text-[#5B5B5B] md:text-right">
+          <p className="w-full max-w-[520px] font-nunito-sans text-[14px] leading-6 text-[#5B5B5B] sm:text-[15px] sm:leading-7 md:w-1/2 md:text-right md:text-[16px]">
             From legal guidance and workplace investigations to compliance and
             trusted advisory services, we provide the expertise organizations
             rely on at every stage.
           </p>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+        {/* CARDS */}
+        <div className="mt-8 grid grid-cols-1 gap-4 sm:mt-10 md:grid-cols-2 xl:mt-14 xl:grid-cols-3">
           {cards.map((card, index) => (
             <div
               key={index}
-              className="group rounded-[16px] border border-[#EFEFEF] bg-white p-8 shadow-[0_6px_14px_rgba(0,0,0,0.16)] transition-all duration-300 hover:bg-[#439897]"
+              className="group rounded-[16px] border border-[#EFEFEF] bg-white p-5 shadow-[0_6px_14px_rgba(0,0,0,0.16)] transition-all duration-300 hover:bg-[#439897] sm:p-6 md:p-7 lg:p-8"
             >
-             <div className="relative mb-8 h-[90px] w-[132px]">
-  {/* Dark Icon */}
-  <Image
-    src={card.icon}
-    alt={card.title}
-    fill
-    className="
-      object-contain
-      transition-all
-      duration-500
-      ease-in-out
-      opacity-100
-      group-hover:opacity-0
-      group-hover:scale-95
-    "
-  />
+              {/* ICON */}
+              <div className="relative mb-5 h-[65px] w-[100px] sm:mb-6 sm:h-[75px] sm:w-[115px] md:mb-8 md:h-[90px] md:w-[132px]">
+                {/* Dark Icon */}
+                <Image
+                  src={card.icon}
+                  alt={card.title}
+                  fill
+                  className="object-contain opacity-100 transition-all duration-500 ease-in-out group-hover:scale-95 group-hover:opacity-0"
+                />
 
-  {/* White Icon */}
-  <Image
-    src={card.hoverIcon}
-    alt={card.title}
-    fill
-    className="
-      object-contain
-      transition-all
-      duration-500
-      ease-in-out
-      opacity-0
-      scale-95
-      group-hover:opacity-100
-      group-hover:scale-100
-    "
-  />
-</div>
+                {/* White Icon */}
+                <Image
+                  src={card.hoverIcon}
+                  alt={card.title}
+                  fill
+                  className="scale-95 object-contain opacity-0 transition-all duration-500 ease-in-out group-hover:scale-100 group-hover:opacity-100"
+                />
+              </div>
 
-              <h3 className="font-avenir text-[40px] font-extrabold leading-tight text-black transition-colors duration-300 group-hover:text-white">
+              {/* TITLE */}
+              <h3 className="font-avenir text-[26px] font-extrabold leading-[1.15] text-black transition-colors duration-300 group-hover:text-white sm:text-[30px] md:text-[34px] lg:text-[40px]">
                 {card.title}
               </h3>
 
-              <p className="mt-5 font-nunito-sans text-[16px] leading-7 text-[#5B5B5B] transition-colors duration-300 group-hover:[color:#D9D9D9]">
+              {/* DESCRIPTION */}
+              <p className="mt-4 font-nunito-sans text-[14px] leading-6 text-[#5B5B5B] transition-colors duration-300 group-hover:[color:#D9D9D9] sm:mt-5 sm:text-[15px] sm:leading-7 md:text-[16px]">
                 {card.description}
               </p>
 
-              <h4 className="mt-8 font-avenir text-[36px] font-extrabold leading-none text-[#1B3D3C]">
+              {/* INCLUDES */}
+              <h4 className="mt-6 font-avenir text-[28px] font-extrabold leading-none text-[#1B3D3C] transition-colors duration-300 group-hover:text-white sm:mt-7 sm:text-[32px] md:mt-8 md:text-[36px]">
                 Includes
               </h4>
 
-              <ul className="mt-5 space-y-2">
+              <ul className="mt-4 space-y-2 sm:mt-5">
                 {card.items.map((item) => (
                   <li
                     key={item}
-                    className="flex items-start gap-2 font-nunito-sans text-[15px] text-[#5B5B5B] transition-colors duration-300 group-hover:[color:#D9D9D9]"
+                    className="flex items-start gap-2 font-nunito-sans text-[13px] leading-5 text-[#5B5B5B] transition-colors duration-300 group-hover:[color:#D9D9D9] sm:text-[14px] md:text-[15px]"
                   >
                     <span>•</span>
                     <span>{item}</span>

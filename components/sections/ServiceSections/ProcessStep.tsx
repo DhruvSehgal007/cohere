@@ -1,139 +1,365 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
-import volumeBg from "@/assets/images/homepage/volume_background.png";
-import type { LucideIcon } from "lucide-react";
 
-type Props = {
-  number: string;
-  title: string;
-  description: string;
-  Icon: LucideIcon;
-  right?: boolean;
-};
+import polygonAsset from "@/assets/images/WorkplaceDiscrimination/polygon.svg";
+import middleLogoAsset from "@/assets/images/WorkplaceDiscrimination/middle-logo.png";
+import cardIconAsset from "@/assets/images/WorkplaceDiscrimination/card-side-icons.svg";
 
-export default function ProcessStep({
-  number,
-  title,
-  description,
-  Icon,
-  right = true,
-}: Props) {
+const CARDS = [
+  {
+    title: "Respectful\nWorkplace Culture",
+    description:
+      "Support initiatives that encourage dignity, respect, and professional workplace behaviour.",
+    polygonRotation: "rotate-0",
+    badgeStyle:
+      "top-0 left-1/2 -translate-x-1/2 -translate-y-1/2",
+  },
+  {
+    title: "Awareness\nProgrammes",
+    description:
+      "Interactive workshops that help employees understand workplace behaviour, responsibilities, and respectful interactions.",
+    polygonRotation: "rotate-0",
+    badgeStyle:
+      "top-0 left-1/2 -translate-x-1/2 -translate-y-1/2",
+  },
+  {
+    title: "Workplace\nInvestigations",
+    description:
+      "Supporting organisations with structured, confidential, and fair investigation processes.",
+    polygonRotation: "rotate-90",
+    badgeStyle:
+      "top-1/2 -right-3 -translate-y-1/2",
+  },
+  {
+    title: "Resources &\nGuidance",
+    description:
+      "Providing practical resources, workplace templates, awareness materials, and compliance guidance.",
+    polygonRotation: "rotate-180",
+    badgeStyle:
+      "bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2",
+  },
+  {
+    title: "Trauma-Informed\nPractice",
+    description:
+      "Helping organisations understand trauma responses and promote compassionate, informed workplace processes.",
+    polygonRotation: "rotate-180",
+    badgeStyle:
+      "bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2",
+  },
+  {
+    title: "Internal Committee\nSupport",
+    description:
+      "Strengthening Internal Committees through orientation, practical learning, and ongoing guidance.",
+    polygonRotation: "-rotate-90",
+    badgeStyle:
+      "top-1/2 -left-3 -translate-y-1/2",
+  },
+];
+
+export default function OurSupportSection() {
   return (
-    <motion.div
-      initial={{
-        opacity: 0,
-        x: right ? 120 : -120,
-      }}
-      whileInView={{
-        opacity: 1,
-        x: 0,
-      }}
-      viewport={{
-        once: true,
-        amount: 0.4,
-      }}
-      transition={{
-        duration: 0.8,
-        ease: [0.22, 1, 0.36, 1],
-      }}
-      className={`w-full max-w-[900px] ${
-        right ? "ml-auto" : "mr-auto"
-      }`}
-    >
-      <div className="relative h-[165px]">
+    <section className="w-full overflow-hidden bg-white px-4 py-16">
+      <div className="mx-auto flex w-full max-w-[1500px] justify-center">
+        <div className="relative w-full max-w-[1250px] py-8">
 
-        {/* Gradient Capsule */}
-
-        <div
-          className={`absolute inset-0 overflow-hidden rounded-[90px]
-          ${right ? "" : "scale-x-[-1]"}`}
-        >
-          <Image
-            src={volumeBg}
-            alt=""
-            fill
-            className="object-cover"
-            priority
-          />
-
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(90deg,#439897 0%,rgba(0,0,0,.15) 60%,#2E262E 100%)",
-              mixBlendMode: "multiply",
-            }}
-          />
-
-          <div
-            className={`absolute inset-y-0 flex items-center
-            ${right ? "right-10" : "left-10"}`}
-          >
-            <span
-              className={`font-avenir text-[78px] font-extrabold leading-none text-white
-              ${right ? "" : "scale-x-[-1]"}`}
-              style={{
-                textShadow: "0 4px 12px rgba(0,0,0,.18)",
-              }}
-            >
-              {number}
-            </span>
-          </div>
-        </div>
-
-        {/* White Card */}
-
-        <div
-          className={`
-          absolute top-[10px] bottom-[10px]
-          flex items-center
-          rounded-[38px]
-          bg-white
-          px-8
-          shadow-[0_30px_70px_rgba(0,0,0,.18)]
-
-          ${
-            right
-              ? "left-[60px] right-[120px]"
-              : "left-[120px] right-[60px] flex-row-reverse"
-          }
-          `}
-        >
           <div
             className="
-            flex
-            h-[68px]
-            w-[68px]
-            shrink-0
-            items-center
-            justify-center
-            rounded-full
-            bg-[#F6F7F6]
+              grid
+              w-full
+              grid-cols-1
+              items-center
+              justify-items-center
+              gap-x-6
+              gap-y-10
+              md:grid-cols-2
+              lg:grid-cols-3
+              lg:gap-y-12
             "
           >
-            <Icon
-              className="h-8 w-8 text-[#1B3D3C]"
-              strokeWidth={1.7}
-            />
+
+            {/* =================================================
+                TOP LEFT
+            ================================================= */}
+
+            <div className="col-start-1 row-start-1 lg:translate-x-10">
+              <HexCard item={CARDS[0]} />
+            </div>
+
+
+            {/* =================================================
+                TOP RIGHT
+            ================================================= */}
+
+            <div
+              className="
+                col-start-1
+                row-start-1
+                md:col-start-2
+                lg:col-start-3
+                lg:-translate-x-10
+              "
+            >
+              <HexCard item={CARDS[1]} />
+            </div>
+
+
+            {/* =================================================
+                MIDDLE LEFT
+            ================================================= */}
+
+            <div className="col-start-1 row-start-2">
+              <HexCard item={CARDS[5]} />
+            </div>
+
+
+            {/* =================================================
+                CENTER LOGO
+            ================================================= */}
+
+            <div
+              className="
+                z-20
+                col-start-1
+                row-start-2
+                flex
+                items-center
+                justify-center
+                md:col-start-2
+                lg:col-start-2
+              "
+            >
+              <div
+                className="
+                  relative
+                  flex
+                  h-[270px]
+                  w-[240px]
+                  items-center
+                  justify-center
+                "
+              >
+
+                {/* CENTER HEXAGON */}
+
+                <Image
+                  src={polygonAsset}
+                  alt="Center Background"
+                  fill
+                  priority
+                  className="
+                    object-contain
+                    drop-shadow-[0_12px_24px_rgba(0,137,138,0.25)]
+                  "
+                />
+
+                {/* CENTER LOGO */}
+
+                <div className="relative z-10 h-24 w-44">
+                  <Image
+                    src={middleLogoAsset}
+                    alt="COHERE Consultants"
+                    fill
+                    priority
+                    className="object-contain"
+                  />
+                </div>
+
+              </div>
+            </div>
+
+
+            {/* =================================================
+                MIDDLE RIGHT
+            ================================================= */}
+
+            <div
+              className="
+                col-start-1
+                row-start-2
+                md:col-start-2
+                lg:col-start-3
+              "
+            >
+              <HexCard item={CARDS[2]} />
+            </div>
+
+
+            {/* =================================================
+                BOTTOM LEFT
+            ================================================= */}
+
+            <div className="col-start-1 row-start-3 lg:translate-x-10">
+              <HexCard item={CARDS[4]} />
+            </div>
+
+
+            {/* =================================================
+                BOTTOM RIGHT
+            ================================================= */}
+
+            <div
+              className="
+                col-start-1
+                row-start-3
+                md:col-start-2
+                lg:col-start-3
+                lg:-translate-x-10
+              "
+            >
+              <HexCard item={CARDS[3]} />
+            </div>
+
           </div>
 
-          <div
-            className={`${
-              right ? "ml-6 text-left" : "mr-6 text-right"
-            }`}
-          >
-            <h3 className="font-avenir text-[22px] font-extrabold text-black">
-              {title}
-            </h3>
-
-            <p className="mt-2 max-w-[340px] font-nunito-sans text-[14px] leading-6 text-[#5B5B5B]">
-              {description}
-            </p>
-          </div>
         </div>
       </div>
-    </motion.div>
+    </section>
+  );
+}
+
+
+/* =========================================================
+   HEX CARD
+========================================================= */
+
+function HexCard({
+  item,
+}: {
+  item: {
+    title: string;
+    description: string;
+    polygonRotation: string;
+    badgeStyle: string;
+  };
+}) {
+  return (
+    <div
+      className="
+        relative
+        flex
+        h-[360px]
+        w-[330px]
+        items-center
+        justify-center
+        transition-transform
+        duration-300
+        hover:scale-[1.02]
+        sm:h-[380px]
+        sm:w-[350px]
+      "
+    >
+
+      {/* =================================================
+          HEXAGON BACKGROUND
+      ================================================= */}
+
+      <div
+        className={`
+          absolute
+          inset-0
+          h-full
+          w-full
+          transition-transform
+          duration-300
+          ${item.polygonRotation}
+        `}
+      >
+        <Image
+          src={polygonAsset}
+          alt="Hexagon Card Shape"
+          fill
+          priority
+          className="
+            object-contain
+            drop-shadow-[0_10px_20px_rgba(0,0,0,0.07)]
+          "
+        />
+      </div>
+
+
+      {/* =================================================
+          CARD CONTENT
+      ================================================= */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          z-10
+          flex
+          flex-col
+          items-center
+          justify-center
+          px-8
+          pb-2
+          pt-4
+          text-center
+        "
+      >
+
+        <h3
+          className="
+            mb-2
+            whitespace-pre-line
+            font-avenir
+            text-[18px]
+            font-extrabold
+            leading-tight
+            text-[#171717]
+          "
+        >
+          {item.title}
+        </h3>
+
+        <p
+          className="
+            max-w-[210px]
+            font-nunito-sans
+            text-[12px]
+            font-normal
+            leading-relaxed
+            text-[#5B5B5B]
+          "
+        >
+          {item.description}
+        </p>
+
+      </div>
+
+
+      {/* =================================================
+          SIDE BADGE
+      ================================================= */}
+
+      <div
+        className={`
+          absolute
+          z-30
+          flex
+          h-14
+          w-14
+          items-center
+          justify-center
+          rounded-full
+          border-4
+          border-white
+          bg-[#00898a]
+          shadow-md
+          ${item.badgeStyle}
+        `}
+      >
+        <div className="relative h-7 w-7">
+          <Image
+            src={cardIconAsset}
+            alt="Card Side Icon"
+            fill
+            className="object-contain"
+          />
+        </div>
+      </div>
+
+    </div>
   );
 }
