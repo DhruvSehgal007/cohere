@@ -1,240 +1,214 @@
 "use client";
 
-import Image from "next/image";
-import { motion } from "framer-motion";
-import volumeBg from "@/assets/images/homepage/volume_background.png";
-
-import { Lightbulb, Users, Sprout, Headphones } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
-
-type Step = {
+interface ProcessStepProps {
   number: string;
   title: string;
   description: string;
-  Icon: LucideIcon;
-};
+  icon: any;
+  right?: boolean;
+  cardBackground: any;
+}
 
-const steps: Step[] = [
-  {
-    number: "1",
-    title: "Understand",
-    description:
-      "Understanding your organisation's workplace requirements and compliance priorities.",
-    Icon: Lightbulb,
-  },
-  {
-    number: "2",
-    title: "Strengthen",
-    description:
-      "Supporting policies, Internal Committees, and workplace processes.",
-    Icon: Users,
-  },
-  {
-    number: "3",
-    title: "Build Capability",
-    description:
-      "Delivering workshops, awareness programmes, and practical learning.",
-    Icon: Sprout,
-  },
-  {
-    number: "4",
-    title: "Support",
-    description:
-      "Providing ongoing advisory, resources, and workplace guidance.",
-    Icon: Headphones,
-  },
-];
-
-type ProcessStepProps = {
-  number: string;
-  title: string;
-  description: string;
-  Icon: LucideIcon;
-  right: boolean;
-};
+const NOISE_TEXTURE = `data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E`;
 
 export default function ProcessStep({
   number,
   title,
   description,
-  Icon,
-  right,
+  icon,
+  right = true,
+  cardBackground,
 }: ProcessStepProps) {
+  const iconSrc = typeof icon === "string" ? icon : icon?.src;
+
+  const cardBackgroundSrc =
+    typeof cardBackground === "string"
+      ? cardBackground
+      : cardBackground?.src;
+
   return (
-    <section className="py-16">
-      <div className="container-custom px-6">
+    <div
+      className={`flex w-full ${
+        right ? "justify-end" : "justify-start"
+      }`}
+    >
+      {/* MAIN CARD */}
+      <div
+        className="
+          relative
+          h-[220px]
+          w-[866px]
+          overflow-hidden
+          rounded-[83px]
+          shadow-[0_25px_35px_rgba(0,0,0,0.18)]
+        "
+        style={{
+          background:
+            "linear-gradient(180deg, #439897 0%, #2E262E 100%)",
+        }}
+      >
+        {/* GREEN TEXTURE */}
+        <div
+          className="
+            pointer-events-none
+            absolute
+            inset-0
+            z-[1]
+            opacity-50
+            mix-blend-overlay
+          "
+          style={{
+            backgroundImage: `url("${NOISE_TEXTURE}")`,
+            backgroundRepeat: "repeat",
+          }}
+        />
 
-        {/* ================= HEADING ================= */}
-
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <div>
-            <span className="inline-block rounded bg-[#439897] px-4 py-1 font-avenir text-[14px] text-white">
-              PROCESS SECTION
-            </span>
-
-            <h2 className="mt-4 max-w-[620px] font-avenir text-[30px] font-extrabold leading-tight text-black md:text-[40px]">
-              How We Support Organisations
-            </h2>
-          </div>
-
-          <p className="max-w-[520px] font-nunito-sans text-[16px] leading-7 text-[#5B5B5B] md:text-right">
-            Understanding your organisation's workplace requirements and
-            compliance priorities.
-          </p>
+        {/* NUMBER */}
+        <div
+          className={`
+            absolute
+            top-0
+            z-[2]
+            flex
+            h-[220px]
+            w-[150px]
+            items-center
+            justify-center
+            font-avenir
+            text-[120px]
+            font-extrabold
+            leading-none
+            ${right ? "right-0" : "left-0"}
+          `}
+        >
+          <span
+            className="relative select-none bg-clip-text text-transparent"
+            style={{
+              backgroundImage: `url("${NOISE_TEXTURE}"), linear-gradient(180deg, #FFFFFF 0%, #C1C1C1 100%)`,
+              WebkitBackgroundClip: "text",
+            }}
+          >
+            {number}
+          </span>
         </div>
 
-        {/* ================= PROCESS STEPS ================= */}
+        {/* WHITE SECTION */}
+        <div
+          className={`
+            absolute
+            top-0
+            z-10
+            h-[220px]
+            w-[716px]
+            overflow-hidden
+            rounded-[83px]
+            ${right ? "left-0" : "right-0"}
+          `}
+        >
+          {/* ================================================
+              BACKGROUND IMAGE
+              1 & 3 = normal
+              2 & 4 = flipped
+          ================================================= */}
+          <div
+            className={`
+              absolute
+              inset-0
+              bg-cover
+              bg-center
+              bg-no-repeat
+              ${
+                right
+                  ? ""
+                  : "scale-x-[-1]"
+              }
+            `}
+            style={{
+              backgroundImage: `url("${cardBackgroundSrc}")`,
+            }}
+          />
 
-        <div className="mx-auto mt-20 flex max-w-[900px] flex-col gap-12">
-
-          {steps.map((step, index) => {
-            const right = index % 2 === 0;
-
-            return (
-              <motion.div
-                key={step.number}
-                initial={{
-                  opacity: 0,
-                  x: right ? 180 : -180,
-                  scale: 0.92,
-                  filter: "blur(8px)",
-                }}
-                whileInView={{
-                  opacity: 1,
-                  x: 0,
-                  scale: 1,
-                  filter: "blur(0px)",
-                }}
-                viewport={{
-                  once: true,
-                  amount: 0.35,
-                }}
-                transition={{
-                  duration: 1,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                className={`relative h-[170px] md:h-[180px] ${
+          {/* CONTENT */}
+          <div
+            className={`
+              relative
+              z-10
+              flex
+              h-full
+              items-center
+              ${
+                right
+                  ? "pl-[65px] pr-[40px]"
+                  : "pl-[40px] pr-[65px]"
+              }
+            `}
+          >
+            {/* ICON */}
+            <div
+              className={`
+                flex
+                h-[110px]
+                w-[110px]
+                shrink-0
+                items-center
+                justify-center
+                rounded-full
+                bg-[#F1F4F3]
+                ${
                   right
-                    ? "md:ml-[14%]"
-                    : "md:mr-[14%]"
-                }`}
-              >
+                    ? "mr-[38px]"
+                    : "order-2 ml-[38px]"
+                }
+              `}
+            >
+              <img
+                src={iconSrc}
+                alt=""
+                className="h-[110px] w-[110px] object-contain"
+              />
+            </div>
 
-                {/* ================= TEXTURED GREEN CAPSULE ================= */}
+            {/* TEXT */}
+<div
+  className={`
+    flex
+    flex-1
+    flex-col
+    gap-[9px]
+    ${
+      right
+        ? "text-left"
+        : "order-1 text-right"
+    }
+  `}
+>
+  <h3
+    className="
+      font-avenir
+      text-[40px]
+      font-extrabold
+      leading-[1.1]
+      text-black
+    "
+  >
+    {title}
+  </h3>
 
-                <div
-                  className="
-                    absolute
-                    inset-0
-                    overflow-hidden
-                    rounded-[100px]
-                    shadow-[0_35px_80px_rgba(0,0,0,.18)]
-                  "
-                >
-                  <Image
-                    src={volumeBg}
-                    alt=""
-                    fill
-                    className="object-cover"
-                  />
-
-                  <div
-                    className="absolute inset-0"
-                    style={{
-                      background:
-                        "linear-gradient(90deg,rgba(255,255,255,.12),transparent 40%,rgba(0,0,0,.18))",
-                      mixBlendMode: "soft-light",
-                    }}
-                  />
-
-                  <span
-                    className="
-                      relative
-                      z-10
-                      font-avenir
-                      text-[100px]
-                      font-extrabold
-                      leading-none
-                      text-white
-                      md:text-[120px]
-                    "
-                    style={{
-                      textShadow: "0 6px 18px rgba(0,0,0,.25)",
-                    }}
-                  >
-                    {step.number}
-                  </span>
-                </div>
-
-                {/* ================= WHITE CONTENT CARD ================= */}
-
-                <div
-                  className={`
-                    absolute
-                    top-4
-                    bottom-4
-                    flex
-                    items-center
-                    gap-7
-                    rounded-[42px]
-                    bg-white
-                    px-10
-                    shadow-[0_40px_90px_rgba(0,0,0,.18)]
-                    transition-all
-                    duration-500
-                    hover:-translate-y-2
-                    hover:shadow-[0_55px_110px_rgba(0,0,0,.24)]
-
-                    ${
-                      right
-                        ? "left-4 right-[24%]"
-                        : "left-[24%] right-4 flex-row-reverse"
-                    }
-                  `}
-                >
-
-                  {/* ICON */}
-
-                  <div
-                    className="
-                      flex
-                      h-[82px]
-                      w-[82px]
-                      shrink-0
-                      items-center
-                      justify-center
-                      rounded-full
-                      bg-[#F4F7F6]
-                      shadow-inner
-                    "
-                  >
-                    <step.Icon
-                      className="h-8 w-8 text-[#1B3D3C]"
-                      strokeWidth={1.8}
-                    />
-                  </div>
-
-                  {/* TEXT */}
-
-                  <div className={right ? "" : "text-right"}>
-
-                    <h3 className="font-avenir text-[34px] font-extrabold leading-tight text-black">
-                      {step.title}
-                    </h3>
-
-                    <p className="mt-2 max-w-[330px] font-nunito-sans text-[16px] leading-7 text-[#5B5B5B]">
-                      {step.description}
-                    </p>
-
-                  </div>
-
-                </div>
-              </motion.div>
-            );
-          })}
-
+  <p
+    className="
+      font-nunito-sans
+      text-[16px]
+      font-normal
+      leading-[1.4]
+      text-[#5B5B5B]
+    "
+  >
+    {description}
+  </p>
+</div>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
