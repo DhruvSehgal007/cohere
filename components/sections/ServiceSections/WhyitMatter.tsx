@@ -33,36 +33,91 @@ export default function WhyitMatter() {
 
   return (
     <section className="w-full">
-      <div className="container-custom">
+      <div className="">
         <div
           className="relative overflow-hidden rounded-[20px] bg-cover bg-center bg-no-repeat p-6 sm:p-8 md:p-10"
           style={{
             backgroundImage: `url("${backgroundImage.src}")`,
           }}
         >
-          <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-6">
+          <div className="container-custom flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-6 px-0">
             {/* LEFT DIV */}
-            <div className="w-full min-w-0 lg:w-[38%] lg:shrink-0">
-              <span className="mb-4 inline-block rounded bg-[#439897] px-4 py-1 font-avenir text-[11px] font-normal text-white sm:text-[12px] lg:text-[14px]">
-                Why It Matters
-              </span>
+<div className="w-full min-w-0 lg:w-[38%] lg:shrink-0">
+  <span
+    className="
+      mb-4
+      inline-block
+      rounded
+      bg-[#439897]
+      px-4
+      py-1
+      font-avenir
+      text-[14px]
+      font-normal
+      text-white
+    "
+  >
+    Why It Matters
+  </span>
 
-              <h2 className="mb-8 font-avenir text-[30px] font-extrabold leading-[1.1] text-black sm:text-[34px] lg:mb-10 lg:text-[36px] xl:text-[40px]">
-                Trusted By Organisations Across India
-              </h2>
+  <h2
+  className="
+    mb-4
+    font-avenir
+    text-[24px]
+    font-extrabold
+    leading-[1.1]
+    text-black
 
-              <p className="mb-8 max-w-[500px] font-nunito-sans text-[15px] font-normal leading-[24px] tracking-[0.04em] text-[#5B5B5B] sm:text-[17px] lg:mb-10 lg:text-[18px] xl:text-[20px]">
-                A respectful workplace is created through awareness,
-                accountability, practical learning, and fair processes. By
-                strengthening prevention and response mechanisms, organisations
-                can promote safer workplaces where employees feel respected,
-                supported, and heard.
-              </p>
+    sm:text-[30px]
 
-              <button className="rounded-[5px] bg-[#439897] px-5 py-2.5 font-avenir text-[14px] font-normal text-[#C7E0E0] sm:px-6 sm:py-3 sm:text-[16px] xl:text-[18px]">
-                Talk to an Expert
-              </button>
-            </div>
+    lg:mb-10
+    lg:text-[40px]
+  "
+>
+  Trusted By Organisations Across India
+</h2>
+
+  <p
+    className="
+      mb-8
+      max-w-[500px]
+      font-nunito-sans
+      text-[14px]
+      font-normal
+      leading-[24px]
+      tracking-[0.04em]
+      text-[#5B5B5B]
+
+      sm:text-[16px]
+
+      lg:mb-10
+    "
+  >
+    A respectful workplace is created through awareness, accountability,
+    practical learning, and fair processes. By strengthening prevention and
+    response mechanisms, organisations can promote safer workplaces where
+    employees feel respected, supported, and heard.
+  </p>
+
+  <button
+    className="
+      rounded-[5px]
+      bg-[#439897]
+      px-5
+      py-2.5
+      font-avenir
+      font-extrabold
+      text-[14px]
+      text-[#C7E0E0]
+
+      sm:px-6
+      sm:py-3
+    "
+  >
+    Talk to an Expert
+  </button>
+</div>
 
             {/* RIGHT DIV */}
             <div className="relative w-full min-w-0 lg:w-[60%] lg:shrink-0">
@@ -71,9 +126,9 @@ export default function WhyitMatter() {
                   <div
                     key={index}
                     className={`relative flex h-[220px] w-full shrink-0 flex-col justify-between rounded-[8px] p-5 text-white sm:h-[242px] sm:p-6 min-[700px]:w-[calc(50%-12px)] lg:w-[calc(50%-12px)] ${
-                    index === 1 || index === 3
-  ? "items-end text-right max-[699px]:items-start max-[699px]:text-left"
-  : "items-start text-left"
+                      index === 1 || index === 3
+                        ? "items-end text-right max-[699px]:items-start max-[699px]:text-left"
+                        : "items-start text-left"
                     }`}
                     style={{
                       background:
@@ -91,11 +146,11 @@ export default function WhyitMatter() {
 
                     {/* CARD CONTENT */}
                     <div
-                    className={`${
-    index === 1 || index === 3
-      ? "text-right max-[699px]:text-left"
-      : "text-left"
-  }`}
+                      className={`${
+                        index === 1 || index === 3
+                          ? "text-right max-[699px]:text-left"
+                          : "text-left"
+                      }`}
                     >
                       <h3
                         className={`whitespace-pre-line font-avenir font-extrabold leading-[1.1] ${

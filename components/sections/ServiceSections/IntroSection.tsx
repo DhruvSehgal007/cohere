@@ -102,76 +102,130 @@ export default function IntroSection() {
     <section className="py-10 sm:py-12 md:py-16">
       <div className="container-custom px-4 sm:px-6">
         {/* TOP CONTENT */}
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <div className="w-full md:w-1/2">
-            <span className="inline-block rounded bg-[#439897] px-3 py-1 font-avenir text-[11px] text-white sm:px-4 sm:text-[14px]">
-              THE COHERE ADVANTAGE
-            </span>
+<div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+  <div className="w-full lg:w-1/2">
+    <span className="inline-block rounded bg-[#439897] px-3 py-1 font-avenir text-[12px] text-white sm:px-4 sm:text-[14px]">
+      INTRODUCTION SECTION
+    </span>
 
-            <h2 className="mt-3 max-w-[620px] font-avenir text-[26px] font-extrabold leading-[1.15] text-black sm:text-[30px] md:mt-4 md:text-[36px] lg:text-[40px]">
-              Everything You Need to Build a Better Workplace
-            </h2>
-          </div>
+    <h2
+      className="
+        mt-3
+        w-full
+        font-avenir
+        text-[22px]
+        font-extrabold
+        leading-[1.15]
+        text-black
 
-          <p className="w-full max-w-[520px] font-nunito-sans text-[14px] leading-6 text-[#5B5B5B] sm:text-[15px] sm:leading-7 md:w-1/2 md:text-right md:text-[16px]">
-            From legal guidance and workplace investigations to compliance and
-            trusted advisory services, we provide the expertise organizations
-            rely on at every stage.
-          </p>
-        </div>
+        sm:text-[30px]
+        md:mt-4
+        md:text-[36px]
+
+        lg:max-w-[540px]
+        lg:text-[40px]
+      "
+    >
+      Supporting Organisations Across Every Stage of Workplace Compliance
+    </h2>
+  </div>
+
+  <p
+    className="
+      w-full
+      font-nunito-sans
+      text-[14px]
+      leading-6
+      text-[#5B5B5B]
+
+      sm:text-[15px]
+      sm:leading-7
+
+      lg:max-w-[520px]
+      lg:w-1/2
+      lg:text-right
+      lg:text-[16px]
+    "
+  >
+    Our services combine legal insight, practical workplace experience, and
+    learning-led solutions to help organisations strengthen compliance,
+    support Internal Committees, improve workplace culture, and respond
+    confidently to evolving statutory responsibilities.
+  </p>
+</div>
 
         {/* CARDS */}
         <div className="mt-8 grid grid-cols-1 gap-4 sm:mt-10 md:grid-cols-2 xl:mt-14 xl:grid-cols-3">
           {cards.map((card, index) => (
             <div
               key={index}
-              className="group rounded-[16px] border border-[#EFEFEF] bg-white p-5 shadow-[0_6px_14px_rgba(0,0,0,0.16)] transition-all duration-300 hover:bg-[#439897] sm:p-6 md:p-7 lg:p-8"
+              className="group relative overflow-hidden rounded-[16px] border border-[#EFEFEF] bg-white p-5 shadow-[0_6px_14px_rgba(0,0,0,0.16)] transition-all duration-500 ease-in-out sm:p-6 md:p-7 lg:p-8"
             >
-              {/* ICON */}
-              <div className="relative mb-5 h-[65px] w-[100px] sm:mb-6 sm:h-[75px] sm:w-[115px] md:mb-8 md:h-[90px] md:w-[132px]">
-                {/* Dark Icon */}
-                <Image
-                  src={card.icon}
-                  alt={card.title}
-                  fill
-                  className="object-contain opacity-100 transition-all duration-500 ease-in-out group-hover:scale-95 group-hover:opacity-0"
-                />
+              {/* GRADIENT OVERLAY ON HOVER */}
+              <div
+                className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100"
+                style={{
+                  background:
+                    "linear-gradient(180deg, #439897 0%, #2E262E 100%)",
+                }}
+              />
 
-                {/* White Icon */}
-                <Image
-                  src={card.hoverIcon}
-                  alt={card.title}
-                  fill
-                  className="scale-95 object-contain opacity-0 transition-all duration-500 ease-in-out group-hover:scale-100 group-hover:opacity-100"
-                />
+              {/* NOISE / TEXTURE OVERLAY ON HOVER */}
+              <div
+                className="pointer-events-none absolute inset-0 opacity-0 mix-blend-overlay transition-opacity duration-500 ease-in-out group-hover:opacity-20"
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+                }}
+              />
+
+              {/* CONTENT WRAPPER (Keeps elements above absolute overlays) */}
+              <div className="relative z-10">
+                {/* ICON BOX */}
+                <div className="relative mb-5 flex h-[70px] w-[70px] items-center justify-center rounded-[12px] bg-[#f0f7f7] transition-colors duration-500 group-hover:bg-[#1A5C5A] sm:mb-6 sm:h-[78px] sm:w-[78px] md:mb-8 md:h-[78px] md:w-[78px]">
+                  {/* Dark Icon */}
+                  <Image
+                    src={card.icon}
+                    alt={card.title}
+                    fill
+                    className="object-contain p-2 opacity-100 transition-all duration-500 ease-in-out group-hover:scale-95 group-hover:opacity-0"
+                  />
+
+                  {/* White Icon */}
+                  <Image
+                    src={card.hoverIcon}
+                    alt={card.title}
+                    fill
+                    className="scale-95 object-contain p-2 opacity-0 transition-all duration-500 ease-in-out group-hover:scale-100 group-hover:opacity-100"
+                  />
+                </div>
+
+                {/* TITLE */}
+                <h3 className="font-nunito-sans-bold text-[20px] leading-[1.15] text-black transition-colors duration-500 group-hover:text-white sm:text-[20px] md:text-[20px] lg:text-[20px]">
+                  {card.title}
+                </h3>
+
+                {/* DESCRIPTION */}
+                <p className="mt-4 font-nunito-sans text-[14px] text-[#5B5B5B] transition-colors duration-500 group-hover:text-white/90 sm:mt-5 sm:text-[15px] md:text-[16px]">
+                  {card.description}
+                </p>
+
+                {/* INCLUDES */}
+                <h4 className="mt-6 font-nunito-sans-bold text-[20px] leading-none text-black transition-colors duration-500 group-hover:text-white sm:mt-7 sm:text-[20px] md:mt-8 md:text-[20px]">
+                  Includes
+                </h4>
+
+                <ul className="mt-4 space-y-2 sm:mt-5">
+                  {card.items.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-2 font-nunito-sans text-[13px] leading-5 text-[#5B5B5B] transition-colors duration-500 group-hover:text-white/90 sm:text-[14px] md:text-[15px]"
+                    >
+                      <span>•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-
-              {/* TITLE */}
-              <h3 className="font-avenir text-[26px] font-extrabold leading-[1.15] text-black transition-colors duration-300 group-hover:text-white sm:text-[30px] md:text-[34px] lg:text-[40px]">
-                {card.title}
-              </h3>
-
-              {/* DESCRIPTION */}
-              <p className="mt-4 font-nunito-sans text-[14px] leading-6 text-[#5B5B5B] transition-colors duration-300 group-hover:[color:#D9D9D9] sm:mt-5 sm:text-[15px] sm:leading-7 md:text-[16px]">
-                {card.description}
-              </p>
-
-              {/* INCLUDES */}
-              <h4 className="mt-6 font-avenir text-[28px] font-extrabold leading-none text-[#1B3D3C] transition-colors duration-300 group-hover:text-white sm:mt-7 sm:text-[32px] md:mt-8 md:text-[36px]">
-                Includes
-              </h4>
-
-              <ul className="mt-4 space-y-2 sm:mt-5">
-                {card.items.map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-start gap-2 font-nunito-sans text-[13px] leading-5 text-[#5B5B5B] transition-colors duration-300 group-hover:[color:#D9D9D9] sm:text-[14px] md:text-[15px]"
-                  >
-                    <span>•</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
           ))}
         </div>

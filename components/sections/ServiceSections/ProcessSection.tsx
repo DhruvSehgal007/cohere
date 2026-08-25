@@ -46,61 +46,54 @@ export default function ProcessSection() {
       <div className="container-custom px-4 sm:px-6">
 
         {/* HEADING */}
-        <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
-          <div>
-            <span
-              className="
-                inline-block
-                rounded
-                bg-[#439897]
-                px-3
-                py-1
-                font-avenir
-                text-[11px]
-                font-normal
-                text-white
-                sm:px-4
-                sm:text-[14px]
-              "
-            >
-              PROCESS SECTION
-            </span>
+<div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+  <div className="w-full lg:w-1/2">
+    <span className="inline-block rounded bg-[#439897] px-3 py-1 font-avenir text-[12px] text-white sm:px-4 sm:text-[14px]">
+      PROCESS SECTION
+    </span>
 
-            <h2
-              className="
-                mt-3
-                max-w-[620px]
-                font-avenir
-                text-[30px]
-                font-extrabold
-                leading-[1.1]
-                text-black
-                sm:text-[36px]
-                lg:mt-4
-                lg:text-[40px]
-              "
-            >
-              How We Support Organisations
-            </h2>
-          </div>
+    <h2
+      className="
+        mt-3
+        w-full
+        font-avenir
+        text-[22px]
+        font-extrabold
+        leading-[1.15]
+        text-black
 
-          <p
-            className="
-              max-w-[520px]
-              font-nunito-sans
-              text-[14px]
-              leading-6
-              text-[#5B5B5B]
-              sm:text-[15px]
-              sm:leading-7
-              md:text-right
-              lg:text-[16px]
-            "
-          >
-            Understanding your organisation&apos;s workplace requirements and
-            compliance priorities.
-          </p>
-        </div>
+        sm:text-[30px]
+        md:mt-4
+        md:text-[36px]
+
+        lg:max-w-[540px]
+        lg:text-[40px]
+      "
+    >
+      How We Support Organisations
+    </h2>
+  </div>
+
+  <p
+    className="
+      w-full
+      font-nunito-sans
+      text-[14px]
+      leading-6
+      text-[#5B5B5B]
+
+      sm:text-[15px]
+      sm:leading-7
+
+      lg:max-w-[520px]
+      lg:w-1/2
+      lg:text-right
+      lg:text-[16px]
+    "
+  >
+    Understanding your organisation's workplace requirements and compliance priorities.
+  </p>
+</div>
 
         {/* PROCESS CARDS */}
         <div

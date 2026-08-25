@@ -49,7 +49,7 @@ export default function FAQSection() {
 
       </div>
 
-      <div className="mx-auto w-full max-w-[994px] px-4 sm:px-6">
+      <div className="container-custom px-4 sm:px-6">
         <FAQ data={faqData} />
       </div>
     </section>

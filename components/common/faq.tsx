@@ -38,10 +38,10 @@ export default function FAQ({ data }: FAQProps) {
 
               {/* Animated Plus / Minus */}
               <div className="relative w-5 h-5 flex items-center justify-center">
-                <span className="absolute w-5 h-[2px] bg-[#439897] rounded-full"></span>
+                <span className="absolute w-5 h-[4px] bg-[#116968] rounded-full"></span>
 
                 <span
-                  className={`absolute w-[2px] h-5 bg-[#439897] rounded-full transition-all duration-300 ${
+                  className={`absolute w-[4px] h-5 bg-[#116968] rounded-full transition-all duration-300 ${
                     isOpen
                       ? "rotate-90 opacity-0"
                       : "rotate-0 opacity-100"
