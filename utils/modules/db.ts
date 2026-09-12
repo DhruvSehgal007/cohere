@@ -1,18 +1,12 @@
 import mongoose from "mongoose";
 
-const MONGO_URI = process.env.MONGO_URI;
-
-if (!MONGO_URI) {
-  throw new Error("MONGO_URI is not defined in .env.local");
-}
-
 declare global {
   var mongooseConnection:
     | {
         conn: typeof mongoose | null;
         promise: Promise<typeof mongoose> | null;
       }
-    | undefined; 
+    | undefined;
 }
 
 const cached = global.mongooseConnection || {
@@ -25,6 +19,12 @@ global.mongooseConnection = cached;
 export async function connectDB() {
   if (cached.conn) {
     return cached.conn;
+  }
+
+  const MONGO_URI = process.env.MONGO_URI;
+
+  if (!MONGO_URI) {
+    throw new Error("MONGO_URI is not defined in .env.local");
   }
 
   if (!cached.promise) {
