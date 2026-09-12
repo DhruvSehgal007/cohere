@@ -1,9 +1,16 @@
 import Image from "next/image";
 import hsbcLogo from "@/assets/images/homepage/HSBC.png";
-import heroFinCorpLogo from "@/assets/images/homepage/hero-fin-crop.png";
+import heroFinCorpLogo from "@/assets/images/homepage/herofincrop.png";
 import quoraLogo from "@/assets/images/homepage/quora.png";
 import paysafeLogo from "@/assets/images/homepage/paysafe.png";
-import ukIndiaLogo from "@/assets/images/homepage/uk-inida.png";
+import ukIndiaLogo from "@/assets/images/homepage/uk-india.png";
+import standardchatered from "@/assets/images/homepage/standard-chatered.png";
+import rukart from "@/assets/images/homepage/rukart.png";
+import gmn from "@/assets/images/homepage/gmn.png";
+import harmonic from "@/assets/images/homepage/harmonic.png";
+
+
+
 
 const rowOneLogos = [
   { src: hsbcLogo, alt: "HSBC" },
@@ -11,11 +18,10 @@ const rowOneLogos = [
   { src: quoraLogo, alt: "Quora" },
   { src: paysafeLogo, alt: "Paysafe" },
   { src: ukIndiaLogo, alt: "UK India Business Council" },
-  { src: hsbcLogo, alt: "HSBC" },
-  { src: heroFinCorpLogo, alt: "HeroFinCorp" },
-  { src: quoraLogo, alt: "Quora" },
-  { src: paysafeLogo, alt: "Paysafe" },
-  { src: ukIndiaLogo, alt: "UK India Business Council" },
+  { src: standardchatered, alt: "Standard Chartered" },
+  { src: rukart, alt: "RuKart" },
+  { src: gmn, alt: "GMM Pfaudler" },
+  { src: harmonic, alt: "Harmonic" },
 ];
 
 // TODO: swap these placeholders for harmonic, GMM Pfaudler, Standard Chartered,
@@ -25,12 +31,13 @@ const rowTwoLogos = [
   { src: heroFinCorpLogo, alt: "HeroFinCorp" },
   { src: quoraLogo, alt: "Quora" },
   { src: paysafeLogo, alt: "Paysafe" },
+  { src: standardchatered, alt: "Standard Chartered" },
+  { src: rukart, alt: "RuKart" },
+  { src: gmn, alt: "GMM Pfaudler" },
+  { src: harmonic, alt: "Harmonic" },
   { src: hsbcLogo, alt: "HSBC" },
   { src: heroFinCorpLogo, alt: "HeroFinCorp" },
-  { src: quoraLogo, alt: "Quora" },
-  { src: paysafeLogo, alt: "Paysafe" },
-  { src: hsbcLogo, alt: "HSBC" },
-  { src: heroFinCorpLogo, alt: "HeroFinCorp" },
+
   { src: quoraLogo, alt: "Quora" },
   { src: paysafeLogo, alt: "Paysafe" },
 ];
@@ -40,8 +47,12 @@ const marqueeRowTwo = [...rowTwoLogos, ...rowTwoLogos, ...rowTwoLogos, ...rowTwo
 
 function LogoCard({ src, alt }: { src: typeof hsbcLogo; alt: string }) {
   return (
-    <div className="flex items-center justify-center">
-      <Image src={src} alt={alt} className="h-full w-auto max-h-24 object-contain" />
+    <div className="p-5 w-[250px] h-[90px] md:w-[348px] md:h-[120px] flex items-center justify-center border border-[#2E262E] rounded-[8px] shadow-[4px_4px_8px_#00000048] shrink-0">
+      <Image
+        src={src}
+        alt={alt}
+        className="max-w-full max-h-full w-auto h-auto object-contain"
+      />
     </div>
   );
 }
@@ -65,7 +76,8 @@ export default function OurClientsSection() {
 
       {/* Row 1 - scrolls left */}
       <div className="w-full overflow-hidden pb-6">
-        <div className="marquee-track flex w-max gap-10 animate-marquee">
+        {/* <div className="marquee-track flex w-max gap-10 animate-marquee"> */}
+          <div className="marquee-track flex w-max gap-10 animate-marquee">
           {marqueeRowOne.map((logo, index) => (
             <LogoCard key={`row1-${logo.alt}-${index}`} src={logo.src} alt={logo.alt} />
           ))}
@@ -74,7 +86,8 @@ export default function OurClientsSection() {
 
       {/* Row 2 - scrolls right */}
       <div className="w-full overflow-hidden pb-16">
-        <div className="marquee-track flex w-max gap-10 animate-marquee-delay">
+        {/* <div className="marquee-track flex w-max gap-10 animate-marquee-delay"> */}
+          <div className="marquee-track flex w-max gap-10 animate-marquee-delay">
           {marqueeRowTwo.map((logo, index) => (
             <LogoCard key={`row2-${logo.alt}-${index}`} src={logo.src} alt={logo.alt} />
           ))}

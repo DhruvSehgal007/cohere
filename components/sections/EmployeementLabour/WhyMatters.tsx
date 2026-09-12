@@ -129,7 +129,7 @@ export default function WhyMatters() {
           transition
           hover:bg-gray-100
 
-          sm:text-[14px]
+          sm:text-[16px]
         "
       >
         TALK TO AN EXPERT
@@ -151,7 +151,7 @@ export default function WhyMatters() {
           transition
           hover:bg-white/10
 
-          sm:text-[14px]
+          sm:text-[16px]
         "
       >
         CONTACT US

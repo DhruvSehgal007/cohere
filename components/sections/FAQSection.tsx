@@ -1,38 +1,41 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import FAQ from "@/components/common/faq";
 
-const faqData = [
-  {
-    question:
-      "Can Cohere act as the External Member on our Internal Committee?",
-    answer:
-      "Yes. Cohere provides experienced External Members for Internal Committees while ensuring complete compliance with the PoSH Act.",
-  },
-  {
-    question: "Does Cohere help draft and review workplace policies?",
-    answer:
-      "Yes. We help draft, review and update workplace policies according to legal requirements and your organization's needs.",
-  },
-  {
-    question:
-      "Can Cohere support organizations during regulatory audits and compliance reviews?",
-    answer:
-      "Absolutely. We provide complete compliance support, documentation review and audit assistance.",
-  },
-  {
-    question:
-      "Do you provide customized solutions or only standard compliance packages?",
-    answer:
-      "Every organization has different requirements. Our services are completely customized according to your business needs.",
-  },
-  {
-    question:
-      "Can Cohere help establish and train Internal Committees (ICs)?",
-    answer:
-      "Yes. We help establish Internal Committees, train members and conduct awareness sessions to ensure legal compliance.",
-  },
-];
+type FAQItem = {
+  _id: string;
+  question: string;
+  answer: string;
+  order: number;
+};
 
 export default function FAQSection() {
+  const [faqData, setFaqData] = useState<FAQItem[]>([]);
+
+  useEffect(() => {
+    const fetchFAQs = async () => {
+      try {
+        const response = await fetch("/api/faqs", {
+          cache: "no-store",
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          setFaqData(data.faqs);
+        }
+      } catch (error) {
+        console.error(
+          "Failed to load FAQs:",
+          error
+        );
+      }
+    };
+
+    fetchFAQs();
+  }, []);
+
   return (
     <section className="pb-12 md:pb-16 lg:pb-20">
       <div className="container-custom pb-8 md:pb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-5 md:gap-6">

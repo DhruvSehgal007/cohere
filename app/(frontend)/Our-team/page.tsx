@@ -1,4 +1,4 @@
-import OurTeam from "@/components/sections/OurTeam/OurTeam";
+import { OurTeam } from "@/components/sections/OurTeam/OurTeam";
 export default function EmployeementLabourPage() {
   return (
     <>
