@@ -4,6 +4,79 @@ import User from "../models/User";
 import { connectDB } from "../modules/db";
 import { createToken, verifyToken } from "../modules/auth";
 
+export async function registerUser(
+  name: string,
+  email: string,
+  password: string
+) {
+  if (!name || !email || !password) {
+    return {
+      status: 400,
+      data: {
+        success: false,
+        message: "Name, email and password are required",
+      },
+    };
+  }
+
+  if (password.length < 6) {
+    return {
+      status: 400,
+      data: {
+        success: false,
+        message: "Password must be at least 6 characters long",
+      },
+    };
+  }
+
+  await connectDB();
+
+  const normalizedEmail = email.toLowerCase().trim();
+  const existingUser = await User.findOne({
+    email: normalizedEmail,
+  });
+
+  if (existingUser) {
+    return {
+      status: 409,
+      data: {
+        success: false,
+        message: "An account with this email already exists",
+      },
+    };
+  }
+
+  const hashedPassword = await bcrypt.hash(password, 10);
+
+  const newUser = await User.create({
+    name: name.trim(),
+    email: normalizedEmail,
+    password: hashedPassword,
+    role: "admin",
+  });
+
+  const token = await createToken({
+    id: newUser._id.toString(),
+    role: newUser.role,
+    email: newUser.email,
+  });
+
+  return {
+    status: 201,
+    token,
+    data: {
+      success: true,
+      message: "Account created successfully",
+      user: {
+        id: newUser._id.toString(),
+        name: newUser.name,
+        email: newUser.email,
+        role: newUser.role,
+      },
+    },
+  };
+}
+
 export async function loginUser(
   email: string,
   password: string
