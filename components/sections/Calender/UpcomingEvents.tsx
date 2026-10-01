@@ -240,11 +240,287 @@ export default function UpcomingEvents() {
       </div>
 
 {/* for shapes */}
-<div className="container-custom mt-8 px-4 sm:px-6">
+<div className="container-custom mt-16 px-4 sm:px-6 sm:mt-34">
 
-  {/* WHY ATTEND FIGURE */}
-  <div className="relative mx-auto h-[680px] w-full max-w-[760px]">
+  {/* =====================================================
+      MOBILE / TABLET - MAX 768PX
+  ====================================================== */}
+  <div className="block min-[769px]:hidden">
 
+    {/* HEADING */}
+    <h2
+      className="
+        mb-8
+        text-center
+        font-avenir
+        text-[26px]
+        font-extrabold
+        text-[#101C1C]
+      "
+    >
+      Why Attend?
+    </h2>
+
+
+    {/* MOBILE CARDS */}
+    <div className="flex flex-col items-center gap-0">
+
+
+      {/* =========================
+          CARD 1
+      ========================= */}
+      <div
+        className="
+          relative
+          h-[280px]
+          w-full
+          max-w-[540px]
+          drop-shadow-[0_8px_8px_rgba(4,0,66,0.10)]
+        "
+      >
+        <svg
+          viewBox="0 0 450 270"
+          className="absolute inset-0 h-full w-full"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path
+            d="
+              M 0 95
+              A 320 320 0 0 1 450 95
+              L 310 235
+              A 110 110 0 0 0 140 235
+              Z
+            "
+            fill="white"
+            stroke="#F1F1F1"
+            strokeWidth="1"
+          />
+        </svg>
+
+        {/* ICON */}
+        <div
+          className="
+            absolute
+            left-1/2
+            top-[-20px]
+            h-[70px]
+            w-[70px]
+            -translate-x-1/2
+            rounded-full
+            bg-[#439897]
+          "
+        />
+
+        {/* CONTENT */}
+        <div
+          className="
+            absolute
+            left-1/2
+            top-[64px]
+            w-[75%]
+            max-w-[300px]
+            -translate-x-1/2
+            text-center
+          "
+        >
+          <h3 className="font-avenir text-[18px] font-bold text-[#439897]">
+            Practical Learning
+          </h3>
+
+          <p
+            className="
+              mt-2
+              font-nunito-sans
+              text-[16px]
+              leading-[1.5]
+              tracking-[0.04em]
+              text-[#608383]
+            "
+          >
+            Understand workplace responsibilities through practical discussions
+            and case studies.
+          </p>
+        </div>
+      </div>
+
+
+      {/* =========================
+          CARD 2
+      ========================= */}
+      <div
+        className="
+          relative
+          h-[280px]
+          w-full
+          max-w-[540px]
+          drop-shadow-[0_8px_8px_rgba(4,0,66,0.10)]
+        "
+      >
+        <svg
+          viewBox="0 0 450 270"
+          className="absolute inset-0 h-full w-full"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path
+            d="
+              M 0 95
+              A 320 320 0 0 1 450 95
+              L 310 235
+              A 110 110 0 0 0 140 235
+              Z
+            "
+            fill="white"
+            stroke="#F1F1F1"
+            strokeWidth="1"
+          />
+        </svg>
+
+        {/* ICON */}
+        <div
+          className="
+            absolute
+            left-1/2
+            top-[-20px]
+            h-[70px]
+            w-[70px]
+            -translate-x-1/2
+            rounded-full
+            bg-[#439897]
+          "
+        />
+
+        {/* CONTENT */}
+        <div
+          className="
+            absolute
+            left-1/2
+            top-[64px]
+            w-[75%]
+            max-w-[300px]
+            -translate-x-1/2
+            text-center
+          "
+        >
+          <h3 className="font-avenir text-[18px] font-bold text-[#439897]">
+            Meaningful Conversations
+          </h3>
+
+          <p
+            className="
+              mt-2
+              font-nunito-sans
+              text-[16px]
+              leading-[1.5]
+              tracking-[0.04em]
+              text-[#608383]
+            "
+          >
+            Build confidence to respond to workplace concerns with greater
+            clarity and understanding.
+          </p>
+        </div>
+      </div>
+
+
+      {/* =========================
+          CARD 3
+      ========================= */}
+      <div
+        className="
+          relative
+          h-[280px]
+          w-full
+          max-w-[540px]
+          drop-shadow-[0_8px_8px_rgba(4,0,66,0.10)]
+        "
+      >
+        <svg
+          viewBox="0 0 450 270"
+          className="absolute inset-0 h-full w-full"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path
+            d="
+              M 0 95
+              A 320 320 0 0 1 450 95
+              L 310 235
+              A 110 110 0 0 0 140 235
+              Z
+            "
+            fill="white"
+            stroke="#F1F1F1"
+            strokeWidth="1"
+          />
+        </svg>
+
+        {/* ICON */}
+        <div
+          className="
+            absolute
+            left-1/2
+            top-[-20px]
+            h-[70px]
+            w-[70px]
+            -translate-x-1/2
+            rounded-full
+            bg-[#439897]
+          "
+        />
+
+        {/* CONTENT */}
+        <div
+          className="
+            absolute
+            left-1/2
+            top-[64px]
+            w-[75%]
+            max-w-[300px]
+            -translate-x-1/2
+            text-center
+          "
+        >
+          <h3 className="font-avenir text-[18px] font-bold text-[#439897]">
+            Expert Guidance
+          </h3>
+
+          <p
+            className="
+              mt-2
+              font-nunito-sans
+              text-[16px]
+              leading-[1.5]
+              tracking-[0.04em]
+              text-[#608383]
+            "
+          >
+            Learn from experienced lawyers, HR professionals, trainers, and
+            counsellors.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  {/* =====================================================
+      DESKTOP / LAPTOP - 769PX+
+      YOUR CURRENT DESIGN — UNCHANGED
+  ====================================================== */}
+  <div
+    className="
+      relative
+      mx-auto
+      hidden
+      h-[680px]
+      w-full
+      max-w-[760px]
+      min-[769px]:block
+    "
+  >
 
     {/* =========================
         TOP SHAPE
@@ -270,11 +546,8 @@ export default function UpcomingEvents() {
           d="
             M 0 95
             A 320 320 0 0 1 450 95
-
             L 310 235
-
             A 110 110 0 0 0 140 235
-
             Z
           "
           fill="white"
@@ -282,7 +555,6 @@ export default function UpcomingEvents() {
           strokeWidth="1"
         />
       </svg>
-
 
       {/* TOP ICON */}
       <div
@@ -298,7 +570,6 @@ export default function UpcomingEvents() {
         "
       />
 
-
       {/* TOP CONTENT */}
       <div
         className="
@@ -310,14 +581,7 @@ export default function UpcomingEvents() {
           text-center
         "
       >
-        <h3
-          className="
-            font-avenir
-            text-[18px]
-            font-bold
-            text-[#439897]
-          "
-        >
+        <h3 className="font-avenir text-[18px] font-bold text-[#439897]">
           Practical Learning
         </h3>
 
@@ -360,15 +624,10 @@ export default function UpcomingEvents() {
         <path
           d="
             M 92 0
-
             L 238 146
-
             A 110 110 0 0 0 238 299
-
             L 92 445
-
             A 320 320 0 0 1 92 0
-
             Z
           "
           fill="white"
@@ -376,7 +635,6 @@ export default function UpcomingEvents() {
           strokeWidth="1"
         />
       </svg>
-
 
       {/* LEFT ICON */}
       <div
@@ -390,7 +648,6 @@ export default function UpcomingEvents() {
           bg-[#439897]
         "
       />
-
 
       {/* LEFT CONTENT */}
       <div
@@ -454,13 +711,9 @@ export default function UpcomingEvents() {
         <path
           d="
             M 193 0
-
             A 320 320 0 0 1 193 445
-
             L 47 299
-
             A 110 110 0 0 0 47 146
-
             Z
           "
           fill="white"
@@ -468,7 +721,6 @@ export default function UpcomingEvents() {
           strokeWidth="1"
         />
       </svg>
-
 
       {/* RIGHT ICON */}
       <div
@@ -482,7 +734,6 @@ export default function UpcomingEvents() {
           bg-[#439897]
         "
       />
-
 
       {/* RIGHT CONTENT */}
       <div
@@ -531,18 +782,14 @@ export default function UpcomingEvents() {
         left-1/2
         top-[300px]
         z-20
-
         flex
         h-[220px]
         w-[220px]
         -translate-x-1/2
-
         items-center
         justify-center
-
         rounded-full
         bg-white
-
         shadow-[0_0_12px_rgba(4,0,66,0.12)]
       "
     >
