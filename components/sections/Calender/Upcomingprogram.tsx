@@ -88,7 +88,7 @@ export default function Upcomingprogram() {
       overflow-hidden
       bg-[#439897]
 
-      min-[1025px]:grid-cols-[55%_45%]
+      min-[901px]:grid-cols-[60%_34%]
       min-[1201px]:grid-cols-[40%_60%]
     "
   >
@@ -101,14 +101,18 @@ export default function Upcomingprogram() {
         min-w-0
         flex-col
         justify-center
+
         px-5
         py-8
 
         sm:px-7
         md:px-8
-        min-[1025px]:px-8
-        min-[1025px]:py-10
+
+        min-[901px]:px-6
+        min-[901px]:py-8
+
         min-[1201px]:px-10
+        min-[1201px]:py-10
       "
     >
       {/* LABEL */}
@@ -140,7 +144,8 @@ export default function Upcomingprogram() {
           text-white
 
           sm:text-[32px]
-          min-[1025px]:text-[34px]
+          min-[901px]:text-[28px]
+          min-[1100px]:text-[32px]
           min-[1201px]:text-[40px]
         "
       >
@@ -149,9 +154,19 @@ export default function Upcomingprogram() {
 
       {/* LOCATION */}
       <div className="mt-3 flex items-center gap-2">
-        <span className="text-[12px] text-white">●</span>
+        <span className="text-[12px] text-white">
+          ●
+        </span>
 
-        <span className="font-avenir text-[14px] font-bold uppercase text-white">
+        <span
+          className="
+            font-avenir
+            text-[14px]
+            font-bold
+            uppercase
+            text-white
+          "
+        >
           GURUGRAM
         </span>
       </div>
@@ -169,6 +184,9 @@ export default function Upcomingprogram() {
           text-[#174E4D]
 
           sm:text-[18px]
+
+          min-[901px]:text-[16px]
+          min-[1201px]:text-[18px]
         "
       >
         An interactive learning experience focused on workplace sexual
@@ -185,6 +203,9 @@ export default function Upcomingprogram() {
           font-bold
           leading-[1.5]
           text-[#003232]
+
+          min-[901px]:text-[14px]
+          min-[1201px]:text-[16px]
         "
       >
         For: HR Professionals • IC Members • Workplace Leaders
@@ -206,6 +227,7 @@ export default function Upcomingprogram() {
           text-[#101C1C]
           transition-colors
           duration-200
+
           hover:bg-[#F4A936]
 
           sm:text-[16px]
@@ -216,48 +238,39 @@ export default function Upcomingprogram() {
     </div>
 
     {/* ================= RIGHT IMAGE ================= */}
-    <div
-      className="
-        relative
-        hidden
-        min-w-0
-        w-full
-        items-center
-        justify-end
+    {/* ================= RIGHT IMAGE ================= */}
+<div
+  className="
+    relative
+    hidden
+    min-w-0
+    w-full
+    overflow-hidden
 
-        min-[1025px]:flex
-      "
-    >
-      {/* TABLET / SMALL LAPTOP IMAGE: 1025px–1200px */}
-      <Image
-        src={upcomingProgrammeTablet}
-        alt="Upcoming programme artwork"
-        className="
-          hidden
-          h-auto
-          w-full
-          object-contain
+    min-[901px]:block
+  "
+>
+  {/* TABLET IMAGE: 901px–1200px */}
+  <div className="absolute inset-0 hidden min-[901px]:block min-[1201px]:hidden">
+    <Image
+      src={upcomingProgrammeTablet}
+      alt="Upcoming programme artwork"
+      fill
+      className="object-contain object-right"
+    />
+  </div>
 
-          min-[1025px]:block
-          min-[1201px]:hidden
-        "
-      />
-
-      {/* DESKTOP IMAGE: ABOVE 1200px */}
-      <Image
-        src={upcomingProgramme}
-        alt="Upcoming programme artwork"
-        className="
-          hidden
-          h-auto
-          w-full
-          object-contain
-
-          min-[1201px]:block
-        "
-        priority
-      />
-    </div>
+  {/* DESKTOP IMAGE: 1201px+ */}
+  <div className="absolute inset-0 hidden min-[1201px]:block">
+    <Image
+      src={upcomingProgramme}
+      alt="Upcoming programme artwork"
+      fill
+      className="object-fill"
+      priority
+    />
+  </div>
+</div>
   </div>
 </div>
 
