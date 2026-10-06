@@ -3,13 +3,8 @@ import BlogHero from "@/components/sections/BlogSections/BlogHero";
 import FeaturedSlider from "@/components/sections/BlogSections/FeaturedSlider";
 import LatestInsights from "@/components/sections/BlogSections/LatestInsights";
 
-export const metadata: Metadata = {
-  title: "Blog | Cohere Consultants",
-  description:
-    "Stay informed with expert insights on workplace compliance, legal advisory, POSH updates, and organizational ethics.",
-};
 
-export default function BlogPage() {
+export default function CalenderPage() {
   return (
     <main className="min-h-screen bg-white">
       <BlogHero />
