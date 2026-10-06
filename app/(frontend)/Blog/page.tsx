@@ -1,16 +1,15 @@
-import ServiceBannerSection from "@/components/sections/ServiceSections/ServiceBannerSection";
-import OurServiceSection from "@/components/sections/AntiSexualHarassmentSections/OurServiceSection";
-import PracticalResourcesSection from "@/components/sections/AntiSexualHarassmentSections/PracticalResourcesSection";
-import WhyitMatterSection from "@/components/sections/AntiSexualHarassmentSections/whyItMatterSection";
+import type { Metadata } from "next";
+import BlogHero from "@/components/sections/BlogSections/BlogHero";
+import FeaturedSlider from "@/components/sections/BlogSections/FeaturedSlider";
+import LatestInsights from "@/components/sections/BlogSections/LatestInsights";
 
 
 export default function CalenderPage() {
   return (
-    <>
-      {/* <ServiceBannerSection /> */}
-      <OurServiceSection />
-      <PracticalResourcesSection />
-      <WhyitMatterSection />
-    </>
+    <main className="min-h-screen bg-white">
+      <BlogHero />
+      <FeaturedSlider />
+      <LatestInsights />
+    </main>
   );
 }

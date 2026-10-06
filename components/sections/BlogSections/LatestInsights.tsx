@@ -83,6 +83,7 @@ export default function LatestInsights() {
   const [cards, setCards] = useState<InsightCard[]>(initialInsights);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [hasLoadedAll, setHasLoadedAll] = useState(false);
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
   const handleViewMore = () => {
     if (hasLoadedAll) return;
@@ -97,64 +98,88 @@ export default function LatestInsights() {
   };
 
   return (
-    <section className="py-10 md:py-16">
+    <section className="py-12 md:py-16 bg-white">
       <div className="container-custom">
-        {/* Section Heading */}
-        <div className="mb-8 md:mb-10">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
+        {/* Section Heading (Figma: Avenir Bold 40px, leading 49px) */}
+        <div className="mb-10">
+          <h2 className="text-[28px] sm:text-[34px] md:text-[40px] font-avenir font-bold text-[#0D1E1E] leading-[1.22] tracking-tight">
             Latest Insights
           </h2>
         </div>
 
-        {/* Stable Cards Grid with IntroSection Hover Effect */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {cards.map((card, index) => (
-            <div
-              key={`${card.id}-${index}`}
-              className="group relative flex flex-col justify-between overflow-hidden rounded-[16px] border border-[#EFEFEF] bg-white p-6 shadow-[0_6px_14px_rgba(0,0,0,0.08)] transition-all duration-500 ease-in-out cursor-pointer hover:shadow-[0_12px_28px_rgba(0,0,0,0.18)] hover:-translate-y-1.5 animate-fade-in"
-            >
-              {/* GRADIENT OVERLAY ON HOVER (Exact match with IntroSection) */}
+        {/* Stable Cards Grid (Figma: 3 columns, 24px gap, cards 484x550) */}
+        <div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center"
+          onMouseLeave={() => setHoveredIdx(null)}
+        >
+          {cards.map((card, index) => {
+            const isActive =
+              hoveredIdx !== null ? hoveredIdx === index : index === 0;
+
+            return (
               <div
-                className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100"
-                style={{
-                  background:
-                    "linear-gradient(180deg, #439897 0%, #2E262E 100%)",
-                }}
-              />
+                key={`${card.id}-${index}`}
+                onMouseEnter={() => setHoveredIdx(index)}
+                className={`group relative flex flex-col justify-between w-full max-w-[484px] h-[550px] p-[32px] rounded-[16px] overflow-hidden select-none transition-all duration-500 ease-in-out cursor-pointer shadow-[2px_2px_8px_0px_rgba(0,0,0,0.10)] hover:shadow-[2px_6px_16px_0px_rgba(0,0,0,0.15)] hover:-translate-y-1 animate-fade-in ${
+                  isActive ? "bg-[#254f55]" : "bg-white"
+                }`}
+              >
+                {/* GRADIENT OVERLAY (Active/Hover state: #439897 to #2E262E) */}
+                <div
+                  className={`pointer-events-none absolute inset-0 transition-opacity duration-500 ease-in-out ${
+                    isActive ? "opacity-100" : "opacity-0"
+                  }`}
+                  style={{
+                    background:
+                      "linear-gradient(180deg, #439897 0%, #2E262E 100%)",
+                  }}
+                />
 
-              {/* NOISE / TEXTURE / BLURRY VOLUME OVERLAY ON HOVER */}
-              <div
-                className="pointer-events-none absolute inset-0 opacity-0 mix-blend-overlay transition-opacity duration-500 ease-in-out group-hover:opacity-20"
-                style={{
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-                }}
-              />
+                {/* NOISE / TEXTURE OVERLAY */}
+                <div
+                  className={`pointer-events-none absolute inset-0 mix-blend-overlay transition-opacity duration-500 ease-in-out ${
+                    isActive ? "opacity-20" : "opacity-0"
+                  }`}
+                  style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+                  }}
+                />
 
-              {/* CONTENT WRAPPER (Keeps elements above absolute overlays) */}
-              <div className="relative z-10 flex flex-col justify-between h-full">
-                <div className="space-y-3.5 mb-6">
-                  <h3 className="text-lg font-nunito-sans-bold leading-snug text-black transition-colors duration-500 group-hover:text-white">
-                    {card.title}
-                  </h3>
-                  <p className="text-sm font-nunito-sans leading-relaxed text-[#5B5B5B] transition-colors duration-500 group-hover:text-white/90">
-                    {card.description}
-                  </p>
-                </div>
+                {/* CONTENT WRAPPER */}
+                <div className="relative z-10 flex flex-col justify-between h-full gap-[24px]">
+                  {/* Top Text Block */}
+                  <div className="space-y-3">
+                    <h3
+                      className={`text-lg sm:text-[21px] font-avenir font-bold leading-[1.3] transition-colors duration-500 ${
+                        isActive ? "text-white" : "text-[#0D1E1E]"
+                      }`}
+                    >
+                      {card.title}
+                    </h3>
+                    <p
+                      className={`text-[15px] sm:text-[16px] font-nunito-sans leading-[1.55] transition-colors duration-500 ${
+                        isActive ? "text-white/90" : "text-[#5B5B5B]"
+                      }`}
+                    >
+                      {card.description}
+                    </p>
+                  </div>
 
-                {/* Bottom Image Container */}
-                <div className="relative w-full h-48 sm:h-52 rounded-xl overflow-hidden mt-auto bg-gray-100">
-                  <Image
-                    src={card.image}
-                    alt={card.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    priority={index < 3}
-                  />
+                  {/* Bottom Image Container (Figma: rounded-12px, ~268px height) */}
+                  <div className="relative w-full h-[268px] rounded-[12px] overflow-hidden mt-auto bg-gray-100 flex-shrink-0">
+                    <Image
+                      src={card.image}
+                      alt={card.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 484px"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      priority={index < 3}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* View More Button Section */}
