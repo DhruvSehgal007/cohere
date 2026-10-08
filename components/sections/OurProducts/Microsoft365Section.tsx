@@ -31,34 +31,45 @@ const microsoftApps = [
 
 export default function Microsoft365Section() {
   return (
-    <section className="w-full  py-[80px]">
+    <section className="w-full py-[60px] md:py-[80px]">
       <div className="container-custom">
         <div
           className="
             relative
+            flex
             min-h-[477px]
+            flex-col
+            gap-[20px]
             overflow-hidden
             rounded-[32px]
             border-[2px]
             border-[#34ADAB24]
             bg-[#F7FFFF]
+            px-[20px]
+            py-[24px]
+            sm:px-[26px]
+            sm:py-[28px]
+            md:px-[32px]
+            md:py-[32px]
+            lg:flex-row
+            lg:justify-between
           "
         >
-          {/* Left Content */}
+          {/* LEFT CONTENT */}
           <div
             className="
               relative
               z-10
-              px-[32px]
-              py-[32px]
-              lg:pr-[640px]
+              w-full
+              lg:min-w-[60%]
+              lg:w-[60%]
             "
           >
             {/* Heading */}
             <h2
               className="
                 font-avenir
-                text-[28px]
+                text-[26px]
                 font-[800]
                 leading-[1.25]
                 text-[#1B3D3C]
@@ -69,16 +80,17 @@ export default function Microsoft365Section() {
               Basic Version Built on Microsoft 365
             </h2>
 
-            {/* Sub Text */}
+            {/* Subtitle */}
             <p
               className="
                 mt-[12px]
                 font-nunito-sans
-                text-[18px]
-                leading-[26px]
+                text-[16px]
+                leading-[24px]
                 tracking-[0.04em]
                 text-[#494D4D]
                 md:text-[20px]
+                md:leading-[26px]
               "
             >
               No additional enterprise software required.
@@ -87,13 +99,15 @@ export default function Microsoft365Section() {
             {/* Compatible Heading */}
             <h3
               className="
-                mt-[48px]
+                mt-[38px]
                 font-nunito-sans-bold
-                text-[18px]
-                leading-[26px]
+                text-[17px]
+                leading-[24px]
                 tracking-[0.04em]
                 text-[#0D1E1E]
+                md:mt-[48px]
                 md:text-[20px]
+                md:leading-[26px]
               "
             >
               Compatible with
@@ -114,20 +128,32 @@ export default function Microsoft365Section() {
                   className="
                     relative
                     flex
-                    h-[90px]
+                    h-[72px]
                     items-center
                     justify-center
-                    px-[22px]
+                    px-[14px]
                     first:pl-0
+
+                    sm:h-[80px]
+                    sm:px-[18px]
+
+                    md:h-[90px]
+                    md:px-[18px]
+
+                    min-[1400px]:px-[22px]
                   "
                 >
                   <img
                     src={app.image}
                     alt={app.name}
                     className="
-                      h-[66px]
-                      w-[66px]
+                      h-[50px]
+                      w-[50px]
                       object-contain
+                      sm:h-[58px]
+                      sm:w-[58px]
+                      md:h-[66px]
+                      md:w-[66px]
                     "
                   />
 
@@ -137,10 +163,12 @@ export default function Microsoft365Section() {
                         absolute
                         right-0
                         top-1/2
-                        h-[86px]
-                        w-[3px]
+                        h-[65px]
+                        w-[2px]
                         -translate-y-1/2
                         bg-[#34ADAB24]
+                        md:h-[86px]
+                        md:w-[3px]
                       "
                     />
                   )}
@@ -151,14 +179,16 @@ export default function Microsoft365Section() {
             {/* Bottom Text */}
             <p
               className="
-                mt-[60px]
+                mt-[40px]
                 max-w-[708px]
                 font-nunito-sans
-                text-[18px]
-                leading-[26px]
+                text-[16px]
+                leading-[24px]
                 tracking-[0.04em]
                 text-[#494D4D]
+                md:mt-[60px]
                 md:text-[20px]
+                md:leading-[26px]
               "
             >
               This enables rapid deployment using your existing Microsoft 365
@@ -166,29 +196,30 @@ export default function Microsoft365Section() {
             </p>
           </div>
 
-          {/* Right Multicolor Window Image */}
+          {/* RIGHT IMAGE */}
           <div
             className="
-              pointer-events-none
-              absolute
-              bottom-0
-              right-0
-              hidden
-              h-full
-              w-[581px]
-              lg:block
+              flex
+              w-full
+              items-end
+              justify-end
+              -mb-[24px]
+              sm:-mb-[28px]
+              md:-mb-[32px]
+              lg:w-[40%]
+              lg:shrink-0
             "
           >
             <img
               src="/images/our-products/microsoft-window.png"
               alt=""
               className="
-                absolute
-                bottom-0
-                right-0
-                w-[581px]
-                max-w-none
+                h-auto
+                w-full
+                max-w-[420px]
                 object-contain
+                object-bottom
+                lg:max-w-none
               "
             />
           </div>

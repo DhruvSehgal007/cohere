@@ -1,92 +1,77 @@
-const orbitItems = [
+const leftItems = [
   {
     title: "Easy to follow, easy to use",
     icon: "fa-solid fa-hand-pointer",
-    side: "left",
-    top: "top-[18px]",
-    rowWidth: "w-[330px]",
+    angle: -140,
   },
   {
     title: "Engaging multilingual videos",
     icon: "fa-solid fa-chalkboard-user",
-    side: "left",
-    top: "top-[88px]",
-    rowWidth: "w-[380px]",
+    angle: -160,
   },
   {
     title: "Employee awareness",
     icon: "fa-solid fa-bullhorn",
-    side: "left",
-    top: "top-[160px]",
-    rowWidth: "w-[345px]",
+    angle: 180,
   },
   {
     title: "Manager interventions and IC orientation",
-    icon: "fa-solid fa-people-arrows-left-right",
-    side: "left",
-    top: "top-[230px]",
-    rowWidth: "w-[470px]",
+    icon: "fa-solid fa-people-group",
+    angle: 160,
   },
   {
     title: "FAQs, Resources and Assessments",
     icon: "fa-solid fa-file-circle-question",
-    side: "left",
-    top: "top-[300px]",
-    rowWidth: "w-[420px]",
+    angle: 140,
   },
+];
 
+const rightItems = [
   {
     title: "Customizable Options",
     icon: "fa-solid fa-sliders",
-    side: "right",
-    top: "top-[18px]",
-    rowWidth: "w-[300px]",
+    angle: -40,
   },
   {
     title: "Automated Certification",
-    icon: "fa-solid fa-id-card-clip",
-    side: "right",
-    top: "top-[88px]",
-    rowWidth: "w-[340px]",
+    icon: "fa-solid fa-certificate",
+    angle: -20,
   },
   {
     title: "HR Dashboard",
     icon: "fa-solid fa-desktop",
-    side: "right",
-    top: "top-[160px]",
-    rowWidth: "w-[255px]",
+    angle: 0,
   },
   {
     title: "Monthly Updated Content",
     icon: "fa-solid fa-calendar-days",
-    side: "right",
-    top: "top-[230px]",
-    rowWidth: "w-[340px]",
+    angle: 20,
   },
   {
     title: "Real life case studies & illustrations",
-    icon: "fa-solid fa-file-medical",
-    side: "right",
-    top: "top-[300px]",
-    rowWidth: "w-[390px]",
+    icon: "fa-solid fa-file-image",
+    angle: 40,
   },
 ];
 
 export default function KeepItRightSection() {
+  const radiusX = 195;
+  const radiusY = 128;
+
+  const getPosition = (angle: number) => {
+    const rad = (angle * Math.PI) / 180;
+
+    return {
+      left: `calc(50% + ${Math.cos(rad) * radiusX}px)`,
+      top: `calc(50% + ${Math.sin(rad) * radiusY}px)`,
+    };
+  };
+
   return (
-    <section className="w-full bg-[#F7F8FA] py-[70px] md:py-[90px]">
+    <section className="w-full  py-[70px] md:py-[90px]">
       <div className="container-custom">
-        {/* Top Row */}
-        <div
-          className="
-            grid
-            grid-cols-1
-            gap-[24px]
-            lg:grid-cols-[1fr_0.65fr]
-            lg:gap-[60px]
-          "
-        >
-          {/* Left Heading */}
+        {/* Top row */}
+        <div className="grid grid-cols-1 gap-[24px] lg:grid-cols-[1fr_0.6fr] lg:gap-[70px]">
           <div>
             <div
               className="
@@ -134,11 +119,10 @@ export default function KeepItRightSection() {
             </h2>
           </div>
 
-          {/* Right Text */}
           <div className="lg:flex lg:justify-end">
             <p
               className="
-                max-w-[430px]
+                max-w-[410px]
                 font-nunito-sans
                 text-[14px]
                 leading-[22px]
@@ -147,21 +131,21 @@ export default function KeepItRightSection() {
                 md:text-[15px]
               "
             >
-              for PoSH &amp; Gender in Workplaces &amp; Educational
-              Institutions
+              for PoSH &amp; Gender in Workplaces &amp; Educational Institutions
             </p>
           </div>
         </div>
 
-        {/* Desktop Orbital Layout */}
-        <div className="relative mt-[40px] hidden lg:block">
-          <div className="relative mx-auto h-[430px] w-full max-w-[1120px]">
-            {/* Center Circle */}
+        {/* Desktop radial layout */}
+        <div className="mt-[25px] hidden lg:block">
+          <div className="relative mx-auto h-[450px] max-w-[1120px]">
+            {/* Center circle */}
             <div
               className="
                 absolute
                 left-1/2
                 top-1/2
+                z-10
                 flex
                 h-[220px]
                 w-[220px]
@@ -189,81 +173,109 @@ export default function KeepItRightSection() {
               </span>
             </div>
 
-            {/* Orbit Items */}
-            {orbitItems.map((item) => {
-              const isLeft = item.side === "left";
+            {/* Left items */}
+            {leftItems.map((item) => {
+              const position = getPosition(item.angle);
 
               return (
                 <div
                   key={item.title}
-                  className={`
+                  className="
                     absolute
-                    ${item.top}
-                    ${isLeft ? "left-[70px]" : "right-[70px]"}
-                    ${item.rowWidth}
-                  `}
+                    flex
+                    -translate-x-full
+                    -translate-y-1/2
+                    items-center
+                    gap-[18px]
+                  "
+                  style={position}
+                >
+                  <p
+                    className="
+                      w-[320px]
+                      text-right
+                      font-nunito-sans-bold
+                      text-[15px]
+                      leading-[22px]
+                      tracking-[0.03em]
+                      text-[#535353]
+                    "
+                  >
+                    {item.title}
+                  </p>
+
+                  <div
+                    className="
+                      flex
+                      h-[48px]
+                      w-[48px]
+                      shrink-0
+                      items-center
+                      justify-center
+                      rounded-full
+                      bg-[#DDF1F0]
+                      text-[18px]
+                      text-[#2E6D6C]
+                    "
+                  >
+                    <i className={item.icon}></i>
+                  </div>
+                </div>
+              );
+            })}
+
+            {/* Right items */}
+            {rightItems.map((item) => {
+              const position = getPosition(item.angle);
+
+              return (
+                <div
+                  key={item.title}
+                  className="
+                    absolute
+                    flex
+                    -translate-y-1/2
+                    items-center
+                    gap-[18px]
+                  "
+                  style={position}
                 >
                   <div
-                    className={`
+                    className="
                       flex
+                      h-[48px]
+                      w-[48px]
+                      shrink-0
                       items-center
-                      gap-[18px]
-                      ${isLeft ? "justify-end" : "justify-start"}
-                    `}
+                      justify-center
+                      rounded-full
+                      bg-[#DDF1F0]
+                      text-[18px]
+                      text-[#2E6D6C]
+                    "
                   >
-                    {isLeft && (
-                      <p
-                        className="
-                          font-nunito-sans-bold
-                          text-[16px]
-                          leading-[22px]
-                          tracking-[0.03em]
-                          text-[#535353]
-                          text-right
-                        "
-                      >
-                        {item.title}
-                      </p>
-                    )}
-
-                    <div
-                      className="
-                        flex
-                        h-[52px]
-                        w-[52px]
-                        shrink-0
-                        items-center
-                        justify-center
-                        rounded-full
-                        bg-[#DDF1F0]
-                        text-[20px]
-                        text-[#2E6D6C]
-                      "
-                    >
-                      <i className={item.icon}></i>
-                    </div>
-
-                    {!isLeft && (
-                      <p
-                        className="
-                          font-nunito-sans-bold
-                          text-[16px]
-                          leading-[22px]
-                          tracking-[0.03em]
-                          text-[#535353]
-                        "
-                      >
-                        {item.title}
-                      </p>
-                    )}
+                    <i className={item.icon}></i>
                   </div>
+
+                  <p
+                    className="
+                      w-[320px]
+                      font-nunito-sans-bold
+                      text-[15px]
+                      leading-[22px]
+                      tracking-[0.03em]
+                      text-[#535353]
+                    "
+                  >
+                    {item.title}
+                  </p>
                 </div>
               );
             })}
           </div>
         </div>
 
-        {/* Mobile / Tablet Layout */}
+        {/* Mobile / Tablet */}
         <div className="mt-[40px] lg:hidden">
           <div className="flex justify-center">
             <div
@@ -276,8 +288,6 @@ export default function KeepItRightSection() {
                 rounded-full
                 bg-[#FEBC5A]
                 text-center
-                sm:h-[200px]
-                sm:w-[200px]
               "
             >
               <span
@@ -287,7 +297,6 @@ export default function KeepItRightSection() {
                   font-[800]
                   leading-[1.05]
                   text-black
-                  sm:text-[31px]
                 "
               >
                 Product
@@ -297,29 +306,20 @@ export default function KeepItRightSection() {
             </div>
           </div>
 
-          <div className="mt-[32px] grid grid-cols-1 gap-[14px] sm:grid-cols-2">
-            {orbitItems.map((item) => (
-              <div
-                key={item.title}
-                className="
-                  flex
-                  items-center
-                  gap-[14px]
-                  rounded-[12px]
-                  bg-transparent
-                "
-              >
+          <div className="mt-[35px] grid grid-cols-1 gap-[16px] sm:grid-cols-2">
+            {[...leftItems, ...rightItems].map((item) => (
+              <div key={item.title} className="flex items-center gap-[12px]">
                 <div
                   className="
                     flex
-                    h-[48px]
-                    w-[48px]
+                    h-[44px]
+                    w-[44px]
                     shrink-0
                     items-center
                     justify-center
                     rounded-full
                     bg-[#DDF1F0]
-                    text-[18px]
+                    text-[17px]
                     text-[#2E6D6C]
                   "
                 >
@@ -331,7 +331,6 @@ export default function KeepItRightSection() {
                     font-nunito-sans-bold
                     text-[14px]
                     leading-[20px]
-                    tracking-[0.03em]
                     text-[#535353]
                   "
                 >

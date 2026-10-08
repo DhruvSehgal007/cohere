@@ -161,7 +161,7 @@ export default function ResolveSection() {
           border-[#439897]
           border-l-transparent
           border-t-transparent
-          bg-[#F7F8FA]
+          bg-white
         "
       >
         <div

@@ -4,6 +4,7 @@ import Microsoft365Section from "@/components/sections/OurProducts/Microsoft365S
 import EssentialsSection from "@/components/sections/OurProducts/EssentialsSection";
 import ReadinessFramework from "@/components/sections/OurProducts/ReadinessFramework";
 import KeepItRightSection from "@/components/sections/OurProducts/KeepItRightSection";
+import EcosystemSection from "@/components/sections/OurProducts/EcosystemSection";
 
 export default function OurProducts() {
   return (
@@ -14,6 +15,7 @@ export default function OurProducts() {
       <EssentialsSection />
       <ReadinessFramework />
       <KeepItRightSection />
+      <EcosystemSection />
     </>
   );
 }

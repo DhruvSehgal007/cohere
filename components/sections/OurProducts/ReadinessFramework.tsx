@@ -73,7 +73,7 @@ export default function ReadinessFramework() {
   }, []);
 
   return (
-    <section className="w-full bg-[#F7F8FA] py-[70px] md:py-[90px]">
+    <section className="w-full  py-[70px] md:py-[90px]">
       <div className="container-custom">
         <div
           className="
