@@ -66,6 +66,10 @@ export default function FeaturedSlider() {
   const initialIndex = featuredArticles.length * 2;
   const [closestIdx, setClosestIdx] = useState(initialIndex);
 
+  // Hover and pause state
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+  const [isPaused, setIsPaused] = useState(false);
+
   // Dragging state
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -159,30 +163,96 @@ export default function FeaturedSlider() {
     };
   }, [updateActiveCard, normalizeScroll]);
 
-  // Smooth scroll to target card
-  const scrollToCard = (index: number) => {
-    if (!sliderRef.current) return;
-    const targetCard = cardRefs.current[index];
-    if (targetCard) {
-      const targetLeft = targetCard.offsetLeft - sliderRef.current.offsetLeft;
-      sliderRef.current.scrollTo({
-        left: targetLeft,
-        behavior: "smooth",
-      });
-    }
-  };
+  const animRef = useRef<number | null>(null);
 
-  const handlePrev = () => {
-    scrollToCard(closestIdx - 1);
-  };
+  // High-performance smooth scroll to target card with exact timing (< 450ms)
+  const scrollToCard = useCallback(
+    (index: number, duration = 450) => {
+      if (!sliderRef.current) return;
+      let targetIndex = index;
+      if (targetIndex >= allArticles.length) {
+        targetIndex = initialIndex;
+      } else if (targetIndex < 0) {
+        targetIndex = initialIndex;
+      }
+      const targetCard = cardRefs.current[targetIndex];
+      if (!targetCard) return;
 
-  const handleNext = () => {
-    scrollToCard(closestIdx + 1);
-  };
+      const container = sliderRef.current;
+      const startLeft = container.scrollLeft;
+      const targetLeft = targetCard.offsetLeft - container.offsetLeft;
+      const distance = targetLeft - startLeft;
+
+      if (Math.abs(distance) < 1) return;
+
+      if (animRef.current !== null) {
+        cancelAnimationFrame(animRef.current);
+      }
+
+      const startTime = performance.now();
+
+      const step = (now: number) => {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // Fast start with silky smooth cubic ease-out landing
+        const ease = 1 - Math.pow(1 - progress, 3);
+
+        container.scrollLeft = startLeft + distance * ease;
+
+        if (progress < 1) {
+          animRef.current = requestAnimationFrame(step);
+        } else {
+          container.scrollLeft = targetLeft;
+          animRef.current = null;
+          updateActiveCard();
+          normalizeScroll();
+        }
+      };
+
+      animRef.current = requestAnimationFrame(step);
+    },
+    [initialIndex, updateActiveCard, normalizeScroll]
+  );
+
+  // Cleanup animation on unmount
+  useEffect(() => {
+    return () => {
+      if (animRef.current !== null) {
+        cancelAnimationFrame(animRef.current);
+      }
+    };
+  }, []);
+
+  // Automatic sliding interval: pauses on hover, drag, or tab switch
+  useEffect(() => {
+    if (isPaused || isMouseDown || isDragging || hoveredIdx !== null) return;
+
+    const interval = setInterval(() => {
+      scrollToCard(closestIdx + 1, 450);
+    }, 1500);
+
+    return () => clearInterval(interval);
+  }, [closestIdx, isPaused, isMouseDown, isDragging, hoveredIdx, scrollToCard]);
+
+  // Pause when the browser tab is hidden
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      setIsPaused(document.hidden);
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, []);
+
 
   // Mouse drag handlers
   const handleMouseDown = (e: React.MouseEvent) => {
     if (!sliderRef.current) return;
+    if (animRef.current !== null) {
+      cancelAnimationFrame(animRef.current);
+      animRef.current = null;
+    }
     setIsMouseDown(true);
     setIsDragging(false);
     setStartX(e.pageX - sliderRef.current.offsetLeft);
@@ -214,142 +284,107 @@ export default function FeaturedSlider() {
     <section className="pt-4 md:pt-6 pb-8 md:pb-12 bg-white">
       <div className="container-custom">
         {/* Featured Article Section Header */}
-        <div className="mb-8 flex items-end justify-between gap-4">
-          <div>
-            <div className="inline-flex items-center bg-[#439897] text-white text-[14px] font-avenir font-normal uppercase pl-[6px] pr-[10px] py-[1px] h-[27px] rounded-r-[5px] rounded-l-none shadow-[2px_2px_5px_rgba(0,0,0,0.25)]">
-              BLOG
-            </div>
-            <h2 className="text-[28px] sm:text-[34px] md:text-[40px] font-avenir font-bold text-[#0D1E1E] leading-[1.22] mt-[15px]">
-              Featured Article
-            </h2>
+        <div className="mb-8">
+          <div className="inline-flex items-center bg-[#439897] text-white text-[14px] font-avenir font-normal uppercase pl-[6px] pr-[10px] py-[1px] h-[27px] rounded-r-[5px] rounded-l-none shadow-[2px_2px_5px_rgba(0,0,0,0.25)]">
+            BLOG
           </div>
-
-          {/* Infinite Slider Navigation Arrows */}
-          <div className="flex items-center gap-2.5">
-            <button
-              type="button"
-              onClick={handlePrev}
-              aria-label="Previous article"
-              className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-700 hover:border-[#439897] hover:text-[#439897] hover:bg-gray-50 active:scale-95 transition-all cursor-pointer"
-            >
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-            </button>
-            <button
-              type="button"
-              onClick={handleNext}
-              aria-label="Next article"
-              className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-700 hover:border-[#439897] hover:text-[#439897] hover:bg-gray-50 active:scale-95 transition-all cursor-pointer"
-            >
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </button>
-          </div>
+          <h2 className="text-[28px] sm:text-[34px] md:text-[40px] font-avenir font-bold text-[#0D1E1E] leading-[1.22] mt-[15px]">
+            Featured Article
+          </h2>
         </div>
 
-        {/* Infinite Hand Slider Track */}
-        <div
-          ref={sliderRef}
-          onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUpOrLeave}
-          onMouseLeave={handleMouseUpOrLeave}
-          className={`flex gap-6 overflow-x-auto py-2 select-none ${
-            isMouseDown
-              ? "cursor-grabbing snap-none"
-              : "cursor-grab snap-x snap-mandatory"
+      {/* Infinite Hand Slider Track */}
+      <div
+        ref={sliderRef}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUpOrLeave}
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => {
+          handleMouseUpOrLeave();
+          setIsPaused(false);
+          setHoveredIdx(null);
+        }}
+        onTouchStart={() => setIsPaused(true)}
+        onTouchEnd={() => {
+          setIsPaused(false);
+          normalizeScroll();
+        }}
+        className={`flex gap-6 overflow-x-auto py-2 select-none ${isMouseDown ? "cursor-grabbing" : "cursor-grab"
           }`}
-          style={{
-            scrollbarWidth: "none",
-            msOverflowStyle: "none",
-            WebkitOverflowScrolling: "touch",
-          }}
-        >
-          {allArticles.map((article, idx) => {
-            // Whichever card is at the start of the slider is active in yellow
-            const isActive = closestIdx === idx;
+        style={{
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+          WebkitOverflowScrolling: "touch",
+        }}
+      >
+        {allArticles.map((article, idx) => {
+          // Whichever card is hovered is active (yellow); otherwise, the front/closest card is active
+          const isActive =
+            hoveredIdx !== null ? hoveredIdx === idx : closestIdx === idx;
 
-            return (
-              <div
-                key={article.uniqueId}
-                ref={(el) => {
-                  cardRefs.current[idx] = el;
-                }}
-                onClick={() => {
-                  if (!isDragging) {
-                    scrollToCard(idx);
-                  }
-                }}
-                className={`snap-start flex-none w-[88vw] sm:w-[520px] md:w-[611px] h-[336px] flex flex-col justify-between p-[32px] rounded-[12px] border select-none transition-all duration-300 cursor-pointer ${
-                  isActive
-                    ? "bg-[#FEBC5A] border-[#F9A426] shadow-sm"
-                    : "bg-white border-[#EFEFEF] shadow-xs"
+          return (
+            <div
+              key={article.uniqueId}
+              ref={(el) => {
+                cardRefs.current[idx] = el;
+              }}
+              onMouseEnter={() => {
+                setHoveredIdx(idx);
+                setIsPaused(true);
+              }}
+              onMouseLeave={() => {
+                setHoveredIdx(null);
+              }}
+              onClick={() => {
+                if (!isDragging) {
+                  scrollToCard(idx);
+                }
+              }}
+              className={`snap-start flex-none w-[88vw] sm:w-[520px] md:w-[611px] h-[336px] flex flex-col justify-between p-[32px] rounded-[12px] border select-none transition-all duration-300 cursor-pointer ${isActive
+                ? "bg-[#FEBC5A] border-[#F9A426] shadow-sm -translate-y-0.5"
+                : "bg-white border-[#EFEFEF] shadow-xs hover:border-[#FEBC5A]/40"
                 }`}
-              >
-                {/* Top content block with gap */}
-                <div className="space-y-3.5">
-                  <h3
-                    className={`text-lg sm:text-[21px] font-avenir font-bold leading-snug transition-colors duration-200 ${
-                      isActive ? "text-[#0D1E1E]" : "text-black"
+            >
+              {/* Top content block with gap */}
+              <div className="space-y-3.5">
+                <h3
+                  className={`text-lg sm:text-[21px] font-avenir font-bold leading-snug transition-colors duration-200 ${isActive ? "text-[#0D1E1E]" : "text-black"
                     }`}
-                  >
-                    {article.title}
-                  </h3>
-                  <p
-                    className={`text-[15px] sm:text-[16px] font-nunito-sans leading-relaxed transition-colors duration-200 ${
-                      isActive ? "text-[#2D3748]" : "text-[#5B5B5B]"
+                >
+                  {article.title}
+                </h3>
+                <p
+                  className={`text-[15px] sm:text-[16px] font-nunito-sans leading-relaxed transition-colors duration-200 ${isActive ? "text-[#2D3748]" : "text-[#5B5B5B]"
                     }`}
-                  >
-                    {article.description}
-                  </p>
-                </div>
-
-                {/* Bottom link separated by Frame 544's vertical gap */}
-                <div className="pt-4 mt-auto">
-                  <Link
-                    href={article.link}
-                    onClick={(e) => {
-                      if (isDragging) {
-                        e.preventDefault();
-                      }
-                    }}
-                    className={`inline-flex items-center gap-1.5 text-[15px] font-avenir font-bold transition-colors duration-200 group ${
-                      isActive ? "text-[#0D1E1E]" : "text-[#439897]"
-                    }`}
-                  >
-                    Read Article
-                    <span className="transition-transform duration-200 group-hover:translate-x-1">
-                      →
-                    </span>
-                  </Link>
-                </div>
+                >
+                  {article.description}
+                </p>
               </div>
-            );
-          })}
-        </div>
+
+              {/* Bottom link separated by Frame 544's vertical gap */}
+              <div className="pt-4 mt-auto">
+                <Link
+                  href={article.link}
+                  onClick={(e) => {
+                    if (isDragging) {
+                      e.preventDefault();
+                    }
+                  }}
+                  className={`inline-flex items-center gap-1.5 text-[15px] font-avenir font-bold transition-colors duration-200 group ${isActive ? "text-[#0D1E1E]" : "text-[#439897]"
+                    }`}
+                >
+                  Read Article
+                  <span className="transition-transform duration-200 group-hover:translate-x-1">
+                    →
+                  </span>
+                </Link>
+              </div>
+            </div>
+          );
+        })}
       </div>
-    </section>
+    </div>
+    </section >
   );
 }
