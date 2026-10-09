@@ -1,13 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
+import blogImage from "@/assets/images/Blogs/BlogImage.jpg";
 
 interface InsightCard {
   id: number;
   title: string;
   description: string;
-  image: string;
+  image: string | StaticImageData;
 }
 
 const initialInsights: InsightCard[] = [
@@ -16,42 +17,42 @@ const initialInsights: InsightCard[] = [
     title: "Preparing for Government PoSH Inspections",
     description:
       "Understand the compliance expectations, documentation requirements, and practical measures organisations should implement before an inspection.",
-    image: "/images/posh-inspection.jpg",
+    image: blogImage,
   },
   {
     id: 2,
     title: "Preparing for Government PoSH Inspections",
     description:
       "Understand the compliance expectations, documentation requirements, and practical measures organisations should implement before an inspection.",
-    image: "/images/posh-inspection.jpg",
+    image: blogImage,
   },
   {
     id: 3,
     title: "Preparing for Government PoSH Inspections",
     description:
       "Understand the compliance expectations, documentation requirements, and practical measures organisations should implement before an inspection.",
-    image: "/images/posh-inspection.jpg",
+    image: blogImage,
   },
   {
     id: 4,
     title: "Preparing for Government PoSH Inspections",
     description:
       "Understand the compliance expectations, documentation requirements, and practical measures organisations should implement before an inspection.",
-    image: "/images/posh-inspection.jpg",
+    image: blogImage,
   },
   {
     id: 5,
     title: "Preparing for Government PoSH Inspections",
     description:
       "Understand the compliance expectations, documentation requirements, and practical measures organisations should implement before an inspection.",
-    image: "/images/posh-inspection.jpg",
+    image: blogImage,
   },
   {
     id: 6,
     title: "Preparing for Government PoSH Inspections",
     description:
       "Understand the compliance expectations, documentation requirements, and practical measures organisations should implement before an inspection.",
-    image: "/images/posh-inspection.jpg",
+    image: blogImage,
   },
 ];
 
@@ -120,15 +121,13 @@ export default function LatestInsights() {
               <div
                 key={`${card.id}-${index}`}
                 onMouseEnter={() => setHoveredIdx(index)}
-                className={`group relative flex flex-col justify-between w-full max-w-[484px] h-[550px] p-[32px] rounded-[16px] overflow-hidden select-none transition-all duration-500 ease-in-out cursor-pointer shadow-[2px_2px_8px_0px_rgba(0,0,0,0.10)] hover:shadow-[2px_6px_16px_0px_rgba(0,0,0,0.15)] hover:-translate-y-1 animate-fade-in ${
-                  isActive ? "bg-[#254f55]" : "bg-white"
-                }`}
+                className={`group relative flex flex-col justify-between w-full max-w-[484px] h-[550px] p-[32px] rounded-[16px] overflow-hidden select-none transition-all duration-500 ease-in-out cursor-pointer shadow-[2px_2px_8px_0px_rgba(0,0,0,0.10)] hover:shadow-[2px_6px_16px_0px_rgba(0,0,0,0.15)] hover:-translate-y-1 animate-fade-in ${isActive ? "bg-[#254f55]" : "bg-white"
+                  }`}
               >
                 {/* GRADIENT OVERLAY (Active/Hover state: #439897 to #2E262E) */}
                 <div
-                  className={`pointer-events-none absolute inset-0 transition-opacity duration-500 ease-in-out ${
-                    isActive ? "opacity-100" : "opacity-0"
-                  }`}
+                  className={`pointer-events-none absolute inset-0 transition-opacity duration-500 ease-in-out ${isActive ? "opacity-100" : "opacity-0"
+                    }`}
                   style={{
                     background:
                       "linear-gradient(180deg, #439897 0%, #2E262E 100%)",
@@ -137,9 +136,8 @@ export default function LatestInsights() {
 
                 {/* NOISE / TEXTURE OVERLAY */}
                 <div
-                  className={`pointer-events-none absolute inset-0 mix-blend-overlay transition-opacity duration-500 ease-in-out ${
-                    isActive ? "opacity-20" : "opacity-0"
-                  }`}
+                  className={`pointer-events-none absolute inset-0 mix-blend-overlay transition-opacity duration-500 ease-in-out ${isActive ? "opacity-20" : "opacity-0"
+                    }`}
                   style={{
                     backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
                   }}
@@ -150,29 +148,27 @@ export default function LatestInsights() {
                   {/* Top Text Block */}
                   <div className="space-y-3">
                     <h3
-                      className={`text-lg sm:text-[21px] font-avenir font-bold leading-[1.3] transition-colors duration-500 ${
-                        isActive ? "text-white" : "text-[#0D1E1E]"
-                      }`}
+                      className={`text-lg sm:text-[21px] font-avenir font-bold leading-[1.3] transition-colors duration-500 ${isActive ? "text-white" : "text-[#0D1E1E]"
+                        }`}
                     >
                       {card.title}
                     </h3>
                     <p
-                      className={`text-[15px] sm:text-[16px] font-nunito-sans leading-[1.55] transition-colors duration-500 ${
-                        isActive ? "text-white/90" : "text-[#5B5B5B]"
-                      }`}
+                      className={`text-[15px] sm:text-[16px] font-nunito-sans leading-[1.55] transition-colors duration-500 ${isActive ? "text-white/90" : "text-[#5B5B5B]"
+                        }`}
                     >
                       {card.description}
                     </p>
                   </div>
 
                   {/* Bottom Image Container (Figma: rounded-12px, ~268px height) */}
-                  <div className="relative w-full h-[268px] rounded-[12px] overflow-hidden mt-auto bg-gray-100 flex-shrink-0">
+                  <div className="relative w-full h-[268px] rounded-[12px] overflow-hidden mt-auto flex-shrink-0 isolate [transform:translateZ(0)]">
                     <Image
                       src={card.image}
                       alt={card.title}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 484px"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105 transform-gpu will-change-transform"
                       priority={index < 3}
                     />
                   </div>
