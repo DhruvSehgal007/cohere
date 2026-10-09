@@ -102,57 +102,58 @@ export default function IntroSection() {
     <section className="py-10 sm:py-12 md:py-16">
       <div className="container-custom px-4 sm:px-6">
         {/* TOP CONTENT */}
-<div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-  <div className="w-full lg:w-1/2">
-    <span className="inline-block rounded bg-[#439897] px-3 py-1 font-avenir text-[12px] text-white sm:px-4 sm:text-[14px]">
-      INTRODUCTION SECTION
-    </span>
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+          <div className="w-full lg:w-1/2">
+            <span className="inline-block rounded bg-[#439897] px-3 py-1 font-avenir text-[12px] text-white sm:px-4 sm:text-[14px]">
+              INTRODUCTION SECTION
+            </span>
 
-    <h2
-      className="
-        mt-3
-        w-full
-        font-avenir
-        text-[22px]
-        font-extrabold
-        leading-[1.15]
-        text-black
+            <h2
+              className="
+              mt-3
+              w-full
+              font-avenir
+              text-[22px]
+              font-extrabold
+              leading-[1.15]
+              text-black
 
-        sm:text-[30px]
-        md:mt-4
-        md:text-[36px]
+              sm:text-[30px]
+              md:mt-4
+              md:text-[36px]
 
-        lg:max-w-[540px]
-        lg:text-[40px]
-      "
-    >
-      Supporting Organisations Across Every Stage of Workplace Compliance
-    </h2>
-  </div>
+              lg:max-w-[540px]
+              lg:text-[40px]
+            "
+            >
+              Supporting Organisations Across Every Stage of Workplace
+              Compliance
+            </h2>
+          </div>
 
-  <p
-    className="
-      w-full
-      font-nunito-sans
-      text-[14px]
-      leading-6
-      text-[#5B5B5B]
+          <p
+            className="
+            w-full
+            font-nunito-sans
+            text-[14px]
+            leading-6
+            text-[#5B5B5B]
 
-      sm:text-[15px]
-      sm:leading-7
+            sm:text-[15px]
+            sm:leading-7
 
-      lg:max-w-[520px]
-      lg:w-1/2
-      lg:text-right
-      lg:text-[16px]
-    "
-  >
-    Our services combine legal insight, practical workplace experience, and
-    learning-led solutions to help organisations strengthen compliance,
-    support Internal Committees, improve workplace culture, and respond
-    confidently to evolving statutory responsibilities.
-  </p>
-</div>
+            lg:max-w-[520px]
+            lg:w-1/2
+            lg:text-right
+            lg:text-[16px]
+          "
+          >
+            Our services combine legal insight, practical workplace experience,
+            and learning-led solutions to help organisations strengthen
+            compliance, support Internal Committees, improve workplace culture,
+            and respond confidently to evolving statutory responsibilities.
+          </p>
+        </div>
 
         {/* CARDS */}
         <div className="mt-8 grid grid-cols-1 gap-4 sm:mt-10 md:grid-cols-2 xl:mt-14 xl:grid-cols-3">
