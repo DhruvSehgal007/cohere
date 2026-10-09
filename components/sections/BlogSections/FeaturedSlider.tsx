@@ -16,35 +16,35 @@ const featuredArticles: FeaturedArticle[] = [
     title: "Preparing for Maharashtra's New PoSH Inspection Framework",
     description:
       "Stay informed about the latest inspection requirements, compliance expectations, and practical steps organisations can take to prepare for workplace inspections under the PoSH Act.",
-    link: "#",
+    link: "/Blog/preparing-for-maharashtras-new-posh-inspection-framework",
   },
   {
     id: 2,
     title: "Key Compliance Checklists for Internal Committees (IC)",
     description:
       "Essential audit points, documentation standards, and reporting protocols every employer needs to verify prior to government authority visits.",
-    link: "#",
+    link: "/Blog/key-compliance-checklists-for-internal-committees",
   },
   {
     id: 3,
     title: "Navigating Annual PoSH Filings & Statutory Inquiries",
     description:
       "A comprehensive roadmap on submitting district officer reports, managing inquiries confidentially, and adhering strictly to legal mandates.",
-    link: "#",
+    link: "/Blog/navigating-annual-posh-filings-statutory-inquiries",
   },
   {
     id: 4,
     title: "Workplace Discrimination & Legal Safeguards 2026",
     description:
       "Understanding corporate liability, protective provisions, and employer defense mechanisms under modern labor statutes.",
-    link: "#",
+    link: "/Blog/workplace-discrimination-legal-safeguards-2026",
   },
   {
     id: 5,
     title: "Trauma-Informed Inquiry Guidelines for IC Members",
     description:
       "Best practices for conducting sensitive interviews, preserving psychological safety, and ensuring unbiased findings.",
-    link: "#",
+    link: "/Blog/trauma-informed-inquiry-guidelines-for-ic-members",
   },
 ];
 
