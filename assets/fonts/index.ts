@@ -37,8 +37,8 @@ export const nunitoSansBold = localFont({
 
 export const nunitoSansExtraBold = localFont({
   src: [
-    { path: "./nunito/NunitoSans-ExtraBold.woff2", weight: "700", style: "normal" },
-    { path: "./nunito/NunitoSans-ExtraBold.woff", weight: "700", style: "normal" },
+    { path: "./nunito/NunitoSans-ExtraBold.woff2", weight: "800", style: "normal" },
+    { path: "./nunito/NunitoSans-ExtraBold.woff", weight: "800", style: "normal" },
   ],
   variable: "--font-nunito-sans-extra-bold",
   display: "swap",
