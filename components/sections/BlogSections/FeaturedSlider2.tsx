@@ -58,7 +58,7 @@ const allArticles = Array.from({ length: SETS_COUNT }).flatMap((_, setIdx) =>
   }))
 );
 
-export default function FeaturedSlider() {
+export default function FeaturedSlider2() {
   const sliderRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -245,7 +245,6 @@ export default function FeaturedSlider() {
     };
   }, []);
 
-
   // Mouse drag handlers
   const handleMouseDown = (e: React.MouseEvent) => {
     if (!sliderRef.current) return;
@@ -281,33 +280,21 @@ export default function FeaturedSlider() {
   };
 
   return (
-    <section className="pt-4 md:pt-6 pb-8 md:pb-12 bg-white">
+    <section className="pt-4 md:pt-6 pb-8 md:pb-12 bg-white w-full overflow-hidden">
+      {/* Featured Article Section Header inside container */}
       <div className="container-custom">
-        {/* Featured Article Section Header */}
         <div className="mb-8">
           <div className="inline-flex items-center bg-[#439897] text-white text-[14px] font-avenir font-normal uppercase pl-[6px] pr-[10px] py-[1px] h-[27px] rounded-r-[5px] rounded-l-none shadow-[2px_2px_5px_rgba(0,0,0,0.25)]">
             BLOG
           </div>
           <h2 className="text-[28px] sm:text-[34px] md:text-[40px] font-avenir font-bold text-[#0D1E1E] leading-[1.22] mt-[15px]">
-            Featured Article
+            Featured Article (Full Width)
           </h2>
         </div>
+      </div>
 
-      {/* Slider Container with Edge Shadow / Fade Overlays */}
-      <div className="relative">
-        {/* Left Edge Shadow / Fade Overlay */}
-        <div
-          className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-16 md:w-24 z-10 bg-gradient-to-r from-white/80 via-white/40 to-transparent shadow-[inset_8px_0_12px_-8px_rgba(0,0,0,0.06)]"
-          aria-hidden="true"
-        />
-
-        {/* Right Edge Shadow / Fade Overlay */}
-        <div
-          className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-16 md:w-24 z-10 bg-gradient-to-l from-white/80 via-white/40 to-transparent shadow-[inset_-8px_0_12px_-8px_rgba(0,0,0,0.06)]"
-          aria-hidden="true"
-        />
-
-        {/* Infinite Hand Slider Track */}
+      {/* Full Width Infinite Hand Slider Track without side spacing */}
+      <div className="w-full">
         <div
           ref={sliderRef}
           onMouseDown={handleMouseDown}
@@ -324,7 +311,7 @@ export default function FeaturedSlider() {
             setIsPaused(false);
             normalizeScroll();
           }}
-          className={`flex gap-6 overflow-x-auto py-2 select-none ${
+          className={`flex gap-6 overflow-x-auto py-2 select-none w-full ${
             isMouseDown ? "cursor-grabbing" : "cursor-grab"
           }`}
           style={{
@@ -333,74 +320,77 @@ export default function FeaturedSlider() {
             WebkitOverflowScrolling: "touch",
           }}
         >
-        {allArticles.map((article, idx) => {
-          // Whichever card is hovered is active (yellow); otherwise, the front/closest card is active
-          const isActive =
-            hoveredIdx !== null ? hoveredIdx === idx : closestIdx === idx;
+          {allArticles.map((article, idx) => {
+            // Whichever card is hovered is active (yellow); otherwise, the front/closest card is active
+            const isActive =
+              hoveredIdx !== null ? hoveredIdx === idx : closestIdx === idx;
 
-          return (
-            <div
-              key={article.uniqueId}
-              ref={(el) => {
-                cardRefs.current[idx] = el;
-              }}
-              onMouseEnter={() => {
-                setHoveredIdx(idx);
-                setIsPaused(true);
-              }}
-              onMouseLeave={() => {
-                setHoveredIdx(null);
-              }}
-              onClick={() => {
-                if (!isDragging) {
-                  scrollToCard(idx);
-                }
-              }}
-              className={`snap-start flex-none w-[88vw] sm:w-[520px] md:w-[611px] h-[336px] flex flex-col justify-between p-[32px] rounded-[12px] border select-none transition-all duration-300 cursor-pointer ${isActive
-                ? "bg-[#FEBC5A] border-[#F9A426] shadow-sm -translate-y-0.5"
-                : "bg-white border-[#EFEFEF] shadow-xs hover:border-[#FEBC5A]/40"
+            return (
+              <div
+                key={article.uniqueId}
+                ref={(el) => {
+                  cardRefs.current[idx] = el;
+                }}
+                onMouseEnter={() => {
+                  setHoveredIdx(idx);
+                  setIsPaused(true);
+                }}
+                onMouseLeave={() => {
+                  setHoveredIdx(null);
+                }}
+                onClick={() => {
+                  if (!isDragging) {
+                    scrollToCard(idx);
+                  }
+                }}
+                className={`snap-start flex-none w-[88vw] sm:w-[520px] md:w-[611px] h-[336px] flex flex-col justify-between p-[32px] rounded-[12px] border select-none transition-all duration-300 cursor-pointer ${
+                  isActive
+                    ? "bg-[#FEBC5A] border-[#F9A426] shadow-sm -translate-y-0.5"
+                    : "bg-white border-[#EFEFEF] shadow-xs hover:border-[#FEBC5A]/40"
                 }`}
-            >
-              {/* Top content block with gap */}
-              <div className="space-y-3.5">
-                <h3
-                  className={`text-lg sm:text-[21px] font-avenir font-bold leading-snug transition-colors duration-200 ${isActive ? "text-[#0D1E1E]" : "text-black"
+              >
+                {/* Top content block with gap */}
+                <div className="space-y-3.5">
+                  <h3
+                    className={`text-lg sm:text-[21px] font-avenir font-bold leading-snug transition-colors duration-200 ${
+                      isActive ? "text-[#0D1E1E]" : "text-black"
                     }`}
-                >
-                  {article.title}
-                </h3>
-                <p
-                  className={`text-[15px] sm:text-[16px] font-nunito-sans leading-relaxed transition-colors duration-200 ${isActive ? "text-[#2D3748]" : "text-[#5B5B5B]"
+                  >
+                    {article.title}
+                  </h3>
+                  <p
+                    className={`text-[15px] sm:text-[16px] font-nunito-sans leading-relaxed transition-colors duration-200 ${
+                      isActive ? "text-[#2D3748]" : "text-[#5B5B5B]"
                     }`}
-                >
-                  {article.description}
-                </p>
-              </div>
+                  >
+                    {article.description}
+                  </p>
+                </div>
 
-              {/* Bottom link separated by Frame 544's vertical gap */}
-              <div className="pt-4 mt-auto">
-                <Link
-                  href={article.link}
-                  onClick={(e) => {
-                    if (isDragging) {
-                      e.preventDefault();
-                    }
-                  }}
-                  className={`inline-flex items-center gap-1.5 text-[15px] font-avenir font-bold transition-colors duration-200 group ${isActive ? "text-[#0D1E1E]" : "text-[#439897]"
+                {/* Bottom link separated by Frame 544's vertical gap */}
+                <div className="pt-4 mt-auto">
+                  <Link
+                    href={article.link}
+                    onClick={(e) => {
+                      if (isDragging) {
+                        e.preventDefault();
+                      }
+                    }}
+                    className={`inline-flex items-center gap-1.5 text-[15px] font-avenir font-bold transition-colors duration-200 group ${
+                      isActive ? "text-[#0D1E1E]" : "text-[#439897]"
                     }`}
-                >
-                  Read Article
-                  <span className="transition-transform duration-200 group-hover:translate-x-1">
-                    →
-                  </span>
-                </Link>
+                  >
+                    Read Article
+                    <span className="transition-transform duration-200 group-hover:translate-x-1">
+                      →
+                    </span>
+                  </Link>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
         </div>
       </div>
-    </div>
     </section>
   );
 }
