@@ -352,7 +352,7 @@ export default function FeaturedSlider2() {
                 {/* Top content block with gap */}
                 <div className="space-y-3.5">
                   <h3
-                    className={`text-lg sm:text-[21px] font-avenir font-bold leading-snug transition-colors duration-200 ${
+                    className={`text-[18px] lg:text-[20px] font-avenir font-bold leading-snug transition-colors duration-200 ${
                       isActive ? "text-[#0D1E1E]" : "text-black"
                     }`}
                   >
@@ -376,7 +376,7 @@ export default function FeaturedSlider2() {
                         e.preventDefault();
                       }
                     }}
-                    className={`inline-flex items-center gap-1.5 text-[15px] font-avenir font-bold transition-colors duration-200 group ${
+                    className={`inline-flex items-center gap-1.5 text-[16px] font-avenir font-bold transition-colors duration-200 group ${
                       isActive ? "text-[#0D1E1E]" : "text-[#439897]"
                     }`}
                   >

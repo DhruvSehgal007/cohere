@@ -51,7 +51,7 @@ export default function ResolveSection() {
         {/* Top content */}
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div className="w-full lg:w-1/2">
-            <span className="inline-block rounded bg-[#439897] px-3 py-1 font-avenir text-[12px] text-white sm:px-4 sm:text-[14px]">
+            <span className="inline-block rounded bg-[#439897] px-3 py-1 font-avenir text-[14px] text-white sm:px-4">
               COHERE RESOLVE™
             </span>
 
@@ -60,17 +60,16 @@ export default function ResolveSection() {
               mt-3
               w-full
               font-avenir
-              text-[22px]
+              text-[28px]
               font-extrabold
               leading-[1.15]
               text-black
 
-              sm:text-[30px]
+              sm:text-[34px]
               md:mt-4
-              md:text-[36px]
+              md:text-[40px]
 
               lg:max-w-[540px]
-              lg:text-[40px]
             "
             >
               Intelligent Workplace Investigation Management Platform
@@ -81,17 +80,16 @@ export default function ResolveSection() {
             className="
             w-full
             font-nunito-sans
-            text-[14px]
-            leading-6
+            text-[16px]
+            leading-relaxed
             text-[#5B5B5B]
 
-            sm:text-[15px]
-            sm:leading-7
+            sm:text-[18px]
 
             lg:max-w-[520px]
             lg:w-1/2
             lg:text-right
-            lg:text-[16px]
+            lg:text-[20px]
           "
           >
             A secure, Microsoft 365-based workplace investigation management platform that helps organisations receive, triage, assign, track and monitor workplace complaints while supporting compliance with the Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013.

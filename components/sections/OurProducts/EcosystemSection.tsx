@@ -25,134 +25,147 @@ const solutions = [
 
 export default function EcosystemSection() {
   return (
-    <section className="w-full  py-[55px] md:py-[70px]">
+    <section className="w-full py-[55px] md:py-[70px]">
       <div className="container-custom">
         <div
           className="
+            mx-auto
+            w-full
+            max-w-[1500px]
             overflow-hidden
             rounded-[32px]
             bg-[#439897]
-            px-[28px]
-            py-[28px]
-            md:px-[40px]
-            md:py-[34px]
-            xl:px-[60px]
-            xl:py-[52px]
+            p-[28px]
+            sm:p-[36px]
+            xl:min-h-[427px]
+            xl:px-[52px]
+            xl:py-[36px]
           "
         >
           <div
             className="
               flex
               flex-col
-              gap-[32px]
+              justify-between
+              gap-[36px]
+              xl:min-h-[355px]
               xl:flex-row
-              xl:items-center
-              xl:justify-between
-              xl:gap-[54px]
+              xl:items-stretch
+              xl:gap-[40px]
             "
           >
             {/* LEFT CONTENT */}
-            <div className="w-full xl:max-w-[504px]">
-              <h2
-                className="
-                  max-w-[504px]
-                  font-avenir
-                  text-[28px]
-                  font-[800]
-                  leading-[1.08]
-                  text-[#1B3D3C]
-                  md:text-[30px]
-                  xl:text-[32px]
-                "
-              >
-                One Ecosystem. Four Workplace Solutions.
-              </h2>
+            <div className="flex w-full flex-col justify-between xl:max-w-[460px]">
+              <div>
+                <h2
+                  className="
+                    max-w-[440px]
+                    font-avenir
+                    text-[28px]
+                    font-[800]
+                    leading-[1.12]
+                    text-[#1B3D3C]
+                    sm:text-[34px]
+                    md:text-[38px]
+                    xl:text-[40px]
+                  "
+                >
+                  One Ecosystem. Four Workplace Solutions.
+                </h2>
 
-              <p
-                className="
-                  mt-[18px]
-                  max-w-[504px]
-                  font-nunito-sans
-                  text-[17px]
-                  leading-[1.35]
-                  tracking-[0.04em]
-                  text-white
-                  md:text-[18px]
-                  xl:text-[20px]
-                  xl:leading-[26px]
-                "
-              >
-                Explore Cohere&apos;s workplace solutions designed across
-                learning, readiness, compliance and investigation management.
-              </p>
+                <p
+                  className="
+                    mt-[16px]
+                    max-w-[430px]
+                    font-nunito-sans
+                    text-[15px]
+                    leading-[1.4]
+                    tracking-[0.03em]
+                    text-[#D8EFEF]
+                    sm:text-[16px]
+                    xl:mt-[18px]
+                    xl:text-[17px]
+                  "
+                >
+                  Explore Cohere&apos;s workplace solutions designed across
+                  learning, readiness, compliance and investigation management.
+                </p>
+              </div>
 
               {/* CONTACT ROW */}
               <div
                 className="
-                  mt-[34px]
+                  mt-[28px]
                   flex
-                  flex-col
-                  gap-[18px]
-                  md:mt-[40px]
-                  md:flex-row
-                  md:flex-wrap
-                  md:items-center
-                  md:gap-[22px]
+                  flex-wrap
+                  items-center
+                  gap-[16px]
+                  pt-[10px]
+                  xl:mt-auto
+                  xl:gap-[20px]
                 "
               >
                 {/* Email + Website */}
                 <div className="flex items-start gap-[10px]">
-                  <i className="fa-solid fa-envelope mt-[3px] text-[17px] text-[#1B3D3C]"></i>
+                  <i className="fa-solid fa-envelope mt-[3px] text-[16px] text-[#1B3D3C]"></i>
 
                   <div className="flex flex-col">
-                    <span
+                    <a
+                      href="mailto:info@cohereconsultants.com"
                       className="
                         font-avenir
-                        text-[15px]
+                        text-[14px]
                         font-[700]
-                        leading-[1.2]
+                        leading-[1.25]
                         text-[#1B3D3C]
-                        xl:text-[16px]
+                        hover:underline
+                        xl:text-[15px]
                       "
                     >
                       info@cohereconsultants.com
-                    </span>
+                    </a>
 
-                    <span
+                    <a
+                      href="https://www.cohereconsultants.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="
-                        mt-[6px]
+                        mt-[3px]
                         font-avenir
-                        text-[15px]
+                        text-[14px]
                         font-[700]
-                        leading-[1.2]
+                        leading-[1.25]
                         text-[#1B3D3C]
-                        xl:text-[16px]
+                        hover:underline
+                        xl:text-[15px]
                       "
                     >
                       www.cohereconsultants.com
-                    </span>
+                    </a>
                   </div>
                 </div>
 
                 {/* Divider */}
-                <div className="hidden h-[47px] w-px bg-[#00504D] md:block" />
+                <div className="hidden h-[36px] w-px bg-[#1B3D3C]/30 md:block" />
 
                 {/* Phone */}
-                <div className="flex items-center gap-[12px]">
-                  <i className="fa-solid fa-phone text-[20px] text-[#1B3D3C]"></i>
+                <div className="flex items-center gap-[10px]">
+                  <i className="fa-solid fa-phone text-[16px] text-[#1B3D3C]"></i>
 
-                  <span
+                  <a
+                    href="tel:+91890444700"
                     className="
                       font-avenir
-                      text-[15px]
+                      text-[14px]
                       font-[700]
                       leading-[1.2]
                       text-[#1B3D3C]
-                      xl:text-[16px]
+                      hover:underline
+                      xl:text-[15px]
                     "
                   >
                     +91 89044 4700
-                  </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -162,38 +175,46 @@ export default function EcosystemSection() {
               className="
                 grid
                 w-full
-                grid-cols-1
-                gap-[16px]
-                sm:grid-cols-2
-                lg:grid-cols-4
-                lg:gap-[20px]
+                grid-cols-2
+                gap-[14px]
+                sm:grid-cols-4
+                sm:gap-[16px]
+                xl:flex
                 xl:w-auto
-                xl:gap-[24px]
+                xl:items-center
+                xl:gap-[20px]
               "
             >
               {solutions.map((solution) => (
                 <div
                   key={solution.title}
                   className="
+                    flex
+                    h-[355px]
                     w-full
+                    flex-col
                     overflow-hidden
-                    rounded-[12px]
+                    rounded-[16px]
                     bg-[#FEBC5A]
-                    p-[10px]
-                    sm:max-w-[220px]
-                    lg:w-[170px]
-                    xl:w-[183px]
+                    p-[8px]
+                    transition-transform
+                    duration-300
+                    hover:-translate-y-1
+                    sm:w-[170px]
+                    md:w-[175px]
+                    xl:w-[185px]
+                    xl:shrink-0
                   "
                 >
                   {/* IMAGE */}
                   <div
                     className="
                       relative
-                      h-[170px]
+                      h-[225px]
                       w-full
+                      shrink-0
                       overflow-hidden
-                      rounded-[10px]
-                      md:h-[182px]
+                      rounded-[12px]
                     "
                   >
                     <Image
@@ -205,7 +226,7 @@ export default function EcosystemSection() {
                   </div>
 
                   {/* TEXT */}
-                  <div className="pt-[10px] text-center">
+                  <div className="flex flex-1 flex-col justify-center px-[4px] pt-[10px] pb-[6px] text-center">
                     <h3
                       className="
                         font-avenir
@@ -221,14 +242,15 @@ export default function EcosystemSection() {
 
                     <p
                       className="
-                        mt-[6px]
+                        mt-[4px]
                         whitespace-pre-line
                         font-nunito-sans
-                        text-[15px]
+                        text-[13px]
+                        font-[600]
                         leading-[1.25]
                         tracking-[0.02em]
                         text-[#6A5B4A]
-                        xl:text-[16px]
+                        xl:text-[14px]
                       "
                     >
                       {solution.subtitle}

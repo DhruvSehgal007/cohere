@@ -31,14 +31,14 @@ export default function Supportresources() {
 
           <div className="relative z-10 w-full lg:w-[48%] xl:w-[50%] p-6 sm:p-10 lg:p-0 lg:pl-[60px] xl:pl-[80px] 2xl:pl-[100px] flex flex-col items-start justify-center text-left">
             {/* Heading: Resources That Support Better / Decisions */}
-            <h2 className="text-[26px] sm:text-[34px] xl:text-[40px] font-avenir font-bold text-white leading-[1.2] tracking-tight text-left">
+            <h2 className="text-[28px] sm:text-[34px] md:text-[40px] font-avenir font-bold text-white leading-[1.2] tracking-tight text-left">
               <span className="inline-block">Resources That Support Better</span>{" "}
               <br className="hidden sm:inline" />
               <span className="inline-block">Decisions</span>
             </h2>
 
             {/* Description: Poppins 400 18px, Color #FFFFFF, Width 420px */}
-            <p className="mt-5 sm:mt-6 font-poppins font-normal text-[15px] sm:text-[16px] lg:text-[18px] text-white leading-[1.5] max-w-[420px] text-left">
+            <p className="mt-5 sm:mt-6 font-poppins font-normal text-[16px] sm:text-[18px] md:text-[20px] text-white leading-[1.5] max-w-[420px] text-left">
               Access practical guidance, legal updates, compliance resources,
               templates, and educational content created to strengthen
               workplace policies and practices.
@@ -47,7 +47,7 @@ export default function Supportresources() {
 
             <Link
               href="#resources"
-              className="mt-6 sm:mt-8 w-[200px] sm:w-[220px] h-[52px] sm:h-[60px] bg-[#439897] hover:bg-[#3ca3a2] text-[#0D1E1E] font-poppins font-medium text-[15px] sm:text-[16px] rounded-[8px] flex items-center justify-center transition-all duration-200 hover:shadow-md active:scale-98 cursor-pointer text-center"
+              className="mt-6 sm:mt-8 w-[200px] sm:w-[220px] h-[52px] sm:h-[60px] bg-[#439897] hover:bg-[#3ca3a2] text-[#0D1E1E] font-poppins font-medium text-[16px] sm:text-[20px] rounded-[8px] flex items-center justify-center transition-all duration-200 hover:shadow-md active:scale-98 cursor-pointer text-center"
             >
               Browse All Resources
             </Link>

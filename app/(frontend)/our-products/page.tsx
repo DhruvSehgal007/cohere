@@ -8,14 +8,14 @@ import EcosystemSection from "@/components/sections/OurProducts/EcosystemSection
 
 export default function OurProducts() {
   return (
-    <>
-      {/* <Banner /> */}
+    <main className="min-h-screen bg-white">
+      <Banner />
       <ResolveSection />
       <Microsoft365Section />
       <EssentialsSection />
       <ReadinessFramework />
       <KeepItRightSection />
       <EcosystemSection />
-    </>
+    </main>
   );
 }

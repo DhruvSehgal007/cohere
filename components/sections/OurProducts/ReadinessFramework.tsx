@@ -103,12 +103,11 @@ export default function ReadinessFramework() {
                 <span
                   className="
                     font-avenir
-                    text-[13px]
+                    text-[14px]
                     font-normal
                     uppercase
                     leading-[22px]
                     text-white
-                    md:text-[14px]
                   "
                 >
                   Cohere Readiness™
@@ -121,12 +120,12 @@ export default function ReadinessFramework() {
                   mt-[14px]
                   max-w-[410px]
                   font-avenir
-                  text-[30px]
+                  text-[28px]
                   font-[800]
                   leading-[1.15]
                   text-[#0D1E1E]
-                  md:text-[36px]
-                  lg:text-[40px]
+                  sm:text-[34px]
+                  md:text-[40px]
                 "
               >
                 The CohereReadiness™
@@ -140,11 +139,12 @@ export default function ReadinessFramework() {
                   mt-[18px]
                   max-w-[360px]
                   font-nunito-sans
-                  text-[14px]
-                  leading-[22px]
+                  text-[16px]
+                  leading-relaxed
                   tracking-[0.04em]
                   text-[#5B5B5B]
-                  md:text-[15px]
+                  sm:text-[18px]
+                  md:text-[20px]
                 "
               >
                 A structured journey towards Inspection Ready Governance
@@ -254,10 +254,10 @@ export default function ReadinessFramework() {
                       <h3
                         className="
                           font-nunito-sans-bold
-                          text-[17px]
+                          text-[18px]
                           leading-[24px]
                           text-[#0D1E1E]
-                          md:text-[18px]
+                          md:text-[20px]
                         "
                       >
                         {step.title}
