@@ -314,6 +314,13 @@ export default function Header() {
                         <div className="font-avenir text-[11px] font-extrabold leading-[1.5] text-[#439897]">
 
                           <Link
+                            href="/events"
+                            className="block hover:text-[#1B3D3C]"
+                          >
+                            All Events
+                          </Link>
+
+                          <Link
                             href="/training-workshops"
                             className="block hover:text-[#1B3D3C]"
                           >
@@ -503,6 +510,13 @@ export default function Header() {
               onClick={() => toggleDropdown("events")}
             >
               <div className="space-y-2 pl-4 text-left text-sm">
+
+                <Link
+                  href="/events"
+                  onClick={() => setIsOpen(false)}
+                >
+                  All Events
+                </Link>
 
                 <Link
                   href="/training-workshops"

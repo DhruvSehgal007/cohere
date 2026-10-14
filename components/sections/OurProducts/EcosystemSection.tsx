@@ -35,13 +35,13 @@ export default function EcosystemSection() {
             overflow-hidden
             rounded-[32px]
             bg-[#439897]
-            p-[24px]
-            sm:p-[32px]
-            md:p-[36px]
-            xl:min-h-[427px]
-            xl:px-[44px]
-            xl:py-[36px]
-            2xl:px-[52px]
+            p-[20px]
+            sm:p-[28px]
+            md:p-[32px]
+            xl:min-h-[420px]
+            xl:px-[36px]
+            xl:py-[32px]
+            2xl:px-[44px]
           "
         >
           <div
@@ -53,12 +53,12 @@ export default function EcosystemSection() {
               xl:min-h-[355px]
               xl:flex-row
               xl:items-stretch
-              xl:gap-[32px]
-              2xl:gap-[40px]
+              xl:gap-[28px]
+              2xl:gap-[36px]
             "
           >
             {/* LEFT CONTENT */}
-            <div className="flex w-full flex-col justify-between xl:w-[380px] xl:shrink-0 2xl:w-[440px]">
+            <div className="flex w-full flex-col justify-between xl:w-[320px] xl:shrink-0 2xl:w-[360px]">
               <div>
                 <h2
                   className="
@@ -196,12 +196,10 @@ export default function EcosystemSection() {
                   key={solution.title}
                   className="
                     flex
-                    h-[355px]
+                    h-full
+                    min-h-[340px]
                     w-full
                     min-w-0
-                    max-w-[340px]
-                    sm:max-w-none
-                    mx-auto
                     flex-col
                     overflow-hidden
                     rounded-[16px]
@@ -216,24 +214,25 @@ export default function EcosystemSection() {
                   <div
                     className="
                       relative
-                      h-[225px]
+                      h-[215px]
                       w-full
                       shrink-0
                       overflow-hidden
                       rounded-[12px]
+                      sm:h-[225px]
                     "
                   >
                     <Image
                       src={solution.image}
                       alt={solution.title}
                       fill
-                      sizes="(max-width: 640px) 340px, (max-width: 1024px) 50vw, (max-width: 1280px) 25vw, 220px"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 25vw, 240px"
                       className="object-cover"
                     />
                   </div>
 
                   {/* TEXT */}
-                  <div className="flex flex-1 flex-col justify-center px-[4px] pt-[10px] pb-[6px] text-center">
+                  <div className="flex flex-1 flex-col justify-center px-[4px] pb-[8px] pt-[10px] text-center">
                     <h3
                       className="
                         font-avenir

@@ -38,6 +38,18 @@ const steps = [
     description:
       "Prioritised action plan with immediate, medium-term and long-term interventions for sustainable improvement.",
   },
+  {
+    number: "06",
+    title: "Capability Building",
+    description:
+      "Targeted training and awareness for HR, Leadership, Internal Committee, Managers and the wider workforce.",
+  },
+  {
+    number: "07",
+    title: "Continuous Inspection Readiness",
+    description:
+      "Embed governance, monitor effectiveness, strengthen culture and stay ready for regulatory inspections and audits.",
+  },
 ];
 
 export default function ReadinessFramework() {
@@ -222,10 +234,9 @@ export default function ReadinessFramework() {
                           duration-500
                           md:h-[56px]
                           md:w-[56px]
-                          ${
-                            isActive || isPassed
-                              ? "bg-[#439897] text-white"
-                              : "bg-[#E2E2E2] text-[#333333]"
+                          ${isActive || isPassed
+                            ? "bg-[#439897] text-white"
+                            : "bg-[#E2E2E2] text-[#333333]"
                           }
                         `}
                       >
@@ -244,10 +255,9 @@ export default function ReadinessFramework() {
                         duration-500
                         md:px-[26px]
                         md:py-[24px]
-                        ${
-                          isActive
-                            ? "bg-[#FEBC5A]"
-                            : "bg-transparent"
+                        ${isActive
+                          ? "bg-[#FEBC5A]"
+                          : "bg-transparent"
                         }
                       `}
                     >
