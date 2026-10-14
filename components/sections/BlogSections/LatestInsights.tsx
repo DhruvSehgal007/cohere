@@ -148,7 +148,7 @@ export default function LatestInsights() {
                   {/* Top Text Block */}
                   <div className="space-y-3">
                     <h3
-                      className={`text-lg sm:text-[21px] font-avenir font-bold leading-[1.3] transition-colors duration-500 ${isActive ? "text-white" : "text-[#0D1E1E]"
+                      className={`text-[18px] lg:text-[20px] font-avenir font-bold leading-[1.3] transition-colors duration-500 ${isActive ? "text-white" : "text-[#0D1E1E]"
                         }`}
                     >
                       {card.title}
@@ -184,7 +184,7 @@ export default function LatestInsights() {
             <button
               onClick={handleViewMore}
               disabled={isLoadingMore}
-              className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full font-semibold text-sm text-gray-900 bg-white border border-gray-300/90 hover:bg-gray-50 hover:border-gray-400 hover:shadow-md active:scale-98 transition-all cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+              className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full font-semibold text-[16px] sm:text-[20px] text-gray-900 bg-white border border-gray-300/90 hover:bg-gray-50 hover:border-gray-400 hover:shadow-md active:scale-98 transition-all cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {isLoadingMore ? (
                 <>

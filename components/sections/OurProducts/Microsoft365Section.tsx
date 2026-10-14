@@ -69,12 +69,12 @@ export default function Microsoft365Section() {
             <h2
               className="
                 font-avenir
-                text-[26px]
+                text-[28px]
                 font-[800]
-                leading-[1.25]
+                leading-[1.2]
                 text-[#1B3D3C]
-                md:text-[32px]
-                md:leading-[49px]
+                sm:text-[34px]
+                md:text-[40px]
               "
             >
               Basic Version Built on Microsoft 365

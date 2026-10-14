@@ -145,8 +145,13 @@ export default async function BlogDetailPage({
           />
         </div>
 
-        {/* Article Title (Figma: Avenir LT 55 Roman, Bold 700, Size 40px, Line-height 49px, Color #0D1E1E) */}
-        <h1 className="text-[28px] sm:text-[34px] md:text-[40px] font-avenir font-bold text-[#0D1E1E] leading-[1.22] md:leading-[49px] mt-8 md:mt-10 mb-5 md:mb-6">
+        {/* Category Badge */}
+        <div className="mt-8 md:mt-10 mb-4 inline-flex items-center bg-[#439897] text-white text-[14px] font-avenir font-normal uppercase pl-[6px] pr-[10px] py-[1px] h-[27px] rounded-r-[5px] rounded-l-none shadow-[2px_2px_5px_rgba(0,0,0,0.25)]">
+          INSIGHTS & RESOURCES
+        </div>
+
+        {/* Article Title */}
+        <h1 className="text-[34px] sm:text-[46px] md:text-[56px] lg:text-[64px] font-avenir font-bold text-[#0D1E1E] leading-[1.1] mb-6 md:mb-8">
           {article.title}
         </h1>
 
@@ -173,7 +178,7 @@ export default async function BlogDetailPage({
                 </div>
                 {/* Author Info */}
                 <div className="flex flex-col">
-                  <h4 className="text-[15px] sm:text-[16px] lg:text-[18px] font-avenir font-bold text-[#0D1E1E] leading-tight">
+                  <h4 className="text-[18px] lg:text-[20px] font-avenir font-bold text-[#0D1E1E] leading-tight">
                     {author.name}
                   </h4>
                   <p className="text-[13px] sm:text-[14px] font-nunito-sans text-[#6B7280] mt-[4px] lowercase">
@@ -213,7 +218,7 @@ export default async function BlogDetailPage({
                 {/* Bottom Pill Badge / Button */}
                 <div className="relative z-10 p-3 sm:p-4">
                   <div
-                    className="w-full text-center py-2.5 sm:py-3 px-3 rounded-[10px] text-white text-[13px] sm:text-[14px] lg:text-[15px] font-avenir font-bold shadow-md transition-all duration-300 group-hover:shadow-lg"
+                    className="w-full text-center py-2.5 sm:py-3 px-3 rounded-[10px] text-white text-[14px] sm:text-[16px] font-avenir font-bold shadow-md transition-all duration-300 group-hover:shadow-lg"
                     style={{
                       background:
                         "linear-gradient(90deg, #1C4447 0%, #295F63 50%, #1C4447 100%)",

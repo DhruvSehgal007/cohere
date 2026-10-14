@@ -68,7 +68,6 @@ export default function EssentialsSection() {
                   leading-[26px]
                   uppercase
                   text-white
-                  md:text-[16px]
                 "
               >
                 Cohere Essentials™
@@ -80,12 +79,12 @@ export default function EssentialsSection() {
               className="
                 mt-[15px]
                 font-avenir
-                text-[30px]
+                text-[28px]
                 font-[800]
                 leading-[1.2]
                 text-[#0D1E1E]
-                md:text-[34px]
-                lg:text-[40px]
+                sm:text-[34px]
+                md:text-[40px]
               "
             >
               Essential PoSH Compliance
@@ -98,14 +97,13 @@ export default function EssentialsSection() {
               className="
                 max-w-[510px]
                 font-nunito-sans
-                text-[15px]
+                text-[16px]
                 font-normal
-                leading-[24px]
+                leading-relaxed
                 tracking-[0.04em]
                 text-[#5B5B5B]
-                md:text-[16px]
-                lg:text-[17px]
-                lg:leading-[26px]
+                sm:text-[18px]
+                lg:text-[20px]
               "
             >
               The essential compliance measures required under the Sexual

@@ -364,7 +364,7 @@ export default function FeaturedSlider() {
               {/* Top content block with gap */}
               <div className="space-y-3.5">
                 <h3
-                  className={`text-lg sm:text-[21px] font-avenir font-bold leading-snug transition-colors duration-200 ${isActive ? "text-[#0D1E1E]" : "text-black"
+                  className={`text-[18px] lg:text-[20px] font-avenir font-bold leading-snug transition-colors duration-200 ${isActive ? "text-[#0D1E1E]" : "text-black"
                     }`}
                 >
                   {article.title}
@@ -386,7 +386,7 @@ export default function FeaturedSlider() {
                       e.preventDefault();
                     }
                   }}
-                  className={`inline-flex items-center gap-1.5 text-[15px] font-avenir font-bold transition-colors duration-200 group ${isActive ? "text-[#0D1E1E]" : "text-[#439897]"
+                  className={`inline-flex items-center gap-1.5 text-[16px] font-avenir font-bold transition-colors duration-200 group ${isActive ? "text-[#0D1E1E]" : "text-[#439897]"
                     }`}
                 >
                   Read Article
