@@ -47,7 +47,7 @@ export default function Keepitright() {
             <h2
               className="
                 mt-4
-                max-w-[700px]
+                w-full lg:max-w-[700px]
                 font-avenir
                 text-[28px]
                 font-normal
@@ -69,7 +69,7 @@ export default function Keepitright() {
               className="
                 mt-5
                 w-full
-                max-w-[700px]
+                w-full lg:max-w-[700px]
                 font-nunito-sans
                 text-[16px]
                 font-normal

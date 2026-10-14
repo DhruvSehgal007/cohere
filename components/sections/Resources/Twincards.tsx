@@ -72,14 +72,15 @@ export default function Twincards() {
               className="
                 mt-3
                 font-avenir
-                text-[24px]
+                text-[28px]
                 font-bold
                 leading-[1.2]
                 text-white
                 mt-[13px]
                 sm:text-[28px]
                 md:text-[32px]
-                lg:text-[40px]
+                lg:text-[36px]
+                xl:text-[40px]
               "
             >
               Understanding the Law Through Landmark Judgments
@@ -96,7 +97,8 @@ export default function Twincards() {
                 mt-[30px]
                 sm:mt-[24px]
                 sm:text-[16px]
-                lg:text-[20px]
+                lg:text-[18px]
+                xl:text-[20px]
               "
             >
               Stay updated with important court judgments and legal
@@ -127,7 +129,8 @@ export default function Twincards() {
                 duration-200
                 hover:bg-[#F4A936]
                 sm:text-[16px]
-                lg:text-[20px]
+                lg:text-[16px]
+                xl:text-[20px]
                 uppercase
               "
             >
@@ -197,13 +200,14 @@ export default function Twincards() {
               className="
                 mt-[13px]
                 font-avenir
-                text-[24px]
+                text-[28px]
                 font-bold
                 leading-[1.2]
                 text-[#101C1C]
                 sm:text-[28px]
                 md:text-[32px]
-                lg:text-[40px]
+                lg:text-[36px]
+                xl:text-[40px]
               "
             >
               Timely Guidance for Changing Workplaces
@@ -220,7 +224,8 @@ export default function Twincards() {
                 leading-[1.6]
                 text-[#101C1C]
                 sm:text-[16px]
-                lg:text-[20px]
+                lg:text-[18px]
+                xl:text-[20px]
               "
             >
               Keep pace with evolving workplace regulations, legal
@@ -251,7 +256,8 @@ export default function Twincards() {
                 duration-200
                 hover:bg-[#367F7E]
                 sm:text-[16px]
-                lg:text-[20px]
+                lg:text-[16px]
+                xl:text-[20px]
                 uppercase
               "
             >

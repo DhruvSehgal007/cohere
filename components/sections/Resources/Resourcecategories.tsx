@@ -66,7 +66,7 @@ export default function Resourcecategories() {
     to-[#2E262E]
     bg-clip-text
     font-avenir
-    text-[24px]
+    text-[28px]
     font-bold
     leading-[1.2]
     text-transparent
@@ -83,14 +83,14 @@ export default function Resourcecategories() {
             {/* DESCRIPTION */}
             <p
               className="
-                mt-8
+                mt-4
+                lg:mt-8
                 font-nunito-sans
                 text-[16px]
                 font-normal
                 leading-[1.6]
                 tracking-[0.01em]
                 text-[#5B5B5B]
-
                 sm:text-[18px]
                 lg:text-[20px]
               "
@@ -102,7 +102,7 @@ export default function Resourcecategories() {
             </p>
 
             {/* RESOURCE CATEGORIES */}
-       <h3 className="mt-10 mb-1 font-nunito-sans-bold text-[18px] font-bold text-[#101C1C] sm:text-[20px]">
+       <h3 className="mt-4 sm:mt-10 mb-1 font-nunito-sans-bold text-[18px] font-bold text-[#101C1C] sm:text-[20px]">
   Resource categories:
 </h3>     
 <div
@@ -151,7 +151,7 @@ export default function Resourcecategories() {
       <span
         className="
           font-nunito-sans
-          text-[18px]
+          text-[16px]
           leading-[1.5]
           text-[#5B5B5B]
           sm:text-[18px]
