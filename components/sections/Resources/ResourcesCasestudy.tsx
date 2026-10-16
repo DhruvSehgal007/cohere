@@ -61,7 +61,7 @@ export default function ResourcesCasestudy() {
                 mt-4
                 w-full lg:max-w-[700px]
                 font-avenir
-                text-[28px]
+                text-[32px]
                 font-normal
                 leading-[1.12]
                 tracking-[-0.5px]
@@ -69,7 +69,7 @@ export default function ResourcesCasestudy() {
 
                 sm:text-[34px]
                 md:text-[40px]
-                lg:text-[58px]
+                lg:text-[48px]
                 xl:text-[64px]
               "
             >
@@ -89,8 +89,8 @@ export default function ResourcesCasestudy() {
                 tracking-[0.01em]
                 text-[#5B5B5B]
 
-                sm:text-[18px]
-                md:text-[18px]
+                sm:text-[16px]
+                md:text-[16px]
                 lg:text-[18px]
                 xl:text-[20px]
               "

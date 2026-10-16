@@ -27,8 +27,8 @@ export default function Resourcecategories() {
             items-center
             md:gap-10
             lg:grid-cols-2
-            lg:gap-12
-            xl:gap-16
+            lg:gap-0
+            xl:gap-0
           "
         >
           {/* ================= LEFT IMAGE ================= */}
@@ -70,10 +70,10 @@ export default function Resourcecategories() {
     font-bold
     leading-[1.2]
     text-transparent
-    sm:text-[28px]
-    md:text-[32px]
-    lg:text-[30px]
-    xl:text-[34px]
+    sm:text-[34px]
+    md:text-[34px]
+    lg:text-[38px]
+    xl:text-[38px]
   "
 >
   Practical Tools for Workplace Compliance
@@ -107,11 +107,12 @@ export default function Resourcecategories() {
 </h3>     
 <div
   className="
-    mt-4
+    mt-2
     grid
     grid-cols-1
     gap-x-6
-    gap-y-3
+    gap-y-2
+    sm:gap-y-3
     sm:grid-cols-2
     lg:gap-x-8
   "
@@ -168,22 +169,36 @@ export default function Resourcecategories() {
             <button
               type="button"
               className="
-                mt-12
+                mt-6
+                sm:mt-10
+                md:mt-10
+                lg:mt-12
                 inline-flex
                 items-center
                 justify-center
                 gap-3
                 rounded-[8px]
                 bg-[#FEBC5A]
-                px-8
-                py-3
+                px-4
+                py-2
+                sm:px-4
+                sm:py-3
+                md:px-4
+                md:py-3
+                lg:px-4
+                lg:py-3
+                xl:px-8
+                xl:py-4
                 font-nunito-sans
                 text-[16px]
                 text-[#101C1C]
                 transition-colors
                 duration-200
                 hover:bg-[#F4A936]
-                sm:text-[20px]
+                sm:text-[16px]
+                md:text-[16px]
+                lg:text-[18px]
+                xl:text-[20px]
               "
             >
               EXPLORE RESOURCES
@@ -193,7 +208,7 @@ export default function Resourcecategories() {
                 alt=""
                 width={18}
                 height={18}
-                className="h-[24px] w-[24px] object-contain"
+                className="h-[18px] w-[18px] sm:h-[18px] sm:w-[18px] h-[18px] w-[18px] object-contain"
               />
             </button>
           </div>

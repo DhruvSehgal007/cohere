@@ -1,41 +1,40 @@
 "use client";
+import Link from "next/link";
 
 export default function UpperSection() {
   return (
     <section className="w-full bg-white pt-24 sm:pt-28 md:pt-32 lg:pt-36 pb-16 md:pb-20">
       <div className="container-custom">
-        <div className="max-w-[650px]">
+        <div className="max-w-[540px] sm:max-w-[540px] md:max-w-[800px] lg:max-w-[800px] xl:max-w-[800px]">
 
           {/* Label */}
-          <div className="inline-flex items-center bg-[#439897] px-2.5 py-1 rounded-[2px] mb-4">
-            <span className="font-avenir text-[12px] sm:text-[14px] uppercase tracking-[0.2px] text-white">
+          <div className="inline-flex items-center bg-[#439897] px-3 py-1.5 rounded-tr-[8px] rounded-br-[8px] mb-4">
+            <span className="font-avenir text-[12px] sm:text-[14px] uppercase tracking-[0.2px] text-white ">
               EVENTS & PROGRAMMES
             </span>
           </div>
 
           {/* Heading */}
-          <h1 className="font-avenir font-normal text-[#2E262E] text-[34px] sm:text-[42px] md:text-[64px] lg:text-[64px] leading-[1.05] tracking-[-1px]">
-            Learn. Engage. Build
-            <br />
-            Better Workplaces.
+          <h1 className="font-avenir font-normal text-[#2E262E] text-[32px] sm:text-[36px] md:text-[42px] lg:text-[54px] xl:text-[64px] leading-[1.05] tracking-[-1px] max-w-[380px] sm:max-w-[380px] md:max-w-[620px]">
+            Learn. Engage. Build Better Workplaces.
           </h1>
 
           {/* Description */}
-          <p className="font-nunito-sans font-normal text-[#6B6B6B] text-[14px] sm:text-[13px] md:text-[20px] leading-[1.35] mt-5 max-w-[500px]">
+          <p className="font-nunito-sans font-normal text-[#6B6B6B] text-[16px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.35] mt-6 mb-6 sm:mt-10 sm:mb-10 max-w-[690px]">
             Explore upcoming PoSH+ Masterclasses, workplace workshops,
             awareness programmes, Internal Committee training, and
             expert-led learning sessions by Cohere Consultants.
           </p>
 
           {/* Button */}
-          <div className="mt-7">
-          <button
-  type="button"
-  className="bg-[#FFB84D] hover:bg-[#F4A936] transition-colors duration-200 text-[#2E262E] font-avenir font-[800] text-[14px] sm:text-[16px] py-[12px] px-[10px] w-[240px] rounded-[8px]"
->
-  View Upcoming Events
-</button>
-          </div>
+          <div>
+  <Link
+    href="/events"
+    className="inline-flex items-center justify-center bg-[#FFB84D] hover:bg-[#F4A936] transition-colors duration-200 text-[#2E262E] font-avenir font-[800] text-[14px] sm:text-[16px] py-[14px] px-[10px] w-full max-w-[240px] rounded-[8px]"
+  >
+    View Upcoming Events
+  </Link>
+</div>
 
         </div>
       </div>
