@@ -37,23 +37,26 @@ export default function UpcomingEvents() {
       <div className="container-custom px-4 sm:px-6">
         <div className="w-full">
 
-          <span className="inline-block rounded bg-[#439897] px-3 py-1 font-avenir text-[12px] text-white sm:px-4 sm:text-[14px]">
-            Upcoming Events
-          </span>
+          
+          <div className="inline-flex items-center bg-[#439897] px-3 py-1.5 rounded-tr-[8px] rounded-br-[8px]">
+            <span className="font-avenir text-[12px] sm:text-[14px] uppercase tracking-[0.2px] text-white uppercase">
+              Upcoming Events
+            </span>
+          </div>
 
           <h2
             className="
               mt-3
-              w-full
-              font-avenir
-              text-[22px]
-              font-bold
-              leading-[1.15]
-              text-black
-              sm:text-[30px]
-              md:mt-4
-              md:text-[36px]
-              lg:text-[40px]
+                w-full
+                font-avenir
+                font-extrabold
+                leading-[1.15]
+                text-[#101C1C]
+                md:mt-4
+                lg:max-w-[600px]
+                text-[32px]
+                sm:text-[36px]
+                md:text-[40px]
             "
           >
             Explore All Programme Types

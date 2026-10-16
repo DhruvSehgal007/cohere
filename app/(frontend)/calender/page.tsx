@@ -9,9 +9,9 @@ export default function CalenderPage() {
   return (
     <>
       <UpperSection />
+      <Upcomingprogram />
       <UpcomingEvents />
       <PastEvents />
-      <Upcomingprogram />
       <Featuredprogram />
     </>
   );
