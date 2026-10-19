@@ -35,11 +35,13 @@ export default function EcosystemSection() {
             overflow-hidden
             rounded-[32px]
             bg-[#439897]
-            p-[28px]
-            sm:p-[36px]
-            xl:min-h-[427px]
-            xl:px-[52px]
-            xl:py-[36px]
+            p-[20px]
+            sm:p-[28px]
+            md:p-[32px]
+            xl:min-h-[420px]
+            xl:px-[36px]
+            xl:py-[32px]
+            2xl:px-[44px]
           "
         >
           <div
@@ -51,11 +53,12 @@ export default function EcosystemSection() {
               xl:min-h-[355px]
               xl:flex-row
               xl:items-stretch
-              xl:gap-[40px]
+              xl:gap-[28px]
+              2xl:gap-[36px]
             "
           >
             {/* LEFT CONTENT */}
-            <div className="flex w-full flex-col justify-between xl:max-w-[460px]">
+            <div className="flex w-full flex-col justify-between xl:w-[320px] xl:shrink-0 2xl:w-[360px]">
               <div>
                 <h2
                   className="
@@ -67,7 +70,8 @@ export default function EcosystemSection() {
                     text-[#1B3D3C]
                     sm:text-[34px]
                     md:text-[38px]
-                    xl:text-[40px]
+                    xl:text-[36px]
+                    2xl:text-[40px]
                   "
                 >
                   One Ecosystem. Four Workplace Solutions.
@@ -102,7 +106,8 @@ export default function EcosystemSection() {
                   gap-[16px]
                   pt-[10px]
                   xl:mt-auto
-                  xl:gap-[20px]
+                  xl:gap-[16px]
+                  2xl:gap-[20px]
                 "
               >
                 {/* Email + Website */}
@@ -146,7 +151,7 @@ export default function EcosystemSection() {
                 </div>
 
                 {/* Divider */}
-                <div className="hidden h-[36px] w-px bg-[#1B3D3C]/30 md:block" />
+                <div className="hidden h-[36px] w-px bg-[#1B3D3C]/30 md:block xl:hidden 2xl:block" />
 
                 {/* Phone */}
                 <div className="flex items-center gap-[10px]">
@@ -175,14 +180,15 @@ export default function EcosystemSection() {
               className="
                 grid
                 w-full
-                grid-cols-2
-                gap-[14px]
-                sm:grid-cols-4
-                sm:gap-[16px]
-                xl:flex
-                xl:w-auto
-                xl:items-center
-                xl:gap-[20px]
+                grid-cols-1
+                gap-[16px]
+                sm:grid-cols-2
+                sm:gap-[20px]
+                lg:grid-cols-4
+                lg:gap-[16px]
+                xl:flex-1
+                xl:gap-[16px]
+                2xl:gap-[20px]
               "
             >
               {solutions.map((solution) => (
@@ -190,8 +196,10 @@ export default function EcosystemSection() {
                   key={solution.title}
                   className="
                     flex
-                    h-[355px]
+                    h-full
+                    min-h-[340px]
                     w-full
+                    min-w-0
                     flex-col
                     overflow-hidden
                     rounded-[16px]
@@ -200,33 +208,31 @@ export default function EcosystemSection() {
                     transition-transform
                     duration-300
                     hover:-translate-y-1
-                    sm:w-[170px]
-                    md:w-[175px]
-                    xl:w-[185px]
-                    xl:shrink-0
                   "
                 >
                   {/* IMAGE */}
                   <div
                     className="
                       relative
-                      h-[225px]
+                      h-[215px]
                       w-full
                       shrink-0
                       overflow-hidden
                       rounded-[12px]
+                      sm:h-[225px]
                     "
                   >
                     <Image
                       src={solution.image}
                       alt={solution.title}
                       fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 25vw, 240px"
                       className="object-cover"
                     />
                   </div>
 
                   {/* TEXT */}
-                  <div className="flex flex-1 flex-col justify-center px-[4px] pt-[10px] pb-[6px] text-center">
+                  <div className="flex flex-1 flex-col justify-center px-[4px] pb-[8px] pt-[10px] text-center">
                     <h3
                       className="
                         font-avenir
@@ -234,7 +240,8 @@ export default function EcosystemSection() {
                         font-[800]
                         leading-[1.2]
                         text-[#1B3D3C]
-                        xl:text-[16px]
+                        xl:text-[15px]
+                        2xl:text-[16px]
                       "
                     >
                       {solution.title}
@@ -250,7 +257,8 @@ export default function EcosystemSection() {
                         leading-[1.25]
                         tracking-[0.02em]
                         text-[#6A5B4A]
-                        xl:text-[14px]
+                        xl:text-[13px]
+                        2xl:text-[14px]
                       "
                     >
                       {solution.subtitle}

@@ -98,98 +98,72 @@ export default function Header() {
 
             <nav className="flex items-center justify-center gap-4 rounded-b-[20px] bg-[#439897] px-4 py-4 font-avenir text-white xl:gap-[30px] xl:px-6">
 
-              {/* Desktop dropdowns: anchored to each navigation item */}
-              {([
-                { key: "services", label: "SERVICES", href: "/service" },
-                { key: "products", label: "OUR PRODUCTS", href: "/our-products" },
-                { key: "events", label: "EVENTS", href: "/calender" },
-                { key: "resources", label: "RESOURCES", href: "/resources" },
-              ] as const).map((item) => (
-                <div
-                  key={item.key}
-                  className="relative shrink-0"
-                  onMouseEnter={() => setActiveDropdown(item.key)}
-                  onMouseLeave={() => setActiveDropdown(null)}
+              {/* ================= SERVICES ================= */}
+
+              <div
+                className="relative"
+                onMouseEnter={() => setActiveDropdown("services")}
+              >
+                <button
+                  type="button"
+                  onClick={() => toggleDropdown("services")}
+                  className="flex items-center gap-1 whitespace-nowrap text-[14px] transition hover:opacity-80 min-[1200px]:text-[16px] min-[1440px]:text-[20px]"
                 >
-                  <div className="flex items-center gap-1 whitespace-nowrap text-[14px] min-[1200px]:text-[16px] min-[1440px]:text-[20px]">
-                    <Link href={item.href} onClick={closeDropdown} className="transition hover:opacity-80">
-                      {item.label}
-                    </Link>
-                    <button
-                      type="button"
-                      aria-label={`Toggle ${item.label.toLowerCase()} submenu`}
-                      aria-expanded={activeDropdown === item.key}
-                      onClick={() => toggleDropdown(item.key)}
-                      className="p-1 transition hover:opacity-80"
-                    >
-                    <svg
-                      className={`h-3 w-3 transition-transform duration-500 ease-in-out ${activeDropdown === item.key ? "rotate-180" : "rotate-0"}`}
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      aria-hidden="true"
-                    >
-                      <path d="m3 6 5 5 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    </button>
-                  </div>
+                  SERVICES
+                  <span className="text-[9px]">▼</span>
+                </button>
+              </div>
 
-                  {activeDropdown === item.key && (
-                    <div className={`absolute top-full z-[100] pt-5 ${
-                      item.key === "services" ? "w-[min(536px,90vw)]" :
-                      item.key === "products" ? "w-[260px]" :
-                      item.key === "events" ? "w-[255px]" : "w-[285px]"
-                    } ${item.key === "resources" ? "right-0" : "left-0"}`}>
-                      <div className={`relative rounded-[12px] bg-white text-left shadow-[0_12px_35px_rgba(0,0,0,0.13)] ${item.key === "services" ? "px-[34px] py-[35px]" : "px-5 py-6"}`}>
-                        {/* Upward-facing pointer, as in the screenshot */}
-                        <span className={`absolute -top-[12px] h-6 w-6 rotate-45 rounded-tl-[5px] bg-white ${item.key === "resources" ? "right-8" : "left-8"}`} />
 
-                        {item.key === "services" && (
-                          <div className="space-y-5 font-nunito-sans text-[16px] leading-[1.45] text-[#333333]">
-                            <div>
-                              <Link href="/anti-sexual-harassment" onClick={closeDropdown} className="inline-block font-avenir font-extrabold text-[#439897] transition-colors hover:text-[#1B3D3C]">ANTI SEXUAL HARASSMENT</Link>
-                              <p className="mt-1 pl-9">End to end PoSH services. See annexure</p>
-                            </div>
-                            <div>
-                              <Link href="/workplace-discrimination" onClick={closeDropdown} className="inline-block font-avenir font-extrabold text-[#439897] transition-colors hover:text-[#1B3D3C]">WORKPLACE DISCRIMINATION</Link>
-                              <p className="mt-1 pl-9">Diversity Equity and Inclusion</p>
-                            </div>
-                            <div>
-                              <Link href="/employment-and-labour" onClick={closeDropdown} className="inline-block font-avenir font-extrabold text-[#439897] transition-colors hover:text-[#1B3D3C]">EMPLOYMENT AND LABOUR</Link>
-                              <p className="mt-1 pl-9">Investigation, Dispute Resolution &amp; Conflict Management</p>
-                            </div>
-                          </div>
-                        )}
+              {/* ================= PRODUCTS ================= */}
 
-                        {item.key === "products" && (
-                          <div className="flex flex-col items-start gap-3 text-left font-avenir text-[16px] font-extrabold text-[#439897]">
-                            <Link href="/cohere-resolve" onClick={closeDropdown} className="hover:text-[#1B3D3C]">CohereResolve™</Link>
-                            <Link href="/cohere-essentials" onClick={closeDropdown} className="hover:text-[#1B3D3C]">CohereEssentials™</Link>
-                            <Link href="/cohere-readiness" onClick={closeDropdown} className="hover:text-[#1B3D3C]">CohereReadiness™</Link>
-                            <Link href="/keep-it-right" onClick={closeDropdown} className="hover:text-[#1B3D3C]">KeepItRight®</Link>
-                          </div>
-                        )}
+              <div
+                className="relative"
+                onMouseEnter={() => setActiveDropdown("products")}
+              >
+                <button
+                  type="button"
+                  onClick={() => toggleDropdown("products")}
+                  className="flex items-center gap-1 whitespace-nowrap text-[14px] transition hover:opacity-80 min-[1200px]:text-[16px] min-[1440px]:text-[20px]"
+                >
+                  OUR PRODUCTS
+                  <span className="text-[9px]">▼</span>
+                </button>
+              </div>
 
-                        {item.key === "events" && (
-                          <div className="flex flex-col items-start gap-3 text-left font-avenir text-[16px] font-extrabold text-[#439897]">
-                            <Link href="/training-workshops" onClick={closeDropdown} className="hover:text-[#1B3D3C]">Training &amp; Workshops</Link>
-                            <Link href="/calender" onClick={closeDropdown} className="hover:text-[#1B3D3C]">Calendar</Link>
-                          </div>
-                        )}
 
-                        {item.key === "resources" && (
-                          <div className="flex flex-col items-start gap-3 text-left font-avenir text-[16px] font-extrabold text-[#439897]">
-                            <Link href="/resources" onClick={closeDropdown} className="hover:text-[#1B3D3C]">Downloadable Resources</Link>
-                            <Link href="/news" onClick={closeDropdown} className="hover:text-[#1B3D3C]">Cohere in the News</Link>
-                            <Link href="/judgments" onClick={closeDropdown} className="hover:text-[#1B3D3C]">Judgments</Link>
-                            <Link href="/case-studies" onClick={closeDropdown} className="hover:text-[#1B3D3C]">Case Studies</Link>
-                            <Link href="/advisories" onClick={closeDropdown} className="hover:text-[#1B3D3C]">Advisories</Link>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              ))}
+              {/* ================= EVENTS ================= */}
+
+              <div
+                className="relative"
+                onMouseEnter={() => setActiveDropdown("events")}
+              >
+                <button
+                  type="button"
+                  onClick={() => toggleDropdown("events")}
+                  className="flex items-center gap-1 whitespace-nowrap text-[14px] transition hover:opacity-80 min-[1200px]:text-[16px] min-[1440px]:text-[20px]"
+                >
+                  EVENTS
+                  <span className="text-[9px]">▼</span>
+                </button>
+              </div>
+
+
+              {/* ================= RESOURCES ================= */}
+
+              <div
+                className="relative"
+                onMouseEnter={() => setActiveDropdown("resources")}
+              >
+                <button
+                  type="button"
+                  onClick={() => toggleDropdown("resources")}
+                  className="flex items-center gap-1 whitespace-nowrap text-[14px] transition hover:opacity-80 min-[1200px]:text-[16px] min-[1440px]:text-[20px]"
+                >
+                  RESOURCES
+                  <span className="text-[9px]">▼</span>
+                </button>
+              </div>
 
 
               {/* ================= CONTACT ================= */}
@@ -204,6 +178,233 @@ export default function Header() {
 
             </nav>
 
+
+            {/* =================================================
+                DROPDOWN AREA
+            ================================================== */}
+
+            {activeDropdown && (
+              <div
+                className="absolute left-0 right-0 top-full w-full bg-[#C4C4C4] px-4 pb-4 pt-2"
+                onMouseLeave={() => setActiveDropdown(null)}
+              >
+
+                <div className="mx-auto grid max-w-[1500px] grid-cols-4 gap-6">
+
+
+                  {/* =================================================
+                      SERVICES DROPDOWN
+                  ================================================== */}
+
+                  {activeDropdown === "services" && (
+                    <>
+                      <div className="relative min-h-[110px] rounded-[5px] bg-white px-4 py-4 shadow-sm">
+
+                        <div className="space-y-3 font-nunito-sans text-[11px] leading-tight text-[#1B3D3C]">
+
+                          <div>
+                            <p className="font-avenir text-[11px] font-extrabold text-[#439897]">
+                              ANTI SEXUAL HARASSMENT
+                            </p>
+
+                            <p className="mt-1 pl-4">
+                              End to end PoSH services. See annexure
+                            </p>
+                          </div>
+
+                          <div>
+                            <p className="font-avenir text-[11px] font-extrabold text-[#439897]">
+                              WORKPLACE DISCRIMINATION
+                            </p>
+
+                            <p className="mt-1 pl-4">
+                              Diversity Equity and Inclusion
+                            </p>
+                          </div>
+
+                          <div>
+                            <p className="font-avenir text-[11px] font-extrabold text-[#439897]">
+                              EMPLOYMENT AND LABOUR
+                            </p>
+
+                            <p className="mt-1 pl-4">
+                              Investigation, Dispute Resolution &amp;
+                              Conflict Management
+                            </p>
+                          </div>
+
+                        </div>
+
+                        <DropdownTriangle />
+
+                      </div>
+
+                      {/* Empty columns to preserve Figma spacing */}
+
+                      <div />
+                      <div />
+                      <div />
+                    </>
+                  )}
+
+
+                  {/* =================================================
+                      PRODUCTS DROPDOWN
+                  ================================================== */}
+
+                  {activeDropdown === "products" && (
+                    <>
+                      <div />
+
+                      <div className="relative min-h-[110px] rounded-[5px] bg-white px-4 py-4 shadow-sm">
+
+                        <div className="font-avenir text-[11px] font-extrabold leading-[1.5] text-[#439897]">
+
+                          <Link
+                            href="/cohere-resolve"
+                            className="block hover:text-[#1B3D3C]"
+                          >
+                            CohereResolve™
+                          </Link>
+
+                          <Link
+                            href="/cohere-essentials"
+                            className="block hover:text-[#1B3D3C]"
+                          >
+                            CohereEssentials™
+                          </Link>
+
+                          <Link
+                            href="/cohere-readiness"
+                            className="block hover:text-[#1B3D3C]"
+                          >
+                            CohereReadiness™
+                          </Link>
+
+                          <Link
+                            href="/keep-it-right"
+                            className="block hover:text-[#1B3D3C]"
+                          >
+                            KeepItRight®
+                          </Link>
+
+                        </div>
+
+                        <DropdownTriangle />
+
+                      </div>
+
+                      <div />
+                      <div />
+                    </>
+                  )}
+
+
+                  {/* =================================================
+                      EVENTS DROPDOWN
+                  ================================================== */}
+
+                  {activeDropdown === "events" && (
+                    <>
+                      <div />
+                      <div />
+
+                      <div className="relative min-h-[110px] rounded-[5px] bg-white px-4 py-4 shadow-sm">
+
+                        <div className="font-avenir text-[11px] font-extrabold leading-[1.5] text-[#439897]">
+
+                          <Link
+                            href="/events"
+                            className="block hover:text-[#1B3D3C]"
+                          >
+                            All Events
+                          </Link>
+
+                          <Link
+                            href="/training-workshops"
+                            className="block hover:text-[#1B3D3C]"
+                          >
+                            Training &amp; Workshops
+                          </Link>
+
+                          <Link
+                            href="/calendar"
+                            className="block hover:text-[#1B3D3C]"
+                          >
+                            Calendar
+                          </Link>
+
+                        </div>
+
+                        <DropdownTriangle />
+
+                      </div>
+
+                      <div />
+                    </>
+                  )}
+
+
+                  {/* =================================================
+                      RESOURCES DROPDOWN
+                  ================================================== */}
+
+                  {activeDropdown === "resources" && (
+                    <>
+                      <div />
+                      <div />
+                      <div />
+
+                      <div className="relative min-h-[110px] rounded-[5px] bg-white px-4 py-4 shadow-sm">
+
+                        <div className="font-avenir text-[11px] font-extrabold leading-[1.45] text-[#439897]">
+
+                          <p className="text-[9px]">
+                            Downloadable resources
+                            <span className="ml-1 text-[7px] text-[#777]">
+                              – set up, plans, partner etc.
+                            </span>
+                          </p>
+
+                          <Link
+                            href="/news"
+                            className="block hover:text-[#1B3D3C]"
+                          >
+                            Cohere in the News
+                          </Link>
+
+                          <Link
+                            href="/judgments"
+                            className="block hover:text-[#1B3D3C]"
+                          >
+                            Judgments
+                          </Link>
+
+                          <Link
+                            href="/case-studies"
+                            className="block hover:text-[#1B3D3C]"
+                          >
+                            Case Studies
+                          </Link>
+
+                          <Link
+                            href="/advisories"
+                            className="block hover:text-[#1B3D3C]"
+                          >
+                            Advisories
+                          </Link>
+
+                        </div>
+
+                        <DropdownTriangle />
+
+                      </div>
+                    </>
+                  )}
+
+                </div>
+              </div>
+            )}
 
           </div>
         </div>
@@ -238,15 +439,13 @@ export default function Header() {
 
             <MobileDropdown
               title="SERVICES"
-              href="/service"
-              onNavigate={() => { setIsOpen(false); closeDropdown(); }}
               open={activeDropdown === "services"}
               onClick={() => toggleDropdown("services")}
             >
               <div className="space-y-3 pl-4 text-left text-sm">
 
                 <p>
-                  <Link href="/anti-sexual-harassment" onClick={() => { setIsOpen(false); closeDropdown(); }} className="font-bold hover:underline">ANTI SEXUAL HARASSMENT</Link>
+                  <strong>ANTI SEXUAL HARASSMENT</strong>
                   <br />
                   <span className="text-white/80">
                     End to end PoSH services. See annexure
@@ -254,7 +453,7 @@ export default function Header() {
                 </p>
 
                 <p>
-                  <Link href="/workplace-discrimination" onClick={() => { setIsOpen(false); closeDropdown(); }} className="font-bold hover:underline">WORKPLACE DISCRIMINATION</Link>
+                  <strong>WORKPLACE DISCRIMINATION</strong>
                   <br />
                   <span className="text-white/80">
                     Diversity Equity and Inclusion
@@ -262,7 +461,7 @@ export default function Header() {
                 </p>
 
                 <p>
-                  <Link href="/employment-and-labour" onClick={() => { setIsOpen(false); closeDropdown(); }} className="font-bold hover:underline">EMPLOYMENT AND LABOUR</Link>
+                  <strong>EMPLOYMENT AND LABOUR</strong>
                   <br />
                   <span className="text-white/80">
                     Investigation, Dispute Resolution &amp;
@@ -278,8 +477,6 @@ export default function Header() {
 
             <MobileDropdown
               title="OUR PRODUCTS"
-              href="/our-products"
-              onNavigate={() => { setIsOpen(false); closeDropdown(); }}
               open={activeDropdown === "products"}
               onClick={() => toggleDropdown("products")}
             >
@@ -309,12 +506,17 @@ export default function Header() {
 
             <MobileDropdown
               title="EVENTS"
-              href="/calender"
-              onNavigate={() => { setIsOpen(false); closeDropdown(); }}
               open={activeDropdown === "events"}
               onClick={() => toggleDropdown("events")}
             >
               <div className="space-y-2 pl-4 text-left text-sm">
+
+                <Link
+                  href="/events"
+                  onClick={() => setIsOpen(false)}
+                >
+                  All Events
+                </Link>
 
                 <Link
                   href="/training-workshops"
@@ -324,7 +526,7 @@ export default function Header() {
                 </Link>
 
                 <Link
-                  href="/calender"
+                  href="/calendar"
                   onClick={() => setIsOpen(false)}
                 >
                   Calendar
@@ -338,8 +540,6 @@ export default function Header() {
 
             <MobileDropdown
               title="RESOURCES"
-              href="/resources"
-              onNavigate={() => { setIsOpen(false); closeDropdown(); }}
               open={activeDropdown === "resources"}
               onClick={() => toggleDropdown("resources")}
             >
@@ -413,20 +613,41 @@ export default function Header() {
 
 
 /* =========================================================
+   DESKTOP DROPDOWN TRIANGLE
+========================================================= */
+
+function DropdownTriangle() {
+  return (
+    <div
+      className="
+        absolute
+        -bottom-[10px]
+        left-[22px]
+        h-0
+        w-0
+        border-l-[10px]
+        border-r-[10px]
+        border-t-[10px]
+        border-l-transparent
+        border-r-transparent
+        border-t-white
+      "
+    />
+  );
+}
+
+
+/* =========================================================
    MOBILE DROPDOWN
 ========================================================= */
 
 function MobileDropdown({
   title,
-  href,
-  onNavigate,
   open,
   onClick,
   children,
 }: {
   title: string;
-  href: string;
-  onNavigate: () => void;
   open: boolean;
   onClick: () => void;
   children: React.ReactNode;
@@ -434,22 +655,17 @@ function MobileDropdown({
   return (
     <div className="border-b border-white/20">
 
-      <div className="flex w-full items-center justify-between text-left text-[15px] font-medium">
-        <Link href={href} onClick={onNavigate} className="flex-1 py-4">
-          {title}
-        </Link>
-        <button
-          type="button"
-          onClick={onClick}
-          aria-label={`Toggle ${title.toLowerCase()} submenu`}
-          aria-expanded={open}
-          className="p-4"
-        >
-        <svg className={`h-4 w-4 transition-transform duration-500 ease-in-out ${open ? "rotate-180" : "rotate-0"}`} viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path d="m3 6 5 5 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-        </button>
-      </div>
+      <button
+        type="button"
+        onClick={onClick}
+        className="flex w-full items-center justify-between py-4 text-left text-[15px] font-medium"
+      >
+        <span>{title}</span>
+
+        <span className="text-lg">
+          {open ? "−" : "+"}
+        </span>
+      </button>
 
       {open && (
         <div className="pb-5 pt-1 text-white">

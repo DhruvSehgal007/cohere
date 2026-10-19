@@ -5,7 +5,7 @@ export default function Banner() {
         <div className="pt-[62px] pb-[100px] md:pt-[80px] md:pb-[120px]">
           {/* Content */}
           <div className="max-w-[1035px]">
-            
+
             {/* Tag */}
             <div
               className="
@@ -76,7 +76,7 @@ export default function Banner() {
 
             {/* Buttons */}
             <div className="mt-[42px] flex flex-col gap-[20px] sm:flex-row sm:gap-[30px]">
-              
+
               {/* View Demo */}
               <button
                 type="button"

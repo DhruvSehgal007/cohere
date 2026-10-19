@@ -72,7 +72,7 @@ export default function Twincards() {
               className="
                 mt-3
                 font-avenir
-                text-[28px]
+                text-[24px]
                 font-bold
                 leading-[1.2]
                 text-white
@@ -99,8 +99,7 @@ export default function Twincards() {
                 md:mt-[18px]
                 lg:mt-[30px]
                 sm:text-[16px]
-                lg:text-[18px]
-                xl:text-[20px]
+                lg:text-[20px]
               "
             >
               Stay updated with important court judgments and legal
@@ -212,7 +211,7 @@ export default function Twincards() {
               className="
                 mt-3
                 font-avenir
-                text-[28px]
+                text-[24px]
                 font-bold
                 leading-[1.2]
                 text-black
