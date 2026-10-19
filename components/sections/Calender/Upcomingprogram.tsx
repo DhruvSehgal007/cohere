@@ -11,41 +11,30 @@ export default function Upcomingprogram() {
       {/* =========================
           HEADING
       ========================= */}
-      <div className="container-custom px-4 sm:px-6">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+      <div className="container-custom px-4 sm:px-6 mb-10">
+        <div className="flex flex-col gap-3 md:gap-10 md:flex-row md:items-end md:justify-between">
 
-          <div className="w-full lg:w-1/2">
-            <span
-              className="
-                inline-block
-                rounded
-                bg-[#439897]
-                px-3
-                py-1
-                font-avenir
-                text-[12px]
-                text-white
-                sm:px-4
-                sm:text-[14px]
-              "
-            >
-              UPCOMING EVENTS
+          <div className="w-full md:w-1/2">
+            <div className="inline-flex items-center bg-[#439897] px-3 py-1.5 rounded-tr-[8px] rounded-br-[8px]">
+            <span className="font-avenir text-[12px] sm:text-[14px] uppercase tracking-[0.2px] text-white uppercase">
+              Upcoming Events
             </span>
+          </div>
+
 
             <h2
               className="
                 mt-3
                 w-full
                 font-avenir
-                text-[22px]
                 font-extrabold
                 leading-[1.15]
                 text-[#101C1C]
-                sm:text-[30px]
                 md:mt-4
-                md:text-[36px]
                 lg:max-w-[540px]
-                lg:text-[40px]
+                text-[32px]
+                sm:text-[36px]
+                md:text-[40px]
               "
             >
               Upcoming Programmes
@@ -56,15 +45,18 @@ export default function Upcomingprogram() {
             className="
               w-full
               font-nunito-sans
-              text-[14px]
               leading-6
               text-[#5B5B5B]
-              sm:text-[15px]
               sm:leading-7
-              lg:w-1/2
+              md:w-1/2
               lg:max-w-[520px]
+              text-left
+              md:text-right
               lg:text-right
-              lg:text-[16px]
+              text-[16px]
+              sm:text-[16px]
+              md:text-[16px]
+              lg:text-[18px]
             "
           >
             Find upcoming sessions designed to help employees, Internal
@@ -79,7 +71,7 @@ export default function Upcomingprogram() {
       {/* =========================
           UPCOMING PROGRAMME CARD
       ========================= */}
-   <div className="container-custom mt-10 px-4 sm:px-6">
+   <div className="container-custom px-4 sm:px-6">
   <div
     className="
       grid
@@ -103,12 +95,12 @@ export default function Upcomingprogram() {
         justify-center
 
         px-5
-        py-8
+        py-5
 
-        sm:px-7
-        md:px-8
+        sm:px-8
+        sm:py-8
 
-        min-[901px]:px-6
+        min-[901px]:px-8
         min-[901px]:py-8
 
         min-[1201px]:px-10
@@ -138,15 +130,13 @@ export default function Upcomingprogram() {
       <h3
         className="
           font-avenir
-          text-[28px]
+          text-[32px]
           font-bold
           leading-none
           text-white
 
-          sm:text-[32px]
-          min-[901px]:text-[28px]
-          min-[1100px]:text-[32px]
-          min-[1201px]:text-[40px]
+          sm:text-[36px]
+          md:text-[40px]
         "
       >
         5 DECEMBER 2024
@@ -181,12 +171,11 @@ export default function Upcomingprogram() {
           text-[16px]
           leading-[1.55]
           tracking-[0.02em]
-          text-[#174E4D]
+          text-[#004140]
 
+          sm:text-[16px]
+          md:text-[18px]
           sm:text-[18px]
-
-          min-[901px]:text-[16px]
-          min-[1201px]:text-[18px]
         "
       >
         An interactive learning experience focused on workplace sexual
@@ -224,7 +213,7 @@ export default function Upcomingprogram() {
           font-avenir
           text-[14px]
           font-bold
-          text-[#101C1C]
+          text-[#003232]
           transition-colors
           duration-200
 

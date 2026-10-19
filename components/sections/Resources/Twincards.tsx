@@ -77,9 +77,10 @@ export default function Twincards() {
                 leading-[1.2]
                 text-white
                 mt-[13px]
-                sm:text-[28px]
-                md:text-[32px]
+                sm:text-[32px]
+                md:text-[34px]
                 lg:text-[40px]
+                xl:text-[40px]
               "
             >
               Understanding the Law Through Landmark Judgments
@@ -93,8 +94,10 @@ export default function Twincards() {
                 font-normal
                 leading-[1.6]
                 text-white
-                mt-[30px]
-                sm:mt-[24px]
+               mt-[18px]
+                sm:mt-[18px]
+                md:mt-[18px]
+                lg:mt-[30px]
                 sm:text-[16px]
                 lg:text-[20px]
               "
@@ -110,35 +113,46 @@ export default function Twincards() {
             <button
               type="button"
               className="
-                mt-[32px]
+                mt-6
+                sm:mt-10
+                md:mt-10
+                lg:mt-12
                 inline-flex
                 items-center
                 justify-center
                 gap-3
                 rounded-[8px]
                 bg-[#FEBC5A]
-                px-3
-                sm:px-8
-                py-3
+                px-4
+                py-2
+                sm:px-4
+                sm:py-3
+                md:px-4
+                md:py-3
+                lg:px-4
+                lg:py-3
+                xl:px-8
+                xl:py-4
                 font-nunito-sans
-                text-[14px]
+                text-[16px]
                 text-[#101C1C]
                 transition-colors
                 duration-200
                 hover:bg-[#F4A936]
                 sm:text-[16px]
-                lg:text-[20px]
-                uppercase
+                md:text-[16px]
+                lg:text-[18px]
+                xl:text-[20px]
               "
             >
-              Explore Judgments 
+              EXPLORE RESOURCES
 
               <Image
                 src={downloadIcon}
                 alt=""
                 width={18}
                 height={18}
-                className="h-[18px] w-[18px] sm:h-[24px] sm:w-[24px] object-contain"
+                className="h-[18px] w-[18px] sm:h-[18px] sm:w-[18px] h-[18px] w-[18px] object-contain"
               />
             </button>
           </div>
@@ -195,15 +209,17 @@ export default function Twincards() {
             {/* HEADING */}
             <h2
               className="
-                mt-[13px]
+                mt-3
                 font-avenir
                 text-[24px]
                 font-bold
                 leading-[1.2]
-                text-[#101C1C]
-                sm:text-[28px]
-                md:text-[32px]
+                text-black
+                mt-[13px]
+                sm:text-[32px]
+                md:text-[34px]
                 lg:text-[40px]
+                xl:text-[40px]
               "
             >
               Timely Guidance for Changing Workplaces
@@ -212,15 +228,19 @@ export default function Twincards() {
             {/* DESCRIPTION */}
             <p
               className="
-                mt-[30px]
-                sm:mt-[24px]
+                mt-[18px]
+                sm:mt-[18px]
+                md:mt-[18px]
+                lg:mt-[30px]
                 font-nunito-sans
                 text-[16px]
                 font-normal
                 leading-[1.6]
                 text-[#101C1C]
                 sm:text-[16px]
-                lg:text-[20px]
+                md:text-[16px]
+                lg:text-[18px]
+                xl:text-[20px]
               "
             >
               Keep pace with evolving workplace regulations, legal
@@ -234,35 +254,47 @@ export default function Twincards() {
             <button
               type="button"
               className="
-                mt-[32px]
+                mt-6
+                sm:mt-8
+                md:mt-8
+                lg:mt-10
+                xl:mt-12
                 inline-flex
                 items-center
                 justify-center
                 gap-3
                 rounded-[8px]
                 bg-[#439897]
-                px-3
-                sm:px-8
-                py-3
+                px-4
+                py-2
+                sm:px-4
+                sm:py-3
+                md:px-4
+                md:py-3
+                lg:px-4
+                lg:py-3
+                xl:px-8
+                xl:py-4
                 font-nunito-sans
-                text-[14px]
-                text-[#000000]
+                text-[16px]
+                text-[#101C1C]
                 transition-colors
                 duration-200
-                hover:bg-[#367F7E]
+                hover:bg-[#F4A936]
                 sm:text-[16px]
-                lg:text-[20px]
-                uppercase
+                md:text-[16px]
+                lg:text-[18px]
+                xl:text-[20px]
               "
             >
-              Explore Judgments 
+              EXPLORE RESOURCES
 
               <Image
                 src={downloadIcon}
                 alt=""
                 width={18}
                 height={18}
-                className="h-[18px] w-[18px] sm:h-[24px] sm:w-[24px] object-contain"
+                className="h-[18px] w-[18px] sm:h-[18px] sm:w-[18px] h-[18px] w-[18px] object-contain"
               />
             </button>
           </div>
