@@ -172,8 +172,8 @@ export default function SocialFeedSection() {
   const activeIndex = (((position - START) % N) + N) % N;
 
   return (
-    <section className="w-full bg-white">
-      <div className="container-custom px-6">
+    <section className="w-full bg-white pb-16 sm:pb-16 md:pb-24 lg:pb-24">
+      <div className="container-custom  px-4 sm:px-6">
         {/* Header */}
         <div className="mb-14 flex flex-col md:flex-row md:items-start md:justify-between gap-6">
           <div>

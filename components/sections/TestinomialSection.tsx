@@ -4,6 +4,9 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import columnIcon from "@/assets/images/homepage/column.svg";
+import Righticon from "@/assets/images/homepage/Right-icon.svg";
+import Lefticon from "@/assets/images/homepage/Left-icon.svg";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const testimonials = [
   {
@@ -374,31 +377,74 @@ export default function TestimonialsSection() {
           </div>
 
           {/* ================= SLIDER DOTS ================= */}
-          <div className="mt-12 flex items-center justify-end gap-1">
-            {testimonials.map((_, i) => (
-              <button
-                key={i}
-                type="button"
-                onClick={() => goTo(START + i)}
-                aria-label={`Go to slide ${i + 1}`}
-                aria-current={i === activeIndex ? "true" : undefined}
-                className="
-                  flex
-                  h-5
-                  w-5
-                  items-center
-                  justify-center
-                  rounded-full
-                  border
-                  border-[#0D1E1E]
-                "
-              >
-                {i === activeIndex && (
-                  <span className="h-3 w-3 rounded-full bg-[#439897]" />
-                )}
-              </button>
-            ))}
-          </div>
+          
+{/* ================= SLIDER ARROWS + DOTS ================= */}
+
+{/* ================= SLIDER ARROWS + DOTS ================= */}
+<div className="mt-12 flex items-center justify-end gap-2">
+
+  {/* LEFT ARROW */}
+  <button
+    type="button"
+    onClick={() => goTo(positionRef.current - 1)}
+    aria-label="Previous testimonial"
+    className="flex h-[48px] w-[48px] shrink-0 items-center justify-center"
+  >
+    <Image
+      src={Lefticon}
+      alt="Previous"
+      width={32}
+      height={32}
+      className="h-full w-full object-contain"
+    />
+  </button>
+
+  {/* DOTS */}
+  <div className="flex items-center gap-1">
+    {testimonials.map((_, i) => (
+      <button
+        key={i}
+        type="button"
+        onClick={() => goTo(START + i)}
+        aria-label={`Go to slide ${i + 1}`}
+        aria-current={i === activeIndex ? "true" : undefined}
+        className="
+          flex
+          h-5
+          w-5
+          items-center
+          justify-center
+          rounded-full
+          border
+          border-[#0D1E1E]
+        "
+      >
+        {i === activeIndex && (
+          <span className="h-3 w-3 rounded-full bg-[#439897]" />
+        )}
+      </button>
+    ))}
+  </div>
+
+  {/* RIGHT ARROW */}
+  <button
+    type="button"
+    onClick={() => goTo(positionRef.current + 1)}
+    aria-label="Next testimonial"
+    className="flex h-[48px] w-[48px] shrink-0 items-center justify-center"
+  >
+    <Image
+      src={Righticon}
+      alt="Next"
+      width={32}
+      height={32}
+      className="h-full w-full object-contain"
+    />
+  </button>
+
+</div>
+
+
 
         </div>
       </div>
