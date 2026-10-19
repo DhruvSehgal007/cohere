@@ -42,64 +42,71 @@ const steps = [
 
 export default function ProcessSection() {
   return (
-    <section className="py-12 sm:py-16 lg:py-20">
+    <section className="pb-16 sm:pb-16 md:pb-24 lg:pb-24">
       <div className="container-custom px-4 sm:px-6">
 
         {/* HEADING */}
-<div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-  <div className="w-full lg:w-1/2">
-    <span className="inline-block rounded bg-[#439897] px-3 py-1 font-avenir text-[12px] text-white sm:px-4 sm:text-[14px]">
-      PROCESS SECTION
-    </span>
+<div className="mb-10">
+        <div className="flex flex-col gap-3 md:gap-10 md:flex-row md:items-end md:justify-between">
 
-    <h2
-      className="
-        mt-3
-        w-full
-        font-avenir
-        text-[22px]
-        font-extrabold
-        leading-[1.15]
-        text-black
+          <div className="w-full md:w-1/2">
+            <div className="inline-flex items-center bg-[#439897] px-3 py-1.5 rounded-tr-[8px] rounded-br-[8px]">
+            <span className="uppercase font-avenir text-[12px] sm:text-[14px] uppercase tracking-[0.2px] text-white uppercase">
+              Process Section
+            </span>
+          </div>
 
-        sm:text-[30px]
-        md:mt-4
-        md:text-[36px]
 
-        lg:max-w-[540px]
-        lg:text-[40px]
-      "
-    >
-      How We Support Organisations
-    </h2>
-  </div>
+            <h2
+              className="
+                mt-3
+                w-full
+                font-avenir
+                font-extrabold
+                leading-[1.15]
+                text-[#101C1C]
+                md:mt-4
+                lg:max-w-[340px]
+                text-[32px]
+                sm:text-[36px]
+                md:text-[40px]
+              "
+            >
+              How We Support Organisations
+            </h2>
+          </div>
 
-  <p
-    className="
-      w-full
-      font-nunito-sans
-      text-[14px]
-      leading-6
-      text-[#5B5B5B]
+          <p
+            className="
+              w-full
+              font-nunito-sans
+              leading-6
+              text-[#5B5B5B]
+              sm:leading-7
+              md:w-1/2
+              lg:max-w-[520px]
+              text-left
+              md:text-right
+              lg:text-right
+              text-[16px]
+              sm:text-[16px]
+              md:text-[16px]
+              lg:text-[18px]
+            "
+          >
+            Understanding your organisation's workplace requirements and compliance priorities.
+          </p>
 
-      sm:text-[15px]
-      sm:leading-7
-
-      lg:max-w-[520px]
-      lg:w-1/2
-      lg:text-right
-      lg:text-[16px]
-    "
-  >
-    Understanding your organisation's workplace requirements and compliance priorities.
-  </p>
-</div>
+        </div>
+      </div>
 
         {/* PROCESS CARDS */}
         <div
           className="
             mx-auto
-            mt-20
+            mt-8
+            sm:mt-10
+            md:mt-20
             flex
             w-full
             max-w-[1246px]

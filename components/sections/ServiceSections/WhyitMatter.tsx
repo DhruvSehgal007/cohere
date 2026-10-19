@@ -32,95 +32,96 @@ export default function WhyitMatter() {
   ];
 
   return (
-    <section className="w-full">
-      <div className="">
+    <section className="w-full pb-16 sm:pb-16 md:pb-24 lg:pb-24">
+      {/* MAIN CONTAINER */}
+      <div className="container-custom">
+        {/* BACKGROUND WRAPPER */}
         <div
-          className="relative overflow-hidden rounded-[20px] bg-cover bg-center bg-no-repeat p-6 sm:p-8 md:p-10"
+          className="relative overflow-hidden rounded-[24px] bg-cover bg-center bg-no-repeat p-6 sm:p-8 md:p-10"
           style={{
             backgroundImage: `url("${backgroundImage.src}")`,
           }}
         >
-          <div className="container-custom flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-6 px-0">
+          {/* CONTENT WRAPPER */}
+          <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-6">
+
             {/* LEFT DIV */}
-<div className="w-full min-w-0 lg:w-[38%] lg:shrink-0">
-  <span
-    className="
-      mb-4
-      inline-block
-      rounded
-      bg-[#439897]
-      px-4
-      py-1
-      font-avenir
-      text-[14px]
-      font-normal
-      text-white
-    "
-  >
-    Why It Matters
-  </span>
+            <div className="w-full min-w-0 lg:w-[38%] lg:shrink-0">
 
-  <h2
-  className="
-    mb-4
-    font-avenir
-    text-[24px]
-    font-extrabold
-    leading-[1.1]
-    text-black
+              {/* LABEL */}
+              <div className="inline-flex items-center rounded-tr-[8px] rounded-br-[8px] bg-[#439897] px-3 py-1.5">
+                <span className="font-avenir text-[12px] uppercase tracking-[0.2px] text-white sm:text-[14px]">
+                  WHY IT MATTERS
+                </span>
+              </div>
 
-    sm:text-[30px]
+              {/* HEADING */}
+              <h2
+                className="
+                  mt-3
+                  mb-4
+                  font-avenir
+                  text-[32px]
+                  font-extrabold
+                  leading-[1.1]
+                  text-black
+                  sm:text-[36px]
+                  md:text-[40px]
+                  lg:mb-10
+                "
+              >
+                Trusted By Organisations Across India
+              </h2>
 
-    lg:mb-10
-    lg:text-[40px]
-  "
->
-  Trusted By Organisations Across India
-</h2>
+              {/* DESCRIPTION */}
+              <p
+                className="
+                  mb-8
+                  max-w-[500px]
+                  font-nunito-sans
+                  text-[16px]
+                  font-normal
+                  leading-[24px]
+                  tracking-[0.04em]
+                  text-[#5B5B5B]
+                  sm:text-[16px]
+                  md:text-[16px]
+                  lg:mb-10
+                  lg:text-[18px]
+                "
+              >
+                A respectful workplace is created through awareness,
+                accountability, practical learning, and fair processes.
+                By strengthening prevention and response mechanisms,
+                organisations can promote safer workplaces where employees
+                feel respected, supported, and heard.
+              </p>
 
-  <p
-    className="
-      mb-8
-      max-w-[500px]
-      font-nunito-sans
-      text-[14px]
-      font-normal
-      leading-[24px]
-      tracking-[0.04em]
-      text-[#5B5B5B]
-
-      sm:text-[16px]
-
-      lg:mb-10
-    "
-  >
-    A respectful workplace is created through awareness, accountability,
-    practical learning, and fair processes. By strengthening prevention and
-    response mechanisms, organisations can promote safer workplaces where
-    employees feel respected, supported, and heard.
-  </p>
-
-  <button
-    className="
-      rounded-[5px]
-      bg-[#439897]
-      px-5
-      py-2.5
-      font-avenir
-      font-extrabold
-      text-[14px]
-      text-[#C7E0E0]
-
-      sm:px-6
-      sm:py-3
-    "
-  >
-    Talk to an Expert
-  </button>
-</div>
+              {/* BUTTON */}
+              <button
+                className="
+                  rounded-[10px]
+                  bg-[#FEBC5A]
+                  px-5
+                  py-2.5
+                  font-avenir
+                  text-[14px]
+                  font-bold
+                  text-[#2C5D5D]
+                  sm:px-6
+                  sm:py-3
+                  sm:text-[14px]
+                  md:text-[16px]
+                "
+              >
+                Talk to an Expert
+              </button>
+            </div>
 
             {/* RIGHT DIV */}
             <div className="relative w-full min-w-0 lg:w-[60%] lg:shrink-0">
+
+              {/* FOUR CARDS */}
               <div className="flex flex-wrap gap-6">
                 {cards.map((card, index) => (
                   <div
@@ -146,19 +147,19 @@ export default function WhyitMatter() {
 
                     {/* CARD CONTENT */}
                     <div
-                      className={`${
+                      className={
                         index === 1 || index === 3
                           ? "text-right max-[699px]:text-left"
                           : "text-left"
-                      }`}
+                      }
                     >
                       <h3
                         className={`whitespace-pre-line font-avenir font-extrabold leading-[1.1] ${
                           index === 0
                             ? "text-[38px] sm:text-[44px] xl:text-[47px]"
                             : index === 1 || index === 2
-                              ? "text-[36px] sm:text-[40px] xl:text-[44px]"
-                              : "text-[17px] sm:text-[19px] xl:text-[20px]"
+                            ? "text-[36px] sm:text-[40px] xl:text-[44px]"
+                            : "text-[17px] sm:text-[19px] xl:text-[20px]"
                         }`}
                       >
                         {card.number}
@@ -172,15 +173,34 @@ export default function WhyitMatter() {
                 ))}
               </div>
 
-              {/* COHERE IMAGE */}
+              {/* CENTER COHERE LOGO */}
               <Image
                 src={cohereLogo}
                 alt="Cohere"
                 width={300}
                 height={300}
-                className="absolute left-1/2 top-1/2 z-20 hidden h-[200px] w-[200px] -translate-x-1/2 -translate-y-1/2 object-contain min-[700px]:block lg:h-[200px] lg:w-[200px] xl:h-[250px] xl:w-[250px] 2xl:h-[300px] 2xl:w-[300px]"
+                className="
+                  absolute
+                  left-1/2
+                  top-1/2
+                  z-20
+                  hidden
+                  h-[200px]
+                  w-[200px]
+                  -translate-x-1/2
+                  -translate-y-1/2
+                  object-contain
+                  min-[700px]:block
+                  lg:h-[200px]
+                  lg:w-[200px]
+                  xl:h-[250px]
+                  xl:w-[250px]
+                  2xl:h-[300px]
+                  2xl:w-[300px]
+                "
               />
             </div>
+
           </div>
         </div>
       </div>
