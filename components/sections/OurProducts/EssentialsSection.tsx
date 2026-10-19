@@ -35,38 +35,30 @@ export default function EssentialsSection() {
   return (
     <section className="w-full py-[60px] md:py-[80px] lg:py-[95px]">
       <div className="container-custom">
-        {/* Top Row */}
-        <div
-          className="
-            grid
-            grid-cols-1
-            gap-[30px]
-            lg:grid-cols-[1.15fr_0.85fr]
-            lg:gap-[80px]
-          "
-        >
+        {/* Top Row: Tag + Title Left, Description Right aligned */}
+        <div className="flex flex-col gap-[24px] lg:flex-row lg:items-start lg:justify-between">
           {/* Left Heading */}
           <div>
             {/* Label */}
             <div
               className="
                 inline-flex
-                h-[32px]
+                h-[28px]
                 items-center
                 rounded-tr-[5px]
                 rounded-br-[5px]
                 bg-[#439897]
                 px-[10px]
-                shadow-[2px_2px_5px_rgba(0,0,0,0.25)]
               "
             >
               <span
                 className="
                   font-avenir
-                  text-[14px]
+                  text-[13px]
                   font-normal
-                  leading-[26px]
+                  leading-none
                   uppercase
+                  tracking-wider
                   text-white
                 "
               >
@@ -77,14 +69,14 @@ export default function EssentialsSection() {
             {/* Heading */}
             <h2
               className="
-                mt-[15px]
+                mt-[14px]
                 font-avenir
                 text-[28px]
-                font-[800]
+                font-bold
                 leading-[1.2]
                 text-[#0D1E1E]
                 sm:text-[34px]
-                md:text-[40px]
+                md:text-[38px]
               "
             >
               Essential PoSH Compliance
@@ -92,24 +84,23 @@ export default function EssentialsSection() {
           </div>
 
           {/* Right Description */}
-          <div className="lg:flex lg:justify-end">
+          <div className="lg:max-w-[550px]">
             <p
               className="
-                max-w-[510px]
                 font-nunito-sans
-                text-[16px]
+                text-[15px]
                 font-normal
-                leading-relaxed
-                tracking-[0.04em]
+                leading-[25px]
+                tracking-[0.02em]
                 text-[#5B5B5B]
-                sm:text-[18px]
-                lg:text-[20px]
+                md:text-[16px]
+                md:leading-[26px]
               "
             >
               The essential compliance measures required under the Sexual
               Harassment of Women at Workplace (Prevention, Prohibition and
               Redressal) Act, 2013.
-              <br />
+              <br className="hidden sm:block" />
               Designed for organisations with a single location and up to 100
               employees seeking an efficient, legally compliant and
               cost-effective PoSH compliance solution.
@@ -117,26 +108,34 @@ export default function EssentialsSection() {
           </div>
         </div>
 
-        {/* Bottom Section */}
+        {/* Bottom Section: Features Grid + Dashboard Illustration */}
         <div
           className="
-            mt-[50px]
-            grid
-            grid-cols-1
+            mt-[44px]
+            flex
+            flex-col
             items-center
-            gap-[50px]
-            lg:grid-cols-[0.9fr_1.1fr]
-            lg:gap-[60px]
+            gap-[40px]
+            md:mt-[56px]
+            lg:flex-row
+            lg:items-center
+            lg:justify-between
+            lg:gap-[50px]
           "
         >
           {/* Features */}
           <div
             className="
               grid
+              w-full
               grid-cols-1
-              gap-x-[50px]
-              gap-y-[28px]
+              gap-x-[40px]
+              gap-y-[24px]
               sm:grid-cols-2
+              md:gap-x-[48px]
+              md:gap-y-[26px]
+              lg:w-auto
+              lg:shrink-0
             "
           >
             {essentials.map((item, index) => (
@@ -145,28 +144,28 @@ export default function EssentialsSection() {
                 className="
                   flex
                   items-center
-                  gap-[18px]
+                  gap-[16px]
                 "
               >
-                {/* Circle Icon */}
+                {/* Circle Icon: Solid colors matching Figma */}
                 <div
                   className={`
                     flex
-                    h-[54px]
-                    w-[54px]
+                    h-[50px]
+                    w-[50px]
                     shrink-0
                     items-center
                     justify-center
                     rounded-full
-                    border-[2px]
-                    border-white
-                    text-[20px]
+                    text-[18px]
                     text-white
-                    shadow-sm
+                    sm:h-[52px]
+                    sm:w-[52px]
+                    sm:text-[19px]
                     ${
                       item.color === "orange"
                         ? "bg-[#FEBC5A]"
-                        : "bg-gradient-to-br from-[#439897] to-[#20232A]"
+                        : "bg-[#173E40]"
                     }
                   `}
                 >
@@ -177,11 +176,11 @@ export default function EssentialsSection() {
                 <p
                   className="
                     font-nunito-sans-bold
-                    text-[16px]
+                    text-[15px]
                     leading-[22px]
-                    tracking-[0.03em]
-                    text-[#494D4D]
-                    md:text-[17px]
+                    tracking-[0.02em]
+                    text-[#333E3E]
+                    sm:text-[16px]
                   "
                 >
                   {item.title}
@@ -198,9 +197,10 @@ export default function EssentialsSection() {
               className="
                 h-auto
                 w-full
-                max-w-[740px]
-                -mt-[50px]
+                max-w-[660px]
                 object-contain
+                lg:-mt-[40px]
+                lg:max-w-[740px]
               "
             />
           </div>
