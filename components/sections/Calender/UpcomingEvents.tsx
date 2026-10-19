@@ -31,7 +31,7 @@ const programmeCards = [
 
 export default function UpcomingEvents() {
   return (
-    <section className="py-10 sm:py-12 md:py-16">
+    <section className="pb-16 sm:pb-16 md:pb-24 lg:pb-24">
 
       {/* TOP CONTENT */}
       <div className="container-custom px-4 sm:px-6">
@@ -46,7 +46,7 @@ export default function UpcomingEvents() {
 
           <h2
             className="
-              mt-3
+             mt-3
                 w-full
                 font-avenir
                 font-extrabold

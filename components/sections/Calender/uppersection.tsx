@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function UpperSection() {
   return (
-    <section className="w-full bg-white pt-24 sm:pt-28 md:pt-32 lg:pt-36 pb-16 md:pb-20">
+    <section className="w-full bg-white pt-24 sm:pt-28 md:pt-32 lg:pt-36 pb-16 md:pb-24">
       <div className="container-custom">
         <div className="max-w-[540px] sm:max-w-[540px] md:max-w-[800px] lg:max-w-[800px] xl:max-w-[800px]">
 
@@ -30,7 +30,7 @@ export default function UpperSection() {
           <div>
   <Link
     href="/events"
-    className="inline-flex items-center justify-center bg-[#FFB84D] hover:bg-[#F4A936] transition-colors duration-200 text-[#2E262E] font-avenir font-[800] text-[14px] sm:text-[16px] py-[14px] px-[10px] w-full max-w-[240px] rounded-[8px]"
+    className="inline-flex items-center justify-center bg-[#FFB84D] hover:bg-[#F4A936] transition-colors duration-200 text-[#2E262E] font-avenir font-[800] text-[14px] sm:text-[16px] py-[12px] px-[12px] md:py-[14px] md:px-[20px] lg:py-[14px] lg:px-[20px] max-w-[200px] sm:max-w-[220px] md:max-w-[220px] lg:max-w-[220px] rounded-[8px]"
   >
     View Upcoming Events
   </Link>

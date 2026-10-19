@@ -3,10 +3,11 @@
 import Image from "next/image";
 import upcomingProgramme from "@/assets/images/Calender/upcomingprogramme.png";
 import upcomingProgrammeTablet from "@/assets/images/Calender/upcomingprogramme-tablets.png";
+import locationicon from "@/assets/images/Calender/location-icon.svg";
 
 export default function Upcomingprogram() {
   return (
-    <section className="py-10 sm:py-12 md:py-16">
+    <section className="pb-16 sm:pb-16 md:pb-24 lg:pb-24">
 
       {/* =========================
           HEADING
@@ -31,7 +32,7 @@ export default function Upcomingprogram() {
                 leading-[1.15]
                 text-[#101C1C]
                 md:mt-4
-                lg:max-w-[540px]
+                lg:max-w-[600px]
                 text-[32px]
                 sm:text-[36px]
                 md:text-[40px]
@@ -66,6 +67,9 @@ export default function Upcomingprogram() {
 
         </div>
       </div>
+
+
+      
 
 
       {/* =========================
@@ -143,23 +147,27 @@ export default function Upcomingprogram() {
       </h3>
 
       {/* LOCATION */}
-      <div className="mt-3 flex items-center gap-2">
-        <span className="text-[12px] text-white">
-          ●
-        </span>
+      <div className="mt-3 flex items-center gap-1">
+  <Image
+    src={locationicon}
+    alt="Location"
+    width={16}
+    height={16}
+    className="h-[18px] w-[18px] object-contain"
+  />
 
-        <span
-          className="
-            font-avenir
-            text-[14px]
-            font-bold
-            uppercase
-            text-white
-          "
-        >
-          GURUGRAM
-        </span>
-      </div>
+  <span
+    className="
+      font-avenir
+      text-[14px]
+      font-bold
+      uppercase
+      text-white
+    "
+  >
+    GURUGRAM
+  </span>
+</div>
 
       {/* DESCRIPTION */}
       <p
@@ -184,21 +192,43 @@ export default function Upcomingprogram() {
       </p>
 
       {/* AUDIENCE */}
-      <p
-        className="
-          mt-5
-          font-nunito-sans
-          text-[16px]
-          font-bold
-          leading-[1.5]
-          text-[#003232]
+      
+<ul
+  className="
+    mt-5
+    flex
+    flex-col
+    gap-2
+    font-nunito-sans
+    text-[16px]
+    font-bold
+    leading-[1.5]
+    text-[#003232]
 
-          min-[901px]:text-[14px]
-          min-[1201px]:text-[16px]
-        "
-      >
-        For: HR Professionals • IC Members • Workplace Leaders
-      </p>
+    sm:flex-row
+    sm:flex-wrap
+    sm:items-center
+    sm:gap-x-2
+
+    min-[901px]:text-[16px]
+    min-[1201px]:text-[16px]
+  "
+>
+  <li className="list-none">
+    For: HR Professionals
+  </li>
+
+  <li className="list-none before:mr-2 before:content-['•'] sm:before:content-none">
+    <span className="hidden sm:inline">• </span>
+    IC Members
+  </li>
+
+  <li className="list-none before:mr-2 before:content-['•'] sm:before:content-none">
+    <span className="hidden sm:inline">• </span>
+    Workplace Leaders
+  </li>
+</ul>
+
 
       {/* BUTTON */}
       <button

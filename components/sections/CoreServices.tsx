@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import one from "@/assets/images/homepage/one.svg";
@@ -12,16 +12,19 @@ const posts = [
     image: one,
     title: "Anti Sexual Harassment",
     text: "Our team of experienced Lawyers & SMEs act as external members on company internal committees. We provide end-to-end support for PoSH complaint management, conciliations & investigations, train IC members, leaders & employees & ensure regulatory compliances.",
+    href: "/anti-sexual-harassment",
   },
   {
     image: two,
     title: "Workplace Discrimination",
     text: "We set operational excellence standards through ongoing programs, mediating and resolving concerns with structured, compliant frameworks. We work closely with leadership, audits & consultation for a customized approach.",
+    href: "/workplace-discrimination",
   },
   {
     image: three,
     title: "Employment and Labour",
     text: "Our specialists guide employee discipline, compliance, and investigations through workplace transformation. Our team supports the full framework, contributes to policy building, and drives a strong regulatory approach.",
+    href: "/employeement-labour",
   },
 ];
 
@@ -205,25 +208,63 @@ export default function SocialFeedSection() {
   const { stackRef, cardRefs } = useScrollStack(posts.length);
 
   return (
-    <section className="w-full bg-white ">
-      <div className="container-custom py-16">
+    <section className="w-full bg-white pb-16 sm:pb-16 md:pb-24 lg:pb-24">
+      <div className="container-custom px-4 sm:px-6 mb-10">
         {/* Header */}
-        <div className="mb-14 flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
-          <div>
-            <span className="inline-block w-auto md:w-[220px] bg-[#439897] text-white font-avenir font-normal text-[14px] pl-3 pr-8 py-1 rounded text-left">
-              WHAT WE ARE EXPERT AT
-            </span>
-            <h2 className="font-avenir font-extrabold text-[40px] leading-tight text-[#0D1E1E] mt-4 max-w-[590px] md:max-[1200px]:text-[32px]">
-              Our Core Service Areas
-            </h2>
+
+        <div className="mb-20">
+          <div className="flex flex-col gap-3 md:gap-10 md:flex-row md:items-start md:justify-between">
+            <div className="w-full md:w-1/2">
+              <div className="inline-flex items-center bg-[#439897] px-3 py-1.5 rounded-tr-[8px] rounded-br-[8px]">
+                <span className="font-avenir text-[12px] sm:text-[14px] uppercase tracking-[0.2px] text-white uppercase">
+                  WHAT WE ARE EXPERT AT
+                </span>
+              </div>
+
+              <h2
+                className="
+                mt-3
+                w-full
+                font-avenir
+                font-extrabold
+                leading-[1.15]
+                text-[#101C1C]
+                md:mt-4
+                lg:max-w-[590px]
+                text-[32px]
+                sm:text-[36px]
+                md:text-[40px]
+              "
+              >
+                Our Core Service Areas
+              </h2>
+            </div>
+
+            <p
+              className="
+              w-full
+              font-nunito-sans
+              leading-6
+              text-[#5B5B5B]
+              sm:leading-7
+              md:w-1/2
+              lg:max-w-[580px]
+              text-left
+              md:text-right
+              lg:text-right
+              text-[16px]
+              sm:text-[16px]
+              md:text-[16px]
+              lg:text-[18px]
+            "
+            >
+              Cohere Consultants LLP is a boutique practice with a pan-India
+              presence, offering comprehensive legal and compliance services.
+              Specializing in areas such as laws on sexual harassment and
+              discrimination in the workplace, as well as maternity and labor
+              laws, the firm boasts a multidisciplinary team.
+            </p>
           </div>
-          <p className="font-nunito-sans font-normal text-[20px] text-[#2E262E] max-w-[580px] ml-auto text-right max-[767px]:ml-0 max-[767px]:text-left max-[767px]:text-[16px] md:max-[1200px]:text-[16px]">
-            Cohere Consultants LLP is a boutique practice with a pan-India
-            presence, offering comprehensive legal and compliance services.
-            Specializing in areas such as laws on sexual harassment and
-            discrimination in the workplace, as well as maternity and labor
-            laws, the firm boasts a multidisciplinary team.
-          </p>
         </div>
 
         {/* Scroll-stacking cards */}
@@ -260,18 +301,47 @@ export default function SocialFeedSection() {
                 <div className="textwithbtn flex justify-between items-end gap-[60px] max-[767px]:w-full md:max-[1200px]:gap-[24px]">
                   {" "}
                   <div className="flex flex-col gap-[40px] flex-1 max-w-[640px] max-[767px]:gap-5 md:max-[1200px]:gap-4 md:max-[1200px]:max-w-[360px]">
-                    <h3 className="font-avenir font-extrabold text-white text-[40px] leading-tight max-[767px]:text-[28px] md:max-[1200px]:text-[24px]">
+                    <h3 className="font-avenir font-extrabold text-white text-[40px] leading-tight max-[767px]:text-[28px] md:max-[1200px]:text-[26px]">
                       {post.title}
                     </h3>
 
-                    <p className="font-nunito-sans font-normal text-white text-[16px] md:text-[16px] leading-relaxed tracking-[0.04em] leading-6 max-[767px]:text-[15px] md:max-[1200px]:text-[13px] md:max-[1200px]:leading-5">
+                    <p className="font-nunito-sans font-normal text-white text-[16px] md:text-[16px] leading-relaxed tracking-[0.04em] leading-6 max-[767px]:text-[15px] md:max-[1200px]:text-[14px] md:max-[1200px]:leading-5">
                       {post.text}
                     </p>
                   </div>
                   {/* Arrow */}
-                  <div className="group shrink-0 hidden md:flex w-14 h-14 rounded-full items-center justify-center hover:bg-white transition-colors cursor-pointer md:max-[1200px]:w-9 md:max-[1200px]:h-9">
+                  {/* Arrow with dynamic page link */}
+                  <Link
+                    href={post.href}
+                    aria-label={`Explore ${post.title}`}
+                    className="
+    group
+    shrink-0
+    hidden
+    md:flex
+    w-14
+    h-14
+    rounded-full
+    items-center
+    justify-center
+    hover:bg-white
+    transition-colors
+    cursor-pointer
+    md:max-[1200px]:w-9
+    md:max-[1200px]:h-9
+  "
+                  >
                     <span
-                      className="block w-[68px] h-[68px] bg-white group-hover:bg-[#439897] transition-colors md:max-[1200px]:!w-[40px] md:max-[1200px]:!h-[40px]"
+                      className="
+      block
+      w-[68px]
+      h-[68px]
+      bg-white
+      group-hover:bg-[#439897]
+      transition-colors
+      md:max-[1200px]:!w-[40px]
+      md:max-[1200px]:!h-[40px]
+    "
                       style={{
                         WebkitMaskImage: `url(${roundIcon.src})`,
                         maskImage: `url(${roundIcon.src})`,
@@ -283,7 +353,7 @@ export default function SocialFeedSection() {
                         maskPosition: "center",
                       }}
                     />
-                  </div>
+                  </Link>
                 </div>
               </div>
             </div>

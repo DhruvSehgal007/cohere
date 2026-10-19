@@ -32,7 +32,7 @@ export default function FAQ({ data }: FAQProps) {
               onClick={() => toggle(index)}
               className="w-full flex items-center justify-between px-6 py-5 text-left"
             >
-              <h3 className="font-nunito-sans font-bold text-[20px] text-[#2E262E]">
+              <h3 className="font-nunito-sans font-bold text-[16px] sm:text-[16px] md:text-[18px] text-[#2E262E]">
                 {item.question}
               </h3>
 
@@ -63,7 +63,7 @@ export default function FAQ({ data }: FAQProps) {
                     isOpen ? "pb-6 opacity-100" : "pb-0 opacity-0"
                   }`}
                 >
-                  <p className="font-nunito-sans text-[18px] leading-[32px] text-[#5B5B5B]">
+                  <p className="font-nunito-sans text-[16px] sm:text-[16px] md:text-[18px] leading-[32px] text-[#5B5B5B]">
                     {item.answer}
                   </p>
                 </div>

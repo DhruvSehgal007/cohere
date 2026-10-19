@@ -38,18 +38,33 @@ export default function FAQSection() {
 
   return (
     <section className="pb-12 md:pb-16 lg:pb-20">
-      <div className="container-custom pb-8 md:pb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-5 md:gap-6">
+      <div className="container-custom px-4 sm:px-6 mb-10">
+        <div className="flex flex-col gap-3 md:gap-10 md:flex-row md:items-end md:justify-between">
 
-        <div>
-          <span className="inline-block w-auto rounded bg-[#439897] px-3 py-2 font-avenir text-[12px] sm:text-[13px] lg:text-[14px] font-normal text-white md:w-[260px]">
-            FREQUENTLY ASKED QUESTIONS
-          </span>
-
-          <h2 className="mt-4 font-avenir font-extrabold leading-tight text-[#0D1E1E] text-[30px] sm:text-[34px] md:text-[40px]">
-            Client Popular Question
-          </h2>
+          <div className="w-full md:w-1/2">
+            <div className="inline-flex items-center bg-[#439897] px-3 py-1.5 rounded-tr-[8px] rounded-br-[8px]">
+            <span className="font-avenir text-[12px] sm:text-[14px] uppercase tracking-[0.2px] text-white uppercase">
+               FREQUENTLY ASKED QUESTIONS
+            </span>
+          </div>
+            <h2
+              className="
+                mt-3
+                w-full
+                font-avenir
+                font-extrabold
+                leading-[1.15]
+                text-[#101C1C]
+                md:mt-4
+                text-[32px]
+                sm:text-[36px]
+                md:text-[40px]
+              "
+            >
+              Client Popular Question
+            </h2>
+          </div>
         </div>
-
       </div>
 
       <div className="container-custom px-4 sm:px-6">

@@ -54,7 +54,7 @@ export default function StatsSection() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden mb-16 sm:mb-16 md:mb-24 lg:mb-24">
       <Image
         src={counterBg}
         alt=""

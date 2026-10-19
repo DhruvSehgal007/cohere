@@ -192,60 +192,60 @@ export default function PastEvents() {
   };
 
   return (
-    <section className="py-10 sm:py-12 md:py-16">
+    <section className="pb-16 sm:pb-16 md:pb-24 lg:pb-24">
       {/* =========================================
           TOP CONTENT
       ========================================= */}
-      <div className="container-custom px-4 sm:px-6">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-          <div className="w-full lg:w-1/2">
-            <span className="inline-block rounded bg-[#439897] px-3 py-1 font-avenir text-[12px] text-white sm:px-4 sm:text-[14px]">
+      <div className="container-custom px-4 sm:px-6 mb-10">
+        <div className="flex flex-col gap-3 md:gap-10 md:flex-row md:items-end md:justify-between">
+
+          <div className="w-full md:w-1/2">
+            <div className="inline-flex items-center bg-[#439897] px-3 py-1.5 rounded-tr-[8px] rounded-br-[8px]">
+            <span className="font-avenir text-[12px] sm:text-[14px] uppercase tracking-[0.2px] text-white uppercase">
               Past Events
             </span>
+          </div>
+
 
             <h2
               className="
                 mt-3
                 w-full
                 font-avenir
-                text-[22px]
                 font-extrabold
                 leading-[1.15]
-                text-black
-
-                sm:text-[30px]
-
+                text-[#101C1C]
                 md:mt-4
-                md:text-[36px]
-
-                lg:max-w-[540px]
-                lg:text-[40px]
+                lg:max-w-[600px]
+                text-[32px]
+                sm:text-[36px]
+                md:text-[40px]
               "
             >
-              From Our Learning Calendar
-            </h2>
+From Our Learning Calendar            </h2>
           </div>
 
           <p
             className="
               w-full
               font-nunito-sans
-              text-[14px]
               leading-6
               text-[#5B5B5B]
-
-              sm:text-[15px]
               sm:leading-7
-
-              lg:w-1/2
-              lg:max-w-[480px]
+              md:w-1/2
+              lg:max-w-[520px]
+              text-left
+              md:text-right
               lg:text-right
-              lg:text-[16px]
+              text-[16px]
+              sm:text-[16px]
+              md:text-[16px]
+              lg:text-[18px]
             "
           >
-            Take a look back at previous workshops, masterclasses, and learning
-            programmes conducted with organisations across India.
+           Take a look back at previous workshops, masterclasses, and learning programmes conducted with organisations across India.
           </p>
+
         </div>
       </div>
 
@@ -356,11 +356,11 @@ max-w-[640px]
             text-center
           "
         >
-          <span className="font-nunito-sans-extra-bold text-[32px] sm:text-[32px] md:text-[32px] lg:text-[64px] xl:text-[64px] font-extrabold leading-none text-[#003F3D]">
+          <span className="font-nunito-sans-extra-bold text-[32px] sm:text-[36px] md:text-[42px] lg:text-[54px] xl:text-[64px] font-extrabold leading-none text-[#024241]">
             {event.day}
           </span>
 
-          <span className="mt-2 font-nunito-sans-extra-bold text-[14px] sm:text-[16px] font-bold text-[#078B87]">
+          <span className="mt-2 font-nunito-sans-extra-bold text-[16px] sm:text-[16px] font-bold text-[#20ADA9]">
             {event.monthYear}
           </span>
 
