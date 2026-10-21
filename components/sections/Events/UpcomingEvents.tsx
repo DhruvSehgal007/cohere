@@ -100,7 +100,7 @@ export default function UpcomingEvents() {
       <div className="container-custom">
         {/* Header Row: Title & Search */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 sm:mb-10">
-          <h2 className="text-[28px] sm:text-[34px] md:text-[40px] font-avenir font-bold text-[#0D1E1E] leading-[1.2]">
+          <h2 className="text-[32px] sm:text-[36px] md:text-[40px] font-avenir font-bold text-[#0D1E1E] leading-[1.2]">
             Upcoming Events
           </h2>
 
@@ -143,7 +143,7 @@ export default function UpcomingEvents() {
                     src={event.image}
                     alt={event.title}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                 </div>

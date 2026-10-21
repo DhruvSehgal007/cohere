@@ -22,12 +22,16 @@ export default function HeroSection() {
           <div className="absolute inset-0 bg-black/15 z-10" />
 
           {/* Banner Text Content */}
-          <div className="relative z-20 h-full flex flex-col justify-center px-6 sm:px-10 md:px-14 lg:px-16 max-w-[780px]">
-            <h1 className="text-[26px] sm:text-[34px] md:text-[44px] lg:text-[50px] font-avenir font-bold text-white leading-[1.14] mb-3 md:mb-4 tracking-[-0.01em]">
-              Supporting Organisations Beyond Compliance
+          <div className="relative z-20 h-full flex flex-col justify-center px-6 sm:px-10 md:px-12 lg:px-16 max-w-[900px] lg:max-w-[1000px]">
+            <h1 className="text-[26px] sm:text-[32px] md:text-[36px] lg:text-[40px] xl:text-[44px] font-avenir font-bold text-white leading-[1.18] mb-3 md:mb-4 tracking-[-0.01em]">
+              <span className="sm:whitespace-nowrap">Supporting Organisations Beyond</span>{" "}
+              <br className="hidden sm:inline" />
+              <span>Compliance</span>
             </h1>
-            <p className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] font-nunito-sans font-normal text-white/90 leading-[1.4] max-w-[580px]">
-              We believe that creating safer workplaces requires more than meeting statutory obligations.
+            <p className="text-[14px] sm:text-[15px] md:text-[16px] font-nunito-sans font-normal text-white/90 leading-relaxed max-w-[560px]">
+              <span className="sm:whitespace-nowrap">We believe that creating safer workplaces requires more than</span>{" "}
+              <br className="hidden sm:inline" />
+              <span>meeting statutory obligations.</span>
             </p>
           </div>
         </div>

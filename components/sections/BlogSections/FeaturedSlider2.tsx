@@ -287,7 +287,7 @@ export default function FeaturedSlider2() {
           <div className="inline-flex items-center bg-[#439897] text-white text-[14px] font-avenir font-normal uppercase pl-[6px] pr-[10px] py-[1px] h-[27px] rounded-r-[5px] rounded-l-none shadow-[2px_2px_5px_rgba(0,0,0,0.25)]">
             BLOG
           </div>
-          <h2 className="text-[28px] sm:text-[34px] md:text-[40px] font-avenir font-bold text-[#0D1E1E] leading-[1.22] mt-[15px]">
+          <h2 className="text-[32px] sm:text-[36px] md:text-[40px] font-avenir font-bold text-[#0D1E1E] leading-[1.22] mt-[15px]">
             Featured Article (Full Width)
           </h2>
         </div>
@@ -343,7 +343,7 @@ export default function FeaturedSlider2() {
                     scrollToCard(idx);
                   }
                 }}
-                className={`snap-start flex-none w-[88vw] sm:w-[520px] md:w-[611px] h-[336px] flex flex-col justify-between p-[32px] rounded-[12px] border select-none transition-all duration-300 cursor-pointer ${
+                className={`snap-start flex-none w-[88vw] sm:w-[520px] md:w-[611px] h-[280px] flex flex-col justify-between p-6 sm:p-7 md:p-[32px] rounded-[12px] border select-none transition-all duration-300 cursor-pointer ${
                   isActive
                     ? "bg-[#FEBC5A] border-[#F9A426] shadow-sm -translate-y-0.5"
                     : "bg-white border-[#EFEFEF] shadow-xs hover:border-[#FEBC5A]/40"
@@ -359,7 +359,7 @@ export default function FeaturedSlider2() {
                     {article.title}
                   </h3>
                   <p
-                    className={`text-[15px] sm:text-[16px] font-nunito-sans leading-relaxed transition-colors duration-200 ${
+                    className={`text-[16px] sm:text-[16px] md:text-[16px] lg:text-[18px] font-nunito-sans leading-relaxed transition-colors duration-200 ${
                       isActive ? "text-[#2D3748]" : "text-[#5B5B5B]"
                     }`}
                   >

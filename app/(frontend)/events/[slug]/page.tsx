@@ -144,12 +144,12 @@ export default async function EventDetailPage({
         </div>
 
         {/* Event Title */}
-        <h1 className="text-[34px] sm:text-[46px] md:text-[56px] lg:text-[64px] font-avenir font-bold text-[#0D1E1E] leading-[1.1] mb-6 md:mb-8">
+        <h1 className="text-[32px] sm:text-[36px] md:text-[42px] lg:text-[52px] xl:text-[64px] font-avenir font-bold text-[#0D1E1E] leading-[1.1] mb-6 md:mb-8">
           {eventData.title}
         </h1>
 
         {/* Event Body Description */}
-        <div className="space-y-6 md:space-y-7 text-[16px] sm:text-[18px] md:text-[20px] font-nunito-sans font-normal text-[#0D1E1E] leading-[24px] sm:leading-[25px] md:leading-[26px] tracking-[0.04em]">
+        <div className="space-y-6 md:space-y-7 text-[16px] sm:text-[16px] md:text-[16px] lg:text-[18px] font-nunito-sans font-normal text-[#0D1E1E] leading-[24px] sm:leading-[25px] md:leading-[26px] tracking-[0.04em]">
           {eventData.paragraphs.map((para, idx) => (
             <p key={idx}>{para}</p>
           ))}
@@ -157,11 +157,11 @@ export default async function EventDetailPage({
 
         {/* Speakers / Experts Section */}
         <div className="mt-12 sm:mt-14 md:mt-16">
-          <div className="flex flex-wrap lg:flex-nowrap items-start justify-start gap-6 sm:gap-8 lg:gap-[50px]">
+          <div className="flex flex-wrap items-start justify-start gap-6 sm:gap-8 lg:gap-[36px] xl:gap-[50px]">
             {speakersList.map((speaker, index) => (
               <div
                 key={`${speaker.id}-${index}`}
-                className="flex flex-col w-[140px] sm:w-[170px] lg:w-[198px] flex-shrink-0 gap-[20px]"
+                className="flex flex-col w-[140px] sm:w-[170px] lg:w-[198px] gap-[20px]"
               >
                 {/* Photo container */}
                 <div className="relative w-full aspect-square rounded-[18px] overflow-hidden bg-[#F4F4F4] border border-gray-100 shadow-xs">
@@ -188,7 +188,7 @@ export default async function EventDetailPage({
 
         {/* Upcoming Events Section */}
         <div className="mt-16 sm:mt-20 md:mt-24">
-          <h2 className="text-[28px] sm:text-[34px] md:text-[40px] font-avenir font-bold text-[#0D1E1E] leading-[1.22] md:leading-[49px] mb-6 md:mb-8">
+          <h2 className="text-[32px] sm:text-[36px] md:text-[40px] font-avenir font-bold text-[#0D1E1E] leading-[1.22] md:leading-[49px] mb-6 md:mb-8">
             Upcoming Events
           </h2>
 
@@ -205,7 +205,7 @@ export default async function EventDetailPage({
                     src={event.image}
                     alt={event.title}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                 </div>
