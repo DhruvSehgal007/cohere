@@ -15,6 +15,7 @@ import footerLogo from "@/assets/images/logos/chohere-footer-logo.png";
 
 const quickLinks = [
   { label: "About Us", href: "/about" },
+  { label: "Our team", href: "/our-team" },
   { label: "Our Product", href: "/products" },
   { label: "Training & Workshops", href: "/training-workshops" },
   { label: "Resources", href: "/resources" },

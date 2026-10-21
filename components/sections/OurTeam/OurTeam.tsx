@@ -1,8 +1,9 @@
+
 "use client";
 
 import { useCallback, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import type { StaticImageData } from "next/image";
+import Image, { type StaticImageData } from "next/image";
 
 import teamMemberLarge from "@/assets/images/OurTeam/Team-member-large.png";
 import teamMember from "@/assets/images/OurTeam/team-member.png";
@@ -61,17 +62,15 @@ export const experts: Expert[] = [
 
 const cardVariants = {
   enter: (dir: number) => ({
-    x: dir > 0 ? 60 : -60,
+    x: dir > 0 ? 35 : -35,
     opacity: 0,
   }),
-
   center: {
     x: 0,
     opacity: 1,
   },
-
   exit: (dir: number) => ({
-    x: dir > 0 ? -60 : 60,
+    x: dir > 0 ? -35 : 35,
     opacity: 0,
   }),
 };
@@ -81,12 +80,10 @@ const largeImageVariants = {
     opacity: 0,
     scale: 0.97,
   },
-
   center: {
     opacity: 1,
     scale: 1,
   },
-
   exit: {
     opacity: 0,
     scale: 0.97,
@@ -98,12 +95,10 @@ const roleVariants = {
     y: dir > 0 ? 12 : -12,
     opacity: 0,
   }),
-
   center: {
     y: 0,
     opacity: 1,
   },
-
   exit: (dir: number) => ({
     y: dir > 0 ? -12 : 12,
     opacity: 0,
@@ -119,26 +114,18 @@ export function OurTeam() {
   const go = useCallback(
     (dir: number) => {
       setDirection(dir);
-
-      setActive((current) => {
-        return (current + dir + count) % count;
-      });
+      setActive((current) => (current + dir + count) % count);
     },
-    [count],
+    [count]
   );
 
   const current = experts[active]!;
 
-  const at = (offset: number) => {
-    return experts[(active + offset + count) % count]!;
-  };
+  const at = (offset: number) =>
+    experts[(active + offset + count) % count]!;
 
   const leftSide = [at(-2), at(-1)];
   const rightSide = [at(1), at(2)];
-
-  const indexOf = (expert: Expert) => {
-    return experts.indexOf(expert);
-  };
 
   const select = (index: number) => {
     const diff = index - active;
@@ -155,11 +142,10 @@ export function OurTeam() {
   };
 
   return (
-    <>
-      {/* =====================================================
-          MARQUEE CSS
-      ===================================================== */}
-
+    <section
+      aria-label="Our experts"
+      className="w-full overflow-hidden bg-white"
+    >
       <style>{`
         .our-team-marquee-track {
           display: flex;
@@ -172,7 +158,6 @@ export function OurTeam() {
           from {
             transform: translate3d(0, 0, 0);
           }
-
           to {
             transform: translate3d(-50%, 0, 0);
           }
@@ -185,144 +170,114 @@ export function OurTeam() {
         }
       `}</style>
 
-      <section
-        aria-label="Our experts"
-        className="w-full overflow-x-hidden bg-white"
-      >
-        {/* =====================================================
-            CONTAINER
-        ===================================================== */}
+      <div className="container-custom px-4 sm:px-6">
+        <div
+          className="
+            relative
+            pt-28
+            pb-14
+            sm:pt-32
+            sm:pb-16
+            md:pt-36
+            md:pb-20
+            lg:pt-40
+            lg:pb-24
+          "
+        >
+          {/* ROLE */}
+          <div className="relative z-30">
+            <AnimatePresence mode="wait" custom={direction}>
+              <motion.p
+                key={`role-${active}`}
+                custom={direction}
+                variants={roleVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{
+                  duration: 0.35,
+                  ease: "easeOut",
+                }}
+                className="
+                  font-nunito-sans-bold
+                  text-[22px]
+                  font-bold
+                  leading-[1.3]
+                  tracking-[0.04em]
+                  text-[#FEBC5A]
+                  sm:text-[26px]
+                  md:text-[30px]
+                  lg:text-[36px]
+                "
+              >
+                {current.role}
+              </motion.p>
+            </AnimatePresence>
+          </div>
 
-        <div className="container-custom mt-28 py-16">
-          <div
-            className="
-              relative
-              w-full
-              py-10
-              sm:py-14
-              lg:py-16
-            "
-          >
-            {/* =================================================
-                ROLE
-            ================================================= */}
-
-            <div className="relative z-30">
-              <AnimatePresence mode="wait" custom={direction}>
-                <motion.p
-                  key={`role-${active}`}
-                  custom={direction}
-                  variants={roleVariants}
-                  initial="enter"
-                  animate="center"
-                  exit="exit"
-                  transition={{
-                    duration: 0.35,
-                    ease: "easeOut",
-                  }}
-                  className="
-                    font-nunito-sans-bold
-                    text-[26px]
-                    font-bold
-                    leading-[26px]
-                    tracking-[0.04em]
-                    text-[#FEBC5A]
-                    sm:text-[30px]
-                    lg:text-[36px]
-                  "
-                >
-                  {current.role}
-                </motion.p>
-              </AnimatePresence>
-            </div>
-
-            {/* =================================================
-                TEAM AREA
-            ================================================= */}
-
+          {/* IMAGE AND CARD AREA */}
+          <div className="relative mt-5 sm:mt-6 lg:mt-2">
+            {/* IMAGE STAGE */}
             <div
               className="
                 relative
-                mt-2
-                h-[520px]
-                sm:h-[600px]
+                h-[310px]
+                w-full
+                sm:h-[380px]
+                md:h-[450px]
                 lg:h-[700px]
               "
             >
-              {/* =================================================
-                  RUNNING MARQUEE
-              ================================================= */}
-
+              {/* BACKGROUND MARQUEE */}
               <div
                 aria-hidden="true"
                 className="
                   pointer-events-none
                   absolute
                   left-1/2
-                  top-[22%]
+                  top-[45%]
                   z-0
                   w-screen
                   -translate-x-1/2
                   overflow-hidden
                   select-none
+                  sm:top-[43%]
+                  md:top-[45%]
+                  lg:top-[22%]
                 "
               >
                 <div className="our-team-marquee-track">
-                  {/* SET 1 */}
-
-                  <div className="flex shrink-0">
-                    {[0, 1, 2].map((item) => (
-                      <span
-                        key={`one-${item}`}
-                        className="
-                          shrink-0
-                          px-8
-                          text-[18vw]
-                          font-bold
-                          uppercase
-                          leading-none
-                          tracking-tight
-                          text-[#d9eeee]
-                          sm:text-[10vw]
-                          lg:text-[7.5vw]
-                        "
-                      >
-                        {current.name}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* SET 2 */}
-
-                  <div className="flex shrink-0">
-                    {[0, 1, 2].map((item) => (
-                      <span
-                        key={`two-${item}`}
-                        className="
-                          shrink-0
-                          px-8
-                          text-[18vw]
-                          font-bold
-                          uppercase
-                          leading-none
-                          tracking-tight
-                          text-[#d9eeee]
-                          sm:text-[10vw]
-                          lg:text-[7.5vw]
-                        "
-                      >
-                        {current.name}
-                      </span>
-                    ))}
-                  </div>
+                  {[0, 1].map((set) => (
+                    <div
+                      key={set}
+                      className="flex shrink-0"
+                    >
+                      {[0, 1, 2].map((item) => (
+                        <span
+                          key={`${set}-${item}`}
+                          className="
+                            shrink-0
+                            px-8
+                            font-bold
+                            uppercase
+                            leading-none
+                            tracking-tight
+                            text-[#d9eeee]
+                            text-[18vw]
+                            sm:text-[12vw]
+                            md:text-[10vw]
+                            lg:text-[7.5vw]
+                          "
+                        >
+                          {current.name}
+                        </span>
+                      ))}
+                    </div>
+                  ))}
                 </div>
               </div>
 
-              {/* =================================================
-                  BASELINE
-                  HIDDEN ON MOBILE
-              ================================================= */}
-
+              {/* DESKTOP BASELINE */}
               <div
                 className="
                   pointer-events-none
@@ -335,20 +290,11 @@ export function OurTeam() {
                   w-screen
                   -translate-x-1/2
                   bg-[#d8d8d8]
-                  md:block
+                  lg:block
                 "
               />
 
-              {/* =================================================
-                  FOUR SIDE AVATARS
-                  
-                  MOBILE:
-                  hidden
-
-                  DESKTOP:
-                  visible
-              ================================================= */}
-
+              {/* DESKTOP SIDE AVATARS */}
               <div
                 className="
                   absolute
@@ -358,11 +304,10 @@ export function OurTeam() {
                   hidden
                   h-[160px]
                   w-full
-                  md:block
+                  lg:block
                 "
               >
-                {/* LEFT TWO */}
-
+                {/* LEFT */}
                 <div
                   className="
                     absolute
@@ -370,7 +315,8 @@ export function OurTeam() {
                     top-[70px]
                     flex
                     items-end
-                    gap-8
+                    gap-4
+                    xl:gap-8
                   "
                 >
                   <AnimatePresence
@@ -402,7 +348,7 @@ export function OurTeam() {
                         <SideAvatar
                           person={person}
                           onClick={() =>
-                            select(indexOf(person))
+                            select(experts.indexOf(person))
                           }
                         />
                       </motion.div>
@@ -410,8 +356,7 @@ export function OurTeam() {
                   </AnimatePresence>
                 </div>
 
-                {/* RIGHT TWO */}
-
+                {/* RIGHT */}
                 <div
                   className="
                     absolute
@@ -419,7 +364,8 @@ export function OurTeam() {
                     top-[70px]
                     flex
                     items-end
-                    gap-8
+                    gap-4
+                    xl:gap-8
                   "
                 >
                   <AnimatePresence
@@ -451,7 +397,7 @@ export function OurTeam() {
                         <SideAvatar
                           person={person}
                           onClick={() =>
-                            select(indexOf(person))
+                            select(experts.indexOf(person))
                           }
                         />
                       </motion.div>
@@ -460,33 +406,30 @@ export function OurTeam() {
                 </div>
               </div>
 
-              {/* =================================================
-                  LARGE CENTER IMAGE
-              ================================================= */}
-
+              {/* MAIN CENTER IMAGE */}
               <div
                 className="
                   absolute
-                  bottom-[150px]
-                  left-1/2
+                  inset-x-0
+                  bottom-0
                   z-10
-                  h-[430px]
-                  w-[330px]
-                  -translate-x-1/2
-                  sm:h-[540px]
-                  sm:w-[430px]
-                  lg:bottom-[160px]
-                  lg:h-[640px]
-                  lg:w-[540px]
+                  mx-auto
+                  h-[300px]
+                  w-[250px]
+                  sm:h-[370px]
+                  sm:w-[310px]
+                  md:h-[440px]
+                  md:w-[370px]
+                  lg:bottom-[150px]
+                  lg:h-[540px]
+                  lg:w-[430px]
+                  xl:h-[640px]
+                  xl:w-[540px]
                 "
               >
                 <AnimatePresence mode="wait">
-                  <motion.img
+                  <motion.div
                     key={`large-${active}`}
-                    src={current.largeImage.src}
-                    alt={`${current.name}, ${current.role}`}
-                    width={540}
-                    height={640}
                     variants={largeImageVariants}
                     initial="enter"
                     animate="center"
@@ -495,328 +438,256 @@ export function OurTeam() {
                       duration: 0.45,
                       ease: [0.22, 1, 0.36, 1],
                     }}
-                    className="
-                      h-[430px]
-                      w-[330px]
-                      scale-[1.08]
-                      object-contain
-                      object-bottom
-                      grayscale
-                      sm:h-[540px]
-                      sm:w-[430px]
-                      sm:scale-[1.12]
-                      lg:h-[640px]
-                      lg:w-[540px]
-                      lg:scale-[1.18]
-                    "
-                    style={{
-                      willChange: "opacity, transform",
-                    }}
-                  />
+                    className="relative h-full w-full"
+                  >
+                    <Image
+                      src={current.largeImage}
+                      alt={`${current.name}, ${current.role}`}
+                      fill
+                      priority
+                      sizes="(max-width: 639px) 250px, (max-width: 767px) 310px, (max-width: 1023px) 370px, (max-width: 1279px) 430px, 540px"
+                      className="
+                        object-contain
+                        object-bottom
+                        grayscale
+                      "
+                    />
+                  </motion.div>
                 </AnimatePresence>
               </div>
+            </div>
 
-              {/* =================================================
-                  CARD WRAPPER
-              ================================================= */}
+            {/* EXPERT CARD */}
+            <div
+              className="
+                relative
+                z-30
+                mx-auto
+                -mt-3
+                w-full
+                max-w-[500px]
+                sm:-mt-8
+                md:-mt-12
+                lg:-mt-[220px]
+              "
+            >
+              <AnimatePresence
+                mode="wait"
+                custom={direction}
+              >
+                <motion.article
+                  key={`card-${active}`}
+                  custom={direction}
+                  variants={cardVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{
+                    duration: 0.4,
+                    ease: "easeOut",
+                  }}
+                  className="
+                    relative
+                    w-full
+                    rounded-xl
+                    border
+                    border-[#e6eeee]
+                    bg-white
+                    px-4
+                    pt-5
+                    pb-7
+                    shadow-[0_12px_40px_rgba(40,120,120,0.12)]
+                    sm:px-6
+                    sm:pt-6
+                    sm:pb-8
+                    md:px-8
+                  "
+                >
+                  {/* CARD HEADER */}
+                  <div className="flex items-center gap-3 sm:gap-5">
+                    {/* SMALL PROFILE IMAGE */}
+                    <div
+                      className="
+                        relative
+                        h-[85px]
+                        w-[85px]
+                        shrink-0
+                        overflow-hidden
+                        rounded-[15px]
+                        bg-[#eeeeee]
+                        sm:h-[120px]
+                        sm:w-[120px]
+                        md:h-[140px]
+                        md:w-[140px]
+                      "
+                    >
+                      <Image
+                        src={current.cardImage}
+                        alt={current.name}
+                        fill
+                        sizes="(max-width: 639px) 85px, (max-width: 767px) 120px, 140px"
+                        className="object-cover object-top"
+                      />
+                    </div>
 
+                    {/* NAME, ROLE, SOCIAL */}
+                    <div className="min-w-0 flex-1">
+                      <h3
+                        className="
+                          font-avenir
+                          text-[18px]
+                          font-extrabold
+                          leading-tight
+                          text-black
+                          sm:text-[22px]
+                          md:text-[24px]
+                        "
+                      >
+                        {current.name}
+                      </h3>
+
+                      <p
+                        className="
+                          mt-1
+                          font-nunito-sans
+                          text-[12px]
+                          leading-[1.5]
+                          tracking-[0.04em]
+                          text-[#5C5C5C]
+                          sm:text-[14px]
+                          md:text-[16px]
+                        "
+                      >
+                        {current.role}
+                      </p>
+
+                      {/* SOCIAL ICONS */}
+                      <div
+                        className="
+                          mt-3
+                          flex
+                          items-center
+                          gap-4
+                          text-gray-800
+                          sm:mt-4
+                        "
+                      >
+                        <a
+                          href="#"
+                          aria-label={`${current.name} Facebook`}
+                          className="text-[18px] transition-opacity hover:opacity-60 sm:text-[20px]"
+                        >
+                          <i className="fa-brands fa-facebook-f" />
+                        </a>
+
+                        <a
+                          href="#"
+                          aria-label={`${current.name} Twitter`}
+                          className="text-[18px] transition-opacity hover:opacity-60 sm:text-[20px]"
+                        >
+                          <i className="fa-brands fa-twitter" />
+                        </a>
+
+                        <a
+                          href="#"
+                          aria-label={`${current.name} Instagram`}
+                          className="text-[18px] transition-opacity hover:opacity-60 sm:text-[20px]"
+                        >
+                          <i className="fa-brands fa-instagram" />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* BIO */}
+                  <p
+                    className="
+                      mt-5
+                      font-nunito-sans
+                      text-[13px]
+                      font-normal
+                      leading-[1.6]
+                      tracking-[0.02em]
+                      text-[#2E262E]
+                      sm:text-[15px]
+                      md:text-[16px]
+                      lg:text-[18px]
+                      lg:leading-[26px]
+                    "
+                  >
+                    {current.bio}
+                  </p>
+                </motion.article>
+              </AnimatePresence>
+
+              {/* SLIDER ARROWS */}
               <div
                 className="
                   absolute
-                  bottom-5
-                  left-1/2
-                  z-30
-                  w-[calc(100%-32px)]
-                  max-w-[500px]
-                  -translate-x-1/2
-                  overflow-visible
-                  sm:w-[min(92vw,500px)]
+                  -bottom-4
+                  right-4
+                  z-40
+                  flex
+                  h-[40px]
+                  w-[126px]
+                  items-center
+                  justify-center
+                  rounded-lg
+                  bg-[#FEBC5A]
+                  shadow-lg
+                  sm:-bottom-5
+                  sm:right-8
+                  sm:h-[44px]
+                  sm:w-[150px]
                 "
               >
-                {/* =================================================
-                    CARD
-                ================================================= */}
-
-                <AnimatePresence
-                  mode="wait"
-                  custom={direction}
-                >
-                  <motion.article
-                    key={`card-${active}`}
-                    custom={direction}
-                    variants={cardVariants}
-                    initial="enter"
-                    animate="center"
-                    exit="exit"
-                    transition={{
-                      duration: 0.4,
-                      ease: "easeOut",
-                    }}
-                    className="
-                      relative
-                      w-full
-                      overflow-visible
-                      rounded-xl
-                      border
-                      border-[#e6eeee]
-                      bg-white
-                      px-[16px]
-                      pb-[18px]
-                      pt-[18px]
-                      shadow-[0_12px_40px_rgba(40,120,120,0.12)]
-                      sm:px-[30px]
-                      sm:pb-[24px]
-                      sm:pt-[24px]
-                    "
-                  >
-                    {/* =================================================
-                        CARD HEADER
-                    ================================================= */}
-
-                    <div className="flex items-start gap-3 sm:gap-4">
-                      {/* =================================================
-                          CARD IMAGE
-                      ================================================= */}
-
-                      <div
-                        className="
-                          -mt-[45px]
-                          h-[100px]
-                          w-[100px]
-                          shrink-0
-                          overflow-hidden
-                          rounded-[15px]
-                          bg-[#eeeeee]
-                          sm:-mt-[62px]
-                          sm:h-[160px]
-                          sm:w-[160px]
-                        "
-                      >
-                        <img
-                          src={current.cardImage.src}
-                          alt=""
-                          width={148}
-                          height={148}
-                          loading="lazy"
-                          className="
-                            block
-                            h-[100px]
-                            w-[100px]
-                            object-cover
-                            object-top
-                            sm:h-[160px]
-                            sm:w-[160px]
-                          "
-                        />
-                      </div>
-
-                      {/* =================================================
-                          NAME + ROLE + SOCIAL
-                      ================================================= */}
-
-                      <div className="min-w-0 flex-1">
-                        <h3
-                          className="
-                            font-avenir
-                            text-lg
-                            font-extrabold
-                            leading-tight
-                            text-black
-                            sm:text-2xl
-                          "
-                        >
-                          {current.name}
-                        </h3>
-
-                        <p
-                          className="
-                            mt-1
-                            font-nunito-sans
-                            text-[12px]
-                            font-normal
-                            leading-[18px]
-                            tracking-[0.04em]
-                            text-[#5C5C5C]
-                            sm:text-[16px]
-                            sm:leading-[26px]
-                          "
-                        >
-                          {current.role}
-                        </p>
-
-                        {/* =================================================
-                            SOCIAL LINKS
-                        ================================================= */}
-
-                        <div
-                          className="
-                            mt-2
-                            flex
-                            items-center
-                            gap-3
-                            text-gray-800
-                            sm:mt-3
-                            sm:gap-4
-                          "
-                        >
-                          <a
-                            href="#"
-                            aria-label={`${current.name} Facebook`}
-                            className="
-                              text-[20px]
-                              transition-opacity
-                              hover:opacity-60
-                            "
-                          >
-                            <i className="fa-brands fa-facebook-f" />
-                          </a>
-
-                          <a
-                            href="#"
-                            aria-label={`${current.name} Twitter`}
-                            className="
-                              text-[20px]
-                              transition-opacity
-                              hover:opacity-60
-                            "
-                          >
-                            <i className="fa-brands fa-twitter" />
-                          </a>
-
-                          <a
-                            href="#"
-                            aria-label={`${current.name} Instagram`}
-                            className="
-                              text-[20px]
-                              transition-opacity
-                              hover:opacity-60
-                            "
-                          >
-                            <i className="fa-brands fa-instagram" />
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* =================================================
-                        BIO
-                    ================================================= */}
-
-                    <p
-                      className="
-                        mt-4
-                        font-nunito-sans
-                        text-[12px]
-                        font-normal
-                        leading-[17px]
-                        tracking-[0.02em]
-                        text-[#2E262E]
-                        sm:mt-5
-                        sm:text-[18px]
-                        sm:leading-[26px]
-                        sm:tracking-[0.04em]
-                      "
-                    >
-                      {current.bio}
-                    </p>
-                  </motion.article>
-                </AnimatePresence>
-
-                {/* =================================================
-                    ARROWS
-
-                    IMPORTANT:
-                    OUTSIDE motion.article
-                    SO THEY DON'T FADE / SLIDE
-                ================================================= */}
-
-                <div
+                <button
+                  type="button"
+                  onClick={() => go(-1)}
+                  aria-label="Previous expert"
                   className="
-                    absolute
-                    -bottom-3
-                    right-4
-                    z-40
                     flex
-                    h-[38px]
-                    w-[120px]
+                    h-full
+                    flex-1
                     items-center
                     justify-center
-                    rounded-lg
-                    bg-[#FEBC5A]
-                    shadow-lg
-                    sm:-bottom-5
-                    sm:right-10
-                    sm:h-[42px]
-                    sm:w-[162px]
+                    text-white
+                    transition-opacity
+                    hover:opacity-70
                   "
                 >
-                  {/* LEFT ARROW */}
+                  <i className="fa-solid fa-arrow-left text-[24px] sm:text-[30px]" />
+                </button>
 
-                  <button
-                    type="button"
-                    onClick={() => go(-1)}
-                    aria-label="Previous expert"
-                    className="
-                      flex
-                      h-full
-                      w-[54px]
-                      items-center
-                      justify-center
-                      text-white
-                      transition-opacity
-                      hover:opacity-70
-                      sm:w-[72px]
-                    "
-                  >
-                    <i className="fa-solid fa-arrow-left text-[24px] sm:text-[34px]" />
-                  </button>
+                <span className="h-[24px] w-[2px] bg-[#FF9800]" />
 
-                  {/* DIVIDER */}
-
-                  <span
-                    className="
-                      h-[22px]
-                      w-px
-                      bg-white/30
-                      sm:h-[24px]
-                    "
-                  />
-
-                  {/* RIGHT ARROW */}
-
-                  <button
-                    type="button"
-                    onClick={() => go(1)}
-                    aria-label="Next expert"
-                    className="
-                      flex
-                      h-full
-                      w-[54px]
-                      items-center
-                      justify-center
-                      text-white
-                      transition-opacity
-                      hover:opacity-70
-                      sm:w-[72px]
-                    "
-                  >
-                    <i className="fa-solid fa-arrow-right text-[24px] sm:text-[34px]" />
-                  </button>
-                </div>
+                <button
+                  type="button"
+                  onClick={() => go(1)}
+                  aria-label="Next expert"
+                  className="
+                    flex
+                    h-full
+                    flex-1
+                    items-center
+                    justify-center
+                    text-white
+                    transition-opacity
+                    hover:opacity-70
+                  "
+                >
+                  <i className="fa-solid fa-arrow-right text-[24px] sm:text-[30px]" />
+                </button>
               </div>
             </div>
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }
 
-/* ============================================================
-   SIDE AVATAR
-
-   DESKTOP ONLY
-============================================================ */
+/* SIDE AVATAR — DESKTOP ONLY */
 
 function SideAvatar({
   person,
@@ -834,29 +705,25 @@ function SideAvatar({
         group
         relative
         block
-        h-[160px]
-        w-[160px]
+        h-[110px]
+        w-[110px]
         shrink-0
         overflow-hidden
-        rounded-[100px]
+        rounded-full
         bg-[#e7e9e9]
-        p-0
         transition-transform
         duration-300
         hover:scale-105
+        xl:h-[160px]
+        xl:w-[160px]
       "
     >
-      <img
-        src={person.avatarImage.src}
+      <Image
+        src={person.avatarImage}
         alt={person.name}
-        width={160}
-        height={160}
-        loading="lazy"
+        fill
+        sizes="(max-width: 1279px) 110px, 160px"
         className="
-          block
-          h-[160px]
-          w-[160px]
-          rounded-[100px]
           object-cover
           object-top
           grayscale
