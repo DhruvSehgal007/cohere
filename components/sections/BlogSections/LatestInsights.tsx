@@ -103,7 +103,7 @@ export default function LatestInsights() {
       <div className="container-custom">
         {/* Section Heading (Figma: Avenir Bold 40px, leading 49px) */}
         <div className="mb-10">
-          <h2 className="text-[28px] sm:text-[34px] md:text-[40px] font-avenir font-bold text-[#0D1E1E] leading-[1.22] tracking-tight">
+          <h2 className="text-[32px] sm:text-[36px] md:text-[40px] font-avenir font-bold text-[#0D1E1E] leading-[1.22] tracking-tight">
             Latest Insights
           </h2>
         </div>
@@ -121,7 +121,7 @@ export default function LatestInsights() {
               <div
                 key={`${card.id}-${index}`}
                 onMouseEnter={() => setHoveredIdx(index)}
-                className={`group relative flex flex-col justify-between w-full max-w-[484px] h-[550px] p-[32px] rounded-[16px] overflow-hidden select-none transition-all duration-500 ease-in-out cursor-pointer shadow-[2px_2px_8px_0px_rgba(0,0,0,0.10)] hover:shadow-[2px_6px_16px_0px_rgba(0,0,0,0.15)] hover:-translate-y-1 animate-fade-in ${isActive ? "bg-[#254f55]" : "bg-white"
+                className={`group relative flex flex-col justify-between w-full max-w-[484px] h-[480px] sm:h-[490px] md:h-[500px] p-6 sm:p-7 md:p-[28px] rounded-[16px] overflow-hidden select-none transition-all duration-500 ease-in-out cursor-pointer border border-[#ededed] shadow-[2px_2px_8px_0px_rgba(0,0,0,0.06)] hover:shadow-[2px_6px_16px_0px_rgba(0,0,0,0.12)] hover:-translate-y-1 animate-fade-in ${isActive ? "bg-[#254f55]" : "bg-white"
                   }`}
               >
                 {/* GRADIENT OVERLAY (Active/Hover state: #439897 to #2E262E) */}
@@ -144,9 +144,9 @@ export default function LatestInsights() {
                 />
 
                 {/* CONTENT WRAPPER */}
-                <div className="relative z-10 flex flex-col justify-between h-full gap-[24px]">
+                <div className="relative z-10 flex flex-col justify-between h-full gap-4 sm:gap-5">
                   {/* Top Text Block */}
-                  <div className="space-y-3">
+                  <div className="space-y-1.5 sm:space-y-2">
                     <h3
                       className={`text-[18px] lg:text-[20px] font-avenir font-bold leading-[1.3] transition-colors duration-500 ${isActive ? "text-white" : "text-[#0D1E1E]"
                         }`}
@@ -154,15 +154,15 @@ export default function LatestInsights() {
                       {card.title}
                     </h3>
                     <p
-                      className={`text-[15px] sm:text-[16px] font-nunito-sans leading-[1.55] transition-colors duration-500 ${isActive ? "text-white/90" : "text-[#5B5B5B]"
+                      className={`text-[16px] sm:text-[16px] md:text-[16px] lg:text-[18px] font-nunito-sans leading-[1.55] transition-colors duration-500 ${isActive ? "text-white/90" : "text-[#5B5B5B]"
                         }`}
                     >
                       {card.description}
                     </p>
                   </div>
 
-                  {/* Bottom Image Container (Figma: rounded-12px, ~268px height) */}
-                  <div className="relative w-full h-[268px] rounded-[12px] overflow-hidden mt-auto flex-shrink-0 isolate [transform:translateZ(0)]">
+                  {/* Bottom Image Container (Figma: rounded-12px) */}
+                  <div className="relative w-full h-[240px] sm:h-[250px] md:h-[255px] rounded-[12px] overflow-hidden mt-auto flex-shrink-0 isolate [transform:translateZ(0)]">
                     <Image
                       src={card.image}
                       alt={card.title}

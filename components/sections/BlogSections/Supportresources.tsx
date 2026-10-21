@@ -31,14 +31,14 @@ export default function Supportresources() {
 
           <div className="relative z-10 w-full lg:w-[48%] xl:w-[50%] p-6 sm:p-10 lg:p-0 lg:pl-[60px] xl:pl-[80px] 2xl:pl-[100px] flex flex-col items-start justify-center text-left">
             {/* Heading: Resources That Support Better / Decisions */}
-            <h2 className="text-[28px] sm:text-[34px] md:text-[40px] font-avenir font-bold text-white leading-[1.2] tracking-tight text-left">
+            <h2 className="text-[32px] sm:text-[36px] md:text-[40px] font-avenir font-bold text-white leading-[1.2] tracking-tight text-left">
               <span className="inline-block">Resources That Support Better</span>{" "}
               <br className="hidden sm:inline" />
               <span className="inline-block">Decisions</span>
             </h2>
 
-            {/* Description: Poppins 400 18px, Color #FFFFFF, Width 420px */}
-            <p className="mt-5 sm:mt-6 font-poppins font-normal text-[16px] sm:text-[18px] md:text-[20px] text-white leading-[1.5] max-w-[420px] text-left">
+            {/* Description: Nunito Sans, Color #FFFFFF, Width 420px */}
+            <p className="mt-5 sm:mt-6 font-nunito-sans font-normal text-[16px] sm:text-[16px] md:text-[16px] lg:text-[18px] text-white leading-[1.5] max-w-[420px] text-left">
               Access practical guidance, legal updates, compliance resources,
               templates, and educational content created to strengthen
               workplace policies and practices.

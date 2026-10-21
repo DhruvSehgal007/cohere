@@ -11,12 +11,12 @@ export default function BlogHero() {
           </div>
 
           {/* Heading (Figma: Avenir Roman 64px, weight 400, leading 67.7px) */}
-          <h1 className="text-[34px] sm:text-[46px] md:text-[56px] lg:text-[64px] font-avenir font-normal text-[#070F0F] tracking-normal leading-[1.06] mt-[24px]">
+          <h1 className="text-[32px] sm:text-[36px] md:text-[42px] lg:text-[52px] xl:text-[64px] font-avenir font-normal text-[#070F0F] tracking-normal leading-[1.06] mt-[24px]">
             Practical Knowledge for Safer, More Compliant Workplaces
           </h1>
 
           {/* Subtitle (Figma: Nunito Sans 20px, tracking 0.8px, leading 26px) */}
-          <p className="text-[16px] sm:text-[18px] md:text-[20px] font-nunito-sans font-normal text-[#5B5B5B] tracking-[0.8px] leading-[26px] mt-[32px]">
+          <p className="text-[16px] sm:text-[16px] md:text-[16px] lg:text-[18px] font-nunito-sans font-normal text-[#5B5B5B] tracking-[0.8px] leading-[26px] mt-[32px]">
             Explore expert insights, workplace guidance, legal updates, practical templates, trauma-informed resources, and learning materials designed to support organisations, Internal Committees, HR teams, and workplace leaders.
           </p>
         </div>
