@@ -16,14 +16,44 @@ import legalWhiteIcon from "@/assets/images/AntisexualHarassment/legal-updates-w
 
 export default function PracticalResourcesSection() {
   return (
-   <section className="py-20">
-  <div className="container-custom px-6">
-    <div className="grid grid-cols-1 gap-y-14 gap-x-4 min-[600px]:grid-cols-2 min-[600px]:gap-y-16 md:gap-y-16 xl:grid-cols-4">
-      {/* ================= CARD 1 ================= */}
+    <section className="pb-16 sm:pb-16 md:pb-24 lg:pb-24">
+      <div className="container-custom px-6">
 
-      <div className="group relative rounded-[16px] bg-white p-6 min-[600px]:p-7 xl:p-8 shadow-[4px_10px_18px_0px_#00000021] transition-all duration-300 hover:bg-[#439897]">
-        <div
-          className="absolute
+<div className="mb-10">
+        <div className="flex flex-col gap-3 md:gap-10 md:flex-row md:items-end md:justify-between">
+
+          <div className="w-full">
+            <h2
+              className="
+                w-full
+                font-avenir
+                font-extrabold
+                leading-[1.15]
+                text-[#101C1C]
+                lg:max-w-[600px]
+                text-[32px]
+                sm:text-[36px]
+                md:text-[40px]
+              "
+            >
+              Practical Resources for Better Workplace Compliance
+            </h2>
+          </div>
+
+
+
+        </div>
+      </div>
+
+
+
+
+        <div className="grid grid-cols-1 gap-y-14 gap-x-4 min-[600px]:grid-cols-2 min-[600px]:gap-y-16 md:gap-y-16 xl:grid-cols-4 mt-[64px] sm:mt-[80px] md:mt-[110px] lg:mt-[130px]">
+          {/* ================= CARD 1 ================= */}
+
+          <div className="group relative rounded-[16px] bg-white p-6 min-[600px]:p-7 xl:p-8 shadow-[4px_10px_18px_0px_#00000021] transition-all duration-300 hover:bg-[#439897]">
+            <div
+              className="absolute
 -top-8
 right-0
 flex
@@ -48,11 +78,11 @@ bg-[#98BCBB]
 transition-all
 duration-300
 group-hover:bg-[#1B3D3C]"
-        >
-          <Image
-            src={annualIcon}
-            alt=""
-            className="
+            >
+              <Image
+                src={annualIcon}
+                alt=""
+                className="
 block
 group-hover:hidden
 w-8
@@ -63,12 +93,12 @@ xl:w-14
 xl:h-14
 object-contain
 "
-          />
+              />
 
-          <Image
-            src={annualWhiteIcon}
-            alt=""
-            className="
+              <Image
+                src={annualWhiteIcon}
+                alt=""
+                className="
 hidden
 group-hover:block
 w-8
@@ -79,23 +109,23 @@ xl:w-14
 xl:h-14
 object-contain
 "
-          />
-        </div>
+              />
+            </div>
 
-        <h3 className="max-w-[190px] font-avenir text-[20px] min-[600px]:text-[22px] xl:text-[24px] font-extrabold leading-tight text-[#1B3D3C] transition-colors duration-300 group-hover:text-white">
-          Annual Reporting
-        </h3>
+            <h3 className="max-w-[190px] font-avenir text-[20px] min-[600px]:text-[22px] xl:text-[24px] font-extrabold leading-tight text-[#1B3D3C] transition-colors duration-300 group-hover:text-white">
+              Annual Reporting
+            </h3>
 
-        <p className="mt-5 font-nunito-sans text-[16px] min-[600px]:text-[16px] leading-7 text-[#5B5B5B] transition-colors duration-300 group-hover:text-white">
-          Templates and practical guidance for statutory reporting.
-        </p>
-      </div>
+            <p className="mt-5 font-nunito-sans text-[16px] min-[600px]:text-[16px] leading-7 text-[#5B5B5B] transition-colors duration-300 group-hover:text-white">
+              Templates and practical guidance for statutory reporting.
+            </p>
+          </div>
 
-      {/* ================= CARD 2 ================= */}
+          {/* ================= CARD 2 ================= */}
 
-      <div className="group relative rounded-[16px] bg-white p-6 min-[600px]:p-7 xl:p-8 shadow-[4px_10px_18px_0px_#00000021] transition-all duration-300 hover:bg-[#439897]">
-        <div
-          className="absolute
+          <div className="group relative rounded-[16px] bg-white p-6 min-[600px]:p-7 xl:p-8 shadow-[4px_10px_18px_0px_#00000021] transition-all duration-300 hover:bg-[#439897]">
+            <div
+              className="absolute
 -top-8
 right-0
 flex
@@ -120,11 +150,11 @@ bg-[#98BCBB]
 transition-all
 duration-300
 group-hover:bg-[#1B3D3C]"
-        >
-          <Image
-            src={workplaceIcon}
-            alt=""
-            className="
+            >
+              <Image
+                src={workplaceIcon}
+                alt=""
+                className="
 block
 group-hover:hidden
 w-8
@@ -135,12 +165,12 @@ xl:w-14
 xl:h-14
 object-contain
 "
-          />
+              />
 
-          <Image
-            src={workplaceWhiteIcon}
-            alt=""
-            className="
+              <Image
+                src={workplaceWhiteIcon}
+                alt=""
+                className="
 hidden
 group-hover:block
 w-8
@@ -151,24 +181,24 @@ xl:w-14
 xl:h-14
 object-contain
 "
-          />
-        </div>
+              />
+            </div>
 
-        <h3 className="max-w-[190px] font-avenir text-[20px] min-[600px]:text-[22px] xl:text-[24px] font-extrabold leading-tight text-[#1B3D3C] transition-colors duration-300 group-hover:text-white">
-          Workplace Guidance
-        </h3>
+            <h3 className="max-w-[190px] font-avenir text-[20px] min-[600px]:text-[22px] xl:text-[24px] font-extrabold leading-tight text-[#1B3D3C] transition-colors duration-300 group-hover:text-white">
+              Workplace Guidance
+            </h3>
 
-        <p className="mt-5 font-nunito-sans text-[16px] min-[600px]:text-[16px] leading-7 text-[#5B5B5B] transition-colors duration-300 group-hover:text-white">
-          Resources supporting compliance, awareness, and workplace
-          learning.
-        </p>
-      </div>
+            <p className="mt-5 font-nunito-sans text-[16px] min-[600px]:text-[16px] leading-7 text-[#5B5B5B] transition-colors duration-300 group-hover:text-white">
+              Resources supporting compliance, awareness, and workplace
+              learning.
+            </p>
+          </div>
 
-      {/* ================= CARD 3 ================= */}
+          {/* ================= CARD 3 ================= */}
 
-      <div className="group relative rounded-[16px] bg-white p-6 min-[600px]:p-7 xl:p-8 shadow-[4px_10px_18px_0px_#00000021] transition-all duration-300 hover:bg-[#439897]">
-        <div
-          className="absolute
+          <div className="group relative rounded-[16px] bg-white p-6 min-[600px]:p-7 xl:p-8 shadow-[4px_10px_18px_0px_#00000021] transition-all duration-300 hover:bg-[#439897]">
+            <div
+              className="absolute
 -top-8
 right-0
 flex
@@ -193,11 +223,11 @@ bg-[#98BCBB]
 transition-all
 duration-300
 group-hover:bg-[#1B3D3C]"
-        >
-          <Image
-            src={traumaIcon}
-            alt=""
-            className="
+            >
+              <Image
+                src={traumaIcon}
+                alt=""
+                className="
 block
 w-8
 h-8
@@ -208,12 +238,12 @@ xl:h-14
 object-contain
 group-hover:hidden
 "
-          />
+              />
 
-          <Image
-            src={traumaWhiteIcon}
-            alt=""
-            className="
+              <Image
+                src={traumaWhiteIcon}
+                alt=""
+                className="
 hidden
 group-hover:block
 w-8
@@ -224,24 +254,24 @@ xl:w-14
 xl:h-14
 object-contain
 "
-          />
-        </div>
+              />
+            </div>
 
-        <h3 className="max-w-[190px] font-avenir text-[20px] min-[600px]:text-[22px] xl:text-[24px] font-extrabold leading-tight text-[#1B3D3C] transition-colors duration-300 group-hover:text-white">
-          Trauma-Informed Practice
-        </h3>
+            <h3 className="max-w-[210px] lg:max-w-[190px] xl:max-w-[210px] font-avenir text-[20px] min-[600px]:text-[22px] xl:text-[24px] font-extrabold leading-tight text-[#1B3D3C] transition-colors duration-300 group-hover:text-white">
+              Trauma-Informed Practice
+            </h3>
 
-        <p className="mt-5 font-nunito-sans text-[16px] min-[600px]:text-[16px] leading-7 text-[#5B5B5B] transition-colors duration-300 group-hover:text-white">
-          Understanding trauma responses to improve workplace
-          investigations.
-        </p>
-      </div>
+            <p className="mt-5 font-nunito-sans text-[16px] min-[600px]:text-[16px] leading-7 text-[#5B5B5B] transition-colors duration-300 group-hover:text-white">
+              Understanding trauma responses to improve workplace
+              investigations.
+            </p>
+          </div>
 
-      {/* ================= CARD 4 ================= */}
+          {/* ================= CARD 4 ================= */}
 
-      <div className="group relative rounded-[16px] bg-white p-6 min-[600px]:p-7 xl:p-8 shadow-[4px_10px_18px_0px_#00000021] transition-all duration-300 hover:bg-[#439897]">
-        <div
-          className="absolute
+          <div className="group relative rounded-[16px] bg-white p-6 min-[600px]:p-7 xl:p-8 shadow-[4px_10px_18px_0px_#00000021] transition-all duration-300 hover:bg-[#439897]">
+            <div
+              className="absolute
 -top-8
 right-0
 flex
@@ -266,11 +296,11 @@ bg-[#98BCBB]
 transition-all
 duration-300
 group-hover:bg-[#1B3D3C]"
-        >
-          <Image
-            src={legalIcon}
-            alt=""
-            className="
+            >
+              <Image
+                src={legalIcon}
+                alt=""
+                className="
 block
 w-8
 h-8
@@ -281,12 +311,12 @@ xl:h-14
 object-contain
 group-hover:hidden
 "
-          />
+              />
 
-          <Image
-            src={legalWhiteIcon}
-            alt=""
-            className="
+              <Image
+                src={legalWhiteIcon}
+                alt=""
+                className="
 hidden
 group-hover:block
 w-8
@@ -297,20 +327,20 @@ xl:w-14
 xl:h-14
 object-contain
 "
-          />
+              />
+            </div>
+
+            <h3 className="max-w-[190px] font-avenir text-[20px] min-[600px]:text-[22px] xl:text-[24px] font-extrabold leading-tight text-[#1B3D3C] transition-colors duration-300 group-hover:text-white">
+              Legal Updates
+            </h3>
+
+            <p className="mt-5 font-nunito-sans text-[16px] min-[600px]:text-[16px] leading-7 text-[#5B5B5B] transition-colors duration-300 group-hover:text-white">
+              Practical insights and workplace guidance based on evolving
+              compliance practices.
+            </p>
+          </div>
         </div>
-
-        <h3 className="max-w-[190px] font-avenir text-[20px] min-[600px]:text-[22px] xl:text-[24px] font-extrabold leading-tight text-[#1B3D3C] transition-colors duration-300 group-hover:text-white">
-          Legal Updates
-        </h3>
-
-        <p className="mt-5 font-nunito-sans text-[16px] min-[600px]:text-[16px] leading-7 text-[#5B5B5B] transition-colors duration-300 group-hover:text-white">
-          Practical insights and workplace guidance based on evolving
-          compliance practices.
-        </p>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
   );
 }

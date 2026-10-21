@@ -5,6 +5,8 @@ import Image from "next/image";
 import bannerImage from "@/assets/images/homepage/side-images.png";
 // import bannerImageone from "@/assets/images/homepage/linkdin-post.png";
 import sliderBackground from "@/assets/images/homepage/slider-background.png";
+import Lefticon from "@/assets/images/homepage/Left-icon.png";
+import Righticon from "@/assets/images/homepage/Right-icon.png";
 
 const staticContent = {
   line1: "Understand",

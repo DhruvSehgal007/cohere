@@ -14,27 +14,32 @@ export default function FAQSection() {
   const [faqData, setFaqData] = useState<FAQItem[]>([]);
 
   useEffect(() => {
-    const fetchFAQs = async () => {
-      try {
-        const response = await fetch("/api/faqs", {
-          cache: "no-store",
-        });
+  const fetchFAQs = async () => {
+    try {
+      const response = await fetch("/api/faqs", {
+        cache: "no-store",
+      });
 
-        const data = await response.json();
-
-        if (data.success) {
-          setFaqData(data.faqs);
-        }
-      } catch (error) {
-        console.error(
-          "Failed to load FAQs:",
-          error
-        );
+      if (!response.ok) {
+        throw new Error(`FAQ API failed: ${response.status}`);
       }
-    };
 
-    fetchFAQs();
-  }, []);
+      const data = await response.json();
+
+      console.log("FAQ API Response:", data);
+
+      if (data.success && Array.isArray(data.faqs)) {
+        setFaqData(data.faqs);
+      } else {
+        console.error("Invalid FAQ response:", data);
+      }
+    } catch (error) {
+      console.error("Failed to load FAQs:", error);
+    }
+  };
+
+  fetchFAQs();
+}, []);
 
   return (
     <section className="pb-12 md:pb-16 lg:pb-20">

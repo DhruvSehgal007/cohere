@@ -1,4 +1,4 @@
-import ServiceBannerSection from "@/components/sections/ServiceSections/ServiceBannerSection";
+import BannerSection from "@/components/sections/AntiSexualHarassmentSections/BannerSection";
 import OurServiceSection from "@/components/sections/AntiSexualHarassmentSections/OurServiceSection";
 import PracticalResourcesSection from "@/components/sections/AntiSexualHarassmentSections/PracticalResourcesSection";
 import WhyitMatterSection from "@/components/sections/AntiSexualHarassmentSections/whyItMatterSection";
@@ -7,10 +7,10 @@ import WhyitMatterSection from "@/components/sections/AntiSexualHarassmentSectio
 export default function ServicePage() {
   return (
     <>
-      {/* <ServiceBannerSection /> */}
+      <BannerSection/>
       <OurServiceSection />
-      <PracticalResourcesSection />
       <WhyitMatterSection />
+      <PracticalResourcesSection />
     </>
   );
 }

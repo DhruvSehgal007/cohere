@@ -5,6 +5,11 @@ import Image from "next/image";
 import polygonImage from "@/assets/images/WorkplaceDiscrimination/polygon.svg";
 import middlePolygonLogo from "@/assets/images/WorkplaceDiscrimination/middle-polygon-logo.png";
 import cardIcon from "@/assets/images/WorkplaceDiscrimination/card-side-icons.svg";
+import Workplaceinvestigation from "@/assets/images/WorkplaceDiscrimination/Workplace-investigation.svg";
+import Awarenessprogram from "@/assets/images/WorkplaceDiscrimination/Awareness-program.svg";
+import resourceguidance from "@/assets/images/WorkplaceDiscrimination/resource-guidance.svg";
+import Trauainformed from "@/assets/images/WorkplaceDiscrimination/Traua-informed.svg";
+import Internalcommitte from "@/assets/images/WorkplaceDiscrimination/Internal-committe.svg";
 
 // =========================================================
 // CARD DATA
@@ -13,68 +18,74 @@ import cardIcon from "@/assets/images/WorkplaceDiscrimination/card-side-icons.sv
 const CARDS = [
   {
     title: "Respectful\nWorkplace Culture",
+    icon: cardIcon,
     description:
       "Support initiatives that encourage dignity, respect, and professional workplace behaviour.",
     desktopPosition: "top-left",
     mobilePosition: "left",
-    desktopShadow: "drop-shadow-[-24px_-34px_0px_#008E92]",
-    mobileShadow: "drop-shadow-[-16px_-20px_0px_#008E92]",
-    tabletShadow: "drop-shadow-[-16px_-20px_0px_#008E92]",
+    desktopShadow: "drop-shadow-[-24px_-34px_0px_#FEBC5A] group-hover:drop-shadow-[-38px_-53px_0px_#FEBC5A]",
+    mobileShadow: "drop-shadow-[-16px_-20px_0px_#FEBC5A] group-hover:drop-shadow-[-26px_-32px_0px_#FEBC5A]",
+    tabletShadow: "drop-shadow-[-16px_-20px_0px_#FEBC5A] group-hover:drop-shadow-[-26px_-32px_0px_#FEBC5A]",
   },
 
   {
     title: "Awareness\nProgrammes",
+    icon: Awarenessprogram,
     description:
       "Interactive workshops that help employees understand workplace behaviour, responsibilities, and respectful interactions.",
     desktopPosition: "top-right",
     mobilePosition: "right",
-    desktopShadow: "drop-shadow-[24px_-34px_0px_#008E92]",
-    mobileShadow: "drop-shadow-[16px_-20px_0px_#008E92]",
-    tabletShadow: "drop-shadow-[16px_-20px_0px_#008E92]",
+    desktopShadow: "drop-shadow-[24px_-34px_0px_#FEBC5A] group-hover:drop-shadow-[38px_-53px_0px_#FEBC5A]",
+    mobileShadow: "drop-shadow-[16px_-20px_0px_#FEBC5A] group-hover:drop-shadow-[26px_-32px_0px_#FEBC5A]",
+    tabletShadow: "drop-shadow-[16px_-20px_0px_#FEBC5A] group-hover:drop-shadow-[26px_-32px_0px_#FEBC5A]",
   },
 
   {
     title: "Internal Committee\nSupport",
+    icon: Internalcommitte,
     description:
       "Strengthening Internal Committees through orientation, practical learning, and ongoing guidance.",
     desktopPosition: "left",
     mobilePosition: "left",
-    desktopShadow: "drop-shadow-[-34px_0px_0px_#008E92]",
-    mobileShadow: "drop-shadow-[-20px_0px_0px_#008E92]",
-    tabletShadow: "drop-shadow-[-16px_-20px_0px_#008E92]",
+    desktopShadow: "drop-shadow-[-34px_0px_0px_#FEBC5A] group-hover:drop-shadow-[-53px_0px_0px_#FEBC5A]",
+    mobileShadow: "drop-shadow-[-20px_0px_0px_#FEBC5A] group-hover:drop-shadow-[-32px_0px_0px_#FEBC5A]",
+    tabletShadow: "drop-shadow-[-16px_-20px_0px_#FEBC5A] group-hover:drop-shadow-[-26px_-32px_0px_#FEBC5A]",
   },
 
   {
     title: "Workplace\nInvestigations",
+    icon: Workplaceinvestigation,
     description:
       "Supporting organisations with structured, confidential, and fair investigation processes.",
     desktopPosition: "right",
     mobilePosition: "right",
-    desktopShadow: "drop-shadow-[34px_0px_0px_#008E92]",
-    mobileShadow: "drop-shadow-[20px_0px_0px_#008E92]",
-    tabletShadow: "drop-shadow-[16px_-20px_0px_#008E92]",
+    desktopShadow: "drop-shadow-[34px_0px_0px_#FEBC5A] group-hover:drop-shadow-[53px_0px_0px_#FEBC5A]",
+    mobileShadow: "drop-shadow-[20px_0px_0px_#FEBC5A] group-hover:drop-shadow-[32px_0px_0px_#FEBC5A]",
+    tabletShadow: "drop-shadow-[16px_-20px_0px_#FEBC5A] group-hover:drop-shadow-[26px_-32px_0px_#FEBC5A]",
   },
 
   {
     title: "Trauma-Informed\nPractice",
+    icon: Trauainformed,
     description:
       "Helping organisations understand trauma responses and promote compassionate, informed workplace processes.",
     desktopPosition: "bottom-left",
     mobilePosition: "left",
-    desktopShadow: "drop-shadow-[-24px_34px_0px_#008E92]",
-    mobileShadow: "drop-shadow-[-16px_20px_0px_#008E92]",
-    tabletShadow: "drop-shadow-[-16px_-20px_0px_#008E92]",
+    desktopShadow: "drop-shadow-[-24px_34px_0px_#FEBC5A] group-hover:drop-shadow-[-38px_53px_0px_#FEBC5A]",
+    mobileShadow: "drop-shadow-[-16px_20px_0px_#FEBC5A] group-hover:drop-shadow-[-26px_32px_0px_#FEBC5A]",
+    tabletShadow: "drop-shadow-[-16px_-20px_0px_#FEBC5A] group-hover:drop-shadow-[-26px_-32px_0px_#FEBC5A]",
   },
 
   {
     title: "Resources &\nGuidance",
+    icon: resourceguidance,
     description:
       "Providing practical resources, workplace templates, awareness materials, and compliance guidance.",
     desktopPosition: "bottom-right",
     mobilePosition: "right",
-    desktopShadow: "drop-shadow-[24px_34px_0px_#008E92]",
-    mobileShadow: "drop-shadow-[16px_20px_0px_#008E92]",
-    tabletShadow: "drop-shadow-[16px_-20px_0px_#008E92]",
+    desktopShadow: "drop-shadow-[24px_34px_0px_#FEBC5A] group-hover:drop-shadow-[38px_53px_0px_#FEBC5A]",
+    mobileShadow: "drop-shadow-[16px_20px_0px_#FEBC5A] group-hover:drop-shadow-[26px_32px_0px_#FEBC5A]",
+    tabletShadow: "drop-shadow-[16px_-20px_0px_#FEBC5A] group-hover:drop-shadow-[26px_-32px_0px_#FEBC5A]",
   },
 ];
 
@@ -86,17 +97,49 @@ export default function OurSupportSection() {
   return (
     <section
       className="
-        mt-24
-        w-full
-        bg-white
-        py-[60px]
-
-        max-[1100px]:mt-16
-        max-[1100px]:py-[40px]
+       pb-16 sm:pb-16 md:pb-24 lg:pb-24
       "
     >
+
+       <div className="container-custom px-4 sm:px-6 mb-10">
+        <div className="flex flex-col gap-3 md:gap-10 md:flex-row md:items-end md:justify-between">
+
+          <div className="w-full md:w-1/2">
+            <div className="inline-flex items-center bg-[#439897] px-3 py-1.5 rounded-tr-[8px] rounded-br-[8px]">
+            <span className="uppercase font-avenir text-[12px] sm:text-[14px] uppercase tracking-[0.2px] text-white uppercase">
+              Our Support
+            </span>
+          </div>
+
+
+            <h2
+              className="
+                mt-3
+                w-full
+                font-avenir
+                font-extrabold
+                leading-[1.15]
+                text-[#101C1C]
+                md:mt-4
+                lg:max-w-[600px]
+                text-[32px]
+                sm:text-[36px]
+                md:text-[40px]
+              "
+            >
+              How We Help Organizations
+            </h2>
+          </div>
+
+          
+
+        </div>
+      </div>
       <div
         className="
+        mt-[60px]
+        sm:mt-[60px]
+        lg:mt-[180px]
           mx-auto
           w-full
           max-w-[1500px]
@@ -455,6 +498,7 @@ function HexCard({
 }: {
   item: {
     title: string;
+    icon: typeof cardIcon;
     description: string;
     desktopPosition: string;
     mobilePosition: string;
@@ -468,6 +512,7 @@ function HexCard({
   return (
     <div
       className={`
+        group
         relative
         max-w-full
 
@@ -497,7 +542,7 @@ function HexCard({
           fill
           priority
           className={`
-            object-contain
+            object-contain transition-[filter] duration-500 ease-in-out
 
             ${
               mode === "desktop"
@@ -506,37 +551,37 @@ function HexCard({
 
                   ${
                     item.desktopPosition === "top-left"
-                      ? "max-[1440px]:drop-shadow-[-20px_-28px_0px_#008E92]"
+                      ? "max-[1440px]:drop-shadow-[-20px_-28px_0px_#FEBC5A]"
                       : ""
                   }
 
                   ${
                     item.desktopPosition === "top-right"
-                      ? "max-[1440px]:drop-shadow-[20px_-28px_0px_#008E92]"
+                      ? "max-[1440px]:drop-shadow-[20px_-28px_0px_#FEBC5A]"
                       : ""
                   }
 
                   ${
                     item.desktopPosition === "left"
-                      ? "max-[1440px]:drop-shadow-[-28px_0px_0px_#008E92]"
+                      ? "max-[1440px]:drop-shadow-[-28px_0px_0px_#FEBC5A]"
                       : ""
                   }
 
                   ${
                     item.desktopPosition === "right"
-                      ? "max-[1440px]:drop-shadow-[28px_0px_0px_#008E92]"
+                      ? "max-[1440px]:drop-shadow-[28px_0px_0px_#FEBC5A]"
                       : ""
                   }
 
                   ${
                     item.desktopPosition === "bottom-left"
-                      ? "max-[1440px]:drop-shadow-[-20px_28px_0px_#008E92]"
+                      ? "max-[1440px]:drop-shadow-[-20px_28px_0px_#FEBC5A]"
                       : ""
                   }
 
                   ${
                     item.desktopPosition === "bottom-right"
-                      ? "max-[1440px]:drop-shadow-[20px_28px_0px_#008E92]"
+                      ? "max-[1440px]:drop-shadow-[20px_28px_0px_#FEBC5A]"
                       : ""
                   }
                 `
@@ -545,6 +590,20 @@ function HexCard({
                   : item.mobileShadow
             }
           `}
+        />
+        {/* Teal fill follows the exact existing polygon silhouette. */}
+        <div
+          className="pointer-events-none absolute inset-0 bg-[#1A6263] opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100"
+          style={{
+            WebkitMaskImage: `url(${polygonImage.src})`,
+            maskImage: `url(${polygonImage.src})`,
+            WebkitMaskSize: "contain",
+            maskSize: "contain",
+            WebkitMaskPosition: "center",
+            maskPosition: "center",
+            WebkitMaskRepeat: "no-repeat",
+            maskRepeat: "no-repeat",
+          }}
         />
       </div>
 
@@ -582,7 +641,7 @@ function HexCard({
             font-avenir
             font-extrabold
             leading-[1.15]
-            text-black
+            text-black transition-colors duration-500 ease-in-out group-hover:text-white
 
             ${
               mode === "desktop"
@@ -602,7 +661,7 @@ function HexCard({
             font-normal
             leading-[1.45]
             tracking-[0.04em]
-            text-[#5B5B5B]
+            text-[#5B5B5B] transition-colors duration-500 ease-in-out group-hover:text-white
 
             ${
               mode === "desktop"
@@ -622,6 +681,7 @@ function HexCard({
           ================================================= */}
 
       <CardIcon
+        icon={item.icon}
         desktopPosition={item.desktopPosition}
         mobilePosition={item.mobilePosition}
         mode={mode}
@@ -635,10 +695,12 @@ function HexCard({
 // =========================================================
 
 function CardIcon({
+  icon,
   desktopPosition,
   mobilePosition,
   mode,
 }: {
+  icon: typeof cardIcon;
   desktopPosition: string;
   mobilePosition: string;
   mode: "mobile" | "tablet" | "desktop";
@@ -760,7 +822,7 @@ if (desktopPosition === "bottom-right") {
         `}
       >
         <Image
-          src={cardIcon}
+          src={icon}
           alt="Card Icon"
           fill
           className="object-contain"

@@ -24,7 +24,7 @@ const posts = [
     image: three,
     title: "Employment and Labour",
     text: "Our specialists guide employee discipline, compliance, and investigations through workplace transformation. Our team supports the full framework, contributes to policy building, and drives a strong regulatory approach.",
-    href: "/employeement-labour",
+    href: "/employment-and-labour",
   },
 ];
 

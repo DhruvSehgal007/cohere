@@ -1,291 +1,46 @@
 "use client";
+import Link from "next/link";
 
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import Image from "next/image";
-import bannerImage from "@/assets/images/homepage/side-images.png";
-// import bannerImageone from "@/assets/images/homepage/linkdin-post.png";
-import sliderBackground from "@/assets/images/homepage/slider-background.png";
-
-
-
-const slides = [
-  {
-    heading: "Workplace Advisory That Supports Compliance & People",
-    description:
-      "Supporting organisations with practical workplace advisory, policy guidance, Internal Committee support, workplace investigations, and compliance-focused solutions that help create respectful and legally compliant workplaces.",
-    image: bannerImage,
-  },
-  {
-    heading: "Practical Guidance For Safer Workplaces",
-    description:
-      "Helping organisations build respectful and inclusive workplaces through practical policies, advisory support, training, and compliance solutions.",
-    image: bannerImage,
-  },
-  {
-    heading: "Workplace Compliance Made Clear",
-    description:
-      "From PoSH compliance and policy development to investigations and advisory, we provide clear and practical support for your organisation.",
-    image: bannerImage,
-  },
-  {
-    heading: "Supporting People. Strengthening Compliance.",
-    description:
-      "Our workplace advisory solutions help organisations manage workplace responsibilities with confidence, clarity, and accountability.",
-    image: bannerImage,
-  },
-];
-
-const N = slides.length;
-const AUTO_MS = 4500;
-const TRANSITION_MS = 1400;
-
-export default function HomeBanner() {
-  const [index, setIndex] = useState(0);
-  const [textKey, setTextKey] = useState(0);
-
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const mainImgWrapRef = useRef<HTMLDivElement>(null);
-  const peekRef = useRef<HTMLDivElement>(null);
-  const prevPeekRect = useRef<DOMRect | null>(null);
-  const isForwardStep = useRef(false);
-
-  const active = slides[index];
-  const nextIndex = (index + 1) % N;
-  const nextSlide = slides[nextIndex];
-
-  // capture where the small peek thumbnail is *before* we swap content,
-  // so we can morph the incoming main image from that exact spot/size
-  const goTo = (i: number, forward: boolean) => {
-    const next = ((i % N) + N) % N;
-    isForwardStep.current = forward;
-
-if (
-  forward &&
-  peekRef.current &&
-  window.innerWidth >= 1024
-) {
-  prevPeekRect.current = peekRef.current.getBoundingClientRect();
-} else {
-  prevPeekRect.current = null;
-}
-
-    setTextKey((k) => k + 1);
-    setIndex(next);
-  };
-
-  const next = () => goTo(index + 1, true);
-  const prev = () => goTo(index - 1, false);
-
-  // FLIP: after the main image swaps to the new slide, if we have a
-  // captured "from" rect (the peek's old position/size), animate the
-  // main image from that small rect up to its natural big rect —
-  // i.e. it visually grows from small to big and lands in place.
-
-  
-  useLayoutEffect(() => {
-    const mainEl = mainImgWrapRef.current;
-    if (!mainEl) return;
-
-    const fromRect = prevPeekRect.current;
-
-    if (
-  !fromRect ||
-  !isForwardStep.current ||
-  window.innerWidth < 1024
-) {
-      // no morph available (prev/dot navigation) — simple fade
-      mainEl.style.transition = "none";
-      mainEl.style.opacity = "0";
-      mainEl.style.transform = "none";
-      void mainEl.offsetWidth;
-      mainEl.style.transition = `opacity ${TRANSITION_MS}ms ease`;
-      mainEl.style.opacity = "1";
-      return;
-    }
-
-    const toRect = mainEl.getBoundingClientRect();
-    const scaleX = fromRect.width / toRect.width;
-    const scaleY = fromRect.height / toRect.height;
-    const translateX =
-      fromRect.left + fromRect.width / 2 - (toRect.left + toRect.width / 2);
-    const translateY =
-      fromRect.top + fromRect.height / 2 - (toRect.top + toRect.height / 2);
-
-    mainEl.style.transformOrigin = "center center";
-    mainEl.style.transition = "none";
-    mainEl.style.opacity = "0.5";
-    mainEl.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scaleX}, ${scaleY})`;
-
-    // force reflow so the browser registers the "from" state before we animate
-    void mainEl.offsetWidth;
-
-    mainEl.style.transition = `transform ${TRANSITION_MS}ms cubic-bezier(0.22,1,0.36,1), opacity ${TRANSITION_MS}ms ease`;
-    mainEl.style.transform = "translate(0, 0) scale(1)";
-    mainEl.style.opacity = "1";
-
-    prevPeekRect.current = null;
-  }, [index]);
-
-  // useEffect(() => {
-  //   timerRef.current = setInterval(() => {
-  //     goTo(index + 1, true);
-  //   }, AUTO_MS);
-  //   return () => {
-  //     if (timerRef.current) clearInterval(timerRef.current);
-  //   };
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [index]);
-
-  const pause = () => {
-    if (timerRef.current) {
-      clearInterval(timerRef.current);
-      timerRef.current = null;
-    }
-  };
-  const resume = () => {
-    if (timerRef.current) return;
-    timerRef.current = setInterval(() => {
-      goTo(index + 1, true);
-    }, AUTO_MS);
-  };
-
+export default function Banner() {
   return (
-    <section
-      className="relative w-full overflow-hidden bg-no-repeat bg-cover bg-center pt-24 sm:pt-28 md:pt-32 lg:pt-40 pb-12 md:pb-16"
-      style={{ backgroundImage: `url(${sliderBackground.src})` }}
-      onMouseEnter={pause}
-      onMouseLeave={resume}
-    >
-      <div className="container-custom grid grid-cols-1 lg:grid-cols-2 items-center gap-10 lg:gap-16">
-        {/* LEFT: text */}
-<div>
-  {/* Category */}
-  <span className="inline-block rounded-[3px] bg-[#439897] px-2 py-1 font-avenir text-[14px] font-normal tracking-[0.02em] text-white">
-    EMPLOYMENT &amp; LABOUR
-  </span>
+    <section className="w-full bg-white pt-24 sm:pt-28 md:pt-32 lg:pt-36 pb-16 md:pb-24">
+      <div className="container-custom">
+        <div className="max-w-[540px] sm:max-w-[540px] md:max-w-[800px] lg:max-w-[800px] xl:max-w-[800px]">
 
-  {/* Heading */}
-  <h1
-    key={`heading-${textKey}`}
-    className="mt-4 max-w-[650px] font-avenir font-normal text-[42px] leading-[1.05] text-[#111111] sm:text-[52px] md:text-[60px] lg:text-[64px] animate-[fadeInText_700ms_ease-in-out]"
-  >
-    {active.heading}
-  </h1>
-
-  {/* Description */}
-  <p
-    key={`desc-${textKey}`}
-    className="mt-6 max-w-[620px] font-nunito-sans text-[16px] font-normal leading-[1.5] text-[#5B5B5B] sm:text-[15px] lg:text-[20px] animate-[fadeInText_700ms_ease-in-out]"
-  >
-    {active.description}
-  </p>
-
-  {/* Button */}
-  <div className="mt-7">
-<button className="w-full max-w-[240px] rounded-[10px] bg-[#439897] px-3 py-[10px] font-avenir text-[16px] font-normal leading-[26px] tracking-[0.04em] text-[#C7E0E0] transition-colors hover:bg-[#357b7a]">
-  Talk to an Expert
-</button>
-  </div>
-</div>
-
-        {/* RIGHT: single main image, morphs in from the peek's position/size */}
-        <div className="relative w-full flex justify-center">
-          <div ref={mainImgWrapRef} className="w-full max-w-[300px] sm:max-w-[420px] md:max-w-[500px] lg:max-w-[580px] mx-auto">
-            <Image
-              key={index}
-              src={active.image}
-              alt={`slide-${index + 1}`}
-              className="w-full h-auto object-contain"
-              priority={index === 0}
-            />
+          {/* Label */}
+          <div className="inline-flex items-center bg-[#439897] px-3 py-1.5 rounded-tr-[8px] rounded-br-[8px] mb-4">
+            <span className="font-avenir text-[12px] sm:text-[14px] uppercase tracking-[0.2px] text-white ">
+              EMPLOYMENT & LABOUR
+            </span>
           </div>
-        </div>
-      </div>
 
-      <div className="container-custom mt-8 flex justify-center lg:justify-end items-center gap-3">
-        <button
-          onClick={prev}
-          aria-label="Previous"
-          className="w-9 h-9 rounded-full border border-[#439897] text-[#439897] flex items-center justify-center hover:bg-[#439897] hover:text-white transition-colors"
-        >
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M15 18l-6-6 6-6"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </button>
+          {/* Heading */}
+          <h1 className="font-avenir font-normal text-[#2E262E] text-[32px] sm:text-[36px] md:text-[42px] lg:text-[54px] xl:text-[64px] leading-[1.05] tracking-[-1px] max-w-[500px] sm:max-w-[380px] md:max-w-[720px]">
+            Workplace Advisory That Supports Compliance & People
+          </h1>
 
-        <div className="flex items-center gap-2">
-          {slides.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => goTo(i, i > index)}
-              aria-label={`Go to slide ${i + 1}`}
-              className={`rounded-full transition-all duration-300 ${
-                i === index
-                  ? "w-3 h-3 bg-[#439897]"
-                  : "w-2.5 h-2.5 bg-transparent border border-gray-400"
-              }`}
-            />
-          ))}
-        </div>
+          {/* Description */}
+          <p className="font-nunito-sans font-normal text-[#6B6B6B] text-[16px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.35] mt-6 mb-6 sm:mt-10 sm:mb-10 max-w-[640px]">
+            Supporting organisations with practical workplace advisory, policy guidance, Internal Committee support, workplace investigations, and compliance-focused solutions that help create respectful and legally compliant workplaces.
+          </p>
 
-        <button
-          onClick={next}
-          aria-label="Next"
-          className="w-9 h-9 rounded-full border border-[#439897] text-[#439897] flex items-center justify-center hover:bg-[#439897] hover:text-white transition-colors"
-        >
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M9 6l6 6-6 6"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </button>
-      </div>
+          {/* Button */}
+          
+{/* Buttons */}
+<div className="flex flex-wrap items-center gap-4">
+  {/* First Button */}
+  <Link
+    href="/contact"
+    className="inline-flex items-center justify-center bg-[#FFB84D] hover:bg-[#F4A936] transition-colors duration-200 text-[#2E262E] font-avenir font-[800] text-[14px] sm:text-[16px] py-[12px] px-[12px] md:py-[14px] md:px-[20px] lg:py-[14px] lg:px-[20px] max-w-[200px] sm:max-w-[220px] md:max-w-[220px] lg:max-w-[220px] rounded-[8px]"
+  >
+    Talk to an Expert
+  </Link>
 
-      {/* Small peek thumbnail — this is the "from" shape/position the
-          next main image morphs out of when advancing forward */}
-     <div
-  ref={peekRef}
-  key={nextIndex}
-  className="hidden lg:block absolute right-[-70px] top-1/2 -translate-y-1/2 w-[290px] pointer-events-none select-none opacity-20 scale-110 animate-[peekFadeIn_900ms_ease-out_forwards]"
->
-  <Image
-    src={nextSlide.image}
-    alt=""
-    className="w-full h-auto object-contain blur-[2px]"
-    aria-hidden="true"
-  />
 </div>
 
-      <style jsx>
-        {`
-          @keyframes fadeInText {
-            0% {
-              opacity: 0;
-            }
-            100% {
-              opacity: 1;
-            }
-          }
-          @keyframes peekFadeIn {
-            0% {
-              opacity: 0;
-            }
-            100% {
-              opacity: 0.25;
-            }
-          }
-        `}
-      </style>
+
+        </div>
+      </div>
     </section>
   );
 }
