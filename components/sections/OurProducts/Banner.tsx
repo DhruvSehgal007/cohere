@@ -1,142 +1,48 @@
+"use client";
+import Link from "next/link";
+
 export default function Banner() {
   return (
-    <section className="w-full pt-30">
+    <section className="w-full bg-white pt-24 sm:pt-28 md:pt-32 lg:pt-36 pb-16 md:pb-24">
       <div className="container-custom">
-        <div className="pt-[62px] pb-[100px] md:pt-[80px] md:pb-[120px]">
-          {/* Content */}
-          <div className="max-w-[1035px]">
+        <div className="max-w-[540px] sm:max-w-[540px] md:max-w-[800px] lg:max-w-[800px] xl:max-w-[800px]">
 
-            {/* Tag */}
-            <div
-              className="
-                inline-flex
-                h-[27px]
-                items-center
-                bg-[#439897]
-                pl-[6px]
-                pr-[10px]
-                rounded-tr-[5px]
-                rounded-br-[5px]
-                shadow-[0px_5px_10px_rgba(0,0,0,0.22)]
-              "
-            >
-              <span
-                className="
-                  font-avenir
-                  text-[14px]
-                  leading-[26px]
-                  font-normal
-                  uppercase
-                  text-white
-                "
-              >
-                Our Products
-              </span>
-            </div>
-
-            {/* Heading */}
-            <h1
-              className="
-                mt-[28px]
-                font-avenir
-                text-[#070F0F]
-                text-[38px]
-                leading-[1]
-                font-normal
-                tracking-[0]
-                sm:text-[46px]
-                md:text-[54px]
-                lg:text-[64px]
-              "
-            >
-              Workplace Solutions,
-              <br className="hidden sm:block" />
-              Designed to Keep It Right®
-            </h1>
-
-            {/* Description */}
-            <p
-              className="
-                mt-[52px]
-                max-w-[802px]
-                font-nunito-sans
-                text-[16px]
-                leading-[24px]
-                font-normal
-                tracking-[0.04em]
-                text-[#5B5B5B]
-                md:text-[18px]
-                md:leading-[26px]
-                lg:text-[20px]
-              "
-            >
-              Practical digital solutions for workplace awareness, readiness,
-              compliance and investigations.
-            </p>
-
-            {/* Buttons */}
-            <div className="mt-[42px] flex flex-col gap-[20px] sm:flex-row sm:gap-[30px]">
-
-              {/* View Demo */}
-              <button
-                type="button"
-                className="
-                  flex
-                  h-[57px]
-                  w-full
-                  items-center
-                  justify-center
-                  rounded-[8px]
-                  bg-[#FEBC5A]
-                  px-[12px]
-                  py-[10px]
-                  font-avenir
-                  text-[16px]
-                  font-bold
-                  leading-none
-                  tracking-[0.04em]
-                  text-black
-                  transition-all
-                  duration-300
-                  hover:bg-[#F5AD43]
-                  sm:w-[240px]
-                "
-              >
-                View Demo
-              </button>
-
-              {/* Explore Button */}
-              <button
-                type="button"
-                className="
-                  flex
-                  h-[57px]
-                  w-full
-                  items-center
-                  justify-center
-                  rounded-[8px]
-                  border-[2px]
-                  border-[#173E40]
-                  bg-transparent
-                  px-[12px]
-                  py-[10px]
-                  font-avenir
-                  text-[16px]
-                  font-bold
-                  leading-none
-                  tracking-[0.04em]
-                  text-[#173E40]
-                  transition-all
-                  duration-300
-                  hover:bg-[#173E40]
-                  hover:text-white
-                  sm:w-[240px]
-                "
-              >
-                Explore Keep it Right
-              </button>
-            </div>
+          {/* Label */}
+          <div className="inline-flex items-center bg-[#439897] px-3 py-1.5 rounded-tr-[8px] rounded-br-[8px] mb-4">
+            <span className="font-avenir text-[12px] sm:text-[14px] uppercase tracking-[0.2px] text-white ">
+              OUR PRODUCTS
+            </span>
           </div>
+
+          {/* Heading */}
+          <h1 className="font-avenir font-normal text-[#2E262E] text-[32px] sm:text-[36px] md:text-[42px] lg:text-[54px] xl:text-[64px] leading-[1.05] tracking-[-1px] max-w-[480px] sm:max-w-[480px] md:max-w-[800px]">
+            Workplace Solutions, Designed to Keep It Right®
+          </h1>
+
+          {/* Description */}
+          <p className="font-nunito-sans font-normal text-[#6B6B6B] text-[16px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.35] mt-6 mb-6 sm:mt-10 sm:mb-10 max-w-[690px]">
+            Practical digital solutions for workplace awareness, readiness, compliance and investigations.
+          </p>
+
+          {/* Button */}
+          <div className="flex flex-wrap items-center gap-4">
+  {/* First Button */}
+  <Link
+    href="/contact"
+    className="inline-flex items-center justify-center bg-[#FFB84D] hover:bg-[#F4A936] transition-colors duration-200 text-[#2E262E] font-avenir font-[800] text-[14px] sm:text-[16px] py-[12px] px-[12px] md:py-[14px] md:px-[20px] lg:py-[14px] lg:px-[20px] max-w-[200px] sm:max-w-[220px] md:max-w-[320px] lg:max-w-[320px] rounded-[8px]"
+  >
+    View Demo
+  </Link>
+
+  {/* Second Button */}
+  <Link
+    href="/services"
+    className="inline-flex items-center justify-center bg-white hover:bg-[#F5F5F5] border border-[#1B3D3C] transition-colors duration-200 text-[#1B3D3C] font-avenir font-[800] text-[14px] sm:text-[16px] py-[12px] px-[12px] md:py-[14px] md:px-[20px] lg:py-[14px] lg:px-[20px] max-w-[200px] sm:max-w-[220px] md:max-w-[220px] lg:max-w-[220px] rounded-[8px]"
+  >
+    Explore Keep it Right
+  </Link>
+</div>
+
         </div>
       </div>
     </section>

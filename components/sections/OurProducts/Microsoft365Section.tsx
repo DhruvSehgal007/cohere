@@ -31,7 +31,7 @@ const microsoftApps = [
 
 export default function Microsoft365Section() {
   return (
-    <section className="w-full py-[50px] md:py-[70px]">
+    <section className="pb-16 sm:pb-16 md:pb-24 lg:pb-24">
       <div className="container-custom">
         <div
           className="

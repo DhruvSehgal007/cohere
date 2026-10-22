@@ -99,7 +99,7 @@ export default function LatestInsights() {
   };
 
   return (
-    <section className="py-12 md:py-16 bg-white">
+    <section className="pb-16 sm:pb-16 md:pb-24 lg:pb-24">
       <div className="container-custom">
         {/* Section Heading (Figma: Avenir Bold 40px, leading 49px) */}
         <div className="mb-10">

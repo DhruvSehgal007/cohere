@@ -139,17 +139,23 @@ export default async function EventDetailPage({
         </div>
 
         {/* Category Badge */}
-        <div className="mt-8 md:mt-10 mb-4 inline-flex items-center bg-[#439897] text-white text-[14px] font-avenir font-normal uppercase pl-[6px] pr-[10px] py-[1px] h-[27px] rounded-r-[5px] rounded-l-none shadow-[2px_2px_5px_rgba(0,0,0,0.25)]">
+        {/* <div className="mt-8 md:mt-10 mb-4 inline-flex items-center bg-[#439897] text-white text-[14px] font-avenir font-normal uppercase pl-[6px] pr-[10px] py-[1px] h-[27px] rounded-r-[5px] rounded-l-none shadow-[2px_2px_5px_rgba(0,0,0,0.25)]">
           {eventData.category}
-        </div>
+        </div> */}
+
+        {/* <div className="inline-flex items-center bg-[#439897] px-3 py-1.5 rounded-tr-[8px] rounded-br-[8px]">
+            <span className="font-avenir text-[12px] sm:text-[14px] uppercase tracking-[0.2px] text-white uppercase">
+              {eventData.category}
+            </span>
+          </div> */}
 
         {/* Event Title */}
-        <h1 className="text-[32px] sm:text-[36px] md:text-[42px] lg:text-[52px] xl:text-[64px] font-avenir font-bold text-[#0D1E1E] leading-[1.1] mb-6 md:mb-8">
+        <h1 className="text-[32px] sm:text-[36px] md:text-[36px] lg:text-[40px] xl:text-[40px] font-avenir font-bold text-[#0D1E1E] leading-[1.1] mb-6 md:mb-8 mt-10">
           {eventData.title}
         </h1>
 
         {/* Event Body Description */}
-        <div className="space-y-6 md:space-y-7 text-[16px] sm:text-[16px] md:text-[16px] lg:text-[18px] font-nunito-sans font-normal text-[#0D1E1E] leading-[24px] sm:leading-[25px] md:leading-[26px] tracking-[0.04em]">
+        <div className="space-y-6 md:space-y-7 text-[16px] sm:text-[16px] md:text-[16px] lg:text-[18px] font-nunito-sans font-normal text-[#5B5B5B] leading-[24px] sm:leading-[25px] md:leading-[26px] tracking-[0.04em]">
           {eventData.paragraphs.map((para, idx) => (
             <p key={idx}>{para}</p>
           ))}

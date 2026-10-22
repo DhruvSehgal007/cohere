@@ -67,74 +67,62 @@ export default function KeepItRightSection() {
   };
 
   return (
-    <section className="w-full py-[70px] md:py-[90px]">
+    <section className="pb-16 sm:pb-16 md:pb-24 lg:pb-24">
       <div className="container-custom">
         {/* Top row */}
-        <div className="grid grid-cols-1 gap-[24px] lg:grid-cols-[1fr_0.6fr] lg:gap-[70px]">
-          <div>
-            <div
-              className="
-                inline-flex
-                h-[28px]
-                items-center
-                rounded-tr-[5px]
-                rounded-br-[5px]
-                bg-[#439897]
-                px-[9px]
-                shadow-[2px_2px_5px_rgba(0,0,0,0.20)]
-              "
-            >
-              <span
-                className="
-                  font-avenir
-                  text-[14px]
-                  font-normal
-                  uppercase
-                  leading-[22px]
-                  text-white
-                "
-              >
-                Keep It Right®
-              </span>
-            </div>
+        <div className="mb-10">
+        <div className="flex flex-col gap-3 md:gap-10 md:flex-row md:items-end md:justify-between">
+
+          <div className="w-full md:w-1/2">
+            <div className="inline-flex items-center bg-[#439897] px-3 py-1.5 rounded-tr-[8px] rounded-br-[8px]">
+            <span className="font-avenir text-[12px] sm:text-[14px] uppercase tracking-[0.2px] text-white uppercase">
+              KEEP IT RIGHT®
+            </span>
+          </div>
+
 
             <h2
               className="
-                mt-[14px]
-                max-w-[700px]
+                mt-3
+                w-full
                 font-avenir
-                text-[28px]
-                font-[800]
-                leading-[1.2]
-                text-[#0D1E1E]
-                sm:text-[34px]
+                font-extrabold
+                leading-[1.15]
+                text-[#101C1C]
+                md:mt-4
+                lg:max-w-[620px]
+                text-[32px]
+                sm:text-[36px]
                 md:text-[40px]
               "
             >
-              Proprietary web based and LMS
-              <br />
-              suitable e-learning
+              Proprietary web based and LMS suitable e-learning
             </h2>
           </div>
 
-          <div className="lg:flex lg:justify-end">
-            <p
-              className="
-                max-w-[410px]
-                font-nunito-sans
-                text-[16px]
-                leading-relaxed
-                tracking-[0.04em]
-                text-[#5B5B5B]
-                sm:text-[18px]
-                md:text-[20px]
-              "
-            >
-              for PoSH &amp; Gender in Workplaces &amp; Educational Institutions
-            </p>
-          </div>
-        </div>
+          <p
+            className="
+              w-full
+              font-nunito-sans
+              leading-6
+              text-[#5B5B5B]
+              sm:leading-7
+              md:w-1/2
+              lg:max-w-[400px]
+              text-left
+              md:text-right
+              lg:text-right
+              text-[16px]
+              sm:text-[16px]
+              md:text-[16px]
+              lg:text-[18px]
+            "
+          >
+            for PoSH & Gender in Workplaces & Educational Institutions
+          </p>
 
+        </div>
+      </div>
         {/* Desktop radial layout */}
         <div className="mt-[35px] hidden lg:block xl:mt-[50px]">
           <div className="relative mx-auto h-[540px] w-full max-w-[1240px] scale-[0.88] origin-center xl:scale-100 xl:h-[580px]">

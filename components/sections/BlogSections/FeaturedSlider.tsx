@@ -281,25 +281,49 @@ export default function FeaturedSlider() {
   };
 
   return (
-    <section className="pt-4 md:pt-6 pb-8 md:pb-12 bg-white">
+    <section className="pb-16 sm:pb-16 md:pb-24 lg:pb-24">
       <div className="container-custom">
         {/* Featured Article Section Header */}
-        <div className="mb-8">
-          <div className="inline-flex items-center bg-[#439897] text-white text-[14px] font-avenir font-normal uppercase pl-[6px] pr-[10px] py-[1px] h-[27px] rounded-r-[5px] rounded-l-none shadow-[2px_2px_5px_rgba(0,0,0,0.25)]">
-            BLOG
+        <div className="mb-10">
+        <div className="flex flex-col gap-3 md:gap-10 md:flex-row md:items-end md:justify-between">
+
+          <div className="w-full md:w-1/2">
+            <div className="inline-flex items-center bg-[#439897] px-3 py-1.5 rounded-tr-[8px] rounded-br-[8px]">
+            <span className="font-avenir text-[12px] sm:text-[14px] uppercase tracking-[0.2px] text-white uppercase">
+              BLOG
+            </span>
           </div>
-          <h2 className="text-[32px] sm:text-[36px] md:text-[40px] font-avenir font-bold text-[#0D1E1E] leading-[1.22] mt-[15px]">
-            Featured Article
-          </h2>
+
+
+            <h2
+              className="
+                mt-3
+                w-full
+                font-avenir
+                font-extrabold
+                leading-[1.15]
+                text-[#101C1C]
+                md:mt-4
+                lg:max-w-[600px]
+                text-[32px]
+                sm:text-[36px]
+                md:text-[40px]
+              "
+            >
+              Featured Article
+            </h2>
+          </div>
+
         </div>
+      </div>
 
       {/* Slider Container with Edge Shadow / Fade Overlays */}
       <div className="relative">
-        {/* Left Edge Shadow / Fade Overlay */}
+        {/* Left Edge Shadow / Fade Overlay
         <div
           className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-16 md:w-24 z-10 bg-gradient-to-r from-white/80 via-white/40 to-transparent shadow-[inset_8px_0_12px_-8px_rgba(0,0,0,0.06)]"
           aria-hidden="true"
-        />
+        /> */}
 
         {/* Right Edge Shadow / Fade Overlay */}
         <div

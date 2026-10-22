@@ -10,7 +10,7 @@ export default function BlogPage() {
     <main className="min-h-screen bg-white">
       <BlogHero />
       <FeaturedSlider />
-      <FeaturedSlider2 />
+      {/* <FeaturedSlider2 /> */}
       <LatestInsights />
       <Supportresources />
     </main>

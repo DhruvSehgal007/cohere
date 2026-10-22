@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import heroBannerImage from "@/assets/images/Blogs/InnerBlog/bloginner.jpg";
+import Eventbanner from "@/assets/images/Blogs/Event-banner.png";
 
 export default function HeroSection() {
   return (
@@ -10,7 +11,7 @@ export default function HeroSection() {
         <div className="relative w-full h-[260px] sm:h-[350px] md:h-[420px] lg:h-[460px] rounded-[20px] sm:rounded-[28px] lg:rounded-[32px] overflow-hidden shadow-sm">
           {/* Background Image */}
           <Image
-            src={heroBannerImage}
+            src={Eventbanner}
             alt="Supporting Organisations Beyond Compliance"
             fill
             priority

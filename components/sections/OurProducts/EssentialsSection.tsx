@@ -33,80 +33,62 @@ const essentials = [
 
 export default function EssentialsSection() {
   return (
-    <section className="w-full py-[60px] md:py-[80px] lg:py-[95px]">
+    <section className="pb-16 sm:pb-16 md:pb-24 lg:pb-24">
       <div className="container-custom">
         {/* Top Row: Tag + Title Left, Description Right aligned */}
-        <div className="flex flex-col gap-[24px] lg:flex-row lg:items-start lg:justify-between">
-          {/* Left Heading */}
-          <div>
-            {/* Label */}
-            <div
-              className="
-                inline-flex
-                h-[28px]
-                items-center
-                rounded-tr-[5px]
-                rounded-br-[5px]
-                bg-[#439897]
-                px-[10px]
-              "
-            >
-              <span
-                className="
-                  font-avenir
-                  text-[13px]
-                  font-normal
-                  leading-none
-                  uppercase
-                  tracking-wider
-                  text-white
-                "
-              >
-                Cohere Essentials™
-              </span>
-            </div>
+        <div className="mb-10">
+        <div className="flex flex-col gap-3 md:gap-10 md:flex-row md:items-start md:justify-between">
 
-            {/* Heading */}
+          <div className="w-full md:w-1/2">
+            <div className="inline-flex items-center bg-[#439897] px-3 py-1.5 rounded-tr-[8px] rounded-br-[8px]">
+            <span className="font-avenir text-[12px] sm:text-[14px] uppercase tracking-[0.2px] text-white uppercase">
+              COHERE ESSENTIALS™
+            </span>
+          </div>
+
+
             <h2
               className="
-                mt-[14px]
+                mt-3
+                w-full
                 font-avenir
-                text-[28px]
-                font-bold
-                leading-[1.2]
-                text-[#0D1E1E]
-                sm:text-[34px]
-                md:text-[38px]
+                font-extrabold
+                leading-[1.15]
+                text-[#101C1C]
+                md:mt-4
+                lg:max-w-[600px]
+                text-[32px]
+                sm:text-[36px]
+                md:text-[40px]
               "
             >
               Essential PoSH Compliance
             </h2>
           </div>
 
-          {/* Right Description */}
-          <div className="lg:max-w-[550px]">
-            <p
-              className="
-                font-nunito-sans
-                text-[15px]
-                font-normal
-                leading-[25px]
-                tracking-[0.02em]
-                text-[#5B5B5B]
-                md:text-[16px]
-                md:leading-[26px]
-              "
-            >
-              The essential compliance measures required under the Sexual
-              Harassment of Women at Workplace (Prevention, Prohibition and
-              Redressal) Act, 2013.
-              <br className="hidden sm:block" />
-              Designed for organisations with a single location and up to 100
-              employees seeking an efficient, legally compliant and
-              cost-effective PoSH compliance solution.
-            </p>
-          </div>
+          <p
+            className="
+              w-full
+              font-nunito-sans
+              leading-6
+              text-[#5B5B5B]
+              sm:leading-7
+              md:w-1/2
+              lg:max-w-[520px]
+              text-left
+              md:text-right
+              lg:text-right
+              text-[16px]
+              sm:text-[16px]
+              md:text-[16px]
+              lg:text-[18px]
+            "
+          >
+            The essential compliance measures required under the Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013. Designed for organisations with a single location and up to 100 employees seeking an efficient, legally compliant and cost-effective PoSH compliance solution.
+          </p>
+
         </div>
+      </div>
 
         {/* Bottom Section: Features Grid + Dashboard Illustration */}
         <div
