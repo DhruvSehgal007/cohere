@@ -175,48 +175,144 @@ export default function SocialFeedSection() {
     <section className="w-full bg-white pb-16 sm:pb-16 md:pb-24 lg:pb-24">
       <div className="container-custom  px-4 sm:px-6">
         {/* Header */}
-        <div className="mb-14 flex flex-col md:flex-row md:items-start md:justify-between gap-6">
-          <div>
-            <span className="inline-block w-auto md:w-[150px] bg-[#439897] text-white font-avenir font-normal text-[14px] px-3 py-1 rounded text-left">
-              SOCIAL FEED
-            </span>
-            <h2 className="font-avenir font-extrabold text-[40px] leading-tight text-[#0D1E1E] mt-4 max-w-[588px]">
-              Follow Our Social Feed
-            </h2>
-          </div>
+        
 
-          <div className="flex flex-col items-end gap-4">
-            {/* Platform toggle */}
-            <div className="flex gap-3">
-              <button
-                type="button"
-                onClick={() => setPlatform("linkedin")}
-                className={`w-10 h-10 rounded-full flex items-center justify-center transition-all ${
-                  platform === "linkedin"
-                    ? "bg-[#439897] text-white"
-                    : "border border-[#439897] text-[#439897]"
-                }`}
-              >
-                <FaLinkedinIn size={18} />
-              </button>
-              <button
-                type="button"
-                onClick={() => setPlatform("instagram")}
-                className={`w-10 h-10 rounded-full flex items-center justify-center transition-all ${
-                  platform === "instagram"
-                    ? "bg-[#439897] text-white"
-                    : "border border-[#439897] text-[#439897]"
-                }`}
-              >
-                <FaInstagram size={18} />
-              </button>
-            </div>
-            <p className="font-nunito-sans font-normal text-[20px] text-[#2E262E] max-w-[524px] text-right">
-              Stay updated with the latest insights, tips, and company
-              updates. Connect with us on our social channels.
-            </p>
-          </div>
-        </div>
+
+
+
+
+
+
+
+
+
+
+
+<div className="mb-10">
+  <div className="flex flex-col gap-6 md:gap-10 md:flex-row md:items-end md:justify-between">
+
+    {/* LEFT CONTENT */}
+    <div className="w-full md:w-1/2">
+
+      {/* LABEL */}
+      <div className="inline-flex items-center bg-[#439897] px-3 py-1.5 rounded-tr-[8px] rounded-br-[8px]">
+        <span className="font-avenir text-[12px] sm:text-[14px] uppercase tracking-[0.2px] text-white">
+          SOCIAL FEED
+        </span>
+      </div>
+
+      {/* HEADING */}
+      <h2
+        className="
+          mt-3
+          w-full
+          font-avenir
+          font-extrabold
+          leading-[1.15]
+          text-[#101C1C]
+          md:mt-4
+          lg:max-w-[600px]
+          text-[32px]
+          sm:text-[36px]
+          md:text-[40px]
+        "
+      >
+        Follow Our Social Feed
+      </h2>
+    </div>
+
+    {/* RIGHT CONTENT */}
+    <div className="flex w-full flex-col items-start gap-4 md:w-auto md:items-end">
+
+      {/* DESCRIPTION - FIRST ON MOBILE */}
+      <p
+        className="
+          order-1
+          md:order-2
+          w-full
+          max-w-[524px]
+          font-nunito-sans
+          font-normal
+          text-[16px]
+          sm:text-[18px]
+          md:text-[20px]
+          leading-[1.5]
+          text-[#2E262E]
+          text-left
+          md:text-right
+        "
+      >
+        Stay updated with the latest insights, tips, and company
+        updates. Connect with us on our social channels.
+      </p>
+
+      {/* PLATFORM BUTTONS - BELOW PARAGRAPH ON MOBILE */}
+      <div className="order-2 md:order-1 flex gap-3">
+
+        <button
+          type="button"
+          aria-label="Show LinkedIn feed"
+          aria-pressed={platform === "linkedin"}
+          onClick={() => setPlatform("linkedin")}
+          className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
+            platform === "linkedin"
+              ? "bg-[#439897] text-white"
+              : "border border-[#439897] text-[#439897]"
+          }`}
+        >
+          <FaLinkedinIn size={18} />
+        </button>
+
+        <button
+          type="button"
+          aria-label="Show Instagram feed"
+          aria-pressed={platform === "instagram"}
+          onClick={() => setPlatform("instagram")}
+          className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
+            platform === "instagram"
+              ? "bg-[#439897] text-white"
+              : "border border-[#439897] text-[#439897]"
+          }`}
+        >
+          <FaInstagram size={18} />
+        </button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         {/* Slider */}
         <div className="relative overflow-hidden w-full">
