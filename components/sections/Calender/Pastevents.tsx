@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 const pastEvents = [
@@ -413,9 +414,8 @@ max-w-[640px]
       </div>
 
       {/* BUTTON */}
-      <button
-        type="button"
-        className="
+      <Link href="/events"
+        className="inline-flex items-center justify-center text-center
           mt-6
           sm:mt-10
           w-full
@@ -433,7 +433,7 @@ max-w-[640px]
         "
       >
         View Events →
-      </button>
+      </Link>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 
 "use client";
 
+import Link from "next/link";
 import Image from "next/image";
 import keepitimage from "@/assets/images/Keepitright/keepitright-image.png";
 import summaryimage from "@/assets/images/CaseStudy/summay-image.png";
@@ -154,9 +155,8 @@ export default function ResourcesCasestudy() {
     </div>
   ))}
 </div>
-<button
-              type="button"
-              className="
+<Link href="/resources#downloadable-resources"
+              className="inline-flex items-center justify-center text-center
                 mt-12
                 inline-flex
                 items-center
@@ -184,7 +184,7 @@ export default function ResourcesCasestudy() {
                 height={18}
                 className="h-[24px] w-[24px] object-contain"
               />
-            </button>
+            </Link>
           </div>
 
           {/* ================= RIGHT IMAGE ================= */}

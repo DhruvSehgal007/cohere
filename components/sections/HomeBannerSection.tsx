@@ -201,11 +201,11 @@ export default function HomeBanner() {
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
-            <button className="bg-[#439897] hover:bg-[#357b7a] transition-colors text-[#FFFFFF] font-avenir font-[800] text-[16px] w-full sm:w-auto px-6 py-3 rounded-lg">
-              Schedule a Consulation
+            <button type="button" className="inline-flex items-center justify-center text-center bg-[#439897] hover:bg-[#357b7a] transition-colors text-[#FFFFFF] font-avenir font-[800] text-[16px] w-full sm:w-auto px-6 py-3 rounded-lg">
+              Schedule a Consultation
             </button>
 
-            <button className="border border-[#1B3D3C] bg-[#FFFFFF] hover:bg-[#357b7a] hover:text-white transition-colors font-avenir font-[800] text-[16px] w-full sm:w-auto px-6 py-3 rounded-lg">
+            <button type="button" className="inline-flex items-center justify-center text-center border border-[#1B3D3C] bg-[#FFFFFF] hover:bg-[#357b7a] hover:text-white transition-colors font-avenir font-[800] text-[16px] w-full sm:w-auto px-6 py-3 rounded-lg">
               Schedule a Consultation
             </button>
           </div>

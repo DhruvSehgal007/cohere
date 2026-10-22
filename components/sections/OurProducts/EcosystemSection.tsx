@@ -115,9 +115,7 @@ export default function EcosystemSection() {
                   <i className="fa-solid fa-envelope mt-[3px] text-[16px] text-[#1B3D3C]"></i>
 
                   <div className="flex flex-col">
-                    <a
-                      href="mailto:info@cohereconsultants.com"
-                      className="
+                    <span className="
                         font-avenir
                         text-[14px]
                         font-[700]
@@ -128,7 +126,7 @@ export default function EcosystemSection() {
                       "
                     >
                       info@cohereconsultants.com
-                    </a>
+                    </span>
 
                     <a
                       href="https://www.cohereconsultants.com"
@@ -158,7 +156,7 @@ export default function EcosystemSection() {
                   <i className="fa-solid fa-phone text-[16px] text-[#1B3D3C]"></i>
 
                   <a
-                    href="tel:+91890444700"
+                    href="tel:+918904447004"
                     className="
                       font-avenir
                       text-[14px]

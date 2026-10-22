@@ -277,7 +277,7 @@ export default function Footer() {
                         {line === "+91 89044 47004" ? (
                           <a href="tel:+918904447004" className="hover:text-[#439897]">{line}</a>
                         ) : line === "info@cohereconsultants.com" ? (
-                          <a href="mailto:info@cohereconsultants.com" className="hover:text-[#439897]">{line}</a>
+                          <span className="hover:text-[#439897]">{line}</span>
                         ) : line}
                       </p>
                     ))}

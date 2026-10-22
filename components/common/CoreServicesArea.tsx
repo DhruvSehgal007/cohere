@@ -3,6 +3,7 @@
 
 import { useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
@@ -14,18 +15,21 @@ const services = [
   {
     number: numOne,
     title: "Anti Sexual Harassment",
+    href: "/anti-sexual-harassment",
     description:
       "Our team of experienced Lawyers & SMEs act as external members on company internal committees. We provide end-to-end support for PoSH complaint management, conciliations & investigations, train IC members, leaders & employees & ensure regulatory compliances.",
   },
   {
     number: numTwo,
     title: "Workplace Discrimination",
+    href: "/workplace-discrimination",
     description:
       "We use experienced facilitators providing DE&I training programs and awareness sessions to customize sensitization programs. We work closely with clients for policy review, audits & consultations with a customized approach aligned with best practices.",
   },
   {
     number: numThree,
     title: "Employment and Labour",
+    href: "/employment-and-labour",
     description:
       "Our expertise in drafting, dispute resolution, secondment & thorough workplace investigations. Our team's track record on complex Employment & Labour litigation, high stakes advisory work, contracting, while mitigating risks & bring highly coveted expertise to the table.",
   },
@@ -95,12 +99,13 @@ function ServiceCard({ service, index, total, progress }: CardProps) {
             {service.description}
           </p>
 
-          <button
-            aria-label="Learn more"
+          <Link
+            href={service.href}
+            aria-label={`Learn more about ${service.title}`}
             className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white text-[#0f4c4b] hover:scale-105 transition-transform"
           >
             <ArrowUpRight className="w-5 h-5" />
-          </button>
+          </Link>
         </div>
       </div>
     </motion.div>

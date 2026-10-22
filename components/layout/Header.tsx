@@ -120,7 +120,7 @@ export default function Header() {
               {([
                 { key: "services", label: "SERVICES", href: "/service" },
                 { key: "products", label: "OUR PRODUCTS", href: "/our-products" },
-                { key: "events", label: "EVENTS", href: "/calender" },
+                { key: "events", label: "EVENTS", href: "/events" },
                 { key: "resources", label: "RESOURCES", href: "/resources" },
               ] as const).map((item) => (
                 <div
@@ -189,7 +189,7 @@ export default function Header() {
 
                         {item.key === "events" && (
                           <div className="flex flex-col items-start gap-3 text-left font-avenir text-[16px] font-extrabold text-[#439897]">
-                            <Link href="/calender#training-workshops" onClick={closeDropdown} className="hover:text-[#1B3D3C]">Training &amp; Workshops</Link>
+                            <Link href="/" onClick={closeDropdown} className="hover:text-[#1B3D3C]">Training &amp; Workshops</Link>
                             <Link href="/calender" onClick={closeDropdown} className="hover:text-[#1B3D3C]">Calendar</Link>
                           </div>
                         )}
@@ -327,7 +327,7 @@ export default function Header() {
 
             <MobileDropdown
               title="EVENTS"
-              href="/calender"
+              href="/events"
               onNavigate={() => { setIsOpen(false); closeDropdown(); }}
               open={activeDropdown === "events"}
               onClick={() => toggleDropdown("events")}

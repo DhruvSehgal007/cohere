@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import getInTouchBg from "@/assets/images/homepage/get-in-touch-bg.png";
 
@@ -32,13 +33,13 @@ export default function GetInTouchSection() {
 
             <div className="mt-10 lg:mt-16 flex w-full flex-col items-center gap-4 sm:flex-row sm:justify-center">
 
-              <button className="uppercase w-full max-w-[290px] rounded-[10px] bg-[#FEBC5A] px-6 py-3 font-nunito-sans-extra-bold text-[14px] sm:text-[16px] md:text-[18px] lg:text-[18px] text-[#0D1E1E] transition hover:bg-gray-100">
+              <button type="button" className="inline-flex items-center justify-center text-center uppercase w-full max-w-[290px] rounded-[10px] bg-[#FEBC5A] px-6 py-3 font-nunito-sans-extra-bold text-[14px] sm:text-[16px] md:text-[18px] lg:text-[18px] text-[#0D1E1E] transition hover:bg-gray-100">
                 Talk to an Expert
               </button>
 
-              <button className="w-full max-w-[290px] rounded-[10px] border border-white bg-transparent px-6 py-3 font-nunito-sans-extra-bold text-[14px] sm:text-[16px] md:text-[18px] lg:text-[18px] text-white transition hover:bg-white/10">
+              <Link href="/#contact" className="inline-flex items-center justify-center text-center w-full max-w-[290px] rounded-[10px] border border-white bg-transparent px-6 py-3 font-nunito-sans-extra-bold text-[14px] sm:text-[16px] md:text-[18px] lg:text-[18px] text-white transition hover:bg-white/10">
                 CONTACT US
-              </button>
+              </Link>
 
             </div>
           </div>

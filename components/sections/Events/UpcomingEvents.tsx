@@ -120,6 +120,7 @@ export default function UpcomingEvents() {
               <button
                 type="button"
                 aria-label="Search"
+                onClick={() => setCurrentPage(1)}
                 className="bg-[#439897] hover:bg-[#357c7b] text-white px-3 sm:px-3.5 py-2 sm:py-2.5 flex items-center justify-center transition-colors cursor-pointer"
               >
                 <Search className="w-4 h-4" />
@@ -152,7 +153,7 @@ export default function UpcomingEvents() {
                 <div className="relative z-10 p-4 flex-1" />
 
                 {/* Bottom Pill Badge / Button */}
-                <div className="relative z-10 p-3 sm:p-4">
+                <div className="relative z-10">
                   <div
                     className="w-full text-center py-2.5 sm:py-3 px-3 rounded-[10px] text-white text-[13px] sm:text-[15px] font-avenir font-bold shadow-md transition-all duration-300 group-hover:shadow-lg"
                     style={{

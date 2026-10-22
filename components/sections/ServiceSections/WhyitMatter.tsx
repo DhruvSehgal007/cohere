@@ -98,8 +98,7 @@ export default function WhyitMatter() {
               </p>
 
               {/* BUTTON */}
-              <button
-                className="
+              <button type="button" className="inline-flex items-center justify-center text-center
                   rounded-[10px]
                   bg-[#FEBC5A]
                   px-5

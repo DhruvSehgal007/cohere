@@ -166,9 +166,7 @@ export default function Resourcecategories() {
 
 
             {/* BUTTON */}
-            <button
-              type="button"
-              className="
+            <button type="button" className="inline-flex items-center justify-center text-center
                 mt-6
                 sm:mt-10
                 md:mt-10

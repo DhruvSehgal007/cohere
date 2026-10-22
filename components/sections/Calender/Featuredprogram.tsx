@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import getInTouchBg from "@/assets/images/homepage/sdfrgdfg.png";
 import getInTouchBganother from "@/assets/images/homepage/get-in-touch-bg.png";
@@ -6,7 +7,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function Featuredprogram() {
   return (
-    <section className="relative overflow-hidden">
+    <section id="featured-programmes" className="relative overflow-hidden">
       <Image
         src={getInTouchBganother}
         alt=""
@@ -35,9 +36,8 @@ export default function Featuredprogram() {
 
         <div className="mt-10 lg:mt-14 flex w-full flex-col items-center gap-4 sm:flex-row sm:justify-center">
 
-         <button
-  type="button"
-  className="
+         <Link href="/calender#training-workshops"
+  className="inline-flex items-center justify-center text-center
     inline-flex
     w-full
     max-w-[300px]
@@ -64,7 +64,7 @@ export default function Featuredprogram() {
 >
   EXPLORE MASTERCLASSES
   <span className="text-[20px] leading-none font-bold">→</span>
-</button>
+</Link>
 
         </div>
       </div>

@@ -388,7 +388,7 @@ export default function TestimonialsSection() {
     type="button"
     onClick={() => goTo(positionRef.current - 1)}
     aria-label="Previous testimonial"
-    className="flex h-[48px] w-[48px] shrink-0 items-center justify-center"
+    className="flex h-[40px] w-[40px] shrink-0 items-center justify-center"
   >
     <Image
       src={Lefticon}
@@ -431,7 +431,7 @@ export default function TestimonialsSection() {
     type="button"
     onClick={() => goTo(positionRef.current + 1)}
     aria-label="Next testimonial"
-    className="flex h-[48px] w-[48px] shrink-0 items-center justify-center"
+    className="flex h-[40px] w-[40px] shrink-0 items-center justify-center"
   >
     <Image
       src={Righticon}

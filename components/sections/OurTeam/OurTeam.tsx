@@ -15,6 +15,7 @@ export type Expert = {
   largeImage: StaticImageData;
   cardImage: StaticImageData;
   avatarImage: StaticImageData;
+  socialLinks?: { platform: "Facebook" | "Twitter" | "Instagram"; href: string }[];
 };
 
 export const experts: Expert[] = [
@@ -561,41 +562,22 @@ export function OurTeam() {
                         {current.role}
                       </p>
 
-                      {/* SOCIAL ICONS */}
-                      <div
-                        className="
-                          mt-3
-                          flex
-                          items-center
-                          gap-4
-                          text-gray-800
-                          sm:mt-4
-                        "
-                      >
-                        <a
-                          href="#"
-                          aria-label={`${current.name} Facebook`}
-                          className="text-[18px] transition-opacity hover:opacity-60 sm:text-[20px]"
-                        >
-                          <i className="fa-brands fa-facebook-f" />
-                        </a>
-
-                        <a
-                          href="#"
-                          aria-label={`${current.name} Twitter`}
-                          className="text-[18px] transition-opacity hover:opacity-60 sm:text-[20px]"
-                        >
-                          <i className="fa-brands fa-twitter" />
-                        </a>
-
-                        <a
-                          href="#"
-                          aria-label={`${current.name} Instagram`}
-                          className="text-[18px] transition-opacity hover:opacity-60 sm:text-[20px]"
-                        >
-                          <i className="fa-brands fa-instagram" />
-                        </a>
-                      </div>
+                      {current.socialLinks?.length ? (
+                        <div className="mt-3 flex items-center gap-4 text-gray-800 sm:mt-4">
+                          {current.socialLinks.map((social) => (
+                            <a
+                              key={social.platform}
+                              href={social.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={`${current.name} ${social.platform}`}
+                              className="text-[18px] transition-opacity hover:opacity-60 sm:text-[20px]"
+                            >
+                              <i className={`fa-brands ${social.platform === "Facebook" ? "fa-facebook-f" : social.platform === "Twitter" ? "fa-twitter" : "fa-instagram"}`} />
+                            </a>
+                          ))}
+                        </div>
+                      ) : null}
                     </div>
                   </div>
 

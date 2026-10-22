@@ -1,7 +1,7 @@
 // src/sections/CaseStudySection/CaseStudy.tsx
 "use client";
 import { useState } from "react";
-import { Download, Check } from "lucide-react";
+import { Mail, Check } from "lucide-react";
 import {
   CASES,
   DETAIL_ICONS,
@@ -169,28 +169,23 @@ export function CaseStudy() {
                 </span>
 
                 <span className="max-w-[380px] font-nunito-sans text-[18px] tracking-[2%] text-[#5B5B5B] sm:text-[16px] lg:text-[18px]  lg:tracking-[4%]">
-                  Download our documents to see specific data of the service and
-                  how we work.
+                  Service documents and brochures will be available here.
                 </span>
               </div>
 
               {/* Brochure buttons */}
               <div className="flex flex-wrap gap-[14px]">
-                <a
-                  href="#"
-                  className="inline-flex h-[50px] w-full max-w-[260px] items-center justify-center gap-3 rounded-[5px] bg-gradient-to-r from-[#439897] to-[#2E262E] px-4 font-nunito-sans text-[15px] leading-auto tracking-[2%] text-white transition-opacity hover:opacity-90 sm:h-[55px] sm:text-[16px] sm:tracking-[3%] lg:w-[260px] lg:text-[18px] lg:tracking-[4%]"
+                <button type="button" className="inline-flex h-[50px] w-full max-w-[260px] items-center justify-center gap-3 rounded-[5px] bg-gradient-to-r from-[#439897] to-[#2E262E] px-4 font-nunito-sans text-[15px] leading-auto tracking-[2%] text-white transition-opacity hover:opacity-90 sm:h-[55px] sm:text-[16px] sm:tracking-[3%] lg:w-[260px] lg:text-[18px] lg:tracking-[4%]"
                 >
                   BROCHURE.DOC
-                  <Download className="h-[18px] w-[18px] sm:h-[21px] sm:w-[21px] lg:h-[24px] lg:w-[24px]" />
-                </a>
+                  <Mail className="h-[18px] w-[18px] sm:h-[21px] sm:w-[21px] lg:h-[24px] lg:w-[24px]" />
+                </button>
 
-                <a
-                  href="#"
-                  className="inline-flex h-[50px] w-full max-w-[260px] items-center justify-center gap-3 rounded-[5px] bg-gradient-to-r from-[#439897] to-[#2E262E] px-4 font-nunito-sans text-[15px] leading-auto tracking-[2%] text-white transition-opacity hover:opacity-90 sm:h-[55px] sm:text-[16px] sm:tracking-[3%] lg:w-[260px] lg:text-[18px] lg:tracking-[4%]"
+                <button type="button" className="inline-flex h-[50px] w-full max-w-[260px] items-center justify-center gap-3 rounded-[5px] bg-gradient-to-r from-[#439897] to-[#2E262E] px-4 font-nunito-sans text-[15px] leading-auto tracking-[2%] text-white transition-opacity hover:opacity-90 sm:h-[55px] sm:text-[16px] sm:tracking-[3%] lg:w-[260px] lg:text-[18px] lg:tracking-[4%]"
                 >
                   BROCHURE.PDF
-                  <Download className="h-[18px] w-[18px] sm:h-[21px] sm:w-[21px] lg:h-[24px] lg:w-[24px]" />
-                </a>
+                  <Mail className="h-[18px] w-[18px] sm:h-[21px] sm:w-[21px] lg:h-[24px] lg:w-[24px]" />
+                </button>
               </div>
             </div>
           </div>

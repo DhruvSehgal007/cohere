@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Heart, Share2 } from "lucide-react";
 
 import LinkedinImage from "@/assets/images/homepage/linkdin-post.png";
@@ -27,6 +28,7 @@ const posts = [
 ];
 
 export default function SocialFeedSection() {
+
   return (
     <section className="pb-16 sm:pb-16 md:pb-24 lg:pb-24">
       <div className="container-custom px-4 sm:px-6 mb-10">
@@ -86,9 +88,9 @@ export default function SocialFeedSection() {
                   {post.text}
                 </p>
 
-                <button className="mt-5 font-nunito-sans text-[14px] font-normal text-[#666666] hover:text-[#024948] transition-colors">
-                  Read more
-                </button>
+                <Link href="/blog" className="mt-5 inline-block font-nunito-sans text-[14px] font-normal text-[#666666] hover:text-[#024948] transition-colors">
+                  Read our insights
+                </Link>
               </div>
 
               {/* Image */}
@@ -110,7 +112,8 @@ export default function SocialFeedSection() {
                   </span>
                 </div>
 
-                <button className="flex items-center gap-2 font-nunito-sans text-[16px] sm:text-[16px] md:text-[18px] lg:text-[20px] font-normal text-[#444444] hover:text-[#024948] transition-colors">
+                <button type="button" className="flex items-center gap-2 font-nunito-sans text-[16px] sm:text-[16px] md:text-[18px] lg:text-[20px] font-normal text-[#444444] hover:text-[#024948] transition-colors"
+                >
                   <Share2 size={18} />
                   Share
                 </button>
@@ -145,6 +148,10 @@ export default function SocialFeedSection() {
             <div className="mt-10">
               <input
                 type="email"
+                name="email"
+                autoComplete="email"
+                aria-label="Your work email"
+                required
                 placeholder="Enter your work email"
                 className="h-[60px] w-full rounded-xl border border-black bg-transparent px-5 font-nunito-sans text-[16px] text-black placeholder:font-nunito-sans placeholder:text-[16px] placeholder:text-black outline-none transition focus:border-black"
               />
@@ -152,16 +159,14 @@ export default function SocialFeedSection() {
 
             {/* Button */}
 
-            <button className="mt-5 h-[60px] rounded-xl bg-white font-nunito-sans-extra-bold text-[16px] sm:text-[16px] md:text-[18px] lg:text-[18px]  text-[#000000] transition hover:bg-[#F4F4F4]">
+            <button type="button" className="mt-5 h-[60px] rounded-xl bg-white font-nunito-sans-extra-bold text-[16px] sm:text-[16px] md:text-[18px] lg:text-[18px]  text-[#000000] transition hover:bg-[#F4F4F4]">
               SUBMIT
             </button>
 
             {/* Bottom Text */}
 
             <p className="mt-2 pt-8 font-nunito-sans text-[16px] sm:text-[16px] md:text-[18px] lg:text-[18px] font-normal leading-[22px] text-black">
-              By subscribing, you agree to receive periodic emails from Cohere
-              Compliance. You can unsubscribe at any time. View our Privacy
-              Policy.
+              Newsletter signup is currently unavailable.
             </p>
           </div>
         </div>

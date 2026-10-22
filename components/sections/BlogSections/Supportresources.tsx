@@ -46,7 +46,7 @@ export default function Supportresources() {
 
 
             <Link
-              href="#resources"
+              href="/resources#downloadable-resources"
               className="mt-6 sm:mt-8 w-[200px] sm:w-[220px] h-[52px] sm:h-[60px] bg-[#FEBC5A] hover:bg-[#3ca3a2] text-[#000000] font-poppins font-medium text-[16px] sm:text-[16px] rounded-[10px] flex items-center justify-center transition-all duration-200 hover:shadow-md active:scale-98 cursor-pointer text-center"
             >
               Browse All Resources

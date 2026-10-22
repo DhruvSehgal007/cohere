@@ -231,9 +231,7 @@ export default function Upcomingprogram() {
 
 
       {/* BUTTON */}
-      <button
-        type="button"
-        className="
+      <button type="button" className="inline-flex items-center justify-center text-center
           mt-7
           w-fit
           rounded-[6px]

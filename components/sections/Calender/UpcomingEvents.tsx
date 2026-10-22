@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const programmeCards = [
   {
     id: 1,
@@ -229,9 +231,8 @@ export default function UpcomingEvents() {
 
 
       {/* BUTTON */}
-      <button
-        type="button"
-        className="
+      <Link href="/calender#featured-programmes"
+        className="inline-flex items-center justify-center text-center
           mt-5
           font-nunito-sans-bold
           text-[14px]
@@ -241,7 +242,7 @@ export default function UpcomingEvents() {
         "
       >
         {card.buttonText}
-      </button>
+      </Link>
 
     </div>
   </div>

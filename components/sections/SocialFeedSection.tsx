@@ -266,9 +266,9 @@ export default function SocialFeedSection() {
                       {post.text}
                     </p>
 
-                    <button className="mt-4 font-nunito-sans  text-[16px] md:text-[16px] font-normal text-[#666666] hover:text-[#024948] transition-colors">
+                    <span className="mt-4 font-nunito-sans  text-[16px] md:text-[16px] font-normal text-[#666666] hover:text-[#024948] transition-colors">
                       {post.date}
-                    </button>
+                    </span>
                   </div>
 
                   <Image
