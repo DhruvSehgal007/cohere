@@ -19,7 +19,7 @@ export default function Twincards() {
         <div className="grid grid-cols-1 md:grid-cols-2">
 
           {/* ================= LEFT CARD ================= */}
-          <div
+          <div id="judgments"
             className="
               flex
               flex-col
@@ -158,7 +158,7 @@ export default function Twincards() {
           </div>
 
           {/* ================= RIGHT CARD ================= */}
-          <div
+          <div id="advisories"
             className="
               flex
               flex-col

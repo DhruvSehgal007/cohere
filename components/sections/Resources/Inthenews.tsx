@@ -33,7 +33,7 @@ const newsCards = [
 
 export default function Inthenews() {
   return (
-    <section className="py-10 sm:py-12 md:py-16">
+    <section id="news" className="py-10 sm:py-12 md:py-16">
       <div className="container-custom px-4 sm:px-6">
 
         {/* ================= TOP CONTENT ================= */}

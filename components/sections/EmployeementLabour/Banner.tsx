@@ -30,7 +30,7 @@ export default function Banner() {
 <div className="flex flex-wrap items-center gap-4">
   {/* First Button */}
   <Link
-    href="/contact"
+    href="/#contact"
     className="inline-flex items-center justify-center bg-[#FFB84D] hover:bg-[#F4A936] transition-colors duration-200 text-[#2E262E] font-avenir font-[800] text-[14px] sm:text-[16px] py-[12px] px-[12px] md:py-[14px] md:px-[20px] lg:py-[14px] lg:px-[20px] max-w-[200px] sm:max-w-[220px] md:max-w-[220px] lg:max-w-[220px] rounded-[8px]"
   >
     Talk to an Expert

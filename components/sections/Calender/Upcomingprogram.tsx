@@ -7,7 +7,7 @@ import locationicon from "@/assets/images/Calender/location-icon.svg";
 
 export default function Upcomingprogram() {
   return (
-    <section className="pb-16 sm:pb-16 md:pb-24 lg:pb-24">
+    <section id="training-workshops" className="pb-16 sm:pb-16 md:pb-24 lg:pb-24">
 
       {/* =========================
           HEADING

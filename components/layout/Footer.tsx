@@ -3,8 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 import {
-  FaInstagram,
-  FaFacebookF,
   FaMapMarkerAlt,
   FaPhoneAlt,
   FaEnvelope,
@@ -14,28 +12,28 @@ import {
 import footerLogo from "@/assets/images/logos/chohere-footer-logo.png";
 
 const quickLinks = [
-  { label: "About Us", href: "/about" },
+  { label: "About Us", href: "/About" },
   { label: "Our team", href: "/our-team" },
-  { label: "Our Product", href: "/products" },
-  { label: "Training & Workshops", href: "/training-workshops" },
+  { label: "Our Product", href: "/our-products" },
+  { label: "Training & Workshops", href: "/calender#training-workshops" },
   { label: "Resources", href: "/resources" },
   { label: "Blogs", href: "/blog" },
   { label: "Events", href: "/events" },
-  { label: "Resources", href: "/resources" },
+  { label: "Contact Us", href: "/#contact" },
 ];
 
 const serviceLinks = [
   {
     label: "Anti Sexual Harassment",
-    href: "/services/anti-sexual-harassment",
+    href: "/anti-sexual-harassment",
   },
   {
     label: "Workplace Discrimination",
-    href: "/services/workplace-discrimination",
+    href: "/workplace-discrimination",
   },
   {
-    label: "Training & Employment & Labour",
-    href: "/services/training-employment-labour",
+    label: "Employment & Labour",
+    href: "/employment-and-labour",
   },
 ];
 
@@ -70,7 +68,7 @@ const contactItems = [
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-white">
+    <footer id="contact" className="w-full bg-white">
 
       {/* ================= MAIN FOOTER ================= */}
       <div
@@ -232,51 +230,6 @@ export default function Footer() {
             Get In Touch
           </h4>
 
-          {/* SOCIAL ICONS */}
-          <div className="mb-5 flex items-center gap-3">
-
-            <a
-              href="#"
-              aria-label="Instagram"
-              className="
-                flex
-                h-[36px]
-                w-[36px]
-                items-center
-                justify-center
-                rounded-full
-                border
-                border-[#E5E5E5]
-                text-[#E1306C]
-                transition-colors
-                hover:border-[#439897]
-              "
-            >
-              <FaInstagram size={17} />
-            </a>
-
-            <a
-              href="#"
-              aria-label="Facebook"
-              className="
-                flex
-                h-[36px]
-                w-[36px]
-                items-center
-                justify-center
-                rounded-full
-                border
-                border-[#E5E5E5]
-                text-[#1877F2]
-                transition-colors
-                hover:border-[#439897]
-              "
-            >
-              <FaFacebookF size={15} />
-            </a>
-
-          </div>
-
           {/* CONTACT INFORMATION */}
           <div className="flex flex-col">
 
@@ -320,7 +273,13 @@ export default function Footer() {
                     "
                   >
                     {item.lines.map((line, lineIndex) => (
-                      <p key={lineIndex}>{line}</p>
+                      <p key={lineIndex}>
+                        {line === "+91 89044 47004" ? (
+                          <a href="tel:+918904447004" className="hover:text-[#439897]">{line}</a>
+                        ) : line === "info@cohereconsultants.com" ? (
+                          <a href="mailto:info@cohereconsultants.com" className="hover:text-[#439897]">{line}</a>
+                        ) : line}
+                      </p>
                     ))}
                   </div>
 

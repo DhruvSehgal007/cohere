@@ -25,7 +25,7 @@ export default function Header() {
   };
 
   return (
-    <header className="absolute left-0 top-0 z-[9999] w-full">
+    <header className="fixed left-0 top-0 z-[9999] w-full bg-white">
 
       {/* =====================================================
           HEADER
@@ -162,27 +162,27 @@ export default function Header() {
 
                         {item.key === "products" && (
                           <div className="flex flex-col items-start gap-3 text-left font-avenir text-[16px] font-extrabold text-[#439897]">
-                            <Link href="/cohere-resolve" onClick={closeDropdown} className="hover:text-[#1B3D3C]">CohereResolve™</Link>
-                            <Link href="/cohere-essentials" onClick={closeDropdown} className="hover:text-[#1B3D3C]">CohereEssentials™</Link>
-                            <Link href="/cohere-readiness" onClick={closeDropdown} className="hover:text-[#1B3D3C]">CohereReadiness™</Link>
-                            <Link href="/keep-it-right" onClick={closeDropdown} className="hover:text-[#1B3D3C]">KeepItRight®</Link>
+                            <Link href="/our-products#cohere-resolve" onClick={closeDropdown} className="hover:text-[#1B3D3C]">CohereResolve™</Link>
+                            <Link href="/our-products#cohere-essentials" onClick={closeDropdown} className="hover:text-[#1B3D3C]">CohereEssentials™</Link>
+                            <Link href="/our-products#cohere-readiness" onClick={closeDropdown} className="hover:text-[#1B3D3C]">CohereReadiness™</Link>
+                            <Link href="/our-products#keep-it-right" onClick={closeDropdown} className="hover:text-[#1B3D3C]">KeepItRight®</Link>
                           </div>
                         )}
 
                         {item.key === "events" && (
                           <div className="flex flex-col items-start gap-3 text-left font-avenir text-[16px] font-extrabold text-[#439897]">
-                            <Link href="/training-workshops" onClick={closeDropdown} className="hover:text-[#1B3D3C]">Training &amp; Workshops</Link>
+                            <Link href="/calender#training-workshops" onClick={closeDropdown} className="hover:text-[#1B3D3C]">Training &amp; Workshops</Link>
                             <Link href="/calender" onClick={closeDropdown} className="hover:text-[#1B3D3C]">Calendar</Link>
                           </div>
                         )}
 
                         {item.key === "resources" && (
                           <div className="flex flex-col items-start gap-3 text-left font-avenir text-[16px] font-extrabold text-[#439897]">
-                            <Link href="/resources" onClick={closeDropdown} className="hover:text-[#1B3D3C]">Downloadable Resources</Link>
-                            <Link href="/news" onClick={closeDropdown} className="hover:text-[#1B3D3C]">Cohere in the News</Link>
-                            <Link href="/judgments" onClick={closeDropdown} className="hover:text-[#1B3D3C]">Judgments</Link>
-                            <Link href="/case-studies" onClick={closeDropdown} className="hover:text-[#1B3D3C]">Case Studies</Link>
-                            <Link href="/advisories" onClick={closeDropdown} className="hover:text-[#1B3D3C]">Advisories</Link>
+                            <Link href="/resources#downloadable-resources" onClick={closeDropdown} className="hover:text-[#1B3D3C]">Downloadable Resources</Link>
+                            <Link href="/resources#news" onClick={closeDropdown} className="hover:text-[#1B3D3C]">Cohere in the News</Link>
+                            <Link href="/resources#judgments" onClick={closeDropdown} className="hover:text-[#1B3D3C]">Judgments</Link>
+                            <Link href="/case-study" onClick={closeDropdown} className="hover:text-[#1B3D3C]">Case Studies</Link>
+                            <Link href="/resources#advisories" onClick={closeDropdown} className="hover:text-[#1B3D3C]">Advisories</Link>
                           </div>
                         )}
                       </div>
@@ -195,7 +195,7 @@ export default function Header() {
               {/* ================= CONTACT ================= */}
 
               <Link
-                href="/contact"
+                href="/#contact"
                 onClick={closeDropdown}
                 className="shrink-0 whitespace-nowrap rounded-sm bg-white px-4 py-2 text-[14px] font-semibold text-[#439897] transition hover:bg-gray-100 min-[1200px]:text-[16px] min-[1440px]:px-5 min-[1440px]:text-[20px]"
               >
@@ -283,21 +283,21 @@ export default function Header() {
               open={activeDropdown === "products"}
               onClick={() => toggleDropdown("products")}
             >
-              <div className="space-y-2 pl-4 text-left text-sm">
+              <div className="flex flex-col items-start gap-2 pl-4 text-left text-sm">
 
-                <Link href="/cohere-resolve" onClick={() => setIsOpen(false)}>
+                <Link href="/our-products#cohere-resolve" onClick={() => { setIsOpen(false); closeDropdown(); }}>
                   CohereResolve™
                 </Link>
 
-                <Link href="/cohere-essentials" onClick={() => setIsOpen(false)}>
+                <Link href="/our-products#cohere-essentials" onClick={() => { setIsOpen(false); closeDropdown(); }}>
                   CohereEssentials™
                 </Link>
 
-                <Link href="/cohere-readiness" onClick={() => setIsOpen(false)}>
+                <Link href="/our-products#cohere-readiness" onClick={() => { setIsOpen(false); closeDropdown(); }}>
                   CohereReadiness™
                 </Link>
 
-                <Link href="/keep-it-right" onClick={() => setIsOpen(false)}>
+                <Link href="/our-products#keep-it-right" onClick={() => { setIsOpen(false); closeDropdown(); }}>
                   KeepItRight®
                 </Link>
 
@@ -314,18 +314,18 @@ export default function Header() {
               open={activeDropdown === "events"}
               onClick={() => toggleDropdown("events")}
             >
-              <div className="space-y-2 pl-4 text-left text-sm">
+              <div className="flex flex-col items-start gap-2 pl-4 text-left text-sm">
 
                 <Link
-                  href="/training-workshops"
-                  onClick={() => setIsOpen(false)}
+                  href="/calender#training-workshops"
+                  onClick={() => { setIsOpen(false); closeDropdown(); }}
                 >
                   Training &amp; Workshops
                 </Link>
 
                 <Link
                   href="/calender"
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => { setIsOpen(false); closeDropdown(); }}
                 >
                   Calendar
                 </Link>
@@ -343,39 +343,39 @@ export default function Header() {
               open={activeDropdown === "resources"}
               onClick={() => toggleDropdown("resources")}
             >
-              <div className="space-y-2 pl-4 text-left text-sm">
+              <div className="flex flex-col items-start gap-2 pl-4 text-left text-sm">
 
                 <Link
-                  href="/resources"
-                  onClick={() => setIsOpen(false)}
+                  href="/resources#downloadable-resources"
+                  onClick={() => { setIsOpen(false); closeDropdown(); }}
                 >
                   Downloadable Resources
                 </Link>
 
                 <Link
-                  href="/news"
-                  onClick={() => setIsOpen(false)}
+                  href="/resources#news"
+                  onClick={() => { setIsOpen(false); closeDropdown(); }}
                 >
                   Cohere in the News
                 </Link>
 
                 <Link
-                  href="/judgments"
-                  onClick={() => setIsOpen(false)}
+                  href="/resources#judgments"
+                  onClick={() => { setIsOpen(false); closeDropdown(); }}
                 >
                   Judgments
                 </Link>
 
                 <Link
-                  href="/case-studies"
-                  onClick={() => setIsOpen(false)}
+                  href="/case-study"
+                  onClick={() => { setIsOpen(false); closeDropdown(); }}
                 >
                   Case Studies
                 </Link>
 
                 <Link
-                  href="/advisories"
-                  onClick={() => setIsOpen(false)}
+                  href="/resources#advisories"
+                  onClick={() => { setIsOpen(false); closeDropdown(); }}
                 >
                   Advisories
                 </Link>
@@ -387,8 +387,8 @@ export default function Header() {
             {/* CONTACT */}
 
             <Link
-              href="/contact"
-              onClick={() => setIsOpen(false)}
+              href="/#contact"
+              onClick={() => { setIsOpen(false); closeDropdown(); }}
               className="mt-5 self-center rounded-md bg-white px-6 py-3 text-[14px] font-semibold text-[#439897]"
             >
               CONTACT US
@@ -432,7 +432,7 @@ function MobileDropdown({
   children: React.ReactNode;
 }) {
   return (
-    <div className="border-b border-white/20">
+    <div className="border-b border-white/20 ">
 
       <div className="flex w-full items-center justify-between text-left text-[15px] font-medium">
         <Link href={href} onClick={onNavigate} className="flex-1 py-4">

@@ -33,7 +33,7 @@ const essentials = [
 
 export default function EssentialsSection() {
   return (
-    <section className="pb-16 sm:pb-16 md:pb-24 lg:pb-24">
+    <section id="cohere-essentials" className="pb-16 sm:pb-16 md:pb-24 lg:pb-24">
       <div className="container-custom">
         {/* Top Row: Tag + Title Left, Description Right aligned */}
         <div className="mb-10">

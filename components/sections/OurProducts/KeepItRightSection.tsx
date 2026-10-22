@@ -67,7 +67,7 @@ export default function KeepItRightSection() {
   };
 
   return (
-    <section className="pb-16 sm:pb-16 md:pb-24 lg:pb-24">
+    <section id="keep-it-right" className="pb-16 sm:pb-16 md:pb-24 lg:pb-24">
       <div className="container-custom">
         {/* Top row */}
         <div className="mb-10">
