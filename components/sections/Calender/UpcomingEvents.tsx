@@ -86,7 +86,10 @@ export default function UpcomingEvents() {
       relative
       min-h-[250px]
       w-full
+      group
+      transition-[filter] duration-300 ease-in-out
       [filter:drop-shadow(0_8px_16px_rgba(4,0,66,0.12))]
+      hover:[filter:drop-shadow(10px_-10px_0px_#FFBC59)]
     "
   >
 
@@ -132,6 +135,8 @@ export default function UpcomingEvents() {
         border
         border-[#E1E1E1]
         bg-white
+        transition-colors duration-300
+        group-hover:bg-[#1B6263]
 
         min-[681px]:hidden
       "
@@ -169,6 +174,7 @@ export default function UpcomingEvents() {
           C 0 7 7 0 16 0
           Z
         "
+        className="transition-colors duration-300 group-hover:fill-[#1B6263]"
         fill="white"
         stroke="#E1E1E1"
         strokeWidth="1"
@@ -195,7 +201,7 @@ export default function UpcomingEvents() {
 
 
       {/* TITLE */}
-      <h3 className="font-avenir text-[14px] font-bold text-[#439897]">
+      <h3 className="font-avenir text-[14px] font-bold text-[#439897] transition-colors duration-300 group-hover:text-white">
         {card.title}
       </h3>
 
@@ -209,6 +215,7 @@ export default function UpcomingEvents() {
           text-[16px]
           leading-[1.5]
           text-[#608383]
+          transition-colors duration-300 group-hover:text-white
 
           min-[681px]:w-[calc(100%-55px)]
           min-[681px]:max-w-[420px]
@@ -230,6 +237,7 @@ export default function UpcomingEvents() {
           text-[14px]
           font-bold
           text-[#004140]
+          transition-colors duration-300 group-hover:text-white
         "
       >
         {card.buttonText}
@@ -278,7 +286,7 @@ export default function UpcomingEvents() {
           h-[280px]
           w-full
           max-w-[540px]
-          drop-shadow-[0_8px_8px_rgba(4,0,66,0.10)]
+          group transition-[filter] duration-300 ease-in-out drop-shadow-[0_8px_8px_rgba(4,0,66,0.10)] hover:[filter:drop-shadow(12px_-12px_0px_#FFBC59)]
         "
       >
         <svg
@@ -295,6 +303,7 @@ export default function UpcomingEvents() {
               A 110 110 0 0 0 140 235
               Z
             "
+            className="transition-colors duration-300 group-hover:fill-[#1B6263]"
             fill="white"
             stroke="#F1F1F1"
             strokeWidth="1"
@@ -327,7 +336,7 @@ export default function UpcomingEvents() {
             text-center
           "
         >
-          <h3 className="font-avenir text-[18px] font-bold text-[#439897]">
+          <h3 className="font-avenir text-[18px] font-bold text-[#439897] transition-colors duration-300 group-hover:text-white">
             Practical Learning
           </h3>
 
@@ -338,7 +347,7 @@ export default function UpcomingEvents() {
               text-[16px]
               leading-[1.5]
               tracking-[0.04em]
-              text-[#608383]
+              text-[#608383] transition-colors duration-300 group-hover:text-white
             "
           >
             Understand workplace responsibilities through practical discussions
@@ -357,7 +366,7 @@ export default function UpcomingEvents() {
           h-[280px]
           w-full
           max-w-[540px]
-          drop-shadow-[0_8px_8px_rgba(4,0,66,0.10)]
+          group transition-[filter] duration-300 ease-in-out drop-shadow-[0_8px_8px_rgba(4,0,66,0.10)] hover:[filter:drop-shadow(12px_-12px_0px_#FFBC59)]
         "
       >
         <svg
@@ -374,6 +383,7 @@ export default function UpcomingEvents() {
               A 110 110 0 0 0 140 235
               Z
             "
+            className="transition-colors duration-300 group-hover:fill-[#1B6263]"
             fill="white"
             stroke="#F1F1F1"
             strokeWidth="1"
@@ -406,7 +416,7 @@ export default function UpcomingEvents() {
             text-center
           "
         >
-          <h3 className="font-avenir text-[18px] font-bold text-[#439897]">
+          <h3 className="font-avenir text-[18px] font-bold text-[#439897] transition-colors duration-300 group-hover:text-white">
             Meaningful Conversations
           </h3>
 
@@ -417,7 +427,7 @@ export default function UpcomingEvents() {
               text-[16px]
               leading-[1.5]
               tracking-[0.04em]
-              text-[#608383]
+              text-[#608383] transition-colors duration-300 group-hover:text-white
             "
           >
             Build confidence to respond to workplace concerns with greater
@@ -436,7 +446,7 @@ export default function UpcomingEvents() {
           h-[280px]
           w-full
           max-w-[540px]
-          drop-shadow-[0_8px_8px_rgba(4,0,66,0.10)]
+          group transition-[filter] duration-300 ease-in-out drop-shadow-[0_8px_8px_rgba(4,0,66,0.10)] hover:[filter:drop-shadow(12px_-12px_0px_#FFBC59)]
         "
       >
         <svg
@@ -453,6 +463,7 @@ export default function UpcomingEvents() {
               A 110 110 0 0 0 140 235
               Z
             "
+            className="transition-colors duration-300 group-hover:fill-[#1B6263]"
             fill="white"
             stroke="#F1F1F1"
             strokeWidth="1"
@@ -485,7 +496,7 @@ export default function UpcomingEvents() {
             text-center
           "
         >
-          <h3 className="font-avenir text-[18px] font-bold text-[#439897]">
+          <h3 className="font-avenir text-[18px] font-bold text-[#439897] transition-colors duration-300 group-hover:text-white">
             Expert Guidance
           </h3>
 
@@ -496,7 +507,7 @@ export default function UpcomingEvents() {
               text-[16px]
               leading-[1.5]
               tracking-[0.04em]
-              text-[#608383]
+              text-[#608383] transition-colors duration-300 group-hover:text-white
             "
           >
             Learn from experienced lawyers, HR professionals, trainers, and
@@ -536,7 +547,7 @@ export default function UpcomingEvents() {
         h-[320px]
         w-[540px]
         -translate-x-1/2
-        drop-shadow-[0_8px_8px_rgba(4,0,66,0.10)]
+        group transition-[filter] duration-300 ease-in-out drop-shadow-[0_8px_8px_rgba(4,0,66,0.10)] hover:[filter:drop-shadow(12px_-12px_0px_#FFBC59)]
       "
     >
       <svg
@@ -553,6 +564,7 @@ export default function UpcomingEvents() {
             A 110 110 0 0 0 140 235
             Z
           "
+          className="transition-colors duration-300 group-hover:fill-[#1B6263]"
           fill="white"
           stroke="#F1F1F1"
           strokeWidth="1"
@@ -584,7 +596,7 @@ export default function UpcomingEvents() {
           text-center
         "
       >
-        <h3 className="font-avenir text-[18px] font-bold text-[#439897]">
+        <h3 className="font-avenir text-[18px] font-bold text-[#439897] transition-colors duration-300 group-hover:text-white">
           Practical Learning
         </h3>
 
@@ -595,7 +607,7 @@ export default function UpcomingEvents() {
             text-[18px]
             leading-[1.5]
             tracking-[0.04em]
-            text-[#608383]
+            text-[#608383] transition-colors duration-300 group-hover:text-white
           "
         >
           Understand workplace responsibilities through practical discussions
@@ -615,7 +627,7 @@ export default function UpcomingEvents() {
         left-[-30px]
         h-[520px]
         w-[360px]
-        drop-shadow-[0_8px_8px_rgba(4,0,66,0.10)]
+        group transition-[filter] duration-300 ease-in-out drop-shadow-[0_8px_8px_rgba(4,0,66,0.10)] hover:[filter:drop-shadow(12px_-12px_0px_#FFBC59)]
       "
     >
       <svg
@@ -633,6 +645,7 @@ export default function UpcomingEvents() {
             A 320 320 0 0 1 92 0
             Z
           "
+          className="transition-colors duration-300 group-hover:fill-[#1B6263]"
           fill="white"
           stroke="#F1F1F1"
           strokeWidth="1"
@@ -667,7 +680,7 @@ export default function UpcomingEvents() {
             text-[18px]
             font-bold
             leading-[1.2]
-            text-[#439897]
+            text-[#439897] transition-colors duration-300 group-hover:text-white
           "
         >
           Meaningful
@@ -682,7 +695,7 @@ export default function UpcomingEvents() {
             text-[18px]
             leading-[1.5]
             tracking-[0.04em]
-            text-[#608383]
+            text-[#608383] transition-colors duration-300 group-hover:text-white
           "
         >
           Build confidence to respond to workplace concerns with greater
@@ -702,7 +715,7 @@ export default function UpcomingEvents() {
         right-[-14px]
         h-[520px]
         w-[330px]
-        drop-shadow-[0_8px_8px_rgba(4,0,66,0.10)]
+        group transition-[filter] duration-300 ease-in-out drop-shadow-[0_8px_8px_rgba(4,0,66,0.10)] hover:[filter:drop-shadow(12px_-12px_0px_#FFBC59)]
       "
     >
       <svg
@@ -719,6 +732,7 @@ export default function UpcomingEvents() {
             A 110 110 0 0 0 47 146
             Z
           "
+          className="transition-colors duration-300 group-hover:fill-[#1B6263]"
           fill="white"
           stroke="#F1F1F1"
           strokeWidth="1"
@@ -753,7 +767,7 @@ export default function UpcomingEvents() {
             text-[18px]
             font-bold
             leading-[1.2]
-            text-[#439897]
+            text-[#439897] transition-colors duration-300 group-hover:text-white
           "
         >
           Expert Guidance
@@ -766,7 +780,7 @@ export default function UpcomingEvents() {
             text-[18px]
             leading-[1.5]
             tracking-[0.04em]
-            text-[#608383]
+            text-[#608383] transition-colors duration-300 group-hover:text-white
           "
         >
           Learn from experienced lawyers, HR professionals, trainers, and

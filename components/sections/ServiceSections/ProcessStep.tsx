@@ -1,5 +1,8 @@
 "use client";
 
+import { useRef } from "react";
+import { motion, useInView, useReducedMotion } from "framer-motion";
+
 interface ProcessStepProps {
   number: string;
   title: string;
@@ -19,6 +22,10 @@ export default function ProcessStep({
   right = true,
   cardBackground,
 }: ProcessStepProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { once: true, amount: 0.2 });
+  const reduceMotion = useReducedMotion();
+  const cardIndex = Math.max(0, (Number(number) || 1) - 1);
   const iconSrc = typeof icon === "string" ? icon : icon?.src;
 
   const cardBackgroundSrc =
@@ -28,12 +35,24 @@ export default function ProcessStep({
 
   return (
     <div
-      className={`flex w-full ${
+      ref={containerRef}
+      className={`flex w-full overflow-x-clip overflow-y-visible ${
         right ? "justify-end" : "justify-start"
       }`}
     >
       {/* MAIN CARD */}
-      <div
+      <motion.div
+        initial={false}
+        animate={
+          reduceMotion || isInView
+            ? { opacity: 1, x: 0 }
+            : { opacity: 0, x: right ? -64 : 64 }
+        }
+        transition={{
+          duration: reduceMotion ? 0 : 1,
+          delay: !reduceMotion && isInView ? cardIndex * 0.05 : 0,
+          ease: [0.22, 1, 0.36, 1],
+        }}
         className="
           relative
           h-[220px]
@@ -364,7 +383,7 @@ export default function ProcessStep({
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

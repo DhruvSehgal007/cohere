@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -9,7 +9,25 @@ import allThingsLogo from "@/assets/images/logos/all-things.png";
 
 type DropdownType = "services" | "products" | "events" | "resources" | null;
 
+function subscribeToScroll(onChange: () => void) {
+  window.addEventListener("scroll", onChange, { passive: true });
+  return () => window.removeEventListener("scroll", onChange);
+}
+
+function getScrolledSnapshot() {
+  return window.scrollY > 16;
+}
+
+function getServerScrolledSnapshot() {
+  return false;
+}
+
 export default function Header() {
+  const hasScrolled = useSyncExternalStore(
+    subscribeToScroll,
+    getScrolledSnapshot,
+    getServerScrolledSnapshot,
+  );
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] =
     useState<DropdownType>(null);
@@ -25,7 +43,7 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed left-0 top-0 z-[9999] w-full bg-white">
+    <header className={`fixed left-0 top-0 z-[9999] w-full transition-colors duration-300 motion-reduce:transition-none ${hasScrolled ? "bg-white" : "bg-transparent"}`}>
 
       {/* =====================================================
           HEADER
