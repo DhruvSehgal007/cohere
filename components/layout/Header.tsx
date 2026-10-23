@@ -129,7 +129,7 @@ export default function Header() {
                   onMouseEnter={() => setActiveDropdown(item.key)}
                   onMouseLeave={() => setActiveDropdown(null)}
                 >
-                  <div className="flex items-center gap-1 whitespace-nowrap text-[14px] min-[1200px]:text-[16px] min-[1440px]:text-[20px]">
+                  <div className="flex items-center gap-1 whitespace-nowrap text-[14px] min-[1200px]:text-[16px] min-[1440px]:text-[18px]">
                     <Link href={item.href} onClick={closeDropdown} className="transition hover:opacity-80">
                       {item.label}
                     </Link>
@@ -215,7 +215,7 @@ export default function Header() {
               <Link
                 href="/#contact"
                 onClick={closeDropdown}
-                className="shrink-0 whitespace-nowrap rounded-sm bg-white px-4 py-2 text-[14px] font-semibold text-[#439897] transition hover:bg-gray-100 min-[1200px]:text-[16px] min-[1440px]:px-5 min-[1440px]:text-[20px]"
+                className="shrink-0 whitespace-nowrap rounded-sm bg-white px-4 py-2 text-[14px] font-semibold text-[#439897] transition hover:bg-gray-100 min-[1200px]:text-[16px] min-[1440px]:px-5 min-[1440px]:text-[18px]"
               >
                 CONTACT US
               </Link>
