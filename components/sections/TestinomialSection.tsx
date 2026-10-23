@@ -3,10 +3,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import columnIcon from "@/assets/images/homepage/column.svg";
 import Righticon from "@/assets/images/homepage/Right-icon.svg";
 import Lefticon from "@/assets/images/homepage/Left-icon.svg";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import whitequote from "@/assets/images/homepage/white-quote.svg";
+import blackquote from "@/assets/images/homepage/black-quote.svg";
 
 const testimonials = [
   {
@@ -213,7 +213,10 @@ export default function TestimonialsSection() {
             className="flex items-stretch gap-6"
           >
             {loop.map((t, i) => {
-              const isActive = i % N === activeIndex;
+              // The first visible card is position - 1 on mobile/tablet.
+              // On desktop, highlight the second (center) visible card.
+              const isMobileActive = i === position - 1;
+              const isDesktopActive = i === position;
 
               return (
                 <div
@@ -221,18 +224,18 @@ export default function TestimonialsSection() {
                   className={`
                     relative
                     flex
-                    h-[430px]
+                    h-[380px]
                     w-full
                     shrink-0
                     flex-col
-                    rounded-2xl
+                    rounded-[36px]
                     px-6
                     pb-8
                     pt-10
                     transition-colors
                     duration-500
 
-                    sm:h-[450px]
+                    sm:h-[380px]
                     sm:px-8
 
                     min-[600px]:w-[calc(50%-12px)]
@@ -246,28 +249,44 @@ export default function TestimonialsSection() {
                     xl:h-[420px]
 
                     ${
-                      isActive
+                      isMobileActive
                         ? "bg-[#439897] text-white shadow-2xl"
                         : "bg-white text-[#0D1E1E] shadow-md"
+                    }
+                    ${
+                      isDesktopActive
+                        ? "lg:bg-[#439897] lg:text-white lg:shadow-2xl"
+                        : "lg:bg-white lg:text-[#0D1E1E] lg:shadow-md"
                     }
                   `}
                 >
 
                   {/* ================= QUOTE ICON ================= */}
-                  <div className="absolute -top-6 left-6 h-12 w-12">
+                  <div className="absolute -top-10 left-4 h-20 w-20 pointer-events-none">
+                    {/* Mobile / tablet: first visible card is active */}
                     <Image
-                      src={columnIcon}
+                      src={isMobileActive ? whitequote : blackquote}
                       alt=""
                       fill
                       aria-hidden="true"
-                      className={`
-                        object-contain
-                        ${
-                          isActive
-                            ? "brightness-0 opacity-60"
-                            : "brightness-0 opacity-30"
-                        }
-                      `}
+                      className={`object-contain lg:hidden ${
+                        isMobileActive
+                          ? "drop-shadow-[6px_9px_7px_rgba(27,61,60,0.28)]"
+                          : ""
+                      }`}
+                    />
+
+                    {/* Desktop: center card is active */}
+                    <Image
+                      src={isDesktopActive ? whitequote : blackquote}
+                      alt=""
+                      fill
+                      aria-hidden="true"
+                      className={`hidden object-contain lg:block ${
+                        isDesktopActive
+                          ? "drop-shadow-[6px_9px_7px_rgba(27,61,60,0.28)]"
+                          : ""
+                      }`}
                     />
                   </div>
 
@@ -304,9 +323,14 @@ export default function TestimonialsSection() {
                       xl:text-[18px]
 
                       ${
-                        isActive
+                        isMobileActive
                           ? "text-white"
                           : "text-neutral-700"
+                      }
+                      ${
+                        isDesktopActive
+                          ? "lg:text-white"
+                          : "lg:text-neutral-700"
                       }
                     `}
                   >
@@ -315,19 +339,24 @@ export default function TestimonialsSection() {
 
                   {/* ================= BOTTOM CONTENT ================= */}
                   {/* mt-auto keeps divider and name aligned */}
-                  <div className="mt-auto pt-6">
+                  <div className="mt-auto pt-0">
 
                     {/* DIVIDER */}
                     <div
                       className={`
-                        mb-6
-                        h-px
+                        mb-2
+                        h-[2px]
                         w-full
                         bg-[#B4D6D5]
                         ${
-                          isActive
+                          isMobileActive
                             ? "bg-[#B4D6D5]"
                             : "bg-neutral-200"
+                        }
+                        ${
+                          isDesktopActive
+                            ? "lg:bg-[#B4D6D5]"
+                            : "lg:bg-neutral-200"
                         }
                       `}
                     />
@@ -343,9 +372,14 @@ export default function TestimonialsSection() {
                         sm:text-[24px]
 
                          ${
-                          isActive
+                          isMobileActive
                             ? "text-white"
                             : "text-neutral-500"
+                        }
+                        ${
+                          isDesktopActive
+                            ? "lg:text-white"
+                            : "lg:text-neutral-500"
                         }
                       `}
                     >
@@ -361,9 +395,14 @@ export default function TestimonialsSection() {
                         text-[#1B3D3C]
 
                         ${
-                          isActive
+                          isMobileActive
                             ? "text-white/80"
                             : "text-neutral-500"
+                        }
+                        ${
+                          isDesktopActive
+                            ? "lg:text-white/80"
+                            : "lg:text-neutral-500"
                         }
                       `}
                     >
@@ -381,14 +420,14 @@ export default function TestimonialsSection() {
 {/* ================= SLIDER ARROWS + DOTS ================= */}
 
 {/* ================= SLIDER ARROWS + DOTS ================= */}
-<div className="mt-12 flex items-center justify-end gap-2">
+<div className="mt-10 sm:mt-10 md:mt-12 flex items-center justify-center sm:justify-center md:justify-end gap-2">
 
   {/* LEFT ARROW */}
   <button
     type="button"
     onClick={() => goTo(positionRef.current - 1)}
     aria-label="Previous testimonial"
-    className="flex h-[40px] w-[40px] shrink-0 items-center justify-center"
+    className="flex h-[30px] w-[30px] sm:h-[30px] sm:w-[30px] md:h-[40px] md:w-[40px] shrink-0 items-center justify-center"
   >
     <Image
       src={Lefticon}
@@ -410,8 +449,12 @@ export default function TestimonialsSection() {
         aria-current={i === activeIndex ? "true" : undefined}
         className="
           flex
-          h-5
-          w-5
+          h-4
+          w-4
+          sm:h-4
+          sm:w-4
+          md:h-5
+          md:w-5
           items-center
           justify-center
           rounded-full
@@ -431,7 +474,7 @@ export default function TestimonialsSection() {
     type="button"
     onClick={() => goTo(positionRef.current + 1)}
     aria-label="Next testimonial"
-    className="flex h-[40px] w-[40px] shrink-0 items-center justify-center"
+    className="flex h-[30px] w-[30px] sm:h-[30px] sm:w-[30px] md:h-[40px] md:w-[40px] shrink-0 items-center justify-center"
   >
     <Image
       src={Righticon}

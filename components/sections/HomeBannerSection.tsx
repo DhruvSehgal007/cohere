@@ -215,7 +215,7 @@ export default function HomeBanner() {
         <div className="relative w-full flex justify-center">
           <div
             ref={mainImgWrapRef}
-            className="w-full max-w-[300px] sm:max-w-[420px] md:max-w-[500px] lg:max-w-[580px] mx-auto"
+            className="w-full max-w-[300px] sm:max-w-[420px] md:max-w-[500px] lg:max-w-[580px] mx-auto hidden sm:block md:block lg:block"
           >
             <Image
               key={index}
@@ -229,13 +229,13 @@ export default function HomeBanner() {
       </div>
 
       {/* UPDATED SLIDER ARROWS AND DOTS */}
-      <div className="container-custom mt-8 flex justify-center lg:justify-end items-center gap-4">
+      <div className="container-custom mt-0 sm:mt-8 flex justify-center lg:justify-end items-center gap-4">
         {/* LEFT ARROW */}
         <button
           type="button"
           onClick={prev}
           aria-label="Previous slide"
-          className="flex h-[40px] w-[40px] shrink-0 items-center justify-center transition-transform duration-300 hover:scale-105"
+          className="flex h-[30px] w-[30px] sm:h-[30px] sm:w-[30px] md:h-[40px] md:w-[40px] shrink-0 items-center justify-center transition-transform duration-300 hover:scale-105"
         >
           <Image
             src={Lefticon}
@@ -253,7 +253,7 @@ export default function HomeBanner() {
               onClick={() => goTo(i, i > index)}
               aria-label={`Go to slide ${i + 1}`}
               aria-current={i === index ? "true" : undefined}
-              className="flex h-[20px] w-[20px] shrink-0 items-center justify-center rounded-full border border-[#2E262E] bg-transparent transition-all duration-300"
+              className="flex h-[16px] w-[16px] sm:h-[16px] sm:w-[16px] md:h-[20px] md:w-[20px] shrink-0 items-center justify-center rounded-full border border-[#2E262E] bg-transparent transition-all duration-300"
             >
               {i === index && (
                 <span className="h-[12px] w-[12px] rounded-full bg-[#439897]" />
@@ -267,7 +267,7 @@ export default function HomeBanner() {
           type="button"
           onClick={next}
           aria-label="Next slide"
-          className="flex h-[40px] w-[40px] shrink-0 items-center justify-center transition-transform duration-300 hover:scale-105"
+          className="flex h-[30px] w-[30px] sm:h-[30px] sm:w-[30px] md:h-[40px] md:w-[40px] shrink-0 items-center justify-center transition-transform duration-300 hover:scale-105"
         >
           <Image
             src={Righticon}

@@ -181,8 +181,9 @@ export function OurTeam() {
             sm:pb-16
             md:pt-36
             md:pb-20
-            lg:pt-40
-            lg:pb-24
+            lg:pt-24
+            lg:pb-14
+            xl:pt-28
           "
         >
           {/* ROLE */}
@@ -226,7 +227,8 @@ export function OurTeam() {
                 w-full
                 sm:h-[380px]
                 md:h-[450px]
-                lg:h-[700px]
+                lg:h-[480px]
+                xl:h-[520px]
               "
             >
               {/* BACKGROUND MARQUEE */}
@@ -244,7 +246,7 @@ export function OurTeam() {
                   select-none
                   sm:top-[43%]
                   md:top-[45%]
-                  lg:top-[22%]
+                  lg:top-[30%]
                 "
               >
                 <div className="our-team-marquee-track">
@@ -283,7 +285,7 @@ export function OurTeam() {
                 className="
                   pointer-events-none
                   absolute
-                  bottom-[100px]
+                  bottom-[70px]
                   left-1/2
                   z-10
                   hidden
@@ -299,11 +301,11 @@ export function OurTeam() {
               <div
                 className="
                   absolute
-                  bottom-[100px]
+                  bottom-[70px]
                   left-0
                   z-20
                   hidden
-                  h-[160px]
+                  h-[125px]
                   w-full
                   lg:block
                 "
@@ -313,7 +315,7 @@ export function OurTeam() {
                   className="
                     absolute
                     left-0
-                    top-[70px]
+                    top-[55px]
                     flex
                     items-end
                     gap-4
@@ -362,7 +364,7 @@ export function OurTeam() {
                   className="
                     absolute
                     right-0
-                    top-[70px]
+                    top-[55px]
                     flex
                     items-end
                     gap-4
@@ -421,11 +423,12 @@ export function OurTeam() {
                   sm:w-[310px]
                   md:h-[440px]
                   md:w-[370px]
-                  lg:bottom-[150px]
-                  lg:h-[540px]
-                  lg:w-[430px]
-                  xl:h-[640px]
-                  xl:w-[540px]
+                  lg:bottom-[105px]
+                  lg:h-[390px]
+                  lg:w-[320px]
+                  xl:bottom-[110px]
+                  xl:h-[440px]
+                  xl:w-[370px]
                 "
               >
                 <AnimatePresence mode="wait">
@@ -446,7 +449,7 @@ export function OurTeam() {
                       alt={`${current.name}, ${current.role}`}
                       fill
                       priority
-                      sizes="(max-width: 639px) 250px, (max-width: 767px) 310px, (max-width: 1023px) 370px, (max-width: 1279px) 430px, 540px"
+                      sizes="(max-width: 639px) 250px, (max-width: 767px) 310px, (max-width: 1023px) 370px, (max-width: 1279px) 320px, 370px"
                       className="
                         object-contain
                         object-bottom
@@ -469,7 +472,8 @@ export function OurTeam() {
                 max-w-[500px]
                 sm:-mt-8
                 md:-mt-12
-                lg:-mt-[220px]
+                lg:-mt-[150px]
+                xl:-mt-[165px]
               "
             >
               <AnimatePresence
@@ -610,7 +614,7 @@ export function OurTeam() {
                   right-4
                   z-40
                   flex
-                  h-[40px]
+                  h-[32px]
                   w-[126px]
                   items-center
                   justify-center
@@ -619,8 +623,9 @@ export function OurTeam() {
                   shadow-lg
                   sm:-bottom-5
                   sm:right-8
-                  sm:h-[44px]
+                  sm:h-[38px]
                   sm:w-[150px]
+                  md:h-[40px]
                 "
               >
                 <button
@@ -638,7 +643,7 @@ export function OurTeam() {
                     hover:opacity-70
                   "
                 >
-                  <i className="fa-solid fa-arrow-left text-[24px] sm:text-[30px]" />
+                  <i className="fa-solid fa-arrow-left text-[20px] sm:text-[24px] md:text-[28px] lg:text-[30px]" />
                 </button>
 
                 <span className="h-[24px] w-[2px] bg-[#FF9800]" />
@@ -658,7 +663,7 @@ export function OurTeam() {
                     hover:opacity-70
                   "
                 >
-                  <i className="fa-solid fa-arrow-right text-[24px] sm:text-[30px]" />
+                  <i className="fa-solid fa-arrow-right text-[20px] sm:text-[24px] md:text-[28px] lg:text-[30px]" />
                 </button>
               </div>
             </div>
@@ -687,8 +692,8 @@ function SideAvatar({
         group
         relative
         block
-        h-[110px]
-        w-[110px]
+        h-[90px]
+        w-[90px]
         shrink-0
         overflow-hidden
         rounded-full
@@ -696,15 +701,15 @@ function SideAvatar({
         transition-transform
         duration-300
         hover:scale-105
-        xl:h-[160px]
-        xl:w-[160px]
+        xl:h-[115px]
+        xl:w-[115px]
       "
     >
       <Image
         src={person.avatarImage}
         alt={person.name}
         fill
-        sizes="(max-width: 1279px) 110px, 160px"
+        sizes="(max-width: 1279px) 90px, 115px"
         className="
           object-cover
           object-top

@@ -1,12 +1,15 @@
+
 "use client";
 
 import Image from "next/image";
 import Link from "next/link";
-import { Heart, Share2 } from "lucide-react";
 
 import LinkedinImage from "@/assets/images/homepage/linkdin-post.png";
 import CohereLogo from "@/assets/images/homepage/cohere-linkdin-logo.png";
 import LinkedinIcon from "@/assets/images/homepage/linkdinicon.svg";
+import Likeicon from "@/assets/images/homepage/Like-icon.svg";
+import arrowsocial from "@/assets/images/homepage/arrow-social.svg";
+
 
 const posts = [
   {
@@ -28,124 +31,324 @@ const posts = [
 ];
 
 export default function SocialFeedSection() {
-
   return (
     <section className="pb-16 sm:pb-16 md:pb-24 lg:pb-24">
-      <div className="container-custom px-4 sm:px-6 mb-10">
-         <h2 className="
-                w-full
-                font-avenir
-                font-extrabold
-                leading-[1.15]
-                text-[#101C1C]
-                md:mt-4
-                text-[32px]
-                sm:text-[36px]
-                md:text-[40px]
-                mb-10">
-              Her from our Experties
-            </h2>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-          {/* LinkedIn Cards */}
+      <div className="container-custom mb-10 px-4 sm:px-6">
 
+        {/* HEADING */}
+        <h2
+          className="
+            mb-10
+            w-full
+            font-avenir
+            font-extrabold
+            leading-[1.15]
+            text-[#101C1C]
+            md:mt-4
+            text-[32px]
+            sm:text-[36px]
+            md:text-[40px]
+          "
+        >
+          Her from our Experties
+        </h2>
+
+        {/* RESPONSIVE GRID */}
+        <div
+          className="
+            grid
+            grid-cols-1
+            gap-8
+            items-start
+            sm:grid-cols-2
+            xl:grid-cols-3
+          "
+        >
+
+          {/* LINKEDIN CARDS */}
           {posts.map((post) => (
             <div
               key={post.id}
-              className="bg-white rounded-[24px] border border-[#ECECEC] overflow-hidden shadow-sm h-fit"
+              className="
+                flex
+                h-fit
+                min-w-0
+                flex-col
+                overflow-hidden
+                rounded-[24px]
+                border
+                border-[#ECECEC]
+                bg-white
+                shadow-sm
+              "
             >
-              {/* Header */} 
 
-              <div className="p-4 sm:p-4 md:p-4 lg:p-8">
+              {/* HEADER */}
+              <div
+                className="
+                  pr-[16px]
+                  pt-[16px]
+                  pb-[10px]
+                  pl-[16px]
+                  md:pr-[28px]
+                  md:pt-[28px]
+                  md:pb-[12px]
+                  md:pl-[28px]
+                "
+              >
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-1 sm:gap-2 md:gap-3 lg:gap-4">
-                    <div className="w-14 h-14 rounded-full overflow-hidden border border-[#E5E5E5] shrink-0">
+
+                  <div className="flex min-w-0 items-center gap-1 sm:gap-2 md:gap-3 lg:gap-4">
+
+                    {/* LOGO */}
+                    <div className="h-14 w-14 shrink-0 overflow-hidden rounded-full border border-[#E5E5E5]">
                       <Image
                         src={CohereLogo}
                         alt="Cohere Compliance"
-                        className="w-full h-full object-cover"
+                        className="h-full w-full object-cover"
                       />
                     </div>
 
-                    <div>
-                      <h4 className="font-nunito-sans font-bold text-[16px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-none text-[#2E262E]">
+                    {/* NAME */}
+                    <div className="min-w-0">
+                      <h4
+                        className="
+                          font-nunito-sans
+                          font-bold
+                          text-[16px]
+                          sm:text-[16px]
+                          md:text-[18px]
+                          lg:text-[20px]
+                          leading-none
+                          text-[#2E262E]
+                        "
+                      >
                         {post.title}
                       </h4>
 
-                      <p className="font-nunito-sans text-[14px] sm:text-[14px] md:text-[16px] lg:text-[16px] font-normal text-[#777777] mt-1">
+                      <p
+                        className="
+                          mt-1
+                          font-nunito-sans
+                          text-[14px]
+                          sm:text-[14px]
+                          md:text-[16px]
+                          lg:text-[16px]
+                          font-normal
+                          text-[#777777]
+                        "
+                      >
                         {post.username}
                       </p>
                     </div>
                   </div>
 
+                  {/* LINKEDIN ICON */}
                   <Image
                     src={LinkedinIcon}
                     alt="LinkedIn"
-                    className="w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-8 lg:h-8 object-contain shrink-0"
+                    className="
+                      h-5
+                      w-5
+                      shrink-0
+                      object-contain
+                      sm:h-7
+                      sm:w-7
+                      md:h-8
+                      md:w-8
+                      lg:h-8
+                      lg:w-8
+                    "
                   />
                 </div>
 
-                <p className="mt-6 font-nunito-sans text-[16px] sm:text-[16px] md:text-[18px] lg:text-[20px] font-normal leading-[24px] sm:leading-[28px] md:leading-[32px] text-[#2E262E]">
+                {/* POST TEXT */}
+                <p
+                  className="
+                    mt-4
+                    font-nunito-sans
+                    text-[16px]
+                    sm:text-[16px]
+                    md:text-[18px]
+                    lg:text-[18px]
+                    font-normal
+                    leading-[24px]
+                    sm:leading-[28px]
+                    md:leading-[32px]
+                    text-[#2E262E]
+                  "
+                >
                   {post.text}
                 </p>
 
-                <Link href="/blog" className="mt-5 inline-block font-nunito-sans text-[14px] font-normal text-[#666666] hover:text-[#024948] transition-colors">
-                  Read our insights
+                {/* READ MORE */}
+                <Link
+                  href="/blog"
+                  className="
+                    mt-5
+                    inline-block
+                    font-nunito-sans
+                    text-[16px]
+                    md:text-[18px]
+                    font-normal
+                    text-[#666666]
+                    transition-colors
+                    hover:text-[#024948]
+                  "
+                >
+                  Read more
                 </Link>
               </div>
 
-              {/* Image */}
-
+              {/* POST IMAGE */}
               <Image
                 src={post.image}
                 alt=""
-                className="w-full aspect-[16/10] object-cover"
+                className="
+                  aspect-[16/10]
+                  w-full
+                  shrink-0
+                  object-cover
+                "
               />
 
-              {/* Footer */}
+              {/* FOOTER */}
+              <div
+                className="
+                  flex
+                  items-center
+                  justify-between
+                  border-t
+                  border-[#F2F2F2]
+                  px-6
+                  py-4
+                "
+              >
 
-              <div className="flex items-center justify-between px-6 py-5 border-t border-[#F2F2F2]">
-                <div className="flex items-center gap-2 text-[#444444]">
-                  <Heart size={20} />
+                {/* LIKES */}
+                <div className="flex items-center gap-2 text-[#3A3A3A]">
+                  <Image
+                    src={Likeicon}
+                    alt=""
+                    width={20}
+                    height={20}
+                    className="h-5 w-5 shrink-0 object-contain"
+                  />
 
-                  <span className="font-nunito-sans text-[16px] sm:text-[16px] md:text-[18px] lg:text-[20px] font-normal">
+                  <span
+                    className="
+                      font-nunito-sans
+                      text-[16px]
+                      sm:text-[16px]
+                      md:text-[18px]
+                      lg:text-[20px]
+                      font-normal
+                    "
+                  >
                     {post.likes}
                   </span>
                 </div>
 
-                <button type="button" className="flex items-center gap-2 font-nunito-sans text-[16px] sm:text-[16px] md:text-[18px] lg:text-[20px] font-normal text-[#444444] hover:text-[#024948] transition-colors"
+                {/* SHARE */}
+                <button
+                  type="button"
+                  className="
+                    flex
+                    items-center
+                    gap-2
+                    font-nunito-sans
+                    text-[16px]
+                    sm:text-[16px]
+                    md:text-[18px]
+                    lg:text-[20px]
+                    font-normal
+                    text-[#3A3A3A]
+                    transition-colors
+                    hover:text-[#024948]
+                  "
                 >
-                  <Share2 size={18} />
+                  <Image
+                    src={arrowsocial}
+                    alt=""
+                    width={26}
+                    height={26}
+                    className="h-[26px] w-[26px] shrink-0 object-contain"
+                  />
                   Share
                 </button>
               </div>
             </div>
           ))}
 
-          {/* Newsletter Card */}
-          <div className="flex h-full flex-col rounded-[24px] bg-[#FEBC5A] p-6">
-            {/* Label */}
+          {/* NEWSLETTER CARD */}
+          <div
+            className="
+              flex
+              h-fit
+              min-w-0
+              flex-col
+              rounded-[24px]
+              bg-[#FEBC5A]
+              p-6
+              sm:col-span-2
+              xl:col-span-1
+            "
+          >
 
-            <span className="font-avenir text-[18px] sm:text-[18px] md:text-[20px] lg:text-[24px] font-bold text-black">
+            {/* LABEL */}
+            <span
+              className="
+                font-avenir
+                text-[18px]
+                sm:text-[18px]
+                md:text-[20px]
+                lg:text-[24px]
+                font-bold
+                text-black
+              "
+            >
               Newsletter
             </span>
 
-            {/* Heading */}
-
-            <h2 className=" font-avenir text-[32px] text-[32px] text-[36px] text-[40px] font-bold leading-[40px] text-black max-w-[]">
+            {/* HEADING */}
+            <h2
+              className="
+                font-avenir
+                text-[32px]
+                sm:text-[32px]
+                md:text-[36px]
+                lg:text-[40px]
+                font-bold
+                leading-[40px]
+                text-black
+                max-w-[500px]
+              "
+            >
               Stay Ahead with Workplace Compliance Insights
             </h2>
 
-            {/* Description */}
-
-            <p className="mt-6 font-nunito-sans text-[16px] sm:text-[16px] md:text-[18px] lg:text-[18px] font-normal leading-[30px] text-black">
+            {/* DESCRIPTION */}
+            <p
+              className="
+                mt-6
+                font-nunito-sans
+                text-[16px]
+                sm:text-[16px]
+                md:text-[18px]
+                lg:text-[18px]
+                font-normal
+                leading-[30px]
+                tracking-[0.04em]
+                text-black
+              "
+            >
               Stay informed with the latest PoSH updates, workplace compliance
               insights, legal developments, expert articles and training
               announcements delivered straight to your inbox.
             </p>
 
-            {/* Email */}
-
-            <div className="mt-10">
+            {/* EMAIL INPUT */}
+            <div className="mt-5">
               <input
                 type="email"
                 name="email"
@@ -153,22 +356,71 @@ export default function SocialFeedSection() {
                 aria-label="Your work email"
                 required
                 placeholder="Enter your work email"
-                className="h-[60px] w-full rounded-xl border border-black bg-transparent px-5 font-nunito-sans text-[16px] text-black placeholder:font-nunito-sans placeholder:text-[16px] placeholder:text-black outline-none transition focus:border-black"
+                className="
+                  h-[60px]
+                  w-full
+                  rounded-xl
+                  border
+                  border-black
+                  bg-transparent
+                  px-5
+                  font-nunito-sans
+                  text-[16px]
+                  md:text-[18px]
+                  text-black
+                  placeholder:font-nunito-sans
+                  placeholder:text-[18px]
+                  placeholder:text-black
+                  outline-none
+                  transition
+                  focus:border-black
+                "
               />
             </div>
 
-            {/* Button */}
-
-            <button type="button" className="mt-5 h-[60px] rounded-xl bg-white font-nunito-sans-extra-bold text-[16px] sm:text-[16px] md:text-[18px] lg:text-[18px]  text-[#000000] transition hover:bg-[#F4F4F4]">
+            {/* SUBMIT BUTTON */}
+            <button
+              type="button"
+              className="
+                mt-5
+                h-[60px]
+                shrink-0
+                rounded-xl
+                bg-white
+                font-nunito-sans-extra-bold
+                text-[16px]
+                sm:text-[16px]
+                md:text-[18px]
+                lg:text-[18px]
+                text-[#000000]
+                transition
+                hover:bg-[#F4F4F4]
+              "
+            >
               SUBMIT
             </button>
 
-            {/* Bottom Text */}
-
-            <p className="mt-2 pt-8 font-nunito-sans text-[16px] sm:text-[16px] md:text-[18px] lg:text-[18px] font-normal leading-[22px] text-black">
-              Newsletter signup is currently unavailable.
+            {/* BOTTOM TEXT */}
+            <p
+              className="
+                mt-2
+                pt-8
+                font-nunito-sans
+                text-[16px]
+                sm:text-[16px]
+                md:text-[18px]
+                lg:text-[18px]
+                font-normal
+                leading-[24px]
+                tracking-[0.04em]
+                text-black
+              "
+            >
+              By subscribing, you agree to receive periodic emails from Cohere.
+              You can unsubscribe at any time.
             </p>
           </div>
+
         </div>
       </div>
     </section>

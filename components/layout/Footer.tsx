@@ -7,6 +7,8 @@ import {
   FaPhoneAlt,
   FaEnvelope,
   FaClock,
+  FaInstagram,
+  FaFacebookF,
 } from "react-icons/fa";
 
 import footerLogo from "@/assets/images/logos/chohere-footer-logo.png";
@@ -74,25 +76,25 @@ export default function Footer() {
       <div
         className="
           container-custom
-    mx-auto
-    grid
-    grid-cols-1
-    gap-x-6
-    gap-y-10
-    px-4
-    pt-12
-    pb-12
+          mx-auto
+          grid
+          grid-cols-1
+          gap-x-6
+          gap-y-10
+          px-4
+          pt-12
+          pb-12
 
-    sm:grid-cols-2
-    sm:px-6
+          sm:grid-cols-2
+          sm:px-6
 
-    lg:grid-cols-[1.7fr_0.75fr_0.95fr_1.25fr]
-    lg:gap-x-6
-    lg:pt-16
-    lg:pb-16
+          lg:grid-cols-[1.7fr_0.75fr_0.95fr_1.25fr]
+          lg:gap-x-6
+          lg:pt-16
+          lg:pb-16
 
-    xl:grid-cols-[1.8fr_0.7fr_0.95fr_1.25fr]
-    xl:gap-x-8
+          xl:grid-cols-[1.8fr_0.7fr_0.95fr_1.25fr]
+          xl:gap-x-8
         "
       >
 
@@ -230,7 +232,68 @@ export default function Footer() {
             Get In Touch
           </h4>
 
-          {/* CONTACT INFORMATION */}
+          {/* ================= SOCIAL MEDIA ICONS ================= */}
+          <div className="mb-4 flex items-center gap-3 border-b border-[#DCE4E9] pb-3">
+
+            {/* INSTAGRAM */}
+            <a
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="
+                flex
+                h-[36px]
+                w-[36px]
+                items-center
+                justify-center
+                rounded-full
+                border
+                border-[#E5E5E5]
+                bg-white
+                transition-all
+                duration-300
+                hover:scale-110
+                hover:shadow-md
+              "
+            >
+              <FaInstagram
+                size={17}
+                className="text-[#E4405F]"
+              />
+            </a>
+
+            {/* FACEBOOK */}
+            <a
+              href="https://www.facebook.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              className="
+                flex
+                h-[36px]
+                w-[36px]
+                items-center
+                justify-center
+                rounded-full
+                border
+                border-[#E5E5E5]
+                bg-white
+                transition-all
+                duration-300
+                hover:scale-110
+                hover:shadow-md
+              "
+            >
+              <FaFacebookF
+                size={16}
+                className="text-[#1877F2]"
+              />
+            </a>
+
+          </div>
+
+          {/* ================= CONTACT INFORMATION ================= */}
           <div className="flex flex-col">
 
             {contactItems.map((item, index) => {
@@ -275,10 +338,19 @@ export default function Footer() {
                     {item.lines.map((line, lineIndex) => (
                       <p key={lineIndex}>
                         {line === "+91 89044 47004" ? (
-                          <a href="tel:+918904447004" className="hover:text-[#439897]">{line}</a>
+                          <a
+                            href="tel:+918904447004"
+                            className="hover:text-[#439897]"
+                          >
+                            {line}
+                          </a>
                         ) : line === "info@cohereconsultants.com" ? (
-                          <span className="hover:text-[#439897]">{line}</span>
-                        ) : line}
+                          <span className="hover:text-[#439897]">
+                            {line}
+                          </span>
+                        ) : (
+                          line
+                        )}
                       </p>
                     ))}
                   </div>
