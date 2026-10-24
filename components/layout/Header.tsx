@@ -215,7 +215,7 @@ export default function Header() {
               <Link
                 href="/#contact"
                 onClick={closeDropdown}
-                className="shrink-0 whitespace-nowrap rounded-sm bg-white px-4 py-2 text-[14px] font-semibold text-[#439897] transition hover:bg-gray-100 min-[1200px]:text-[16px] min-[1440px]:px-5 min-[1440px]:text-[18px]"
+                className="shrink-0 whitespace-nowrap rounded-sm bg-white px-4 py-2 text-[14px] font-semibold text-[#2E262E] transition hover:bg-gray-100 min-[1200px]:text-[16px] min-[1440px]:px-5 min-[1440px]:text-[18px]"
               >
                 CONTACT US
               </Link>
@@ -407,7 +407,7 @@ export default function Header() {
             <Link
               href="/#contact"
               onClick={() => { setIsOpen(false); closeDropdown(); }}
-              className="mt-5 self-center rounded-md bg-white px-6 py-3 text-[14px] font-semibold text-[#439897]"
+              className="mt-5 self-center rounded-md bg-white px-6 py-3 text-[14px] font-semibold text-[#2E262E]"
             >
               CONTACT US
             </Link>
