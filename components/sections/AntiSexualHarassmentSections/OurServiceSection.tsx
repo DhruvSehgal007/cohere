@@ -73,7 +73,7 @@ export default function OurServiceSection() {
               onClick={() => setActiveCard(0)}
             >
               <div className="flex flex-col lg:flex-row gap-6">
-                <div className="w-full lg:w-[45%] shrink-0">
+                <div className="w-full lg:w-[50%] shrink-0">
                   <Image
                     src={bigImg}
                     alt=""
@@ -81,7 +81,7 @@ export default function OurServiceSection() {
                   />
                 </div>
 
-                <div className="flex flex-1 flex-col justify-center">
+                <div className="flex flex-1 flex-col justify-start">
                   <h3 className={headingStyle(0)}>PoSH Compliance</h3>
 
                   <p className="mt-5 font-nunito-sans text-[16px] leading-[26px] tracking-[0.04em] text-[#5B5B5B]">
@@ -160,11 +160,11 @@ export default function OurServiceSection() {
                   className="w-full object-contain rounded-[12px]"
                 />
 
-                <h3 className={`mt-5 ${headingStyle(3)}`}>
+                <h3 className={`mt-5 ${headingStyle(3)} leading-[24px]`}>
                   Internal Committee Support
                 </h3>
 
-                <p className="font-nunito-sans text-[16px] leading-[26px] text-[#5B5B5B]">
+                <p className="mt-5 font-nunito-sans text-[16px] leading-[26px] text-[#5B5B5B]">
                   Guidance on Internal Committee constitution, orientation,
                   capability building, and ongoing advisory support.
                 </p>
@@ -203,7 +203,7 @@ export default function OurServiceSection() {
               onClick={() => setActiveCard(5)}
             >
               <div className="flex flex-col lg:flex-row gap-6">
-                <div className="w-full lg:w-[45%] shrink-0">
+                <div className="w-full lg:w-[50%] shrink-0">
                   <Image
                     src={Annualreporting}
                     alt=""
@@ -211,8 +211,8 @@ export default function OurServiceSection() {
                   />
                 </div>
 
-                <div className="flex flex-1 flex-col justify-center">
-                  <h3 className={headingStyle(5)}>
+                <div className="flex flex-1 flex-col justify-start">
+                  <h3 className={`${headingStyle(5)} leading-[24px]`}>
                     Annual Reporting & Resources
                   </h3>
 

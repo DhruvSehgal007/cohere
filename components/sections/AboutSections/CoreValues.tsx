@@ -133,7 +133,7 @@ function ValueHexagon({ value }: { value: CoreValue }) {
 
 export default function CoreValues() {
   return (
-    <section className="relative pb-16 sm:pb-16 md:pb-24 lg:pb-24 mt-[100px]">
+    <section className="relative pb-16 sm:pb-16 md:pb-24 lg:pb-24 lg:mt-[100px]">
       <div className="container-custom mx-auto px-4 sm:px-6">
         {/* Desktop layout */}
         <div className="relative hidden min-h-[850px] w-full xl:block">

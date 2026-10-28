@@ -7,7 +7,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function Featuredprogram() {
   return (
-    <section id="featured-programmes" className="relative overflow-hidden">
+    <section id="featured-programmes" className="relative overflow-hidden ">
       <Image
         src={getInTouchBganother}
         alt=""

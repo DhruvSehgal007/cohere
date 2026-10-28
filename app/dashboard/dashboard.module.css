@@ -1,0 +1,8 @@
+.dashboard :is(h1, h2, h3, h4, h5, h6) {
+  color: #0d1e1e !important;
+}
+
+.dashboard p {
+  color: #5b5b5b !important;
+  font-size: 16px !important;
+}

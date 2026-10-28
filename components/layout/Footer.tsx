@@ -237,7 +237,7 @@ export default function Footer() {
 
             {/* INSTAGRAM */}
             <a
-              href="https://www.instagram.com/"
+              href="https://www.instagram.com"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
@@ -265,7 +265,7 @@ export default function Footer() {
 
             {/* FACEBOOK */}
             <a
-              href="https://www.facebook.com/"
+              href="https://www.facebook.com/CohereConsultants"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"

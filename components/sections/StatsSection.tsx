@@ -79,19 +79,21 @@ export default function StatsSection() {
 
               <div className="flex flex-col text-white">
                 <span
-                  className={`font-avenir font-extrabold leading-none text-[40px] sm:text-[52px] ${
-                    index === 0
+                  className={`font-avenir font-extrabold leading-none ${
+                    stat.value === 9000
+                      ? "text-[56px]"
+                      : `text-[40px] sm:text-[52px] ${index === 0
                       ? "lg:text-[74px]"
                       : index === 1
                       ? "lg:text-[44px]"
                       : index === 2
                       ? "lg:text-[56px]"
-                      : "lg:text-[32px]"
+                      : "lg:text-[32px]"}`
                   }`}
                 >
                   <Counter
-                    end={stat.value}
-                    suffix={stat.suffix}
+                    end={stat.value === 9000 ? 9 : stat.value}
+                    suffix={stat.value === 9000 ? "K+" : stat.suffix}
                   />
                 </span>
 

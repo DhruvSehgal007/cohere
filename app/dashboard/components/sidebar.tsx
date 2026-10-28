@@ -115,7 +115,7 @@ export default function Sidebar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`group flex h-[46px] items-center gap-3 rounded-[10px] px-3 text-[14px] font-medium transition-all duration-200 ${
+                className={`group flex h-[46px] items-center gap-3 rounded-[10px] px-3 text-[16px] font-medium transition-all duration-200 ${
                   isActive
                     ? "bg-[#439897] text-[#ffffff]"
                     : "text-[#0d1e1e] hover:bg-[#439897]/10 hover:text-[#0d1e1e]"
