@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import caseTracking from "@/assets/images/Products/case-tracking.svg";
 import executiveDashboards from "@/assets/images/Products/Excutive-dashboards.svg";
-import icMapping from "@/assets/images/Products/ICMpping.svg";
+import icMapping from "@/assets/images/Products/ICmpping.svg";
 import secureCaseWorkspace from "@/assets/images/Products/Secure-case-worspace.svg";
 import timelineMonitoring from "@/assets/images/Products/Timeline-monitering.svg";
 
