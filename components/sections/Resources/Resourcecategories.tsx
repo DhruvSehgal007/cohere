@@ -17,7 +17,7 @@ const resourceCategories = [
 
 export default function Resourcecategories() {
   return (
-    <section id="downloadable-resources" className="py-10 sm:py-12 md:py-20">
+    <section id="downloadable-resources" className="pb-16 sm:pb-16 md:pb-24 lg:pb-24">
       <div className="container-custom px-4 sm:px-6">
         <div
           className="

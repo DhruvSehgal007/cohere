@@ -1,36 +1,95 @@
 "use client";
 
-import { useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
 import cohereLogo from "@/assets/images/logos/cohere-logo.png";
 import allThingsLogo from "@/assets/images/logos/all-things.png";
 
-type DropdownType = "services" | "products" | "events" | "resources" | null;
-
-function subscribeToScroll(onChange: () => void) {
-  window.addEventListener("scroll", onChange, { passive: true });
-  return () => window.removeEventListener("scroll", onChange);
-}
-
-function getScrolledSnapshot() {
-  return window.scrollY > 16;
-}
-
-function getServerScrolledSnapshot() {
-  return false;
-}
+type DropdownType =
+  | "services"
+  | "products"
+  | "events"
+  | "resources"
+  | null;
 
 export default function Header() {
-  const hasScrolled = useSyncExternalStore(
-    subscribeToScroll,
-    getScrolledSnapshot,
-    getServerScrolledSnapshot,
-  );
+  const [hasScrolled, setHasScrolled] = useState(false);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+
   const [isOpen, setIsOpen] = useState(false);
+
   const [activeDropdown, setActiveDropdown] =
     useState<DropdownType>(null);
+
+  const lastScrollY = useRef(0);
+
+  /* =========================================================
+     SCROLL BEHAVIOUR
+  ========================================================= */
+
+  useEffect(() => {
+    lastScrollY.current = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      /* TOP OF PAGE */
+      if (currentScrollY <= 16) {
+        setHasScrolled(false);
+        setIsHeaderVisible(true);
+        lastScrollY.current = currentScrollY;
+        return;
+      }
+
+      setHasScrolled(true);
+
+      /*
+        Do not hide header when mobile menu is open
+      */
+      if (isOpen) {
+        setIsHeaderVisible(true);
+        lastScrollY.current = currentScrollY;
+        return;
+      }
+
+      /*
+        Prevent tiny scroll movements
+        from constantly toggling header
+      */
+      const scrollDifference =
+        Math.abs(currentScrollY - lastScrollY.current);
+
+      if (scrollDifference < 6) {
+        return;
+      }
+
+      /* SCROLLING DOWN */
+      if (currentScrollY > lastScrollY.current) {
+        setIsHeaderVisible(false);
+      }
+
+      /* SCROLLING UP */
+      else {
+        setIsHeaderVisible(true);
+      }
+
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [isOpen]);
+
+  /* =========================================================
+     DROPDOWN
+  ========================================================= */
 
   const toggleDropdown = (dropdown: DropdownType) => {
     setActiveDropdown(
@@ -43,14 +102,53 @@ export default function Header() {
   };
 
   return (
-    <header className={`fixed left-0 top-0 z-[9999] w-full transition-colors duration-300 motion-reduce:transition-none ${hasScrolled ? "bg-white" : "bg-transparent"}`}>
+    <header
+      className={`
+        fixed
+        left-0
+        top-0
+        z-[9999]
+        w-full
 
+        transform-gpu
+        transition-all
+        duration-500
+        ease-[cubic-bezier(0.22,1,0.36,1)]
+
+        motion-reduce:transition-none
+
+        ${
+          isHeaderVisible
+            ? "translate-y-0"
+            : "-translate-y-full"
+        }
+
+        ${
+          hasScrolled
+            ? "bg-white shadow-[0_4px_20px_rgba(0,0,0,0.08)]"
+            : "bg-transparent shadow-none"
+        }
+      `}
+    >
       {/* =====================================================
           HEADER
       ====================================================== */}
 
-      <div className="container-custom flex w-full items-center justify-between py-2 sm:py-3 lg:justify-start lg:py-0">
+      <div
+        className="
+          container-custom
+          flex
+          w-full
+          items-center
+          justify-between
+          py-2
 
+          sm:py-3
+
+          lg:justify-start
+          lg:py-0
+        "
+      >
         {/* ================= LEFT LOGO ================= */}
 
         <div className="shrink-0 py-2 sm:py-3 lg:pr-[30px]">
@@ -58,12 +156,19 @@ export default function Header() {
             <Image
               src={cohereLogo}
               alt="Cohere Consultants"
-              className="h-auto w-[100px] sm:w-[120px] md:w-[130px] lg:w-[145px] 2xl:w-[170px]"
+              className="
+                h-auto
+                w-[100px]
+
+                sm:w-[120px]
+                md:w-[130px]
+                lg:w-[145px]
+                2xl:w-[170px]
+              "
               priority
             />
           </Link>
         </div>
-
 
         {/* =================================================
             MOBILE / TABLET MENU BUTTON
@@ -74,8 +179,21 @@ export default function Header() {
           onClick={() => {
             setIsOpen(!isOpen);
             setActiveDropdown(null);
+            setIsHeaderVisible(true);
           }}
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md text-[#439897] transition-colors hover:bg-white/20 lg:hidden"
+          className="
+            flex
+            h-10
+            w-10
+            shrink-0
+            items-center
+            justify-center
+            rounded-md
+            text-[#439897]
+            transition-colors
+            hover:bg-white/20
+            lg:hidden
+          "
           aria-label="Toggle menu"
           aria-expanded={isOpen}
         >
@@ -103,104 +221,371 @@ export default function Header() {
           </svg>
         </button>
 
-
         {/* =================================================
             DESKTOP NAVIGATION
         ================================================== */}
 
         <div className="hidden min-w-0 flex-1 lg:block">
-
           <div className="mx-auto w-full max-w-[1038px]">
-
             {/* GREEN NAVBAR */}
 
-            <nav className="flex items-center justify-center gap-4 rounded-b-[20px] bg-[#439897] px-4 py-4 font-avenir text-white xl:gap-[30px] xl:px-6">
+            <nav
+              className="
+                flex
+                items-center
+                justify-center
+                gap-4
+                rounded-b-[20px]
+                bg-[#439897]
+                px-4
+                py-4
+                font-avenir
+                text-white
 
-              {/* Desktop dropdowns: anchored to each navigation item */}
-              {([
-                { key: "services", label: "SERVICES", href: "/service" },
-                { key: "products", label: "OUR PRODUCTS", href: "/our-products" },
-                { key: "events", label: "EVENTS", href: "/events" },
-                { key: "resources", label: "RESOURCES", href: "/resources" },
-              ] as const).map((item) => (
+                xl:gap-[30px]
+                xl:px-6
+              "
+            >
+              {/* ================= DROPDOWNS ================= */}
+
+              {(
+                [
+                  {
+                    key: "services",
+                    label: "SERVICES",
+                    href: "/service",
+                  },
+                  {
+                    key: "products",
+                    label: "OUR PRODUCTS",
+                    href: "/our-products",
+                  },
+                  {
+                    key: "events",
+                    label: "EVENTS",
+                    href: "/events",
+                  },
+                  {
+                    key: "resources",
+                    label: "RESOURCES",
+                    href: "/resources",
+                  },
+                ] as const
+              ).map((item) => (
                 <div
                   key={item.key}
                   className="relative shrink-0"
-                  onMouseEnter={() => setActiveDropdown(item.key)}
-                  onMouseLeave={() => setActiveDropdown(null)}
+                  onMouseEnter={() =>
+                    setActiveDropdown(item.key)
+                  }
+                  onMouseLeave={() =>
+                    setActiveDropdown(null)
+                  }
                 >
-                  <div className="flex items-center gap-1 whitespace-nowrap text-[14px] min-[1200px]:text-[16px] min-[1440px]:text-[18px]">
-                    <Link href={item.href} onClick={closeDropdown} className="transition hover:opacity-80">
+                  <div
+                    className="
+                      flex
+                      items-center
+                      gap-1
+                      whitespace-nowrap
+                      text-[14px]
+
+                      min-[1200px]:text-[16px]
+                      min-[1440px]:text-[18px]
+                    "
+                  >
+                    <Link
+                      href={item.href}
+                      onClick={closeDropdown}
+                      className="
+                        transition
+                        hover:opacity-80
+                      "
+                    >
                       {item.label}
                     </Link>
+
                     <button
                       type="button"
                       aria-label={`Toggle ${item.label.toLowerCase()} submenu`}
-                      aria-expanded={activeDropdown === item.key}
-                      onClick={() => toggleDropdown(item.key)}
-                      className="p-1 transition hover:opacity-80"
+                      aria-expanded={
+                        activeDropdown === item.key
+                      }
+                      onClick={() =>
+                        toggleDropdown(item.key)
+                      }
+                      className="
+                        p-1
+                        transition
+                        hover:opacity-80
+                      "
                     >
-                    <svg
-                      className={`h-3 w-3 transition-transform duration-500 ease-in-out ${activeDropdown === item.key ? "rotate-180" : "rotate-0"}`}
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      aria-hidden="true"
-                    >
-                      <path d="m3 6 5 5 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
+                      <svg
+                        className={`
+                          h-3
+                          w-3
+                          transition-transform
+                          duration-500
+                          ease-in-out
+
+                          ${
+                            activeDropdown === item.key
+                              ? "rotate-180"
+                              : "rotate-0"
+                          }
+                        `}
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="m3 6 5 5 5-5"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
                     </button>
                   </div>
 
+                  {/* ================= DROPDOWN ================= */}
+
                   {activeDropdown === item.key && (
-                    <div className={`absolute top-full z-[100] pt-5 ${
-                      item.key === "services" ? "w-[min(536px,90vw)]" :
-                      item.key === "products" ? "w-[260px]" :
-                      item.key === "events" ? "w-[255px]" : "w-[285px]"
-                    } ${item.key === "resources" ? "right-0" : "left-0"}`}>
-                      <div className={`relative rounded-[12px] bg-white text-left shadow-[0_12px_35px_rgba(0,0,0,0.13)] ${item.key === "services" ? "px-[34px] py-[35px]" : "px-5 py-6"}`}>
-                        {/* Upward-facing pointer, as in the screenshot */}
-                        <span className={`absolute -top-[12px] h-6 w-6 rotate-45 rounded-tl-[5px] bg-white ${item.key === "resources" ? "right-8" : "left-8"}`} />
+                    <div
+                      className={`
+                        absolute
+                        top-full
+                        z-[100]
+                        pt-5
+
+                        ${
+                          item.key === "services"
+                            ? "w-[min(536px,90vw)]"
+                            : item.key === "products"
+                              ? "w-[260px]"
+                              : item.key === "events"
+                                ? "w-[255px]"
+                                : "w-[285px]"
+                        }
+
+                        ${
+                          item.key === "resources"
+                            ? "right-0"
+                            : "left-0"
+                        }
+                      `}
+                    >
+                      <div
+                        className={`
+                          relative
+                          rounded-[12px]
+                          bg-white
+                          text-left
+                          shadow-[0_12px_35px_rgba(0,0,0,0.13)]
+
+                          ${
+                            item.key === "services"
+                              ? "px-[34px] py-[35px]"
+                              : "px-5 py-6"
+                          }
+                        `}
+                      >
+                        {/* POINTER */}
+
+                        <span
+                          className={`
+                            absolute
+                            -top-[12px]
+                            h-6
+                            w-6
+                            rotate-45
+                            rounded-tl-[5px]
+                            bg-white
+
+                            ${
+                              item.key === "resources"
+                                ? "right-8"
+                                : "left-8"
+                            }
+                          `}
+                        />
+
+                        {/* ================= SERVICES ================= */}
 
                         {item.key === "services" && (
                           <div className="space-y-5 font-nunito-sans text-[16px] leading-[1.45] text-[#333333]">
                             <div>
-                              <Link href="/anti-sexual-harassment" onClick={closeDropdown} className="inline-block font-avenir font-extrabold text-[#439897] transition-colors hover:text-[#1B3D3C]">ANTI SEXUAL HARASSMENT</Link>
-                              <p className="mt-1 pl-9">End to end PoSH services. See annexure</p>
+                              <Link
+                                href="/anti-sexual-harassment"
+                                onClick={closeDropdown}
+                                className="
+                                  inline-block
+                                  font-avenir
+                                  font-extrabold
+                                  text-[#439897]
+                                  transition-colors
+                                  hover:text-[#1B3D3C]
+                                "
+                              >
+                                ANTI SEXUAL HARASSMENT
+                              </Link>
+
+                              <p className="mt-1 pl-9">
+                                End to end PoSH services.
+                                See annexure
+                              </p>
                             </div>
+
                             <div>
-                              <Link href="/workplace-discrimination" onClick={closeDropdown} className="inline-block font-avenir font-extrabold text-[#439897] transition-colors hover:text-[#1B3D3C]">WORKPLACE DISCRIMINATION</Link>
-                              <p className="mt-1 pl-9">Diversity Equity and Inclusion</p>
+                              <Link
+                                href="/workplace-discrimination"
+                                onClick={closeDropdown}
+                                className="
+                                  inline-block
+                                  font-avenir
+                                  font-extrabold
+                                  text-[#439897]
+                                  transition-colors
+                                  hover:text-[#1B3D3C]
+                                "
+                              >
+                                WORKPLACE DISCRIMINATION
+                              </Link>
+
+                              <p className="mt-1 pl-9">
+                                Diversity Equity and Inclusion
+                              </p>
                             </div>
+
                             <div>
-                              <Link href="/employment-and-labour" onClick={closeDropdown} className="inline-block font-avenir font-extrabold text-[#439897] transition-colors hover:text-[#1B3D3C]">EMPLOYMENT AND LABOUR</Link>
-                              <p className="mt-1 pl-9">Investigation, Dispute Resolution &amp; Conflict Management</p>
+                              <Link
+                                href="/employment-and-labour"
+                                onClick={closeDropdown}
+                                className="
+                                  inline-block
+                                  font-avenir
+                                  font-extrabold
+                                  text-[#439897]
+                                  transition-colors
+                                  hover:text-[#1B3D3C]
+                                "
+                              >
+                                EMPLOYMENT AND LABOUR
+                              </Link>
+
+                              <p className="mt-1 pl-9">
+                                Investigation, Dispute
+                                Resolution &amp; Conflict
+                                Management
+                              </p>
                             </div>
                           </div>
                         )}
+
+                        {/* ================= PRODUCTS ================= */}
 
                         {item.key === "products" && (
                           <div className="flex flex-col items-start gap-3 text-left font-avenir text-[16px] font-extrabold text-[#439897]">
-                            <Link href="/our-products#cohere-resolve" onClick={closeDropdown} className="hover:text-[#1B3D3C]">CohereResolve™</Link>
-                            <Link href="/our-products#cohere-essentials" onClick={closeDropdown} className="hover:text-[#1B3D3C]">CohereEssentials™</Link>
-                            <Link href="/our-products#cohere-readiness" onClick={closeDropdown} className="hover:text-[#1B3D3C]">CohereReadiness™</Link>
-                            <Link href="/our-products#keep-it-right" onClick={closeDropdown} className="hover:text-[#1B3D3C]">KeepItRight®</Link>
+                            <Link
+                              href="/our-products#cohere-resolve"
+                              onClick={closeDropdown}
+                              className="hover:text-[#1B3D3C]"
+                            >
+                              CohereResolve™
+                            </Link>
+
+                            <Link
+                              href="/our-products#cohere-essentials"
+                              onClick={closeDropdown}
+                              className="hover:text-[#1B3D3C]"
+                            >
+                              CohereEssentials™
+                            </Link>
+
+                            <Link
+                              href="/our-products#cohere-readiness"
+                              onClick={closeDropdown}
+                              className="hover:text-[#1B3D3C]"
+                            >
+                              CohereReadiness™
+                            </Link>
+
+                            <Link
+                              href="/our-products#keep-it-right"
+                              onClick={closeDropdown}
+                              className="hover:text-[#1B3D3C]"
+                            >
+                              KeepItRight®
+                            </Link>
                           </div>
                         )}
+
+                        {/* ================= EVENTS ================= */}
 
                         {item.key === "events" && (
                           <div className="flex flex-col items-start gap-3 text-left font-avenir text-[16px] font-extrabold text-[#439897]">
-                            <Link href="/" onClick={closeDropdown} className="hover:text-[#1B3D3C]">Training &amp; Workshops</Link>
-                            <Link href="/calender" onClick={closeDropdown} className="hover:text-[#1B3D3C]">Calendar</Link>
+                            <Link
+                              href="/calender#training-workshops"
+                              onClick={closeDropdown}
+                              className="hover:text-[#1B3D3C]"
+                            >
+                              Training &amp; Workshops
+                            </Link>
+
+                            <Link
+                              href="/calender"
+                              onClick={closeDropdown}
+                              className="hover:text-[#1B3D3C]"
+                            >
+                              Calendar
+                            </Link>
                           </div>
                         )}
 
+                        {/* ================= RESOURCES ================= */}
+
                         {item.key === "resources" && (
                           <div className="flex flex-col items-start gap-3 text-left font-avenir text-[16px] font-extrabold text-[#439897]">
-                            <Link href="/resources#downloadable-resources" onClick={closeDropdown} className="hover:text-[#1B3D3C]">Downloadable Resources</Link>
-                            <Link href="/resources#news" onClick={closeDropdown} className="hover:text-[#1B3D3C]">Cohere in the News</Link>
-                            <Link href="/resources#judgments" onClick={closeDropdown} className="hover:text-[#1B3D3C]">Judgments</Link>
-                            <Link href="/case-study" onClick={closeDropdown} className="hover:text-[#1B3D3C]">Case Studies</Link>
-                            <Link href="/resources#advisories" onClick={closeDropdown} className="hover:text-[#1B3D3C]">Advisories</Link>
+                            <Link
+                              href="/resources#downloadable-resources"
+                              onClick={closeDropdown}
+                              className="hover:text-[#1B3D3C]"
+                            >
+                              Downloadable Resources
+                            </Link>
+
+                            <Link
+                              href="/resources#news"
+                              onClick={closeDropdown}
+                              className="hover:text-[#1B3D3C]"
+                            >
+                              Cohere in the News
+                            </Link>
+
+                            <Link
+                              href="/resources#judgments"
+                              onClick={closeDropdown}
+                              className="hover:text-[#1B3D3C]"
+                            >
+                              Judgments
+                            </Link>
+
+                            <Link
+                              href="/case-study"
+                              onClick={closeDropdown}
+                              className="hover:text-[#1B3D3C]"
+                            >
+                              Case Studies
+                            </Link>
+
+                            <Link
+                              href="/resources#advisories"
+                              onClick={closeDropdown}
+                              className="hover:text-[#1B3D3C]"
+                            >
+                              Advisories
+                            </Link>
                           </div>
                         )}
                       </div>
@@ -209,23 +594,35 @@ export default function Header() {
                 </div>
               ))}
 
-
               {/* ================= CONTACT ================= */}
 
               <Link
                 href="/#contact"
                 onClick={closeDropdown}
-                className="shrink-0 whitespace-nowrap rounded-sm bg-white px-4 py-2 text-[14px] font-semibold text-[#2E262E] transition hover:bg-gray-100 min-[1200px]:text-[16px] min-[1440px]:px-5 min-[1440px]:text-[18px]"
+                className="
+                  shrink-0
+                  whitespace-nowrap
+                  rounded-sm
+                  bg-white
+                  px-4
+                  py-2
+                  text-[14px]
+                  font-semibold
+                  text-[#2E262E]
+                  transition
+                  hover:bg-gray-100
+
+                  min-[1200px]:text-[16px]
+
+                  min-[1440px]:px-5
+                  min-[1440px]:text-[18px]
+                "
               >
                 CONTACT US
               </Link>
-
             </nav>
-
-
           </div>
         </div>
-
 
         {/* =================================================
             RIGHT LOGO
@@ -235,200 +632,334 @@ export default function Header() {
           <Image
             src={allThingsLogo}
             alt="All Things Cohere Posh"
-            className="h-auto w-[105px] xl:w-[125px] 2xl:w-[170px]"
+            className="
+              h-auto
+              w-[105px]
+
+              xl:w-[125px]
+              2xl:w-[170px]
+            "
             priority
           />
         </div>
-
       </div>
-
 
       {/* =====================================================
           MOBILE / TABLET MENU
       ====================================================== */}
 
-      {isOpen && (
-        <div className="w-full overflow-hidden bg-[#439897] shadow-lg lg:hidden">
+      <div
+        className={`
+          overflow-hidden
+          bg-[#439897]
+          shadow-lg
 
-          <nav className="flex w-full flex-col px-4 py-6 font-avenir text-white sm:px-6 sm:py-8">
+          transition-all
+          duration-500
+          ease-[cubic-bezier(0.22,1,0.36,1)]
 
-            {/* SERVICES */}
+          lg:hidden
 
-            <MobileDropdown
-              title="SERVICES"
-              href="/service"
-              onNavigate={() => { setIsOpen(false); closeDropdown(); }}
-              open={activeDropdown === "services"}
-              onClick={() => toggleDropdown("services")}
-            >
-              <div className="space-y-3 pl-4 text-left text-sm">
+          ${
+            isOpen
+              ? "max-h-[1200px] opacity-100"
+              : "max-h-0 opacity-0"
+          }
+        `}
+      >
+        <nav
+          className="
+            flex
+            w-full
+            flex-col
+            px-4
+            py-6
+            font-avenir
+            text-white
 
-                <p>
-                  <Link href="/anti-sexual-harassment" onClick={() => { setIsOpen(false); closeDropdown(); }} className="font-bold hover:underline">ANTI SEXUAL HARASSMENT</Link>
-                  <br />
-                  <span className="text-white/80">
-                    End to end PoSH services. See annexure
-                  </span>
-                </p>
+            sm:px-6
+            sm:py-8
+          "
+        >
+          {/* ================= SERVICES ================= */}
 
-                <p>
-                  <Link href="/workplace-discrimination" onClick={() => { setIsOpen(false); closeDropdown(); }} className="font-bold hover:underline">WORKPLACE DISCRIMINATION</Link>
-                  <br />
-                  <span className="text-white/80">
-                    Diversity Equity and Inclusion
-                  </span>
-                </p>
-
-                <p>
-                  <Link href="/employment-and-labour" onClick={() => { setIsOpen(false); closeDropdown(); }} className="font-bold hover:underline">EMPLOYMENT AND LABOUR</Link>
-                  <br />
-                  <span className="text-white/80">
-                    Investigation, Dispute Resolution &amp;
-                    Conflict Management
-                  </span>
-                </p>
-
-              </div>
-            </MobileDropdown>
-
-
-            {/* PRODUCTS */}
-
-            <MobileDropdown
-              title="OUR PRODUCTS"
-              href="/our-products"
-              onNavigate={() => { setIsOpen(false); closeDropdown(); }}
-              open={activeDropdown === "products"}
-              onClick={() => toggleDropdown("products")}
-            >
-              <div className="flex flex-col items-start gap-2 pl-4 text-left text-sm">
-
-                <Link href="/our-products#cohere-resolve" onClick={() => { setIsOpen(false); closeDropdown(); }}>
-                  CohereResolve™
-                </Link>
-
-                <Link href="/our-products#cohere-essentials" onClick={() => { setIsOpen(false); closeDropdown(); }}>
-                  CohereEssentials™
-                </Link>
-
-                <Link href="/our-products#cohere-readiness" onClick={() => { setIsOpen(false); closeDropdown(); }}>
-                  CohereReadiness™
-                </Link>
-
-                <Link href="/our-products#keep-it-right" onClick={() => { setIsOpen(false); closeDropdown(); }}>
-                  KeepItRight®
-                </Link>
-
-              </div>
-            </MobileDropdown>
-
-
-            {/* EVENTS */}
-
-            <MobileDropdown
-              title="EVENTS"
-              href="/events"
-              onNavigate={() => { setIsOpen(false); closeDropdown(); }}
-              open={activeDropdown === "events"}
-              onClick={() => toggleDropdown("events")}
-            >
-              <div className="flex flex-col items-start gap-2 pl-4 text-left text-sm">
-
+          <MobileDropdown
+            title="SERVICES"
+            href="/service"
+            onNavigate={() => {
+              setIsOpen(false);
+              closeDropdown();
+            }}
+            open={activeDropdown === "services"}
+            onClick={() =>
+              toggleDropdown("services")
+            }
+          >
+            <div className="space-y-3 pl-4 text-left text-sm">
+              <p>
                 <Link
-                  href="/calender#training-workshops"
-                  onClick={() => { setIsOpen(false); closeDropdown(); }}
+                  href="/anti-sexual-harassment"
+                  onClick={() => {
+                    setIsOpen(false);
+                    closeDropdown();
+                  }}
+                  className="font-bold hover:underline"
                 >
-                  Training &amp; Workshops
+                  ANTI SEXUAL HARASSMENT
                 </Link>
 
+                <br />
+
+                <span className="text-white/80">
+                  End to end PoSH services. See annexure
+                </span>
+              </p>
+
+              <p>
                 <Link
-                  href="/calender"
-                  onClick={() => { setIsOpen(false); closeDropdown(); }}
+                  href="/workplace-discrimination"
+                  onClick={() => {
+                    setIsOpen(false);
+                    closeDropdown();
+                  }}
+                  className="font-bold hover:underline"
                 >
-                  Calendar
+                  WORKPLACE DISCRIMINATION
                 </Link>
 
-              </div>
-            </MobileDropdown>
+                <br />
 
+                <span className="text-white/80">
+                  Diversity Equity and Inclusion
+                </span>
+              </p>
 
-            {/* RESOURCES */}
-
-            <MobileDropdown
-              title="RESOURCES"
-              href="/resources"
-              onNavigate={() => { setIsOpen(false); closeDropdown(); }}
-              open={activeDropdown === "resources"}
-              onClick={() => toggleDropdown("resources")}
-            >
-              <div className="flex flex-col items-start gap-2 pl-4 text-left text-sm">
-
+              <p>
                 <Link
-                  href="/resources#downloadable-resources"
-                  onClick={() => { setIsOpen(false); closeDropdown(); }}
+                  href="/employment-and-labour"
+                  onClick={() => {
+                    setIsOpen(false);
+                    closeDropdown();
+                  }}
+                  className="font-bold hover:underline"
                 >
-                  Downloadable Resources
+                  EMPLOYMENT AND LABOUR
                 </Link>
 
-                <Link
-                  href="/resources#news"
-                  onClick={() => { setIsOpen(false); closeDropdown(); }}
-                >
-                  Cohere in the News
-                </Link>
+                <br />
 
-                <Link
-                  href="/resources#judgments"
-                  onClick={() => { setIsOpen(false); closeDropdown(); }}
-                >
-                  Judgments
-                </Link>
+                <span className="text-white/80">
+                  Investigation, Dispute Resolution
+                  &amp; Conflict Management
+                </span>
+              </p>
+            </div>
+          </MobileDropdown>
 
-                <Link
-                  href="/case-study"
-                  onClick={() => { setIsOpen(false); closeDropdown(); }}
-                >
-                  Case Studies
-                </Link>
+          {/* ================= PRODUCTS ================= */}
 
-                <Link
-                  href="/resources#advisories"
-                  onClick={() => { setIsOpen(false); closeDropdown(); }}
-                >
-                  Advisories
-                </Link>
+          <MobileDropdown
+            title="OUR PRODUCTS"
+            href="/our-products"
+            onNavigate={() => {
+              setIsOpen(false);
+              closeDropdown();
+            }}
+            open={activeDropdown === "products"}
+            onClick={() =>
+              toggleDropdown("products")
+            }
+          >
+            <div className="flex flex-col items-start gap-2 pl-4 text-left text-sm">
+              <Link
+                href="/our-products#cohere-resolve"
+                onClick={() => {
+                  setIsOpen(false);
+                  closeDropdown();
+                }}
+              >
+                CohereResolve™
+              </Link>
 
-              </div>
-            </MobileDropdown>
+              <Link
+                href="/our-products#cohere-essentials"
+                onClick={() => {
+                  setIsOpen(false);
+                  closeDropdown();
+                }}
+              >
+                CohereEssentials™
+              </Link>
 
+              <Link
+                href="/our-products#cohere-readiness"
+                onClick={() => {
+                  setIsOpen(false);
+                  closeDropdown();
+                }}
+              >
+                CohereReadiness™
+              </Link>
 
-            {/* CONTACT */}
+              <Link
+                href="/our-products#keep-it-right"
+                onClick={() => {
+                  setIsOpen(false);
+                  closeDropdown();
+                }}
+              >
+                KeepItRight®
+              </Link>
+            </div>
+          </MobileDropdown>
 
-            <Link
-              href="/#contact"
-              onClick={() => { setIsOpen(false); closeDropdown(); }}
-              className="mt-5 self-center rounded-md bg-white px-6 py-3 text-[14px] font-semibold text-[#2E262E]"
-            >
-              CONTACT US
-            </Link>
+          {/* ================= EVENTS ================= */}
 
+          <MobileDropdown
+            title="EVENTS"
+            href="/events"
+            onNavigate={() => {
+              setIsOpen(false);
+              closeDropdown();
+            }}
+            open={activeDropdown === "events"}
+            onClick={() =>
+              toggleDropdown("events")
+            }
+          >
+            <div className="flex flex-col items-start gap-2 pl-4 text-left text-sm">
+              <Link
+                href="/calender#training-workshops"
+                onClick={() => {
+                  setIsOpen(false);
+                  closeDropdown();
+                }}
+              >
+                Training &amp; Workshops
+              </Link>
 
-            {/* LOGO */}
+              <Link
+                href="/calender"
+                onClick={() => {
+                  setIsOpen(false);
+                  closeDropdown();
+                }}
+              >
+                Calendar
+              </Link>
+            </div>
+          </MobileDropdown>
 
-            <Image
-              src={allThingsLogo}
-              alt="All Things Cohere Posh"
-              className="mx-auto mt-6 h-auto w-[100px] sm:w-[120px] md:w-[140px]"
-            />
+          {/* ================= RESOURCES ================= */}
 
-          </nav>
-        </div>
-      )}
+          <MobileDropdown
+            title="RESOURCES"
+            href="/resources"
+            onNavigate={() => {
+              setIsOpen(false);
+              closeDropdown();
+            }}
+            open={activeDropdown === "resources"}
+            onClick={() =>
+              toggleDropdown("resources")
+            }
+          >
+            <div className="flex flex-col items-start gap-2 pl-4 text-left text-sm">
+              <Link
+                href="/resources#downloadable-resources"
+                onClick={() => {
+                  setIsOpen(false);
+                  closeDropdown();
+                }}
+              >
+                Downloadable Resources
+              </Link>
 
+              <Link
+                href="/resources#news"
+                onClick={() => {
+                  setIsOpen(false);
+                  closeDropdown();
+                }}
+              >
+                Cohere in the News
+              </Link>
+
+              <Link
+                href="/resources#judgments"
+                onClick={() => {
+                  setIsOpen(false);
+                  closeDropdown();
+                }}
+              >
+                Judgments
+              </Link>
+
+              <Link
+                href="/case-study"
+                onClick={() => {
+                  setIsOpen(false);
+                  closeDropdown();
+                }}
+              >
+                Case Studies
+              </Link>
+
+              <Link
+                href="/resources#advisories"
+                onClick={() => {
+                  setIsOpen(false);
+                  closeDropdown();
+                }}
+              >
+                Advisories
+              </Link>
+            </div>
+          </MobileDropdown>
+
+          {/* ================= CONTACT ================= */}
+
+          <Link
+            href="/#contact"
+            onClick={() => {
+              setIsOpen(false);
+              closeDropdown();
+            }}
+            className="
+              mt-5
+              self-center
+              rounded-md
+              bg-white
+              px-6
+              py-3
+              text-[14px]
+              font-semibold
+              text-[#2E262E]
+            "
+          >
+            CONTACT US
+          </Link>
+
+          {/* ================= LOGO ================= */}
+
+          <Image
+            src={allThingsLogo}
+            alt="All Things Cohere Posh"
+            className="
+              mx-auto
+              mt-6
+              h-auto
+              w-[100px]
+
+              sm:w-[120px]
+              md:w-[140px]
+            "
+          />
+        </nav>
+      </div>
     </header>
   );
 }
-
 
 /* =========================================================
    MOBILE DROPDOWN
@@ -450,12 +981,16 @@ function MobileDropdown({
   children: React.ReactNode;
 }) {
   return (
-    <div className="border-b border-white/20 ">
-
+    <div className="border-b border-white/20">
       <div className="flex w-full items-center justify-between text-left text-[15px] font-medium">
-        <Link href={href} onClick={onNavigate} className="flex-1 py-4">
+        <Link
+          href={href}
+          onClick={onNavigate}
+          className="flex-1 py-4"
+        >
           {title}
         </Link>
+
         <button
           type="button"
           onClick={onClick}
@@ -463,18 +998,47 @@ function MobileDropdown({
           aria-expanded={open}
           className="p-4"
         >
-        <svg className={`h-4 w-4 transition-transform duration-500 ease-in-out ${open ? "rotate-180" : "rotate-0"}`} viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path d="m3 6 5 5 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
+          <svg
+            className={`
+              h-4
+              w-4
+              transition-transform
+              duration-500
+              ease-in-out
+
+              ${open ? "rotate-180" : "rotate-0"}
+            `}
+            viewBox="0 0 16 16"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="m3 6 5 5 5-5"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
         </button>
       </div>
 
-      {open && (
-        <div className="pb-5 pt-1 text-white">
-          {children}
-        </div>
-      )}
+      <div
+        className={`
+          overflow-hidden
+          transition-all
+          duration-500
+          ease-in-out
 
+          ${
+            open
+              ? "max-h-[500px] pb-5 pt-1 opacity-100"
+              : "max-h-0 py-0 opacity-0"
+          }
+        `}
+      >
+        {children}
+      </div>
     </div>
   );
 }

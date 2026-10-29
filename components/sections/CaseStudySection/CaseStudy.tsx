@@ -18,6 +18,8 @@ import clientIcon from "@/assets/images/CaseStudy/client-icon.svg";
 import summaryimage from "@/assets/images/CaseStudy/summay-image.png";
 import attorneyBackground from "@/assets/images/CaseStudy/attorney-background.png";
 import attorneySideImage from "@/assets/images/CaseStudy/Attorney-side-image.png";
+import Downloadiconcasestudy from "@/assets/images/CaseStudy/Download-icon-case-study.svg";
+
 
 export function CaseStudy() {
   const [activeId, setActiveId] = useState(CASES[0]!.id);
@@ -289,7 +291,7 @@ export function CaseStudy() {
               HERO
           ================================================= */}
           <section className="relative mt-24 bg-[#439897] pt-8 pb-24 sm:pt-10 sm:pb-28 lg:pt-10 lg:pb-32">
-            <div className="container-custom relative z-10 flex flex-col items-center justify-between gap-3 px-4 text-center sm:flex-row sm:text-left">
+            <div className="container-custom relative z-10 flex flex-col items-center justify-around gap-3 px-4 text-center sm:flex-row sm:text-left">
               <h1 className="font-avenir tracking-tight text-white">
                 <span className="text-[32px] font-bold leading-[40px] sm:text-[40px] sm:leading-[48px] lg:text-[48px] lg:leading-[58px]">
                   Case
@@ -312,7 +314,7 @@ export function CaseStudy() {
                   duration: 0.45,
                   delay: 0.08,
                 }}
-                className="font-nunito-sans-bold text-[16px] leading-[22px] tracking-[2%] text-white sm:text-[17px] sm:leading-[24px] lg:text-[18px] lg:leading-[26px]"
+                className="font-nunito-sans-bold text-[16px] leading-[22px] tracking-[2%] text-white sm:text-[18px] sm:leading-[24px] lg:text-[22px] lg:leading-[26px]"
               >
                 {active.badge}
               </motion.p>
@@ -393,87 +395,119 @@ export function CaseStudy() {
                     </span>
                   </div>
 
-                  <div className="flex flex-wrap gap-[14px]">
-                    <button
-                      type="button"
-                      className="
-                        inline-flex
-                        h-[50px]
-                        w-full
-                        max-w-[260px]
-                        items-center
-                        justify-center
-                        gap-3
-                        rounded-[5px]
-                        bg-gradient-to-r
-                        from-[#FEBC5A]
-                        to-[#FEBC5A]
-                        px-4
-                        font-nunito-sans
-                        text-[15px]
-                        tracking-[2%]
-                        text-black
+<div className="flex flex-wrap gap-[14px]">
+  <button
+    type="button"
+    className="
+      inline-flex
+      h-[50px]
+      w-full
+      max-w-[260px]
+      items-center
+      justify-center
+      gap-3
+      rounded-[5px]
+      bg-gradient-to-r
+      from-[#FEBC5A]
+      to-[#FEBC5A]
+      px-4
+      font-nunito-sans
+      text-[15px]
+      tracking-[2%]
+      text-black
 
-                        transition-all
-                        duration-300
+      transition-all
+      duration-300
 
-                        hover:-translate-y-[2px]
-                        hover:shadow-lg
+      hover:-translate-y-[2px]
+      hover:shadow-lg
 
-                        sm:h-[55px]
-                        sm:text-[16px]
-                        sm:tracking-[3%]
+      sm:h-[55px]
+      sm:text-[16px]
+      sm:tracking-[3%]
 
-                        lg:w-[260px]
-                        lg:text-[18px]
-                        lg:tracking-[4%]
-                      "
-                    >
-                      BROCHURE.DOC
+      lg:w-[260px]
+      lg:text-[18px]
+      lg:tracking-[4%]
+    "
+  >
+    BROCHURE.DOC
 
-                      <Mail className="h-[18px] w-[18px] sm:h-[21px] sm:w-[21px] lg:h-[24px] lg:w-[24px]" />
-                    </button>
+    <Image
+      src={Downloadiconcasestudy}
+      alt=""
+      width={24}
+      height={24}
+      className="
+        h-[18px]
+        w-[18px]
+        object-contain
 
-                    <button
-                      type="button"
-                      className="
-                        inline-flex
-                        h-[50px]
-                        w-full
-                        max-w-[260px]
-                        items-center
-                        justify-center
-                        gap-3
-                        rounded-[5px]
-                        bg-gradient-to-r
-                        from-[#FEBC5A]
-                        to-[#FEBC5A]
-                        px-4
-                        font-nunito-sans
-                        text-[15px]
-                        tracking-[2%]
-                        text-black
+        sm:h-[21px]
+        sm:w-[21px]
 
-                        transition-all
-                        duration-300
+        lg:h-[24px]
+        lg:w-[24px]
+      "
+    />
+  </button>
 
-                        hover:-translate-y-[2px]
-                        hover:shadow-lg
+  <button
+    type="button"
+    className="
+      inline-flex
+      h-[50px]
+      w-full
+      max-w-[260px]
+      items-center
+      justify-center
+      gap-3
+      rounded-[5px]
+      bg-gradient-to-r
+      from-[#FEBC5A]
+      to-[#FEBC5A]
+      px-4
+      font-nunito-sans
+      text-[15px]
+      tracking-[2%]
+      text-black
 
-                        sm:h-[55px]
-                        sm:text-[16px]
-                        sm:tracking-[3%]
+      transition-all
+      duration-300
 
-                        lg:w-[260px]
-                        lg:text-[18px]
-                        lg:tracking-[4%]
-                      "
-                    >
-                      BROCHURE.PDF
+      hover:-translate-y-[2px]
+      hover:shadow-lg
 
-                      <Mail className="h-[18px] w-[18px] sm:h-[21px] sm:w-[21px] lg:h-[24px] lg:w-[24px]" />
-                    </button>
-                  </div>
+      sm:h-[55px]
+      sm:text-[16px]
+      sm:tracking-[3%]
+
+      lg:w-[260px]
+      lg:text-[18px]
+      lg:tracking-[4%]
+    "
+  >
+    BROCHURE.PDF
+
+    <Image
+      src={Downloadiconcasestudy}
+      alt=""
+      width={24}
+      height={24}
+      className="
+        h-[18px]
+        w-[18px]
+        object-contain
+
+        sm:h-[21px]
+        sm:w-[21px]
+
+        lg:h-[24px]
+        lg:w-[24px]
+      "
+    />
+  </button>
+</div>
                 </div>
               </motion.div>
             </div>

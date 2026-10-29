@@ -18,8 +18,8 @@ const resourceCategories = [
 
 export default function ResourcesCasestudy() {
   return (
-    <section className="py-10 sm:py-12 md:py-16">
-      <div className="container-custom px-4 sm:px-6 mt-[100px]">
+    <section className="pb-16 sm:pb-16 md:pb-24 lg:pb-24">
+      <div className="container-custom px-4 sm:px-6">
         <div
           className="
             grid
@@ -36,25 +36,11 @@ export default function ResourcesCasestudy() {
           {/* ================= LEFT CONTENT ================= */}
           <div className="flex w-full min-w-0 flex-col items-start">
             {/* LABEL */}
-            <span
-              className="
-                inline-block
-                rounded-[2px]
-                bg-[#439897]
-                px-3
-                py-1
-                font-avenir
-                text-[12px]
-                font-normal
-                text-white
-
-                sm:text-[13px]
-                lg:text-[14px]
-                uppercase
-              "
-            >
+           <div className="inline-flex items-center bg-[#439897] px-3 py-1.5 rounded-tr-[8px] rounded-br-[8px]">
+            <span className="Uppercase font-avenir text-[12px] sm:text-[14px] uppercase tracking-[0.2px] text-white uppercase">
               Case Studies
             </span>
+          </div>
 
             {/* HEADING */}
             <h2
