@@ -3,6 +3,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import NewsletterForm from "@/components/common/NewsletterForm";
 
 import LinkedinImage from "@/assets/images/homepage/linkdin-post.png";
 import CohereLogo from "@/assets/images/homepage/cohere-linkdin-logo.png";
@@ -347,58 +348,7 @@ export default function SocialFeedSection() {
               announcements delivered straight to your inbox.
             </p>
 
-            {/* EMAIL INPUT */}
-            <div className="mt-5">
-              <input
-                type="email"
-                name="email"
-                autoComplete="email"
-                aria-label="Your work email"
-                required
-                placeholder="Enter your work email"
-                className="
-                  h-[60px]
-                  w-full
-                  rounded-xl
-                  border
-                  border-black
-                  bg-transparent
-                  px-5
-                  font-nunito-sans
-                  text-[16px]
-                  md:text-[18px]
-                  text-black
-                  placeholder:font-nunito-sans
-                  placeholder:text-[18px]
-                  placeholder:text-black
-                  outline-none
-                  transition
-                  focus:border-black
-                "
-              />
-            </div>
-
-            {/* SUBMIT BUTTON */}
-            <button
-              type="button"
-              className="
-                mt-5
-                h-[60px]
-                shrink-0
-                rounded-xl
-                bg-white
-                font-nunito-sans-extra-bold
-                text-[16px]
-                sm:text-[16px]
-                md:text-[18px]
-                lg:text-[18px]
-                text-[#000000]
-                transition
-                hover:bg-[#F4F4F4]
-              "
-            >
-              SUBMIT
-            </button>
+            <NewsletterForm />
 
             {/* BOTTOM TEXT */}
             <p

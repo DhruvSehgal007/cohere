@@ -59,29 +59,30 @@ export default function ResolveSection() {
     >
       <div className="container-custom">
         {/* Top content */}
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-          <div className="w-full lg:w-1/2">
-            <span className="inline-block rounded bg-[#439897] px-3 py-1 font-avenir text-[12px] text-white sm:px-4 sm:text-[14px]">
+<div className="mb-10">
+        <div className="flex flex-col gap-3 md:gap-10 md:flex-row md:items-end md:justify-between">
+
+          <div className="w-full md:w-1/2">
+            <div className="inline-flex items-center bg-[#439897] px-3 py-1.5 rounded-tr-[8px] rounded-br-[8px]">
+            <span className="font-avenir text-[12px] sm:text-[14px] uppercase tracking-[0.2px] text-white uppercase">
               COHERE RESOLVE™
             </span>
+          </div>
+
 
             <h2
               className="
                 mt-3
                 w-full
                 font-avenir
-                text-[22px]
                 font-extrabold
                 leading-[1.15]
-                text-black
-
-                sm:text-[30px]
-
+                text-[#101C1C]
                 md:mt-4
-                md:text-[36px]
-
-                lg:max-w-[540px]
-                lg:text-[40px]
+                lg:max-w-[600px]
+                text-[32px]
+                sm:text-[36px]
+                md:text-[40px]
               "
             >
               Intelligent Workplace Investigation Management Platform
@@ -92,26 +93,25 @@ export default function ResolveSection() {
             className="
               w-full
               font-nunito-sans
-              text-[14px]
               leading-6
               text-[#5B5B5B]
-
-              sm:text-[15px]
               sm:leading-7
-
-              lg:w-1/2
-              lg:max-w-[520px]
+              md:w-1/2
+              lg:max-w-[480px]
+              text-left
+              md:text-right
               lg:text-right
-              lg:text-[16px]
+              text-[16px]
+              sm:text-[16px]
+              md:text-[16px]
+              lg:text-[18px]
             "
           >
-            A secure, Microsoft 365-based workplace investigation management
-            platform that helps organisations receive, triage, assign, track
-            and monitor workplace complaints while supporting compliance with
-            the Sexual Harassment of Women at Workplace (Prevention,
-            Prohibition and Redressal) Act, 2013.
+            A secure, Microsoft 365-based workplace investigation management platform that helps organisations receive, triage, assign, track and monitor workplace complaints while supporting compliance with the Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013.
           </p>
+
         </div>
+      </div>
 
         {/* Sub heading */}
         <p

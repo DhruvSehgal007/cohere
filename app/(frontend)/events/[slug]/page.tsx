@@ -1,128 +1,21 @@
-import React from "react";
 import Image from "next/image";
+import EventContent from "@/components/common/EventContent";
 import Link from "next/link";
-import blogHeroImage from "@/assets/images/Blogs/InnerBlog/bloginner.jpg";
-import upcomingEvent1 from "@/assets/images/Blogs/InnerBlog/upcomingevent1.png";
-import upcomingEvent2 from "@/assets/images/Blogs/InnerBlog/upcomingevent2.png";
-import upcomingEvent3 from "@/assets/images/Blogs/InnerBlog/upcomingevent3.png";
-import teamMember1 from "@/assets/images/OurTeam/team-member.png";
-import teamMemberLarge from "@/assets/images/OurTeam/Team-member-large.png";
-
-interface EventDetailData {
-  title: string;
-  heroImage: any;
-  category: string;
-  paragraphs: string[];
-}
-
-const eventsDatabase: Record<string, EventDetailData> = {
-  "keep-it-right-website-based-training": {
-    title: "Keep It Right - website based training",
-    heroImage: blogHeroImage,
-    category: "EVENTS & WORKSHOPS",
-    paragraphs: [
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1500, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1500, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1500, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
-    ],
-  },
-  "the-keep-it-right-app": {
-    title: "The Keep it Right App",
-    heroImage: blogHeroImage,
-    category: "EVENTS & WORKSHOPS",
-    paragraphs: [
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1500, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1500, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1500, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
-    ],
-  },
-  "stop-by-cohere-keep-it-right": {
-    title: "STOP by Cohere @ Keep It Right",
-    heroImage: blogHeroImage,
-    category: "EVENTS & WORKSHOPS",
-    paragraphs: [
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1500, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1500, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1500, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
-    ],
-  },
-};
-
-const defaultEvent: EventDetailData = {
-  title: "Lorem Ipsum is simply dummy text",
-  heroImage: blogHeroImage,
-  category: "EVENTS & WORKSHOPS",
-  paragraphs: [
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1500, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1500, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1500, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-  ],
-};
-
-const speakersList = [
-  {
-    id: 1,
-    name: "Dr. Pushkar Singh",
-    role: "lawyer, consultant",
-    image: teamMemberLarge,
-  },
-  {
-    id: 2,
-    name: "Dr. Pushkar Singh",
-    role: "lawyer, consultant",
-    image: teamMember1,
-  },
-  {
-    id: 3,
-    name: "Dr. Pushkar Singh",
-    role: "lawyer, consultant",
-    image: teamMemberLarge,
-  },
-  {
-    id: 4,
-    name: "Dr. Pushkar Singh",
-    role: "lawyer, consultant",
-    image: teamMember1,
-  },
-  {
-    id: 5,
-    name: "Dr. Pushkar Singh",
-    role: "lawyer, consultant",
-    image: teamMemberLarge,
-  },
-];
-
-const upcomingEvents = [
-  {
-    id: 1,
-    title: "Keep It Right - website based training",
-    image: upcomingEvent1,
-    slug: "keep-it-right-website-based-training",
-  },
-  {
-    id: 2,
-    title: "The Keep it Right App",
-    image: upcomingEvent2,
-    slug: "the-keep-it-right-app",
-  },
-  {
-    id: 3,
-    title: "STOP by Cohere @ Keep It Right",
-    image: upcomingEvent3,
-    slug: "stop-by-cohere-keep-it-right",
-  },
-];
+import { notFound } from "next/navigation";
+import { getEventSection } from "@/utils/modules/events";
+export const dynamic = "force-dynamic";
 
 export default async function EventDetailPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const resolvedParams = await params;
-  const slug = resolvedParams.slug;
-  const cleanSlug = slug.replace(/-\d+$/, ""); // Handle duplicate suffixes like -2, -3
-
-  const eventData = eventsDatabase[slug] || eventsDatabase[cleanSlug] || defaultEvent;
+  const { slug } = await params;
+  const { events, settings } = await getEventSection();
+  const eventData = events.find(event => event.slug === slug);
+  if (!eventData) notFound();
+  const speakersList = eventData.speakers;
+  const upcomingEvents = events.filter(event => event.id !== eventData.id).slice(0, 3);
 
   return (
     <article className="min-h-screen bg-white pt-24 sm:pt-32 md:pt-36 lg:pt-40 pb-16 md:pb-24">
@@ -134,6 +27,7 @@ export default async function EventDetailPage({
             alt={eventData.title}
             fill
             priority
+            unoptimized
             className="object-cover object-center"
           />
         </div>
@@ -156,9 +50,7 @@ export default async function EventDetailPage({
 
         {/* Event Body Description */}
         <div className="space-y-6 md:space-y-7 text-[16px] sm:text-[16px] md:text-[16px] lg:text-[18px] font-nunito-sans font-normal text-[#5B5B5B] leading-[24px] sm:leading-[25px] md:leading-[26px] tracking-[0.04em]">
-          {eventData.paragraphs.map((para, idx) => (
-            <p key={idx}>{para}</p>
-          ))}
+          <EventContent content={eventData.content} paragraphs={eventData.paragraphs} />
         </div>
 
         {/* Speakers / Experts Section */}
@@ -166,7 +58,7 @@ export default async function EventDetailPage({
           <div className="flex flex-wrap items-start justify-start gap-6 sm:gap-8 lg:gap-[36px] xl:gap-[50px]">
             {speakersList.map((speaker, index) => (
               <div
-                key={`${speaker.id}-${index}`}
+                key={index}
                 className="flex flex-col w-[140px] sm:w-[170px] lg:w-[198px] gap-[20px]"
               >
                 {/* Photo container */}
@@ -175,7 +67,8 @@ export default async function EventDetailPage({
                     src={speaker.image}
                     alt={speaker.name}
                     fill
-                    className="object-cover object-top"
+                    unoptimized
+            className="object-cover object-top"
                   />
                 </div>
                 {/* Speaker Info */}
@@ -195,7 +88,7 @@ export default async function EventDetailPage({
         {/* Upcoming Events Section */}
         <div className="mt-16 sm:mt-20 md:mt-24">
           <h2 className="text-[32px] sm:text-[36px] md:text-[40px] font-avenir font-bold text-[#0D1E1E] leading-[1.22] md:leading-[49px] mb-6 md:mb-8">
-            Upcoming Events
+            {settings.listingHeading}
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8">
@@ -211,7 +104,8 @@ export default async function EventDetailPage({
                     src={event.image}
                     alt={event.title}
                     fill
-                    className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    unoptimized
+            className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                 </div>

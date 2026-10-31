@@ -1,4 +1,5 @@
-import Image from "next/image";
+﻿import Image from "next/image";
+import { Mail, Phone } from "lucide-react";
 
 const solutions = [
   {
@@ -25,53 +26,65 @@ const solutions = [
 
 export default function EcosystemSection() {
   return (
-    <section className="w-full py-[55px] md:py-[70px]">
-      <div className="container-custom">
+    <section className="w-full py-[38px]">
+      <div className="mx-auto w-full max-w-[1600px] px-[20px] sm:px-[4.5%]">
+
         <div
           className="
             mx-auto
             w-full
             max-w-[1500px]
-            overflow-hidden
-            rounded-[32px]
+            rounded-[24px]
             bg-[#439897]
-            p-[20px]
-            sm:p-[28px]
-            md:p-[32px]
-            xl:min-h-[420px]
-            xl:px-[36px]
-            xl:py-[32px]
-            2xl:px-[44px]
+
+            px-[24px]
+            py-[32px]
+
+            sm:px-[32px]
+            sm:py-[36px]
+
+            md:px-[40px]
+            md:py-[42px]
+
+            xl:pb-[42px]
+            xl:pl-[clamp(32px,4.8vw,75px)]
+            xl:pr-[clamp(28px,3.6vw,56px)]
+            xl:pt-[52px]
           "
         >
+          {/* MAIN LAYOUT */}
           <div
             className="
-              flex
-              flex-col
-              justify-between
-              gap-[36px]
-              xl:min-h-[355px]
-              xl:flex-row
-              xl:items-stretch
+              grid
+              grid-cols-1
+              gap-[40px]
+
+              xl:grid-cols-[minmax(0,0.63fr)_minmax(0,1fr)]
               xl:gap-[28px]
-              2xl:gap-[36px]
             "
           >
-            {/* LEFT CONTENT */}
-            <div className="flex w-full flex-col justify-between xl:w-[320px] xl:shrink-0 2xl:w-[360px]">
+            {/* ========================================
+                LEFT CONTENT
+            ======================================== */}
+            <div className="flex min-w-0 flex-col justify-between">
+
               <div>
                 <h2
                   className="
-                    max-w-[440px]
+                    max-w-[500px]
                     font-avenir
-                    text-[28px]
+                    text-[24px]
                     font-[800]
-                    leading-[1.12]
+                    leading-[1.08]
                     text-[#1B3D3C]
-                    sm:text-[34px]
-                    md:text-[38px]
-                    xl:text-[36px]
-                    2xl:text-[40px]
+
+                    sm:text-[32px]
+
+                    md:text-[36px]
+
+                    xl:text-[32px]
+
+                    2xl:text-[36px]
                   "
                 >
                   One Ecosystem. Four Workplace Solutions.
@@ -79,16 +92,21 @@ export default function EcosystemSection() {
 
                 <p
                   className="
-                    mt-[16px]
-                    max-w-[430px]
+                    mt-[12px]
+                    max-w-[500px]
                     font-nunito-sans
-                    text-[15px]
-                    leading-[1.4]
-                    tracking-[0.03em]
-                    text-[#D8EFEF]
-                    sm:text-[16px]
-                    xl:mt-[18px]
-                    xl:text-[17px]
+                    text-[16px]
+                    leading-[26px]
+                    tracking-[0.04em]
+                    text-white
+
+                    sm:text-[18px]
+
+                    md:text-[20px]
+
+                    xl:text-[18px]
+
+                    2xl:text-[20px]
                   "
                 >
                   Explore Cohere&apos;s workplace solutions designed across
@@ -96,76 +114,74 @@ export default function EcosystemSection() {
                 </p>
               </div>
 
-              {/* CONTACT ROW */}
+              {/* CONTACT DETAILS */}
               <div
                 className="
-                  mt-[28px]
+                  mt-[32px]
                   flex
-                  flex-wrap
-                  items-center
-                  gap-[16px]
-                  pt-[10px]
-                  xl:mt-auto
-                  xl:gap-[16px]
-                  2xl:gap-[20px]
+                  flex-col
+                  items-start
+                  gap-[18px]
+                  font-avenir
+                  text-[16px]
+                  font-bold
+                  leading-[18px]
+                  text-[#1B3D3C]
+
+                  sm:flex-row
+                  sm:flex-wrap
+                  sm:items-center
+
+                  xl:mt-[48px]
                 "
               >
-                {/* Email + Website */}
-                <div className="flex items-start gap-[10px]">
-                  <i className="fa-solid fa-envelope mt-[3px] text-[16px] text-[#1B3D3C]"></i>
+                {/* EMAIL / WEBSITE */}
+                <div className="flex min-w-0 items-start gap-[10px]">
+                  <Mail
+                    aria-hidden="true"
+                    className="mt-[2px] size-[17px] shrink-0"
+                  />
 
-                  <div className="flex flex-col">
-                    <span className="
-                        font-avenir
-                        text-[14px]
-                        font-[700]
-                        leading-[1.25]
-                        text-[#1B3D3C]
-                        hover:underline
-                        xl:text-[15px]
-                      "
+                  <div className="flex min-w-0 flex-col gap-[3px]">
+                    <a
+                      className="break-words hover:underline"
+                      href="mailto:info@cohereconsultants.com"
                     >
                       info@cohereconsultants.com
-                    </span>
+                    </a>
 
                     <a
                       href="https://www.cohereconsultants.com"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="
-                        mt-[3px]
-                        font-avenir
-                        text-[14px]
-                        font-[700]
-                        leading-[1.25]
-                        text-[#1B3D3C]
-                        hover:underline
-                        xl:text-[15px]
-                      "
+                      className="break-words hover:underline"
                     >
                       www.cohereconsultants.com
                     </a>
                   </div>
                 </div>
 
-                {/* Divider */}
-                <div className="hidden h-[36px] w-px bg-[#1B3D3C]/30 md:block xl:hidden 2xl:block" />
+                {/* PHONE */}
+                <div
+                  className="
+                    flex
+                    items-center
+                    gap-[8px]
 
-                {/* Phone */}
-                <div className="flex items-center gap-[10px]">
-                  <i className="fa-solid fa-phone text-[16px] text-[#1B3D3C]"></i>
+                    sm:border-l
+                    sm:border-[#1B3D3C]/30
+                    sm:py-[8px]
+                    sm:pl-[20px]
+                  "
+                >
+                  <Phone
+                    aria-hidden="true"
+                    className="size-[17px] shrink-0 fill-current"
+                  />
 
                   <a
-                    href="tel:+918904447004"
-                    className="
-                      font-avenir
-                      text-[14px]
-                      font-[700]
-                      leading-[1.2]
-                      text-[#1B3D3C]
-                      hover:underline
-                      xl:text-[15px]
-                    "
+                    href="tel:+91890444700"
+                    className="whitespace-nowrap hover:underline"
                   >
                     +91 89044 4700
                   </a>
@@ -173,73 +189,106 @@ export default function EcosystemSection() {
               </div>
             </div>
 
-            {/* RIGHT CARDS */}
+            {/* ========================================
+                CARDS
+            ======================================== */}
             <div
               className="
                 grid
-                w-full
+                min-w-0
                 grid-cols-1
-                gap-[16px]
-                sm:grid-cols-2
-                sm:gap-[20px]
-                lg:grid-cols-4
-                lg:gap-[16px]
-                xl:flex-1
-                xl:gap-[16px]
-                2xl:gap-[20px]
+                gap-[18px]
+
+                md:grid-cols-4
+                md:gap-[14px]
+
+                lg:gap-[18px]
+
+                xl:mt-0
+                xl:items-stretch
+                xl:gap-[18px]
               "
             >
               {solutions.map((solution) => (
                 <div
                   key={solution.title}
                   className="
+                    mx-auto
                     flex
                     h-full
-                    min-h-[340px]
                     w-full
                     min-w-0
+                    max-w-[360px]
                     flex-col
                     overflow-hidden
-                    rounded-[16px]
+                    rounded-[10px]
                     bg-[#FEBC5A]
                     p-[8px]
-                    transition-transform
-                    duration-300
-                    hover:-translate-y-1
+
+                    md:max-w-none
+
+                    xl:min-h-[320px]
                   "
                 >
                   {/* IMAGE */}
                   <div
                     className="
                       relative
-                      h-[215px]
+                      aspect-[16/10]
                       w-full
                       shrink-0
                       overflow-hidden
-                      rounded-[12px]
-                      sm:h-[225px]
+                      rounded-[8px]
+
+                      md:aspect-[1/1.08]
+
+                      xl:aspect-[122/146]
                     "
                   >
                     <Image
                       src={solution.image}
                       alt={solution.title}
                       fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 25vw, 240px"
+                      sizes="
+                        (max-width: 767px) 90vw,
+                        (max-width: 1279px) 22vw,
+                        (max-width: 1599px) 11vw,
+                        180px
+                      "
                       className="object-cover"
                     />
                   </div>
 
-                  {/* TEXT */}
-                  <div className="flex flex-1 flex-col justify-center px-[4px] pb-[8px] pt-[10px] text-center">
+                  {/* CARD TEXT */}
+                  <div
+                    className="
+                      flex
+                      flex-1
+                      flex-col
+                      items-center
+                      justify-start
+                      px-[4px]
+                      pb-[8px]
+                      pt-[12px]
+                      text-center
+                    "
+                  >
                     <h3
                       className="
                         font-avenir
-                        text-[15px]
+                        text-[17px]
                         font-[800]
-                        leading-[1.2]
+                        leading-[18px]
                         text-[#1B3D3C]
-                        xl:text-[15px]
-                        2xl:text-[16px]
+
+                        md:text-[14px]
+                        md:leading-[15px]
+
+                        lg:text-[15px]
+                        lg:leading-[16px]
+
+                        xl:text-[16px]
+                        xl:leading-[16px]
                       "
                     >
                       {solution.title}
@@ -247,16 +296,21 @@ export default function EcosystemSection() {
 
                     <p
                       className="
-                        mt-[4px]
+                        mt-[5px]
                         whitespace-pre-line
                         font-nunito-sans
-                        text-[13px]
-                        font-[600]
-                        leading-[1.25]
-                        tracking-[0.02em]
-                        text-[#6A5B4A]
-                        xl:text-[13px]
-                        2xl:text-[14px]
+                        text-[14px]
+                        leading-[20px]
+                        text-[#5B5B5B]
+
+                        md:text-[12px]
+                        md:leading-[17px]
+
+                        lg:text-[13px]
+                        lg:leading-[18px]
+
+                        xl:text-[14px]
+                        xl:leading-[20px]
                       "
                     >
                       {solution.subtitle}
@@ -265,6 +319,7 @@ export default function EcosystemSection() {
                 </div>
               ))}
             </div>
+
           </div>
         </div>
       </div>

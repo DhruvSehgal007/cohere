@@ -3,98 +3,29 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Search } from "lucide-react";
-import upcomingEvent1 from "@/assets/images/Blogs/InnerBlog/upcomingevent1.png";
-import upcomingEvent2 from "@/assets/images/Blogs/InnerBlog/upcomingevent2.png";
-import upcomingEvent3 from "@/assets/images/Blogs/InnerBlog/upcomingevent3.png";
+
+
+
+
 import Searchicon from "@/assets/images/Events/Search-icon.svg";
 import Nextwhite from "@/assets/images/Events/Next-white.svg";
 
-interface EventItem {
-  id: number;
-  title: string;
-  image: any;
-  slug: string;
-}
+import type { EventItem } from "@/utils/eventDefaults";
 
-const allEvents: EventItem[] = [
-  {
-    id: 1,
-    title: "Keep It Right - website based training",
-    image: upcomingEvent1,
-    slug: "keep-it-right-website-based-training",
-  },
-  {
-    id: 2,
-    title: "The Keep it Right App",
-    image: upcomingEvent2,
-    slug: "the-keep-it-right-app",
-  },
-  {
-    id: 3,
-    title: "STOP by Cohere @ Keep It Right",
-    image: upcomingEvent3,
-    slug: "stop-by-cohere-keep-it-right",
-  },
-  {
-    id: 4,
-    title: "Keep It Right - website based training",
-    image: upcomingEvent1,
-    slug: "keep-it-right-website-based-training-2",
-  },
-  {
-    id: 5,
-    title: "The Keep it Right App",
-    image: upcomingEvent2,
-    slug: "the-keep-it-right-app-2",
-  },
-  {
-    id: 6,
-    title: "STOP by Cohere @ Keep It Right",
-    image: upcomingEvent3,
-    slug: "stop-by-cohere-keep-it-right-2",
-  },
-  {
-    id: 7,
-    title: "Keep It Right - website based training",
-    image: upcomingEvent1,
-    slug: "keep-it-right-website-based-training-3",
-  },
-  {
-    id: 8,
-    title: "The Keep it Right App",
-    image: upcomingEvent2,
-    slug: "the-keep-it-right-app-3",
-  },
-  {
-    id: 9,
-    title: "STOP by Cohere @ Keep It Right",
-    image: upcomingEvent3,
-    slug: "stop-by-cohere-keep-it-right-3",
-  },
-];
-
-export default function UpcomingEvents() {
+export default function UpcomingEvents({ events: allEvents, heading = "Upcoming Events" }: { events: EventItem[]; heading?: string }) {
   const [searchQuery, setSearchQuery] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
+  const [visibleCount, setVisibleCount] = useState(9);
   const itemsPerPage = 9;
 
   const filteredEvents = allEvents.filter((item) =>
     item.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  const totalPages = Math.ceil(filteredEvents.length / itemsPerPage) || 1;
-  const paginatedEvents = filteredEvents.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
+  const visibleEvents = filteredEvents.slice(0, visibleCount);
+  const hasMoreEvents = visibleCount < filteredEvents.length;
 
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage((prev) => prev + 1);
-    } else {
-      setCurrentPage(1);
-    }
+  const handleLoadMore = () => {
+    setVisibleCount((count) => count + itemsPerPage);
   };
 
   return (
@@ -103,7 +34,7 @@ export default function UpcomingEvents() {
         {/* Header Row: Title & Search */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 sm:mb-10">
           <h2 className="text-[32px] sm:text-[36px] md:text-[40px] font-avenir font-bold text-[#0D1E1E] leading-[1.2]">
-            Upcoming Events
+            {heading}
           </h2>
 
           {/* Search Bar */}
@@ -132,7 +63,7 @@ export default function UpcomingEvents() {
       value={searchQuery}
       onChange={(e) => {
         setSearchQuery(e.target.value);
-        setCurrentPage(1);
+        setVisibleCount(itemsPerPage);
       }}
       className="
         h-full
@@ -152,7 +83,7 @@ export default function UpcomingEvents() {
     <button
       type="button"
       aria-label="Search"
-      onClick={() => setCurrentPage(1)}
+      onClick={() => setVisibleCount(itemsPerPage)}
       className="
         mr-[5px]
         flex
@@ -181,9 +112,9 @@ export default function UpcomingEvents() {
         </div>
 
         {/* Events Cards Grid */}
-        {paginatedEvents.length > 0 ? (
+        {visibleEvents.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {paginatedEvents.map((event) => (
+            {visibleEvents.map((event) => (
               <Link
                 key={event.id}
                 href={`/events/${event.slug}`}
@@ -192,6 +123,7 @@ export default function UpcomingEvents() {
                 {/* Background Image with Hover Scale */}
                 <div className="absolute inset-0 z-0">
                   <Image
+                    unoptimized
                     src={event.image}
                     alt={event.title}
                     fill
@@ -242,7 +174,7 @@ export default function UpcomingEvents() {
             </p>
             <button
               type="button"
-              onClick={() => setSearchQuery("")}
+              onClick={() => { setSearchQuery(""); setVisibleCount(itemsPerPage); }}
               className="px-4 py-2 bg-[#439897] text-white rounded-[6px] text-[14px] font-avenir hover:bg-[#357c7b] transition-colors"
             >
               Clear Search
@@ -250,11 +182,13 @@ export default function UpcomingEvents() {
           </div>
         )}
 
-        {/* Bottom Pagination / Next Button */}
+        {/* Append the next nine events while keeping existing cards visible. */}
+        {hasMoreEvents && (
         <div className="mt-10 flex items-center justify-end sm:mt-12">
   <button
     type="button"
-    onClick={handleNextPage}
+    onClick={handleLoadMore}
+    aria-label="Load nine more events"
     className="
       inline-flex
       h-[60px]
@@ -291,6 +225,7 @@ export default function UpcomingEvents() {
     />
   </button>
 </div>
+        )}
       </div>
     </section>
   );

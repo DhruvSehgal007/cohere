@@ -143,7 +143,7 @@ export default function Header() {
           justify-between
           py-2
 
-          sm:py-3
+          
 
           lg:justify-start
           lg:py-0
@@ -151,7 +151,7 @@ export default function Header() {
       >
         {/* ================= LEFT LOGO ================= */}
 
-        <div className="shrink-0 py-2 sm:py-3 lg:pr-[30px]">
+        <div className="shrink-0 py-2  lg:pr-[30px]">
           <Link href="/">
             <Image
               src={cohereLogo}
@@ -946,6 +946,10 @@ export default function Header() {
             src={allThingsLogo}
             alt="All Things Cohere Posh"
             className="
+              hidden
+              sm:hidden
+              md:hidden
+              lg:block
               mx-auto
               mt-6
               h-auto
