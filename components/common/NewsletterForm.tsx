@@ -1,7 +1,7 @@
 "use client";
 
 import Script from "next/script";
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import { useCallback, useEffect, useRef, useState, type FormEvent } from "react";
 import { normalizeNewsletterEmail } from "@/utils/newsletter";
 
 type Recaptcha = {
@@ -12,7 +12,9 @@ type Recaptcha = {
 declare global { interface Window { grecaptcha?: Recaptcha } }
 
 export default function NewsletterForm() {
-  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+  const [siteKey, setSiteKey] = useState("");
+  const [loadingConfig, setLoadingConfig] = useState(true);
+  const [retry, setRetry] = useState(0);
   const container = useRef<HTMLDivElement>(null);
   const widget = useRef<number | null>(null);
   const submitting = useRef(false);
@@ -21,7 +23,20 @@ export default function NewsletterForm() {
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
 
-  function renderCaptcha() {
+  useEffect(() => {
+    const controller = new AbortController();
+    fetch("/api/newsletter/config", { cache: "no-store", signal: controller.signal })
+      .then(async (response) => {
+        const data = await response.json();
+        if (!response.ok || !data.siteKey) throw new Error(data.message || "Unable to load newsletter verification.");
+        setSiteKey(data.siteKey);
+      })
+      .catch((err: Error) => { if (!controller.signal.aborted) setError(err.message); })
+      .finally(() => { if (!controller.signal.aborted) setLoadingConfig(false); });
+    return () => controller.abort();
+  }, [retry]);
+
+  const renderCaptcha = useCallback(() => {
     if (!siteKey || !container.current || !window.grecaptcha || widget.current !== null) return;
     widget.current = window.grecaptcha.render(container.current, {
       sitekey: siteKey,
@@ -31,7 +46,11 @@ export default function NewsletterForm() {
       "expired-callback": () => setToken(""),
       "error-callback": () => { setToken(""); setError("reCAPTCHA could not load. Please refresh and try again."); },
     });
-  }
+  }, [siteKey]);
+
+  useEffect(() => {
+    if (siteKey) window.grecaptcha?.ready(renderCaptcha);
+  }, [siteKey, renderCaptcha]);
 
   useEffect(() => () => {
     if (widget.current !== null) window.grecaptcha?.reset(widget.current);
@@ -81,7 +100,8 @@ export default function NewsletterForm() {
         <Script id="newsletter-recaptcha" src="https://www.google.com/recaptcha/api.js?render=explicit"
           onReady={() => window.grecaptcha?.ready(renderCaptcha)} onError={() => setError("reCAPTCHA could not load. Please refresh and try again.")} />
         <div ref={container} className="min-h-[78px] w-full" />
-      </> : <p role="status" className="text-sm">Newsletter verification is being set up. Please try again later.</p>}
+      </> : loadingConfig ? <p role="status" className="text-sm">Loading reCAPTCHA...</p> :
+        <button type="button" className="text-left text-sm underline" onClick={() => { setError(""); setLoadingConfig(true); setRetry((value) => value + 1); }}>Retry loading reCAPTCHA</button>}
       <button type="submit" disabled={busy || !siteKey || !token}
         className="h-[60px] shrink-0 rounded-xl bg-white font-nunito-sans-extra-bold text-[16px] text-black transition hover:bg-[#F4F4F4] disabled:cursor-not-allowed disabled:opacity-60 md:text-[18px]">
         {busy ? "SUBMITTING..." : "SUBMIT"}

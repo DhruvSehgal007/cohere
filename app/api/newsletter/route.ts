@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
     if (typeof body.captchaToken !== "string" || !body.captchaToken.trim() || body.captchaToken.length > 4096) {
       return json({ message: "Please check the reCAPTCHA checkbox." }, 400);
     }
-    const secret = process.env.RECAPTCHA_SECRET_KEY;
+    const secret = process.env.RECAPTCHA_SECRET_KEY?.trim();
     if (!secret) return json({ message: "Newsletter verification is not configured yet. Please try again later." }, 503);
     await connectDB();
     const retryAfter = await newsletterLimit(request, "signup", 10);

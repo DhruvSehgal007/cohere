@@ -22,6 +22,27 @@ function load(file, dependencies = {}, globals = {}) {
 }
 
 const validation = load("utils/newsletter.ts");
+
+test("runtime configuration exposes only the public key and never caches it", async () => {
+  const env = { NEXT_PUBLIC_RECAPTCHA_SITE_KEY: " public-site-key ", RECAPTCHA_SECRET_KEY: "private-secret" };
+  const route = load("app/api/newsletter/config/route.ts", {
+    "next/server": { NextResponse: { json: (body, init) => new Response(JSON.stringify(body), init) } },
+  }, { process: { env } });
+  const response = await route.GET();
+  assert.equal(response.status, 200);
+  assert.equal(response.headers.get("Cache-Control"), "no-store");
+  assert.deepEqual(await response.json(), { siteKey: "public-site-key" });
+  env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY = "updated-runtime-key";
+  assert.deepEqual(await (await route.GET()).json(), { siteKey: "updated-runtime-key" });
+});
+
+test("runtime configuration fails closed when keys are missing", async () => {
+  const route = load("app/api/newsletter/config/route.ts", {
+    "next/server": { NextResponse: { json: (body, init) => new Response(JSON.stringify(body), init) } },
+  }, { process: { env: {} } });
+  assert.equal((await route.GET()).status, 503);
+});
+
 function setup(options = {}) {
   const calls = { writes: [], connections: 0, verifications: 0 };
   const usedTokens = new Set();

@@ -16,7 +16,7 @@ RECAPTCHA_SECRET_KEY=your-private-secret-key
 RECAPTCHA_ALLOWED_HOSTNAMES=localhost,yourdomain.com,www.yourdomain.com
 ```
 
-Restart development or rebuild/redeploy production after changing the public key. Never commit the secret key. The existing `MONGO_URI` and `JWT_SECRET` are also required. Signup remains disabled until the public site key is supplied; the API refuses missing secrets, missing tokens, failed/expired tokens, and unavailable verification responses. Test keys must never be deployed to production.
+Restart the server after changing environment variables. The form fetches the public site key from `/api/newsletter/config` at runtime with caching disabled, so it does not depend on a key embedded in an earlier browser bundle. Never commit the secret key. The existing `MONGO_URI` and `JWT_SECRET` are also required. Signup remains disabled until the public site key is supplied; the API refuses missing secrets, missing tokens, failed/expired tokens, and unavailable verification responses. Test keys must never be deployed to production.
 
 Google may show an additional image challenge after clicking the checkbox; the application cannot guarantee a checkbox-only experience for every visitor. See [Google's widget documentation](https://developers.google.com/recaptcha/docs/display).
 
