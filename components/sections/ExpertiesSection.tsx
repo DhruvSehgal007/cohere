@@ -317,8 +317,8 @@ export default function SocialFeedSection() {
                 font-avenir
                 text-[32px]
                 sm:text-[32px]
-                md:text-[36px]
-                lg:text-[40px]
+                md:text-[34px]
+                lg:text-[34px]
                 font-bold
                 leading-[40px]
                 text-black
@@ -331,14 +331,13 @@ export default function SocialFeedSection() {
             {/* DESCRIPTION */}
             <p
               className="
-                mt-6
+                mt-4
                 font-nunito-sans
                 text-[16px]
                 sm:text-[16px]
-                md:text-[18px]
-                lg:text-[18px]
+                md:text-[16px]
+                lg:text-[16px]
                 font-normal
-                leading-[30px]
                 tracking-[0.04em]
                 text-black
               "
@@ -353,13 +352,11 @@ export default function SocialFeedSection() {
             {/* BOTTOM TEXT */}
             <p
               className="
-                mt-2
-                pt-8
                 font-nunito-sans
                 text-[16px]
                 sm:text-[16px]
-                md:text-[18px]
-                lg:text-[18px]
+                md:text-[16px]
+                lg:text-[16px]
                 font-normal
                 leading-[24px]
                 tracking-[0.04em]

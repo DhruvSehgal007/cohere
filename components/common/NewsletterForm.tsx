@@ -88,7 +88,7 @@ export default function NewsletterForm() {
     }
   }
 
-  const inputClass = "h-[60px] w-full rounded-xl border border-black bg-transparent px-5 font-nunito-sans text-[16px] text-black outline-none placeholder:text-black focus:ring-2 focus:ring-black/30 disabled:opacity-60 md:text-[18px]";
+  const inputClass = "h-[60px] w-full rounded-xl border border-black bg-transparent px-5 font-nunito-sans text-[16px] text-black outline-none placeholder:text-black focus:ring-2 focus:ring-black/30 disabled:opacity-60";
   return (
     <form onSubmit={submit} className="mt-5 flex min-w-0 flex-col gap-4" aria-busy={busy}>
       <input type="email" name="email" autoComplete="email" aria-label="Your work email" required maxLength={254} disabled={busy}
@@ -103,7 +103,7 @@ export default function NewsletterForm() {
       </> : loadingConfig ? <p role="status" className="text-sm">Loading reCAPTCHA...</p> :
         <button type="button" className="text-left text-sm underline" onClick={() => { setError(""); setLoadingConfig(true); setRetry((value) => value + 1); }}>Retry loading reCAPTCHA</button>}
       <button type="submit" disabled={busy || !siteKey || !token}
-        className="h-[60px] shrink-0 rounded-xl bg-white font-nunito-sans-extra-bold text-[16px] text-black transition hover:bg-[#F4F4F4] disabled:cursor-not-allowed disabled:opacity-60 md:text-[18px]">
+        className="h-[60px] shrink-0 rounded-xl bg-white font-nunito-sans-extra-bold text-[16px] text-black transition hover:bg-[#F4F4F4] disabled:cursor-not-allowed disabled:opacity-60">
         {busy ? "SUBMITTING..." : "SUBMIT"}
       </button>
       <div id="newsletter-feedback" aria-live="polite">
