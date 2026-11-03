@@ -6,8 +6,8 @@ import keepitimage from "@/assets/images/Keepitright/keepitright-image.png";
 
 export default function Keepitright() {
   return (
-    <section className="py-10 sm:py-12 md:py-16">
-      <div className="container-custom px-4 sm:px-6 mt-[100px]">
+    <section className="w-full bg-white pt-24 sm:pt-28 md:pt-32 lg:pt-36 pb-16 md:pb-24">
+      <div className="container-custom px-4 sm:px-6">
         <div
           className="
             grid
@@ -24,24 +24,11 @@ export default function Keepitright() {
           {/* ================= LEFT CONTENT ================= */}
           <div className="flex w-full min-w-0 flex-col items-start">
             {/* LABEL */}
-            <span
-              className="
-                inline-block
-                rounded-[2px]
-                bg-[#439897]
-                px-3
-                py-1
-                font-avenir
-                text-[12px]
-                font-normal
-                text-white
-
-                sm:text-[13px]
-                lg:text-[14px]
-              "
-            >
+           <div className="inline-flex items-center bg-[#439897] px-3 py-1.5 rounded-tr-[8px] rounded-br-[8px]">
+            <span className="font-avenir text-[12px] sm:text-[14px] uppercase tracking-[0.2px] text-white uppercase">
               KEEP IT RIGHT™
             </span>
+          </div>
 
             {/* HEADING */}
             <h2
@@ -55,7 +42,7 @@ export default function Keepitright() {
                 tracking-[-0.5px]
                 text-[#101C1C]
 
-                sm:text-[34px]
+                sm:text-[32px]
                 md:text-[40px]
                 lg:text-[48px]
                 xl:text-[64px]

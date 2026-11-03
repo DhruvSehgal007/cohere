@@ -198,7 +198,7 @@ export default function IntroSection() {
           {/* ICON BOX */}
           <div
             className={`relative mb-5 flex h-[70px] w-[70px] items-center justify-center rounded-[12px] transition-colors duration-500 sm:mb-6 sm:h-[78px] sm:w-[78px] md:mb-8 md:h-[78px] md:w-[78px] ${
-              isActive ? "bg-[#FFB84D]" : "bg-[#f0f7f7]"
+              isActive ? "bg-[#FFB84D]" : "bg-[#ffffff]"
             }`}
           >
             {/* SAME ORIGINAL ICON - NO ICON CHANGE */}

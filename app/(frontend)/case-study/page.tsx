@@ -1,6 +1,7 @@
 // src/app/(frontend)/Anti-Sexual-Harassment/Case-study/page.tsx
 import type { Metadata } from "next";
 import { CaseStudy } from "@/components/sections/CaseStudySection/CaseStudy";
+import Casestudybanner from "@/components/sections/CaseStudySection/Casestudybanner";
 
 export const metadata: Metadata = {
   title: "Case Study | Anti-Sexual Harassment",
@@ -9,5 +10,10 @@ export const metadata: Metadata = {
 };
 
 export default function CaseStudyPage() {
-  return <CaseStudy />;
+  return (
+    <>
+      <Casestudybanner />
+      <CaseStudy />
+    </>
+  );
 }

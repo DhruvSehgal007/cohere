@@ -1,5 +1,6 @@
 import Sidebar from "./components/sidebar";
 import Topbar from "./components/topbar";
+import styles from "./dashboard.module.css";
 
 export default function DashboardLayout({
   children,
@@ -19,7 +20,7 @@ export default function DashboardLayout({
         }
       `}</style>
 
-      <div className="min-h-screen bg-[#F7F9F8]">
+      <div className={`${styles.dashboard} min-h-screen bg-[#F7F9F8]`}>
         <Sidebar />
 
         <Topbar />

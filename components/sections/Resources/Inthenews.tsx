@@ -33,30 +33,34 @@ const newsCards = [
 
 export default function Inthenews() {
   return (
-    <section id="news" className="py-10 sm:py-12 md:py-16">
+    <section id="news" className="pb-16 sm:pb-16 md:pb-24 lg:pb-24">
       <div className="container-custom px-4 sm:px-6">
 
         {/* ================= TOP CONTENT ================= */}
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-          <div className="w-full lg:w-1/2">
-            <span className="inline-block rounded bg-[#439897] px-3 py-1 font-avenir text-[12px] text-white uppercase sm:px-4 sm:text-[14px]">
+        <div className="mb-10">
+        <div className="flex flex-col gap-3 md:gap-10 md:flex-row md:items-end md:justify-between">
+
+          <div className="w-full md:w-1/2">
+            <div className="inline-flex items-center bg-[#439897] px-3 py-1.5 rounded-tr-[8px] rounded-br-[8px]">
+            <span className="Uppercase font-avenir text-[12px] sm:text-[14px] uppercase tracking-[0.2px] text-white uppercase">
               Cohere in the News
             </span>
+          </div>
+
 
             <h2
               className="
                 mt-3
                 w-full
                 font-avenir
-                text-[22px]
                 font-extrabold
                 leading-[1.15]
-                text-black
-                sm:text-[30px]
+                text-[#101C1C]
                 md:mt-4
-                md:text-[36px]
-                lg:max-w-[364px]
-                lg:text-[40px]
+                lg:max-w-[360px]
+                text-[32px]
+                sm:text-[36px]
+                md:text-[40px]
               "
             >
               Our Expertise in the Conversation
@@ -67,24 +71,25 @@ export default function Inthenews() {
             className="
               w-full
               font-nunito-sans
-              text-[14px]
               leading-6
               text-[#5B5B5B]
-              sm:text-[15px]
               sm:leading-7
-              lg:max-w-[474px]
-              lg:w-1/2
+              md:w-1/2
+              lg:max-w-[530px]
+              text-left
+              md:text-right
               lg:text-right
-              lg:text-[16px]
+              text-[16px]
+              sm:text-[16px]
+              md:text-[16px]
+              lg:text-[18px]
             "
           >
-            Explore Cohere&apos;s latest media features, expert commentary,
-            publications, interviews, and speaking engagements. Discover
-            our perspectives on PoSH, workplace investigations, employment
-            law, compliance, and building safer, more inclusive workplaces.
+            Explore Cohere's latest media features, expert commentary, publications, interviews, and speaking engagements. Discover our perspectives on PoSH, workplace investigations, employment law, compliance, and building safer, more inclusive workplaces.
           </p>
-        </div>
 
+        </div>
+      </div>
         {/* ================= NEWS CARDS ================= */}
         <div
           className="

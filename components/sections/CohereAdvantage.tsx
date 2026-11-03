@@ -370,8 +370,8 @@ export default function CohereAdvantage() {
 
                         text-[24px]
                         lg:text-[32px]
-                        xl:text-[34px]
-                        2xl:text-[40px]
+                        xl:text-[38px]
+                        2xl:text-[48px]
                       "
                     >
                       {card.title}

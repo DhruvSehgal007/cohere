@@ -13,8 +13,8 @@ export default function CalenderPage() {
       <Upcomingprogram />
       <Programmes />
       <UpcomingEvents />
-      <PastEvents />
       <Featuredprogram />
+      <PastEvents />
     </>
   );
 }

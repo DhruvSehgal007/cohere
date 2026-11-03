@@ -193,7 +193,7 @@ export default function PastEvents() {
   };
 
   return (
-    <section className="pb-16 sm:pb-16 md:pb-24 lg:pb-24">
+    <section className="pt-16 sm:pt-16 md:pt-24 lg:pt-24 pb-16 sm:pb-16 md:pb-24 lg:pb-24">
       {/* =========================================
           TOP CONTENT
       ========================================= */}

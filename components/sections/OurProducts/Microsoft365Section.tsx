@@ -51,7 +51,8 @@ export default function Microsoft365Section() {
             py-[32px]
             sm:px-[36px]
             sm:py-[40px]
-            lg:h-[477px]
+            lg:h-auto
+            2xl:h-[477px]
             lg:px-0
             lg:py-0
           "
@@ -60,15 +61,20 @@ export default function Microsoft365Section() {
           <div
             className="
               relative
-              z-10
-              flex
-              w-full
-              flex-col
-              justify-center
-              lg:max-w-[760px]
-              lg:pl-[75px]
-              lg:pt-[52px]
-              lg:pb-[45px]
+    z-10
+    flex
+    w-full
+    flex-col
+    justify-start
+
+    lg:min-h-[477px]
+    lg:max-w-[55%]
+    lg:pl-[32px]
+    xl:pl-[75px]
+    2xl:h-full
+    2xl:max-w-[760px]
+    lg:pt-[52px]
+    lg:pb-[45px]
             "
           >
             {/* Heading */}
@@ -168,16 +174,19 @@ export default function Microsoft365Section() {
             <p
               className="
                 mt-[34px]
-                max-w-[560px]
-                font-nunito-sans
-                text-[15px]
-                leading-[24px]
-                tracking-[0.02em]
-                text-[#494D4D]
-                sm:text-[16px]
-                md:mt-[40px]
-                md:text-[17px]
-                md:leading-[25px]
+    max-w-[560px]
+    font-nunito-sans
+    text-[15px]
+    leading-[24px]
+    tracking-[0.02em]
+    text-[#494D4D]
+
+    sm:text-[16px]
+
+    md:text-[17px]
+    md:leading-[25px]
+
+    lg:mt-auto
               "
             >
               This enables rapid deployment using your existing Microsoft 365
@@ -186,7 +195,7 @@ export default function Microsoft365Section() {
           </div>
 
           {/* RIGHT IMAGE: Group 437 (Red, Green, Blue, Yellow tiles) */}
-          {/* Exactly Top: 32px, Right: 75px (Gap from corner), Width: 581px */}
+          {/* Scale alongside the content until the full desktop layout fits. */}
           <div
             className="
               mt-[24px]
@@ -196,10 +205,12 @@ export default function Microsoft365Section() {
               -mb-[32px]
               sm:-mb-[40px]
               lg:absolute
-              lg:right-[75px]
+              lg:right-[32px]
+              2xl:right-[75px]
               lg:top-[32px]
               lg:mb-0
-              lg:w-[581px]
+              lg:w-[40%]
+              2xl:w-[581px]
               pointer-events-none
               select-none
             "

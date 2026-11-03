@@ -1,44 +1,14 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import hsbcLogo from "@/assets/images/homepage/HSBC.png";
-import heroFinCorpLogo from "@/assets/images/homepage/herofincrop.png";
-import quoraLogo from "@/assets/images/homepage/quora.png";
-import paysafeLogo from "@/assets/images/homepage/paysafe.png";
-import ukIndiaLogo from "@/assets/images/homepage/uk-india.png";
-import standardchatered from "@/assets/images/homepage/standard-chatered.png";
-import rukart from "@/assets/images/homepage/rukart.png";
-import gmn from "@/assets/images/homepage/gmn.png";
-import harmonic from "@/assets/images/homepage/harmonic.png";
-import IkigaiLaw from "@/assets/images/homepage/Ikigai-Law.png";
-
-
-
-
-const rowOneLogos = [
-  { src: hsbcLogo, alt: "HSBC" },
-  { src: heroFinCorpLogo, alt: "HeroFinCorp" },
-  { src: quoraLogo, alt: "Quora" },
-  { src: paysafeLogo, alt: "Paysafe" },
-  { src: ukIndiaLogo, alt: "UK India Business Council" },
-];
-
-// TODO: swap these placeholders for harmonic, GMM Pfaudler, Standard Chartered,
-// and RuKart logos once those files are uploaded
-const rowTwoLogos = [
-  { src: harmonic, alt: "Harmonic" },
-  { src: gmn, alt: "GMM Pfaudler" },
-  { src: standardchatered, alt: "Standard Chartered" },
-  { src: rukart, alt: "RuKart" },
-  { src: IkigaiLaw, alt: "Ikigai Law" },
-];
-
-const marqueeRowOne = [...rowOneLogos, ...rowOneLogos, ...rowOneLogos, ...rowOneLogos];
-const marqueeRowTwo = [...rowTwoLogos, ...rowTwoLogos, ...rowTwoLogos, ...rowTwoLogos];
+import { defaultClients, type ClientLogo } from "@/utils/clientDefaults";
 
 function LogoCard({
   src,
   alt,
 }: {
-  src: typeof hsbcLogo;
+  src: string;
   alt: string;
 }) {
   return (
@@ -76,6 +46,21 @@ function LogoCard({
 }
 
 export default function OurClientsSection() {
+  const [clients, setClients] = useState<ClientLogo[]>(defaultClients);
+  useEffect(() => {
+    const controller = new AbortController();
+    fetch("/api/clients", { cache: "no-store", signal: controller.signal })
+      .then(async (response) => {
+        if (!response.ok) throw new Error("Unable to load clients");
+        const data = await response.json();
+        setClients(data.clients);
+      })
+      .catch(() => { /* Keep existing logos available during an outage. */ });
+    return () => controller.abort();
+  }, []);
+  const repeatRow = (row: number) => Array.from({ length: 4 }, () => clients.filter((client) => client.row === row)).flat();
+  const marqueeRowOne = repeatRow(1);
+  const marqueeRowTwo = repeatRow(2);
   return (
     <section className="w-full bg-white pb-16 sm:pb-16 md:pb-24 lg:pb-24">
 
@@ -136,24 +121,26 @@ export default function OurClientsSection() {
       </div>
 
       {/* Row 1 - scrolls left */}
-      <div className="w-full overflow-hidden pb-6">
+      {marqueeRowOne.length > 0 && <div className="w-full overflow-hidden pb-6">
         {/* <div className="marquee-track flex w-max gap-10 animate-marquee"> */}
           <div className="marquee-track flex w-max gap-10 animate-marquee">
           {marqueeRowOne.map((logo, index) => (
-            <LogoCard key={`row1-${logo.alt}-${index}`} src={logo.src} alt={logo.alt} />
+            <LogoCard key={`row1-${logo.name}-${index}`} src={logo.image} alt={logo.name} />
           ))}
         </div>
       </div>
 
+      }
       {/* Row 2 - scrolls right */}
-      <div className="w-full overflow-hidden">
+      {marqueeRowTwo.length > 0 && <div className="w-full overflow-hidden">
         {/* <div className="marquee-track flex w-max gap-10 animate-marquee-delay"> */}
           <div className="marquee-track flex w-max gap-10 animate-marquee-delay">
           {marqueeRowTwo.map((logo, index) => (
-            <LogoCard key={`row2-${logo.alt}-${index}`} src={logo.src} alt={logo.alt} />
+            <LogoCard key={`row2-${logo.name}-${index}`} src={logo.image} alt={logo.name} />
           ))}
         </div>
       </div>
+      }
     </section>
   );
 }

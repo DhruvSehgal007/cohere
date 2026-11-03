@@ -100,31 +100,11 @@ export default function ReadinessFramework() {
           <div className="lg:relative">
             <div className="lg:sticky lg:top-[110px]">
               {/* Label */}
-              <div
-                className="
-                  inline-flex
-                  min-h-[28px]
-                  items-center
-                  rounded-tr-[5px]
-                  rounded-br-[5px]
-                  bg-[#439897]
-                  px-[9px]
-                  shadow-[2px_2px_5px_rgba(0,0,0,0.22)]
-                "
-              >
-                <span
-                  className="
-                    font-avenir
-                    text-[14px]
-                    font-normal
-                    uppercase
-                    leading-[22px]
-                    text-white
-                  "
-                >
-                  Cohere Readiness™
-                </span>
-              </div>
+               <div className="inline-flex items-center bg-[#439897] px-3 py-1.5 rounded-tr-[8px] rounded-br-[8px]">
+            <span className="font-avenir text-[12px] sm:text-[14px] uppercase tracking-[0.2px] text-white uppercase">
+              COHERE READINESS™
+            </span>
+          </div>
 
               {/* Heading */}
               <h2

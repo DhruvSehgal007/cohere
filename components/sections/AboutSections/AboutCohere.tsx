@@ -1,18 +1,20 @@
+
 import Image from "next/image";
 import vector from "@/assets/images/About/Aboutimg.svg";
+import aboutmobile from "@/assets/images/About/about-mobile.png";
 
 export default function AboutCohere() {
   return (
-    <section className="pb-16 sm:pb-16 md:pb-24 lg:pb-24 relative">
+    <section className="relative overflow-hidden pb-16 sm:pb-16 md:pb-24 lg:pb-24">
       <div className="container-custom px-4 sm:px-6">
         {/* TOP CONTENT */}
-        <div className="flex flex-col gap-4 lg:flex-row  lg:justify-between">
+        <div className="flex flex-col gap-4 lg:flex-row lg:justify-between">
           <div className="w-full lg:w-1/2">
             <div className="inline-flex items-center bg-[#439897] px-3 py-1.5 rounded-tr-[8px] rounded-br-[8px]">
-            <span className="font-avenir text-[12px] sm:text-[14px] uppercase tracking-[0.2px] text-white uppercase">
-              ABOUT COHERE
-            </span>
-          </div>
+              <span className="font-avenir text-[12px] sm:text-[14px] uppercase tracking-[0.2px] text-white">
+                ABOUT COHERE
+              </span>
+            </div>
 
             <h2
               className="
@@ -35,19 +37,17 @@ export default function AboutCohere() {
 
           <p
             className="
-      w-full
-      font-nunito-sans
-      text-[16px]
-      leading-[26px]
-      text-[#2E262E]
-      tracking-[4%]
-
-      sm:leading-7
-
-      lg:max-w-[739px]
-      lg:w-1/2
-      lg:text-[18px]
-    "
+              w-full
+              font-nunito-sans
+              text-[16px]
+              leading-[26px]
+              text-[#2E262E]
+              tracking-[0.04em]
+              sm:leading-7
+              lg:max-w-[739px]
+              lg:w-1/2
+              lg:text-[18px]
+            "
           >
             Cohere Consultants LLP is a boutique legal and compliance practice
             with a pan-India presence, specializing in workplace laws, including
@@ -73,13 +73,39 @@ export default function AboutCohere() {
           </p>
         </div>
       </div>
-      <div className="absolute pt-10 sm:pt-5 md:left-0 w-[200%] md:bottom-0 md:w-full  xl:bottom-[-20px]">
-        <Image
-          src={vector}
-          alt="Cohere workplace illustration"
-          className="md:w-full h-auto  "
-        />
-      </div>
+
+      {/* RESPONSIVE IMAGE */}
+      {/* RESPONSIVE IMAGE */}
+{/* RESPONSIVE IMAGE */}
+{/* RESPONSIVE IMAGE */}
+<div
+  className="
+    relative
+    mt-8
+    w-full
+    sm:mt-10
+    md:mt-12
+    lg:absolute
+    lg:bottom-0
+    lg:left-0
+    lg:mt-0
+    xl:bottom-[-20px]
+  "
+>
+  {/* MOBILE IMAGE */}
+  <Image
+    src={aboutmobile}
+    alt="Cohere workplace illustration"
+    className="block w-full h-auto object-contain sm:hidden"
+  />
+
+  {/* TABLET AND DESKTOP IMAGE */}
+  <Image
+    src={vector}
+    alt="Cohere workplace illustration"
+    className="hidden w-full h-auto object-contain sm:block"
+  />
+</div>
     </section>
   );
 }

@@ -124,7 +124,7 @@ export default function Footer() {
               text-[14px]
               font-normal
               leading-[1.55]
-              text-[#666666]
+              text-[#5B5B5B]
             "
           >
             Cohere Consultants is a pan India consultancy platform
@@ -237,7 +237,7 @@ export default function Footer() {
 
             {/* INSTAGRAM */}
             <a
-              href="https://www.instagram.com/"
+              href="https://www.instagram.com"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
@@ -265,7 +265,7 @@ export default function Footer() {
 
             {/* FACEBOOK */}
             <a
-              href="https://www.facebook.com/"
+              href="https://www.facebook.com/CohereConsultants"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
@@ -376,7 +376,7 @@ export default function Footer() {
               font-nunito-sans
               text-[12px]
               leading-[1.5]
-              text-[#777777]
+              text-[#5B5B5B]
               sm:text-[13px]
             "
           >

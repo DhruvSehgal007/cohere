@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import {
+  CalendarDays,
   LayoutDashboard,
   MessageSquareQuote,
   BriefcaseBusiness,
@@ -13,16 +14,18 @@ import {
   FileText,
   Settings,
   LogOut,
-  ChevronRight,
   ChevronLeft,
-   BarChart3,
-   HelpCircle,
-   Share2,
+  BarChart3,
+  HelpCircle,
+  Share2,
+  Mail,
 } from "lucide-react";
 
 import cohereLogo from "@/assets/images/logos/cohere-logo.png";
 
 const menuItems = [
+  { label: "Newsletter mails", href: "/dashboard/newsletter", icon: Mail },
+  { label: "Events", href: "/dashboard/events", icon: CalendarDays },
   {
     label: "Dashboard",
     href: "/dashboard",
@@ -117,11 +120,31 @@ export default function Sidebar() {
                 ? pathname === "/dashboard"
                 : pathname.startsWith(item.href);
 
+            if (item.href === "/dashboard/events") {
+              return (
+                <div key={item.href}>
+                  <Link href={item.href} className={`flex h-[46px] items-center gap-3 rounded-[10px] px-3 text-[16px] font-medium ${isActive ? "bg-[#439897] text-white" : "text-[#0d1e1e] hover:bg-[#439897]/10"}`}>
+                    <Icon size={18} /><span>Events</span>
+                  </Link>
+                  <div className="ml-5 mt-1 space-y-1 border-l border-[#439897]/25 pl-3">
+                    {[
+                      { label: "All Events", href: "/dashboard/events" },
+                      { label: "Add Event", href: "/dashboard/events/add" },
+                    ].map(child => (
+                      <Link key={child.href} href={child.href} aria-current={pathname === child.href ? "page" : undefined} className={`block rounded-lg px-3 py-2 text-[14px] ${pathname === child.href ? "bg-[#439897]/15 font-semibold text-[#367f7e]" : "text-[#0d1e1e] hover:bg-[#439897]/10"}`}>
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              );
+            }
+
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`group flex h-[46px] items-center gap-3 rounded-[10px] px-3 text-[14px] font-medium transition-all duration-200 ${
+                className={`group flex h-[46px] items-center gap-3 rounded-[10px] px-3 text-[16px] font-medium transition-all duration-200 ${
                   isActive
                     ? "bg-[#439897] text-[#ffffff]"
                     : "text-[#0d1e1e] hover:bg-[#439897]/10 hover:text-[#0d1e1e]"
