@@ -17,6 +17,7 @@ import {
   ChevronLeft,
    BarChart3,
    HelpCircle,
+   Share2,
 } from "lucide-react";
 
 import cohereLogo from "@/assets/images/logos/cohere-logo.png";
@@ -27,6 +28,13 @@ const menuItems = [
     href: "/dashboard",
     icon: LayoutDashboard,
   },
+  // --- ADDED FOR SOCIAL FEED MANAGEMENT ---
+  {
+    label: "Social Feed",
+    href: "/dashboard/social-feed",
+    icon: Share2,
+  },
+  // --- END ADDED ---
   {
     label: "Testimonials",
     href: "/dashboard/testimonials",
@@ -62,8 +70,6 @@ const menuItems = [
   href: "/dashboard/faqs",
   icon: HelpCircle,
 },
-
-
 ];
 const handleLogout = async () => {
   try {
